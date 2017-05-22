@@ -1,4 +1,4 @@
-import React from 'react'
+aimport React from 'react'
 
 import Header from './Header'
 import Footer from './Footer'
@@ -14,7 +14,7 @@ class About extends React.Component {
           <Header />
           <main className="mdl-layout__content">
             <div className="page-content">
-                About us
+                Login Form
             </div>
           </main>
           <Footer />

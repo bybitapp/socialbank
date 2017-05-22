@@ -14,6 +14,7 @@ import Home from './components/Home'
 import About from './components/About'
 import Contact from './components/Contact'
 import Help from './components/Help'
+import Login from './components/Login'
 import Project from './components/Project'
 import ProjectMap from './components/ProjectMap'
 
@@ -28,6 +29,7 @@ const App = () => (
   <Provider store={store}>
     <Router>
       <Switch>
+        <Route path="/login" component={Login} />
         <Route path="/about" component={About} />
         <Route path="/help" component={Help} />
         <Route path="/contact" component={Contact} />
