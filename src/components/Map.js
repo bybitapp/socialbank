@@ -12,6 +12,7 @@ class Map extends React.Component {
   static defaultProps = {
     center: {lat: 51.52, lng: -0.085},
     zoom: 16,
+    options: {scrollwheel: false},
     projects: {}
   };
 
@@ -28,6 +29,7 @@ class Map extends React.Component {
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
         onChildClick={this.onChildClick}
+        options={this.props.options}
       >
       { Object.keys(projects).map((key, index) => {
           const p = projects[key]
