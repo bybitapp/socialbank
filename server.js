@@ -1,5 +1,5 @@
 const express = require('express')
-const config = require('./config/config');
+const config = require('./config/default');
 const uuid = require('uuid/v1');
 const path = require('path');
 

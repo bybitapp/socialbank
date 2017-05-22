@@ -12,7 +12,6 @@ This application allows creating bank account by one click. Each account can be 
 
 # How to run
 
-* Rename file `/config/config.js.example` to `/config/config.js`
 * Run `yarn build`
 * Run `yarn start`
 * Open webpage `http://localhost:3001`
