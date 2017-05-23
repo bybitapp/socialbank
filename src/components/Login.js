@@ -1,9 +1,9 @@
-aimport React from 'react'
+import React from 'react'
 
 import Header from './Header'
 import Footer from './Footer'
 
-class About extends React.Component {
+class Login extends React.Component {
 
   static defaultProps = {
   }
@@ -24,4 +24,4 @@ class About extends React.Component {
 
 }
 
-export default About
+export default Login
