@@ -12,7 +12,7 @@ A full set of guidance documents including snippets of example code can be found
 * Material Design Lite (https://getmdl.io/)
 * React (https://facebook.github.io/react/)
 * Redux
-* Open Payments Cloud
+* Open Payments Cloud (https://github.com/ixaris/ope-applicationclients/tree/master/js-client)
 
 ## How to run
 
