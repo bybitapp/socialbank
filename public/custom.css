@@ -1,3 +1,21 @@
+/* NEW */
+
+.mdl-layout__content {
+    background-color: #f3f3f3
+}
+
+.mdl-textfield {
+    width: 100%
+}
+
+.sb-form-content {
+    max-width: 600px;
+    padding: 16px;
+    margin: auto;
+}
+
+/* OLD */
+
 .mdl-list .mdl-list__item:hover {
     background-color: #e0e0e0;
     cursor: pointer;

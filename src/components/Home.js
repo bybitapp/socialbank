@@ -15,9 +15,9 @@ export default ({ projects = {} }) => (
               <div className="logo-font android-slogan">be together. not the same.</div>
               <div className="logo-font android-sub-slogan">welcome to socialbak... be yourself. do your thing. see whats going on.</div>
               <div className="logo-font android-create-character">
-                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                <Link className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" to={'/registration'}>
                     Create your bank account
-                </button>
+                </Link>
               </div>
             </div>
 
