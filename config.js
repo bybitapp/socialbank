@@ -1,6 +1,6 @@
 var config = {
     general: {
-        port: 3001
+        port: process.env.PORT || 3001
     },
     opc: {
         urlApi: 'https://app-gateway.openpayments.cloud/api',

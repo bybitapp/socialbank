@@ -1,7 +1,10 @@
+require('dotenv').config()
+
 const express = require('express')
-const config = require('./config/default');
 const uuid = require('uuid/v1');
 const path = require('path');
+
+const config = require('./config');
 
 var Opc = require('open_payments_cloud_application_api');
 Opc.ApiClient.instance.basePath = config.opc.urlApi;
