@@ -76,6 +76,48 @@ server.post('/api/project', async (req, res) => {
   }
 })
 
+// create account [External/Managed Account]
+server.post('/api/account', async (req, res) => {
+  try {
+
+      // TODO
+      // Has to be implemented properly
+      // This is only example
+
+      const { token } = await getToken()
+      var correlationId = uuid()
+
+      // create managed account
+      var apiManaged = new Opc.ManagedAccountsApi();
+      var requestManager = new Opc.CreateManagedAccountParams(
+          managedAccountProfile,
+          ownerId,
+          'TODO friendlyName',
+          'GBP',
+          'socialBankProvider'
+      );
+      const dataManaged = await apiManaged.managedAccountsIdCreate(
+          correlationId, programmeKey, token, requestManager)
+
+      // create external account
+      var apiExternal = new Opc.ExternalAccountsApi();
+      var requestExternal = new Opc.CreateExternalAccountParams(
+          managedAccountProfile,
+          ownerId,
+          'TODO friendlyName',
+          'GBP',
+          'socialBankProvider'
+      );
+      const dataExternal = await apiExternal.externalAccountsIdCreate(
+          correlationId, programmeKey, requestExternal)
+
+      return res.send()
+  } catch (err) {
+      console.error(err)
+      return res.send(err)
+  }
+})
+
 server.listen(config.general.port, (err) => {
     if (err) throw err
     console.log('> Ready on http://localhost:' + config.general.port)
