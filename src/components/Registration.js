@@ -34,6 +34,9 @@ class Registration extends React.Component {
                             <form onSubmit={handleSubmit}>
                                 <Field name="firstName" label="First name" component={Input} />
                                 <Field name="LastName" label="Last name" component={Input} />
+                                <Field name="email" label="Email" component={Input} />
+                                <Field name="password" label="Password" component={Input} />
+          
                                 <Field name="charityName" label="Charity Name" component={Input} />
                                 <Field name="charityRegistrationId" label="Charity registration ID" component={Input} />
                                 <Field name="address" label="Address" component={Input} />
