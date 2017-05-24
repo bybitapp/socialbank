@@ -24,3 +24,5 @@ A full set of guidance documents including snippets of example code can be found
 
 * Run `yarn dev` (When you run in dev mode then there isn't access to server implementation, but it allows quickly write changes on front-end site)
 * Open webpage `http://localhost:3000`
+
+| Override PORT on machine by setting ```PORT=8080``` in your root directory ```.env``` file
