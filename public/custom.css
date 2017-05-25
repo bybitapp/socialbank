@@ -9,9 +9,14 @@
 }
 
 .sb-form-content {
-    max-width: 600px;
+    max-width: 800px;
     padding: 16px;
     margin: auto;
+    text-align: center;
+}
+
+.sb-login{
+    padding-top: 100px
 }
 
 /* OLD */
