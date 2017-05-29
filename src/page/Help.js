@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Header from './Header'
-import Footer from './Footer'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
-class About extends React.Component {
+class Help extends React.Component {
 
   static defaultProps = {
   }
@@ -14,7 +14,9 @@ class About extends React.Component {
           <Header />
           <main className="mdl-layout__content">
             <div className="page-content">
-                About us
+                <div className="sb-form-content">
+                    Help
+                </div>
             </div>
           </main>
           <Footer />
@@ -24,4 +26,4 @@ class About extends React.Component {
 
 }
 
-export default About
+export default Help
