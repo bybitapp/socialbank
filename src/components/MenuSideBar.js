@@ -1,33 +1,27 @@
 import React from 'react'
-import { compose, withState } from 'recompose'
-import AddMeForm from './AddMeForm'
+import { Link } from 'react-router-dom'
 
-const enhance = compose(
-    withState('modal', 'setModal')
-)
+const menuItems = [
+    {label: 'Account Details', path: '/details'},
+    {label: 'Transaction History', path: '/history'},
+    {label: 'Projects', path: '/projects'},
+    {label: 'Virtual Cards', path: '/cards'},
+]
 
 class MenuSideBar extends React.Component {
 
   render() {
-    const {menuItems, modal, setModal} = this.props
-
     return (
     <div>
-        <button
-            className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-            onClick={() => setModal('addMe')}>
-          Add Me to Project
-        </button>
-        <AddMeForm open={(modal === 'addMe')} handleClose={() => setModal(null)} />
         <ul className="mdl-list">
         { Object.keys(menuItems).map((key, index) => {
             const i = menuItems[key]
             return (
                 <li className="mdl-list__item" key={ key }>
-                  <a className="mdl-list__item-primary-content" href={ i.path }>
+                  <Link className="mdl-list__item-primary-content" to={ i.path }>
                     <i className="material-icons mdl-list__item-avatar">play_arrow</i>
                     <span>{ i.label }</span>
-                  </a>
+                  </Link>
                 </li>
             )
         })}
@@ -37,4 +31,4 @@ class MenuSideBar extends React.Component {
   }
 }
 
-export default enhance(MenuSideBar)
+export default MenuSideBar
