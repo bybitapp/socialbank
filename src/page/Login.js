@@ -2,20 +2,20 @@ import React from 'react'
 import { compose } from 'recompose'
 import { reduxForm, Field } from 'redux-form'
 import axios from 'axios'
-import Input from './Input'
-import Header from './Header'
-import Footer from './Footer'
+import Input from '../components/Input'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
 const enhance = compose(
   reduxForm({
     form: 'login',
     onSubmit: (values, dispatch, ownProps) => {
-    //     axios.post('/api/account', values)
+    //     axios.post('/api/login', values)
     //     .then(() => alert('success'))
     //     .catch((e) => {
     //         console.log(e)
     //     })
-        alert('onLogin')
+        ownProps.history.push('/details') // temporary redirect
     }
   })
 )

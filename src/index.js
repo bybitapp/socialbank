@@ -10,14 +10,16 @@ import reducer from './reducers'
 import { getAllProjects } from './actions'
 
 // components
-import Home from './components/Home'
-import About from './components/About'
-import Contact from './components/Contact'
-import Help from './components/Help'
-import Login from './components/Login'
-import Registration from './components/Registration'
-import Project from './components/Project'
-import ProjectMap from './components/ProjectMap'
+import Home from './page/Home'
+import About from './page/About'
+import Contact from './page/Contact'
+import Help from './page/Help'
+import Login from './page/Login'
+import Registration from './page/Registration'
+import Details from './page/Details'
+import History from './page/History'
+import Projects from './page/Projects'
+import Cards from './page/Cards'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducer, composeEnhancers(
@@ -35,7 +37,10 @@ const App = () => (
         <Route path="/about" component={About} />
         <Route path="/help" component={Help} />
         <Route path="/contact" component={Contact} />
-        <Route path="/p/:id" component={Project} />
+        <Route path="/details" component={Details} />
+        <Route path="/history" component={History} />
+        <Route path="/projects" component={Projects} />
+        <Route path="/cards" component={Cards} />
         <Route path="/" component={Home} />
       </Switch>
     </Router>
