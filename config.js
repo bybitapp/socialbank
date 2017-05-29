@@ -9,6 +9,9 @@ var config = {
         username: 'team-01',
         password: '8Lx3WSn^',
         ownerId: '87593085012710413',
+        currency: 'GBP',
+        country: 'GB',
+        issueProvider: 'Card Issuing Provider',
         profile: {
             corporateIdentity: '97593089101268736',
             managedCard: '97593089101269248',
