@@ -1,9 +1,9 @@
 import React from 'react'
 
-import Header from './Header'
-import Footer from './Footer'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 
-class Help extends React.Component {
+class Contact extends React.Component {
 
   static defaultProps = {
   }
@@ -14,7 +14,9 @@ class Help extends React.Component {
           <Header />
           <main className="mdl-layout__content">
             <div className="page-content">
-                Help
+                <div className="sb-form-content">
+                    Contact
+                </div>
             </div>
           </main>
           <Footer />
@@ -24,4 +26,4 @@ class Help extends React.Component {
 
 }
 
-export default Help
+export default Contact
