@@ -12,7 +12,8 @@ Opc.ApiClient.instance.basePath = config.opc.urlApi;
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
-const { opc: { programmeKey, programmeId, username, password, managedAccountProfile, managedCardProfile, ownerId} } = config
+const {opc: { programmeKey, programmeId, username, password, ownerId, currency, issueProvider }} = config
+const {opc: {profile: { managedCard, managedAccount, externalAccount, deposit, transfer }}} = config
 
 const server = express()
 server.use(bodyParser.json())
@@ -20,102 +21,147 @@ server.use(cors())
 server.use(express.static('./build'));
 
 // get information about token
-const getToken =() => {
-  const api = new Opc.AuthApi();
-  const request = new Opc.LoginParams(programmeId, username, password)
-  return api.authLogin(uuid(), programmeKey, request)
+const getToken = () => {
+    const api = new Opc.AuthApi();
+    const request = new Opc.LoginParams(programmeId, username, password)
+    return api.authLogin(uuid(), programmeKey, request)
 }
 
 // TEMPORARY: BEGIN
-var projects = [
-    {id: 1, name: 'Human Rights Watch', description: '', funds: '£14.000', icon: 'functions', lat: 51.522, lng: -0.089},
-    {id: 2, name: 'Do Something', description: '', funds: '£55.000', icon: 'person', lat: 51.52, lng: -0.08},
-    {id: 3, name: 'World Wildlife Fund', description: '', funds: '£22.000', icon: 'star', lat: 51.52, lng: -0.082},
-    {id: 4, name: 'Caritas', description: '', funds: '£5.000', icon: 'star', lat: 51.523, lng: -0.085}
-];
+var projects = [{
+    id: 1,
+    name: 'Human Rights Watch',
+    description: '',
+    funds: '£14.000',
+    icon: 'functions',
+    lat: 51.522,
+    lng: -0.089
+}, {
+    id: 2,
+    name: 'Do Something',
+    description: '',
+    funds: '£55.000',
+    icon: 'person',
+    lat: 51.52,
+    lng: -0.08
+}, {
+    id: 3,
+    name: 'World Wildlife Fund',
+    description: '',
+    funds: '£22.000',
+    icon: 'star',
+    lat: 51.52,
+    lng: -0.082
+}, {
+    id: 4,
+    name: 'Caritas',
+    description: '',
+    funds: '£5.000',
+    icon: 'star',
+    lat: 51.523,
+    lng: -0.085
+}];
 const getRandomInt = (min, max) => {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-// TEMPORARY: END
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+    // TEMPORARY: END
 
 // create a request for funds
-server.get('/api/projects', async (req, res) => {
-  try {
-      return res.send(projects);
-  } catch (err) {
-      console.error(err)
-      return res.send(err)
-  }
+server.get('/api/projects', async(req, res) => {
+    try {
+        return res.send(projects);
+    } catch (err) {
+        console.error(err)
+        return res.send(err)
+    }
 })
 
-server.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, './build', 'index.html'));
+server.get('/*', function(req, res) {
+    res.sendFile(path.join(__dirname, './build', 'index.html'));
 });
 
 // create a request for funds
-server.post('/api/project', async (req, res) => {
-  try {
-      // TEMPORARY: BEGIN
-      const project = {
-          id: projects.length + 1,
-          funds: '£0.00',
-          icon: 'star',
-          lat: '51.52' + getRandomInt(0,9),
-          lng: '-0.082' + getRandomInt(0,9),
-          name: req.body.name,
-          description: req.body.description
-      }
-      projects.push(project);
-      // TEMPORARY: END
-      return res.send(project)
-  } catch (err) {
-      console.error(err)
-      return res.send(err)
-  }
+server.post('/api/project', async(req, res) => {
+    try {
+        // TEMPORARY: BEGIN
+        const project = {
+            id: projects.length + 1,
+            funds: '£0.00',
+            icon: 'star',
+            lat: '51.52' + getRandomInt(0, 9),
+            lng: '-0.082' + getRandomInt(0, 9),
+            name: req.body.name,
+            description: req.body.description
+        }
+        projects.push(project);
+        // TEMPORARY: END
+        return res.send(project)
+    } catch (err) {
+        console.error(err)
+        return res.send(err)
+    }
 })
 
 // create account [External/Managed Account]
-server.post('/api/account', async (req, res) => {
-  try {
+server.post('/api/account', async(req, res) => {
+    try {
 
-      // TODO
-      // Has to be implemented properly
-      // This is only example
+        // TODO
+        // Has to be implemented properly
+        // This is only example
 
-      const { token } = await getToken()
-      var correlationId = uuid()
+        const {token} = await getToken()
+        var correlationId = uuid()
+        var account = req.body;
 
-      // create managed account
-      var apiManaged = new Opc.ManagedAccountsApi();
-      var requestManager = new Opc.CreateManagedAccountParams(
-          managedAccountProfile,
-          ownerId,
-          'TODO friendlyName',
-          'GBP',
-          'socialBankProvider'
-      );
-      const dataManaged = await apiManaged.managedAccountsIdCreate(
-          correlationId, programmeKey, token, requestManager)
+        // create managed account
+        var apiManaged = new Opc.ManagedAccountsApi();
+        var requestManager = new Opc.CreateManagedAccountParams(
+            managedAccount,
+            ownerId,
+            account.charityName,
+            currency,
+            issueProvider
+        );
+        const responseManaged = await apiManaged.managedAccountsIdCreate(
+            correlationId, programmeKey, token, requestManager)
 
-      // create external account
-      var apiExternal = new Opc.ExternalAccountsApi();
-      var requestExternal = new Opc.CreateExternalAccountParams(
-          managedAccountProfile,
-          ownerId,
-          'TODO friendlyName',
-          'GBP',
-          'socialBankProvider'
-      );
-      const dataExternal = await apiExternal.externalAccountsIdCreate(
-          correlationId, programmeKey, requestExternal)
+        console.log(responseManaged);
+        console.log(responseManaged.exports);
+        console.log(responseManaged.exports.id.exports);
+        console.log(responseManaged.exports.creationTimestamp);
 
-      return res.send()
-  } catch (err) {
-      console.error(err)
-      return res.send(err)
-  }
+        // create external account
+        var apiExternal = new Opc.ExternalAccountsApi();
+        var externalName = account.bankName + '-' + account.accountOwner;
+        var requestExternal = new Opc.CreateExternalAccountParams(
+            externalAccount,
+            ownerId,
+            externalName, {
+                bankAccountNumber: account.accountNumber,
+                payee: account.accountOwner,
+                bankName: account.bankName,
+                bankCode: account.sortCode,
+                branchCode: account.branchCode,
+                ibanCode: account.ibanCode,
+                swiftCode: account.swiftCode,
+                country,
+                currency
+            }
+        );
+        const responseExternal = await apiExternal.externalAccountsIdCreate(
+            correlationId, programmeKey, requestExternal)
+
+        console.log(responseExternal);
+        // TODO save all data with account ID in noSQL database
+
+        return res.send()
+    } catch (err) {
+        console.error(err)
+        return res.send(err)
+    }
 })
 
 server.listen(config.general.port, (err) => {
