@@ -10,9 +10,10 @@ var Opc = require('open_payments_cloud_application_api');
 Opc.ApiClient.instance.basePath = config.opc.urlApi;
 
 const bodyParser = require('body-parser')
+const Joi = require('joi')
 const cors = require('cors')
 
-const {opc: { programmeKey, programmeId, username, password, ownerId, currency, issueProvider }} = config
+const {opc: { programmeKey, programmeId, username, password, ownerId, currency, country, issueProvider }} = config
 const {opc: {profile: { managedCard, managedAccount, externalAccount, deposit, transfer }}} = config
 
 const server = express()
@@ -104,63 +105,90 @@ server.post('/api/project', async(req, res) => {
     }
 })
 
+const registrationSchema = Joi.object().keys({
+    email: Joi.string().email().required(),
+    password: Joi.string().min(6).required(),
+    charityName: Joi.string().min(3).max(30).required(),
+    address: Joi.string().min(6).required(),
+    postcode: Joi.string().regex(/^[a-zA-Z]{1,2}([0-9]{1,2}|[0-9][a-zA-Z])\s*[0-9][a-zA-Z]{2}$/).required(),
+    city: Joi.string().min(3).required(),
+    accountOwner: Joi.string().min(3).required(),
+    bankName: Joi.string().min(3).required(),
+    ibanCode: Joi.string().regex(/^[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{4}[0-9]{7}([a-zA-Z0-9]?){0,16}$/).required(),
+    swiftCode: Joi.string().regex(/^([a-zA-Z]){4}([a-zA-Z]){2}([0-9a-zA-Z]){2}([0-9a-zA-Z]{3})?$/).required(),
+})
+
 // create account [External/Managed Account]
 server.post('/api/account', async(req, res) => {
     try {
 
-        // TODO
-        // Has to be implemented properly
-        // This is only example
+        const { error, value } = Joi.validate(req.body, registrationSchema)
+        var account = value
+
+        if (error) {
+            res.status(409).send(error)
+        }
 
         const {token} = await getToken()
-        var correlationId = uuid()
-        var account = req.body;
+        const correlationId = uuid()
 
         // create managed account
-        var apiManaged = new Opc.ManagedAccountsApi();
-        var requestManager = new Opc.CreateManagedAccountParams(
+        const apiManaged = new Opc.ManagedAccountsApi();
+        const requestManager = new Opc.CreateManagedAccountParams(
             managedAccount,
             ownerId,
             account.charityName,
             currency,
             issueProvider
         );
-        const responseManaged = await apiManaged.managedAccountsIdCreate(
-            correlationId, programmeKey, token, requestManager)
+        const responseManaged = await apiManaged.managedAccountsIdCreate(correlationId, programmeKey, token, requestManager)
 
-        console.log(responseManaged);
-        console.log(responseManaged.exports);
-        console.log(responseManaged.exports.id.exports);
-        console.log(responseManaged.exports.creationTimestamp);
+        account['managedAccount'] = []
+        account['managedAccount'].push({
+            id: responseManaged.id.id,
+            created: responseManaged.creationTimestamp,
+            name: account.charityName
+        })
 
         // create external account
-        var apiExternal = new Opc.ExternalAccountsApi();
-        var externalName = account.bankName + '-' + account.accountOwner;
-        var requestExternal = new Opc.CreateExternalAccountParams(
+        const apiExternal = new Opc.ExternalAccountsApi();
+        const externalName = account.charityName + '-' + account.bankName + '-' + account.accountOwner;
+        const branchCode = account.swiftCode.substring(6)
+        const bankCode = account.ibanCode.substring(8, 14)
+        const bankAccountNumber = account.ibanCode.substring(15)
+
+        const requestExternal = new Opc.CreateExternalAccountParams(
             externalAccount,
             ownerId,
             externalName, {
-                bankAccountNumber: account.accountNumber,
+                bankAccountNumber,
                 payee: account.accountOwner,
                 bankName: account.bankName,
-                bankCode: account.sortCode,
-                branchCode: account.branchCode,
+                bankCode,
+                branchCode,
                 ibanCode: account.ibanCode,
                 swiftCode: account.swiftCode,
                 country,
                 currency
             }
         );
-        const responseExternal = await apiExternal.externalAccountsIdCreate(
-            correlationId, programmeKey, requestExternal)
+        const responseExternal = await apiExternal.externalAccountsIdCreate(correlationId, programmeKey, token, requestExternal)
 
-        console.log(responseExternal);
+        Object.assign({
+            externalAccountId: responseExternal.id.id,
+            externalAccountName: externalName,
+            branchCode
+            bankCode
+            bankAccountNumber
+        }, account)
+
         // TODO save all data with account ID in noSQL database
+        console.log(account);
 
-        return res.send()
+        return res.send(account)
     } catch (err) {
         console.error(err)
-        return res.send(err)
+        return res.status(409).send(err)
     }
 })
 

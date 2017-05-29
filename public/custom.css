@@ -19,6 +19,21 @@
     padding-top: 100px
 }
 
+.sb-textfield__error{
+    color: #d50000;
+    position: absolute;
+    font-size: 12px;
+    margin-top: 3px;
+    display: block;
+}
+
+.sb-error{
+    color: #d50000;
+    font-size: 16px;
+    padding: 8px;
+    font-weight: bold;
+}
+
 /* OLD */
 
 .mdl-list .mdl-list__item:hover {
