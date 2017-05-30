@@ -3,11 +3,29 @@ import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 import Input from './Input'
+import {POSTCODE} from '../constants/Validation'
+
+const validate = values => {
+    const errors = {}
+    if (!values.address) {
+        errors.address = 'Required'
+    }
+    if (!values.postcode) {
+        errors.postcode = 'Required'
+    } else if (!POSTCODE.test(values.postcode)) {
+        errors.postcode = 'Invalid postcode eg. EC1A 2BP'
+    }
+    if (!values.city) {
+        errors.city = 'Required'
+    }
+    return errors
+}
 
 const enhance = compose(
     connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
     reduxForm({
           form: 'updateAddress',
+          validate,
           onSubmit: (values, dispatch, ownProps) => {
             //   return new Promise((resolve, reject) => {
             //       axios.post('/api/account', values)
