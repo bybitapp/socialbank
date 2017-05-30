@@ -177,9 +177,9 @@ server.post('/api/account', async(req, res) => {
         Object.assign({
             externalAccountId: responseExternal.id.id,
             externalAccountName: externalName,
-            branchCode
-            bankCode
-            bankAccountNumber
+            branchCode,
+            bankCode,
+            bankAccountNumber,
         }, account)
 
         // TODO save all data with account ID in noSQL database
