@@ -1,21 +1,27 @@
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
-
+import { Link } from 'react-router-dom'
+import { reduxForm, Field } from 'redux-form'
+import Input from '../components/Input'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 
 const enhance = compose(
   connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
+  reduxForm({
+      form: 'project'
+  })
 )
 
 class Details extends React.Component {
 
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
-    const tmp = {padding: '15px'}
-
+    const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0}
+    const stylePadding = {padding: '15px'}
+    const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -27,8 +33,81 @@ class Details extends React.Component {
                         <MenuSideBar />
                     </div>
                     <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
-                        <div style={tmp}>
-                            Information about projects
+                        <div style={stylePadding}>
+                            <div className="mdl-grid">
+                                <div className="mdl-cell mdl-cell--7-col" >
+                                    <Field name="projectName" label="Project Name" component={Input} />
+                                </div>
+                                <div className="mdl-cell mdl-cell--5-col" style={styleButton}>
+                                    <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                                        Add Project
+                                    </button>
+                                </div>
+                            </div>
+                            <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
+                              <thead>
+                                <tr>
+                                  <th className="mdl-data-table__cell--non-numeric">Name</th>
+                                  <th>Date Created</th>
+                                  <th>Budget</th>
+                                  <th>Virtual Cards</th>
+                                  <th>Actions</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td className="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
+                                  <td>2017-04-20 16:44:00</td>
+                                  <td>$2500</td>
+                                  <td>25</td>
+                                  <td className="sb-menu-table">
+                                      <Link className="mdl-list__item-primary-content" to={ '/project/1' }>
+                                        <i className="material-icons mdl-list__item-avatar sb-icon-list_item">attach_money</i>
+                                      </Link>
+                                      <Link className="mdl-list__item-primary-content" to={ '/project/1' }>
+                                        <i className="material-icons mdl-list__item-avatar sb-icon-list_item">mode_edit</i>
+                                      </Link>
+                                      <Link className="mdl-list__item-primary-content" to={ '/project/delete/1' }>
+                                        <i className="material-icons mdl-list__item-avatar sb-icon-list_item">delete</i>
+                                      </Link>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td className="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
+                                  <td>2017-04-20 16:44:00</td>
+                                  <td>$2500.000</td>
+                                  <td>50</td>
+                                  <td className="sb-menu-table">
+                                      <Link className="mdl-list__item-primary-content" to={ '/project/1' }>
+                                        <i className="material-icons mdl-list__item-avatar sb-icon-list_item">attach_money</i>
+                                      </Link>
+                                      <Link className="mdl-list__item-primary-content" to={ '/project/1' }>
+                                        <i className="material-icons mdl-list__item-avatar sb-icon-list_item">mode_edit</i>
+                                      </Link>
+                                      <Link className="mdl-list__item-primary-content" to={ '/project/delete/1' }>
+                                        <i className="material-icons mdl-list__item-avatar sb-icon-list_item">delete</i>
+                                      </Link>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td className="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
+                                  <td>2017-04-20 16:44:00</td>
+                                  <td>$25</td>
+                                  <td>50</td>
+                                  <td className="sb-menu-table">
+                                      <Link className="mdl-list__item-primary-content" to={ '/project/1' }>
+                                        <i className="material-icons mdl-list__item-avatar sb-icon-list_item">attach_money</i>
+                                      </Link>
+                                      <Link className="mdl-list__item-primary-content" to={ '/project/1' }>
+                                        <i className="material-icons mdl-list__item-avatar sb-icon-list_item">mode_edit</i>
+                                      </Link>
+                                      <Link className="mdl-list__item-primary-content" to={ '/project/delete/1' }>
+                                        <i className="material-icons mdl-list__item-avatar sb-icon-list_item">delete</i>
+                                      </Link>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

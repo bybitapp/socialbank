@@ -1,6 +1,6 @@
 import React from 'react'
 import { compose } from 'recompose'
-import { connect } from 'react-redux'
+//import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 import Input from './Input'
 

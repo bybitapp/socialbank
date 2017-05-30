@@ -34,7 +34,7 @@
     font-weight: bold;
 }
 
-.mdl-list__item .sb-icon-list_item {
+.mdl-list__item .sb-icon-list_item, .sb-menu-table .sb-icon-list_item {
     color: #757575;
     background: none;
 }
