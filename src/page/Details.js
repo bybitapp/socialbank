@@ -1,7 +1,4 @@
 import React from 'react'
-import { compose } from 'recompose'
-import { connect } from 'react-redux'
-import { reduxForm } from 'redux-form'
 
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -10,13 +7,6 @@ import UpdateAddress from '../components/UpdateAddress'
 import UpdateBank from '../components/UpdateBank'
 import UpdatePassword from '../components/UpdatePassword'
 import GeneralInformation from '../components/GeneralInformation'
-
-const enhance = compose(
-  connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
-  reduxForm({
-        form: 'generalInformation'
-  })
-)
 
 class Details extends React.Component {
 
@@ -51,4 +41,4 @@ class Details extends React.Component {
 
 }
 
-export default enhance(Details)
+export default Details
