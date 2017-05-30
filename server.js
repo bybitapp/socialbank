@@ -9,6 +9,7 @@ const config = require('./config');
 var Opc = require('open_payments_cloud_application_api');
 Opc.ApiClient.instance.basePath = config.opc.urlApi;
 
+const middleware = require('src/middleware');
 const bodyParser = require('body-parser')
 const Joi = require('joi')
 const cors = require('cors')
@@ -17,6 +18,10 @@ const {opc: { programmeKey, programmeId, username, password, ownerId, currency, 
 const {opc: {profile: { managedCard, managedAccount, externalAccount, deposit, transfer }}} = config
 
 const server = express()
+
+server.enable("trust proxy");
+
+server.use(middleware.ensureHttps());
 server.use(bodyParser.json())
 server.use(cors())
 server.use(express.static('./build'));
