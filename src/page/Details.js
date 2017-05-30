@@ -12,7 +12,7 @@ class Details extends React.Component {
 
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
-    const stylePaddng = {padding: '15px'}
+    const stylePadding = {padding: '15px'}
 
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -24,7 +24,7 @@ class Details extends React.Component {
                         <MenuSideBar />
                     </div>
                     <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
-                        <div style={stylePaddng}>
+                        <div style={stylePadding}>
                             <GeneralInformation />
                             <UpdateAddress />
                             <UpdateBank />
