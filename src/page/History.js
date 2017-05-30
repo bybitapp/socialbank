@@ -7,7 +7,7 @@ import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 
 const enhance = compose(
-  connect((state, props) => ({ project: state.projects.find((v) => v.id == props.match.params.id ) }) ),
+  connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
 )
 
 class History extends React.Component {
@@ -17,8 +17,6 @@ class History extends React.Component {
     const styleH3 = {margin: 0}
     const styleH3Right = {margin: 0, textAlign: 'right'}
     const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0}
-
-    const { project } = this.props
 
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">

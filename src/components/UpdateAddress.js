@@ -5,7 +5,7 @@ import { reduxForm, Field } from 'redux-form'
 import Input from './Input'
 
 const enhance = compose(
-    connect((state, props) => ({ project: state.projects.find((v) => v.id == props.match.params.id ) }) ),
+    connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
     reduxForm({
           form: 'updateAddress',
           onSubmit: (values, dispatch, ownProps) => {

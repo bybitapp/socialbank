@@ -1,7 +1,6 @@
 import React from 'react'
 import { compose } from 'recompose'
 import { reduxForm, Field } from 'redux-form'
-import axios from 'axios'
 import Input from '../components/Input'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
