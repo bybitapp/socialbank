@@ -114,6 +114,7 @@ const registrationSchema = Joi.object().keys({
     email: Joi.string().email().required(),
     password: Joi.string().min(6).required(),
     charityName: Joi.string().min(3).max(30).required(),
+    charityNumber: Joi.number().integer().required(),
     address: Joi.string().min(6).required(),
     postcode: Joi.string().regex(/^[a-zA-Z]{1,2}([0-9]{1,2}|[0-9][a-zA-Z])\s*[0-9][a-zA-Z]{2}$/).required(),
     city: Joi.string().min(3).required(),

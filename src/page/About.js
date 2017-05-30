@@ -18,8 +18,8 @@ class About extends React.Component {
                     About us
                 </div>
             </div>
+            <Footer />
           </main>
-          <Footer />
         </div>
     )
   }
