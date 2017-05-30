@@ -3,11 +3,34 @@ import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 import Input from './Input'
+import {IBAN_CODE, SWIFT_CODE} from '../constants/Validation'
+
+const validate = values => {
+    const errors = {}
+    if (!values.accountOwner) {
+        errors.accountOwner = 'Required'
+    }
+    if (!values.bankName) {
+        errors.bankName = 'Required'
+    }
+    if (!values.ibanCode) {
+        errors.ibanCode = 'Required'
+    } else if (!IBAN_CODE.test(values.ibanCode)) {
+        errors.ibanCode = 'Invalid iban code eg. GB15MIDL40051512345678'
+    }
+    if (!values.swiftCode) {
+        errors.swiftCode = 'Required'
+    } else if (!SWIFT_CODE.test(values.swiftCode)) {
+        errors.swiftCode = 'Invalid swift code eg. MIDLGB22'
+    }
+    return errors
+}
 
 const enhance = compose(
     connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
     reduxForm({
           form: 'updateBank',
+          validate,
           onSubmit: (values, dispatch, ownProps) => {
             //   return new Promise((resolve, reject) => {
             //       axios.post('/api/account', values)
