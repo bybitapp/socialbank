@@ -4,8 +4,23 @@ import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 import Input from './Input'
 
+const validate = values => {
+    const errors = {}
+    if (!values.oldPassword) {
+        errors.oldPassword = 'Required'
+    }
+    if (!values.newPassword) {
+        errors.newPassword = 'Required'
+    }
+    if (!values.repeatPassword) {
+        errors.repeatPassword = 'Required'
+    }
+    return errors
+}
+
 const enhance = compose(
     connect((state, props) => ({ project: state.projects.find((v) => v.id == props.match.params.id ) }) ),
+    validate,
     reduxForm({
           form: 'updatePassword',
           onSubmit: (values, dispatch, ownProps) => {
