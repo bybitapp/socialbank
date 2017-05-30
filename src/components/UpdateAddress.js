@@ -1,6 +1,6 @@
 import React from 'react'
 import { compose } from 'recompose'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import { reduxForm, Field } from 'redux-form'
 import Input from './Input'
 import {POSTCODE} from '../constants/Validation'
@@ -22,7 +22,7 @@ const validate = values => {
 }
 
 const enhance = compose(
-    connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
+    // connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
     reduxForm({
           form: 'updateAddress',
           validate,
