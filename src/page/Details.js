@@ -1,9 +1,8 @@
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
-import { reduxForm, Field } from 'redux-form'
+import { reduxForm } from 'redux-form'
 
-import Input from '../components/Input'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
@@ -13,7 +12,7 @@ import UpdatePassword from '../components/UpdatePassword'
 import GeneralInformation from '../components/GeneralInformation'
 
 const enhance = compose(
-  connect((state, props) => ({ project: state.projects.find((v) => v.id == props.match.params.id ) }) ),
+  connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
   reduxForm({
         form: 'generalInformation'
   })
@@ -24,8 +23,6 @@ class Details extends React.Component {
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
     const stylePaddng = {padding: '15px'}
-
-    const { project } = this.props
 
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
