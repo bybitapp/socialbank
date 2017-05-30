@@ -19,10 +19,10 @@ const validate = values => {
 }
 
 const enhance = compose(
-    connect((state, props) => ({ project: state.projects.find((v) => v.id == props.match.params.id ) }) ),
-    validate,
+    connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
     reduxForm({
           form: 'updatePassword',
+          validate,
           onSubmit: (values, dispatch, ownProps) => {
             //   return new Promise((resolve, reject) => {
             //       axios.post('/api/account', values)
