@@ -1,9 +1,8 @@
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
-import { reduxForm, Field } from 'redux-form'
 import { Link } from 'react-router-dom'
-import Input from '../components/Input'
+import AddCardForm from '../components/AddCardForm'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
@@ -12,10 +11,25 @@ const enhance = compose(
   connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
 )
 
-class Details extends React.Component {
+class Cards extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {isAddCardFormOpen: false};
+    this.openAddCardForm = this.openAddCardForm.bind(this);
+    this.closeAddCardForm = this.closeAddCardForm.bind(this);
+  }
 
   openAddCardForm() {
-      
+    this.setState({isAddCardFormOpen: true});
+  }
+
+  closeAddCardForm() {
+    this.setState({isAddCardFormOpen: false});
+  }
+
+  submitAddCard(card) {
+    alert("Card Submitted!");
   }
 
   render () {
@@ -35,7 +49,18 @@ class Details extends React.Component {
                     </div>
                     <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
                       <div className="mdl-grid">
-                          <div className="mdl-cell mdl-cell--12-col" style={styleButton}>
+                          <div className="mdl-cell mdl-cell--7-col" style={styleButton}>
+                            <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                             <input className="mdl-textfield__input" id="selectedProject" name="selectedProject" value="Project 1" type="text" readOnly tabIndex="-1" data-val="BLR"/>
+                               <label className="mdl-textfield__label" htmlFor="selectedProject">Country</label>
+                               <ul className="mdl-menu mdl-menu--bottom-left mdl-js-menu" htmlFor="selectedProject">
+                                 <li className="mdl-menu__item" data-val="1">Project 1</li>
+                                 <li className="mdl-menu__item" data-val="2">Project 2</li>
+                                 <li className="mdl-menu__item" data-val="2">Project 3</li>
+                               </ul>
+                            </div>
+                          </div>
+                          <div className="mdl-cell mdl-cell--5-col" style={styleButton}>
                               <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={this.openAddCardForm}>
                                   Add Card
                               </button>
@@ -110,10 +135,11 @@ class Details extends React.Component {
             </div>
           </main>
           <Footer />
+          <AddCardForm open={this.state.isAddCardFormOpen} handleClose={this.closeAddCardForm} handleSubmit={this.submitAddCard}/>
         </div>
     )
   }
 
 }
 
-export default enhance(Details)
+export default enhance(Cards)
