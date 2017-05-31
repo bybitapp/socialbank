@@ -4,7 +4,6 @@ import { compose } from 'recompose'
 import { reduxForm, Field } from 'redux-form'
 import { addProject } from '../actions'
 import Input from './Input'
-import TextField from './TextField'
 
 const customStyles = {
     content : {
