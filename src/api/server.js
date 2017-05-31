@@ -1,8 +1,13 @@
 import axios from 'axios'
 
+// const projects = [
+//   {name: 'test01', id: 1496075682278, balance:{actual:0}, created: 1496075682278},
+//   {name: 'test02', id: 1496075682278, balance:{actual:0}, created: 1496075682278}
+// ]
+
 export default {
   getProjects: (cb) => {
-    //   return cb(null, projects)
+      // return cb(null, projects)
       axios.get('/api/projects')
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
