@@ -79,6 +79,12 @@ server.get('/api/projects', async(req, res) => {
     }
 })
 
+
+server.get('/api/cards', async(req, res) => {
+  console.log('GET api/cards');
+  return res.send([{'test': "test text"}]);
+})
+
 server.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, './build', 'index.html'));
 });
@@ -191,6 +197,7 @@ server.post('/api/account', async(req, res) => {
         return res.status(409).send(err)
     }
 })
+
 
 server.listen(config.general.port, (err) => {
     if (err) throw err

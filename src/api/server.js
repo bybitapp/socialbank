@@ -22,5 +22,10 @@ export default {
       axios.post('/api/project', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
+  },
+  getCards: (cb) => {
+    axios.get('/api/cards')
+    .then((res) => cb(null, res.data))
+    .catch((e) => cb(e))
   }
 }
