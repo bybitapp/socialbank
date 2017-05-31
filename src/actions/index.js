@@ -18,6 +18,17 @@ export const addProject = (project, cb) => (dispatch, getState) => {
   })
 }
 
+export const addCard = (card, cb) => (dispatch, getState) => {
+  server.addCard(card, (ex, card) => {
+    if (!ex) {
+        dispatch({type: types.ADD_CARD_SUCCESS, card})
+    }
+    // Replace the line above with line below to rollback on failure:
+    // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
+    cb();
+  })
+}
+
 export const selectCurrentProject = id => dispatch => {
   dispatch({type: types.SELECT_CURRENT_PROJECT, id})
 }
