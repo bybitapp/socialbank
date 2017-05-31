@@ -34,6 +34,27 @@
     font-weight: bold;
 }
 
+.mdl-list__item .sb-icon-list_item, .sb-menu-table .sb-icon-list_item {
+    color: #757575;
+    background: none;
+}
+
+.page-content h5 {
+    color: #757575;
+    font-weight: 700;
+    padding-left: 15px;
+}
+
+.sb-details-button {
+    text-align: right;
+    padding-top: 15px;
+}
+
+.sb-details-button-bottom {
+    text-align: right;
+    padding: 15px;
+}
+
 /* OLD */
 
 .mdl-list .mdl-list__item:hover {

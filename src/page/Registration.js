@@ -4,7 +4,6 @@ import { reduxForm, Field } from 'redux-form'
 import { SubmissionError } from 'redux-form'
 import axios from 'axios'
 import Input from '../components/Input'
-import TextField from '../components/TextField'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import {EMAIL, POSTCODE, IBAN_CODE, SWIFT_CODE} from '../constants/Validation'
@@ -37,6 +36,11 @@ const validate = values => {
     }
     if (!values.accountOwner) {
         errors.accountOwner = 'Required'
+    }
+    if (!values.charityNumber) {
+        errors.charityNumber = 'Required'
+    } else if (isNaN(Number(values.charityNumber))) {
+        errors.charityNumber = 'Must be a number'
     }
     if (!values.bankName) {
         errors.bankName = 'Required'
@@ -91,6 +95,7 @@ class Registration extends React.Component {
                                 <div className="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
                                     <Field name="email" label="Email" component={Input} />
                                     <Field name="charityName" label="Charity Name" component={Input} />
+                                    <Field name="charityNumber" label="Charity No" component={Input} />
                                     <Field name="address" label="Address" component={Input} />
                                     <Field name="postcode" label="Postcode" component={Input} />
                                     <Field name="city" label="City" component={Input} />
@@ -107,8 +112,8 @@ class Registration extends React.Component {
                             </form>
                         </div>
                     </div>
+                    <Footer />
                 </main>
-                <Footer />
             </div>
         )
     }

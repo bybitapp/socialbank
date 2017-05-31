@@ -7,8 +7,6 @@ class Header extends React.Component {
   }
 
   render () {
-    const styleLogo = {paddingLeft: '15px'}
-
     return (
     <div className="android-header mdl-layout__header mdl-layout__header--waterfall">
         <div className="mdl-layout__header-row">

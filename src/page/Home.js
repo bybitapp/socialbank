@@ -4,8 +4,6 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { Link } from 'react-router-dom'
 
-const styleMain = {minHeight: '595px'}
-
 export default ({ projects = {} }) => (
     <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <Header />
