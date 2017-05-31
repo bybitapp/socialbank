@@ -67,6 +67,7 @@ var projects = [{
     lat: 51.523,
     lng: -0.085
 }];
+
 const getRandomInt = (min, max) => {
         min = Math.ceil(min);
         max = Math.floor(max);
@@ -74,16 +75,43 @@ const getRandomInt = (min, max) => {
     }
     // TEMPORARY: END
 
-// create a request for funds
+// get managed accounts
 server.get('/api/projects', async(req, res) => {
     try {
-        return res.send(projects);
+
+      const {token} = await getToken()
+      const correlationId = uuid()
+
+      const api = new Opc.ManagedAccountsApi()
+      const request = new Opc.ManagedAccountsFilter({
+        profileId: managedAccount,
+        programmeId,
+        ownerId
+      });
+
+      const response = await api.managedAccountsGet(correlationId, programmeKey, token, request)
+
+      let projects = response.accounts.map((item, index) => {
+          return {
+            name: item.friendlyName,
+            balance: {
+              available: item.balances.available,
+              reserved: item.balances.reserved,
+              actual: item.balances.actual
+            },
+            created: item.creationTimestamp,
+            id: item.id.id,
+            cards: 12
+          }
+        }
+      )
+
+      return res.send(projects);
     } catch (err) {
         console.error(err)
         return res.send(err)
     }
 })
-
 
 server.get('/api/cards', async(req, res) => {
   console.log('GET api/cards');

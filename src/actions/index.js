@@ -1,7 +1,7 @@
 import server from '../api/server'
 import * as types from '../constants/ActionTypes'
 
-export const getAllProjects = () => dispatch => {
+export const getProjects = () => dispatch => {
   server.getProjects((ex, projects) => {
     dispatch({type: types.RECEIVE_PROJECTS, projects})
   })
