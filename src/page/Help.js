@@ -18,8 +18,8 @@ class Help extends React.Component {
                     Help
                 </div>
             </div>
+            <Footer />
           </main>
-          <Footer />
         </div>
     )
   }

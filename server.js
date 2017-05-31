@@ -9,6 +9,7 @@ const config = require('./config');
 var Opc = require('open_payments_cloud_application_api');
 Opc.ApiClient.instance.basePath = config.opc.urlApi;
 
+const middleware = require('src/middleware');
 const bodyParser = require('body-parser')
 const Joi = require('joi')
 const cors = require('cors')
@@ -17,6 +18,10 @@ const {opc: { programmeKey, programmeId, username, password, ownerId, currency, 
 const {opc: {profile: { managedCard, managedAccount, externalAccount, deposit, transfer }}} = config
 
 const server = express()
+
+server.enable("trust proxy");
+
+server.use(middleware.ensureHttps());
 server.use(bodyParser.json())
 server.use(cors())
 server.use(express.static('./build'));
@@ -112,16 +117,17 @@ server.post('/api/project', async(req, res) => {
 })
 
 const registrationSchema = Joi.object().keys({
-    email: Joi.string().email().required(),
-    password: Joi.string().min(6).required(),
-    charityName: Joi.string().min(3).max(30).required(),
-    address: Joi.string().min(6).required(),
-    postcode: Joi.string().regex(/^[a-zA-Z]{1,2}([0-9]{1,2}|[0-9][a-zA-Z])\s*[0-9][a-zA-Z]{2}$/).required(),
-    city: Joi.string().min(3).required(),
-    accountOwner: Joi.string().min(3).required(),
-    bankName: Joi.string().min(3).required(),
-    ibanCode: Joi.string().regex(/^[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{4}[0-9]{7}([a-zA-Z0-9]?){0,16}$/).required(),
-    swiftCode: Joi.string().regex(/^([a-zA-Z]){4}([a-zA-Z]){2}([0-9a-zA-Z]){2}([0-9a-zA-Z]{3})?$/).required(),
+  email: Joi.string().email().required(),
+  password: Joi.string().min(6).required(),
+  charityName: Joi.string().min(3).max(30).required(),
+  charityNumber: Joi.number().integer().required(),
+  address: Joi.string().min(6).required(),
+  postcode: Joi.string().regex(/^[a-zA-Z]{1,2}([0-9]{1,2}|[0-9][a-zA-Z])\s*[0-9][a-zA-Z]{2}$/).required(),
+  city: Joi.string().min(3).required(),
+  accountOwner: Joi.string().min(3).required(),
+  bankName: Joi.string().min(3).required(),
+  ibanCode: Joi.string().regex(/^[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{4}[0-9]{7}([a-zA-Z0-9]?){0,16}$/).required(),
+  swiftCode: Joi.string().regex(/^([a-zA-Z]){4}([a-zA-Z]){2}([0-9a-zA-Z]){2}([0-9a-zA-Z]{3})?$/).required(),
 })
 
 // create account [External/Managed Account]
@@ -183,9 +189,9 @@ server.post('/api/account', async(req, res) => {
         Object.assign({
             externalAccountId: responseExternal.id.id,
             externalAccountName: externalName,
-            branchCode
-            bankCode
-            bankAccountNumber
+            branchCode,
+            bankCode,
+            bankAccountNumber,
         }, account)
 
         // TODO save all data with account ID in noSQL database

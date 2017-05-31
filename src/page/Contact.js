@@ -18,8 +18,8 @@ class Contact extends React.Component {
                     Contact
                 </div>
             </div>
+            <Footer />
           </main>
-          <Footer />
         </div>
     )
   }

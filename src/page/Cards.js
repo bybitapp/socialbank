@@ -7,7 +7,7 @@ import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 
 const enhance = compose(
-  connect((state, props) => ({ project: state.projects.find((v) => v.id == props.match.params.id ) }) ),
+  connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
 )
 
 class Details extends React.Component {
