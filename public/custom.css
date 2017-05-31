@@ -45,6 +45,12 @@
     padding-left: 15px;
 }
 
+.page-content .sb-page h5 {
+    color: #757575;
+    font-weight: 100;
+    padding-left: 0;
+}
+
 .sb-details-button {
     text-align: right;
     padding-top: 15px;
