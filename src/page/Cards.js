@@ -18,6 +18,7 @@ class Cards extends React.Component {
     this.state = {isAddCardFormOpen: false};
     this.openAddCardForm = this.openAddCardForm.bind(this);
     this.closeAddCardForm = this.closeAddCardForm.bind(this);
+    this.submitAddCard = this.submitAddCard.bind(this);
   }
 
   openAddCardForm() {
@@ -30,6 +31,7 @@ class Cards extends React.Component {
 
   submitAddCard(card) {
     alert("Card Submitted!");
+    this.closeAddCardForm()
   }
 
   render () {
