@@ -29,6 +29,14 @@ A full set of guidance documents including snippets of example code can be found
 
 | Override PORT on machine by setting ```PORT=8080``` in your root directory ```.env``` file
 
+## How set FriendlyName in OPC API
+
+Full names and descriptions should be stored in our internal database
+
+* External Accounts   - SOCIALBANK.[OrganizationUUID]
+* Managed Accounts    - SOCIALBANK.[OrganizationUUID].[ProjectUUID]
+* Virtual Cards       - SOCIALBANK.[OrganizationUUID].[ProjectUUID].[CardUUID]
+
 ## TODO
 
 * mongodb (noSQL) integration
