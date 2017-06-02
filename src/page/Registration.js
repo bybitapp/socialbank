@@ -2,7 +2,7 @@ import React from 'react'
 import { compose } from 'recompose'
 import { reduxForm, Field } from 'redux-form'
 import { SubmissionError } from 'redux-form'
-import axios from 'axios'
+import { registerAccount } from '../actions'
 import Input from '../components/Input'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -63,17 +63,15 @@ const enhance = compose(
         form: 'register',
         validate,
         onSubmit: (values, dispatch, ownProps) => {
-            return new Promise((resolve, reject) => {
-                axios.post('/api/account', values)
-                    .then(() => {
-                        alert('success')
-                        resolve()
-                    }).catch((e) => {
-                        console.log(e)
-                        reject(new SubmissionError({
-                            _error: 'You account can not be created, please contact with us!'
-                        }))
-                    })
+          return new Promise((resolve, reject) => {
+              dispatch(registerAccount(values, (_error) => {
+                if (!_error){
+                  alert('success')
+                  resolve()
+                } else {
+                  reject(new SubmissionError({_error}))
+                }
+              }))
             })
         }
     })
