@@ -7,6 +7,32 @@ export const getProjects = () => dispatch => {
   })
 }
 
+export const registerAccount = (account, cb) => (dispatch, getState) => {
+  return server.registerAccount(account, (ex, account) => {
+    if (!ex) {
+      dispatch({type: types.REGISTER_ACCOUNT_SUCCESS, account})
+      cb(null, account)
+    } else {
+      // Replace the line above with line below to rollback on failure:
+      //return dispatch({ type: types.REGISTER_ACCOUNT_FAILURE, account })
+      cb('You account can not be created, please contact with us!')
+    }
+  })
+}
+
+export const login = (account, cb) => (dispatch, getState) => {
+  return server.login(account, (ex, account) => {
+    if (!ex) {
+      dispatch({type: types.LOGIN_SUCCESS, account})
+      cb(null, account)
+    } else {
+      // Replace the line above with line below to rollback on failure:
+      //return dispatch({ type: types.LOGIN_FAILURE, account })
+      cb('Login Failed!')
+    }
+  })
+}
+
 export const addProject = (project, cb) => (dispatch, getState) => {
   server.addProject(project, (ex, project) => {
     if (!ex) {
