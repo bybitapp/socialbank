@@ -2,7 +2,7 @@ import React from 'react'
 
 class Input extends React.Component {
   render() {
-      const { input, label, name, value, type = 'text', disabled = false, meta: {touched, error} } = this.props;
+      const { input, label, name, type = 'text', disabled = false, meta: {touched, error} } = this.props;
       return (
         <div className="mdl-textfield mdl-js-textfield">
           {disabled && <input className="mdl-textfield__input" type={type} {...input} id={name} disabled />}
