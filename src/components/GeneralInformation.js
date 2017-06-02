@@ -13,19 +13,22 @@ const enhance = compose(
 
 class GeneralInformation extends React.Component {
   render() {
-      return (
-          <div>
-              <h5>General Information</h5>
-              <div className="mdl-grid">
-                  <div className="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
-                      <Field name="charityName" label="Charity Name" component={Input} disabled={true} />
-                      <Field name="charityNumber" label="Charity No" component={Input} disabled={true} />
-                  </div>
-                  <div className="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
-                      <Field name="email" label="Email" component={Input} disabled={true} />
-                  </div>
-              </div>
-          </div>);
+    const { account, projects } = this.props
+    console.log(account)
+    console.log(projects)
+    return (
+        <div>
+            <h5>General Information</h5>
+            <div className="mdl-grid">
+                <div className="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
+                    <Field name="charityName" label="Charity Name" component={Input} disabled={true} />
+                    <Field name="charityNumber" label="Charity No" component={Input} disabled={true} />
+                </div>
+                <div className="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
+                    <Field name="email" label="Email" component={Input} disabled={true} />
+                </div>
+            </div>
+        </div>);
   }
 
 }

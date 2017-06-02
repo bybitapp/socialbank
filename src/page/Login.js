@@ -1,6 +1,8 @@
 import React from 'react'
 import { compose } from 'recompose'
 import { reduxForm, Field } from 'redux-form'
+import { SubmissionError } from 'redux-form'
+import { login } from '../actions'
 import Input from '../components/Input'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -9,12 +11,18 @@ const enhance = compose(
   reduxForm({
     form: 'login',
     onSubmit: (values, dispatch, ownProps) => {
-    //     axios.post('/api/login', values)
-    //     .then(() => alert('success'))
-    //     .catch((e) => {
-    //         console.log(e)
-    //     })
-        ownProps.history.push('/details') // temporary redirect
+      return new Promise((resolve, reject) => {
+          dispatch(login(values, (_error, data) => {
+            if (!_error){
+              alert('success')
+              console.log(data)
+              ownProps.history.push('/details') // temporary redirect
+              resolve()
+            } else {
+              reject(new SubmissionError({_error}))
+            }
+          }))
+        })
     }
   })
 )
@@ -22,13 +30,14 @@ const enhance = compose(
 class Login extends React.Component {
 
   render () {
-    const { handleSubmit } = this.props
+    const { handleSubmit, error } = this.props
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
             <Header />
             <main className="mdl-layout__content">
                 <div className="page-content">
                     <div className="sb-form-content sb-login">
+                      {error && <span className="sb-error">{error}</span>}
                         <form onSubmit={handleSubmit}>
                             <Field name="email" label="Email" component={Input} />
                             <Field name="password" label="Password" component={Input} type="password"/>
