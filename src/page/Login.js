@@ -14,8 +14,6 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
           dispatch(login(values, (_error, data) => {
             if (!_error){
-              alert('success')
-              console.log(data)
               ownProps.history.push('/details') // temporary redirect
               resolve()
             } else {

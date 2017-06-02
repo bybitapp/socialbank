@@ -1,11 +1,18 @@
 import React from 'react'
 import { compose } from 'recompose'
-//import { connect } from 'react-redux'
-import { reduxForm, Field } from 'redux-form'
+import { connect } from 'react-redux'
+import { reduxForm, Field, change } from 'redux-form'
 import Input from './Input'
 
+function mapStateToProps(state) {
+  const { account } = state
+  return {
+    account
+  }
+}
+
 const enhance = compose(
-    //connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
+    connect(mapStateToProps),
     reduxForm({
         form: 'generalInformation'
     })
@@ -13,9 +20,10 @@ const enhance = compose(
 
 class GeneralInformation extends React.Component {
   render() {
-    const { account, projects } = this.props
-    console.log(account)
-    console.log(projects)
+    const { account, dispatch } = this.props
+
+    dispatch(change('generalInformation', 'email', account.email));
+
     return (
         <div>
             <h5>General Information</h5>
