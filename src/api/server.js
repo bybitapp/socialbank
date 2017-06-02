@@ -5,7 +5,7 @@ import axios from 'axios'
 //   {name: 'test02', id: 1496075682278, balance:{actual:0}, created: 1496075682278}
 // ]
 //
-// const account = {email: 'james.smith@socialbank.co', password: 'password'}
+const account = {email: 'james.smith@socialbank.co', password: 'password'}
 
 export default {
   registerAccount: (values, cb) => {
@@ -15,7 +15,7 @@ export default {
       .catch((e) => cb(e))
   },
   login: (values, cb) => {
-      // return cb(null, account)
+      return cb(null, account)
       axios.post('/api/account/login', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
