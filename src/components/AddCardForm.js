@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from 'react-modal'
 import { compose } from 'recompose'
 import { reduxForm, Field } from 'redux-form'
-import { addProject } from '../actions'
+import { addCard } from '../actions'
 import Input from './Input'
 
 const customStyles = {
@@ -24,7 +24,7 @@ const enhance = compose(
   reduxForm({
     form: 'addCard',
     onSubmit: (values, dispatch, ownProps) => {
-            dispatch(addProject(values, () => {
+            dispatch(addCard(values, () => {
                 dispatch(ownProps.reset('addCard'))
                 ownProps.handleClose()
             }))

@@ -7,7 +7,7 @@ import { compose } from 'recompose'
 import thunk from 'redux-thunk'
 
 import reducer from './reducers'
-import { getAllProjects } from './actions'
+//import { getProjects } from './actions'
 
 // components
 import Home from './page/Home'
@@ -26,7 +26,7 @@ const store = createStore(reducer, composeEnhancers(
   applyMiddleware(thunk)
 ));
 
-store.dispatch(getAllProjects())
+//store.dispatch(getAllProjects())
 
 const App = () => (
   <Provider store={store}>

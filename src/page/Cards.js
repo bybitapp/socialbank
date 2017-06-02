@@ -1,5 +1,5 @@
 import React from 'react'
-import { compose } from 'recompose'
+import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import AddCardForm from '../components/AddCardForm'
@@ -9,30 +9,10 @@ import MenuSideBar from '../components/MenuSideBar'
 
 const enhance = compose(
   connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
+  withState('modal', 'setModal')
 )
 
 class Cards extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {isAddCardFormOpen: false};
-    this.openAddCardForm = this.openAddCardForm.bind(this);
-    this.closeAddCardForm = this.closeAddCardForm.bind(this);
-    this.submitAddCard = this.submitAddCard.bind(this);
-  }
-
-  openAddCardForm() {
-    this.setState({isAddCardFormOpen: true});
-  }
-
-  closeAddCardForm() {
-    this.setState({isAddCardFormOpen: false});
-  }
-
-  submitAddCard(card) {
-    alert("Card Submitted!");
-    this.closeAddCardForm()
-  }
 
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
@@ -40,9 +20,12 @@ class Cards extends React.Component {
     const stylePadding = {padding: '15px'}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
+    const { modal, setModal } = this.props
+
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
           <Header />
+          <AddCardForm open={(modal === 'cardModal')} handleClose={() => setModal(null)} />
           <main className="mdl-layout__content">
             <div className="page-content">
                 <div className="mdl-grid">
@@ -50,25 +33,24 @@ class Cards extends React.Component {
                         <MenuSideBar />
                     </div>
                     <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
-                      <div className="mdl-grid">
-                          <div className="mdl-cell mdl-cell--7-col" style={styleButton}>
-                            <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                             <input className="mdl-textfield__input" id="selectedProject" name="selectedProject" value="Project 1" type="text" readOnly tabIndex="-1" data-val="BLR"/>
-                               <label className="mdl-textfield__label" htmlFor="selectedProject">Country</label>
-                               <ul className="mdl-menu mdl-menu--bottom-left mdl-js-menu" htmlFor="selectedProject">
-                                 <li className="mdl-menu__item" data-val="1">Project 1</li>
-                                 <li className="mdl-menu__item" data-val="2">Project 2</li>
-                                 <li className="mdl-menu__item" data-val="2">Project 3</li>
-                               </ul>
-                            </div>
-                          </div>
-                          <div className="mdl-cell mdl-cell--5-col" style={styleButton}>
-                              <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={this.openAddCardForm}>
-                                  Add Card
-                              </button>
-                          </div>
-                      </div>
                         <div style={stylePadding}>
+                          <div className="mdl-grid">
+                              <div className="mdl-cell mdl-cell--7-col">
+                                <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
+                                    <input className="mdl-textfield__input" id="selectedProject" name="selectedProject" value="Project Name 1" type="text" readOnly tabIndex="-1" data-val="BLR"/>
+                                    <ul className="mdl-menu mdl-menu--bottom-left mdl-js-menu" htmlFor="selectedProject">
+                                        <li className="mdl-menu__item" data-val="1">Project Name 1</li>
+                                        <li className="mdl-menu__item" data-val="2">Project Name 2</li>
+                                        <li className="mdl-menu__item" data-val="2">Project Name 3</li>
+                                    </ul>
+                                </div>
+                              </div>
+                              <div className="mdl-cell mdl-cell--5-col" style={styleButton}>
+                                  <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={() => setModal('cardModal')}>
+                                      Add Card
+                                  </button>
+                              </div>
+                          </div>
                           <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
                             <thead>
                               <tr>
@@ -79,7 +61,7 @@ class Cards extends React.Component {
                                 <th className="mdl-data-table__cell--non-numeric">Expirity</th>
                                 <th>Loads / Total</th>
                                 <th>Spends / Total</th>
-                                <th className="mdl-data-table__cell--non-numeric">Actions</th>
+                                <th>Actions</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -102,7 +84,7 @@ class Cards extends React.Component {
                                     <i className="material-icons mdl-list__item-avatar sb-icon-list_item">delete</i>
                                   </Link>
                                   <Link className="mdl-list__item-primary-content" to={ '/cards/1' }>
-                                    <i className="material-icons mdl-list__item-avatar sb-icon-list_item">detail</i>
+                                    <i className="material-icons mdl-list__item-avatar sb-icon-list_item">details</i>
                                   </Link>
                                 </td>
                               </tr>
@@ -125,7 +107,7 @@ class Cards extends React.Component {
                                     <i className="material-icons mdl-list__item-avatar sb-icon-list_item">delete</i>
                                   </Link>
                                   <Link className="mdl-list__item-primary-content" to={ '/cards/1' }>
-                                    <i className="material-icons mdl-list__item-avatar sb-icon-list_item">detail</i>
+                                    <i className="material-icons mdl-list__item-avatar sb-icon-list_item">details</i>
                                   </Link>
                                 </td>
                               </tr>
@@ -135,9 +117,8 @@ class Cards extends React.Component {
                     </div>
                 </div>
             </div>
+            <Footer />
           </main>
-          <Footer />
-          <AddCardForm open={this.state.isAddCardFormOpen} handleClose={this.closeAddCardForm} handleSubmit={this.submitAddCard}/>
         </div>
     )
   }
