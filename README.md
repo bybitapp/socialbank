@@ -28,3 +28,31 @@ A full set of guidance documents including snippets of example code can be found
 * Open webpage `http://localhost:3000`
 
 | Override PORT on machine by setting ```PORT=8080``` in your root directory ```.env``` file
+
+## How set FriendlyName in OPC API
+
+Full names and descriptions should be stored in our internal database
+
+* External Accounts   - SOCIALBANK.[OrganizationUUID]
+* Managed Accounts    - SOCIALBANK.[OrganizationUUID].[ProjectUUID]
+* Virtual Cards       - SOCIALBANK.[OrganizationUUID].[ProjectUUID].[CardUUID]
+
+## TODO
+
+* mongodb (noSQL) integration
+* React authorization and permissions (authorization session)
+* login to app (authorization session)
+* create project (managed account)
+* create virtual cards
+* list of virtual cards
+* transfer from external to project
+* transfer from project to virtual cards
+* list of transaction history per project
+* get account details
+* map of organizations
+* open page about organization and projects
+* contact form on page contact
+* Langing page with proper content
+
+Please feel free to add more taks if you thinking that has to be done
+
