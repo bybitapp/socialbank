@@ -172,7 +172,7 @@ class Cards extends React.Component {
                                   </button>
                               </div>
                           </div>
-                          <CardTable cards={cards}/>
+                          <CardTable cards={cards} styleTable={styleTable} />
                         </div>
                     </div>
                 </div>
