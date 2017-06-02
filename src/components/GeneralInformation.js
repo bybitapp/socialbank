@@ -20,7 +20,7 @@ const enhance = compose(
 
 class GeneralInformation extends React.Component {
   render() {
-    const { account, projects, dispatch } = this.props
+    const { account, dispatch } = this.props
 
     dispatch(change('generalInformation', 'email', account.email));
 
