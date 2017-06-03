@@ -1,6 +1,6 @@
 'use strict';
 
-const config = require('../config');
+const config = require('config');
 const Opc = require('open_payments_cloud_application_api');
 Opc.ApiClient.instance.basePath = config.opc.urlApi;
 
