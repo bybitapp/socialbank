@@ -3,7 +3,7 @@ import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { reduxForm, Field } from 'redux-form'
-import { getCards } from '../actions'
+import { getCards, getProjects } from '../actions'
 import AddCardForm from '../components/AddCardForm'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -18,22 +18,7 @@ const stateLabel = {
 }
 
 function mapStateToProps(state) {
-  //const { cards, projects, modal } = state
-  const { cards, modal } = state
-
-  console.log(cards);
-
-  const projects = [{
-    id: 1,
-    name: "Project Name 1"
-  },{
-    id: 2,
-    name: "Project Name 2"
-  },{
-    id: 3,
-    name: "Project Name 3"
-  },];
-
+  const { cards, projects, modal } = state
   return {
     cards,
     projects,
@@ -49,18 +34,20 @@ const enhance = compose(
   withState('modal', 'setModal')
 )
 
-const ProjectSelectorItem = ({project}) => (
-    <li className="mdl-menu__item" data-val={project.id}>{project.name}</li>
+const ProjectSelectorItem = ({project, onSelectProject}) => (
+    <li className="mdl-menu__item" data-val={project.id} onClick={(e)=>onSelectProject(project)}>{project.name}</li>
 )
 
-const ProjectSelector = ({projects = []}) => (
+const ProjectSelector = ({projects = [], onSelectProject, selectedProject}) => (
   <div className="mdl-cell mdl-cell--7-col">
     <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-        <input className="mdl-textfield__input" id="selectedProject" name="selectedProject" value="Project Name 1" type="text" readOnly tabIndex="-1" data-val="BLR"/>
+        <input className="mdl-textfield__input" id="selectedProject" name="selectedProject" type="text" readOnly tabIndex="-1"
+          value={selectedProject ? selectedProject.name : ""}
+          data-val={selectedProject ? selectedProject.id : ""}/>
         <ul className="mdl-menu mdl-menu--bottom-left mdl-js-menu" htmlFor="selectedProject">
             { Object.keys(projects).map((key, index) => {
               const p = projects[key]
-              return (<ProjectSelectorItem key={key} project={p}/>)
+              return (<ProjectSelectorItem project={p} onSelectProject={onSelectProject}/>)
             })}
         </ul>
     </div>
@@ -118,16 +105,33 @@ const CardTable = ({cards = [], styleTable}) => (
 
 class Cards extends React.Component {
 
+  constructor(props) {
+     super(props);
+     this.state = {
+       selectedProject: null
+     };
+     this.onSelectProject = this.onSelectProject.bind(this)
+   }
+
   componentDidMount() {
     const { dispatch } = this.props
-    dispatch(getCards())
+    dispatch(getProjects())
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.cards !== prevProps.cards) {
+    console.log("componentDidUpdate: Cards")
+    console.log(this.state.selectedProject)
+    if(this.state.selectedProject) {
       const { dispatch } = this.props
-      dispatch(getCards())
+      dispatch(getCards(this.state.selectedProject.id))
     }
+
+  }
+
+  onSelectProject(project) {
+    this.setState({
+      selectedProject: project
+    })
   }
 
   render () {
@@ -151,7 +155,7 @@ class Cards extends React.Component {
                     <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
                         <div style={stylePadding}>
                           <div className="mdl-grid">
-                              <ProjectSelector projects={projects}/>
+                              <ProjectSelector projects={projects} onSelectProject={this.onSelectProject} selectedProject={this.state.selectedProject}/>
                               <div className="mdl-cell mdl-cell--5-col" style={styleButton}>
                                   <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={() => setModal('cardModal')}>
                                       Add Card

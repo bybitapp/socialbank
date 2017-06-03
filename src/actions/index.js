@@ -7,8 +7,8 @@ export const getProjects = () => dispatch => {
   })
 }
 
-export const getCards = () => dispatch => {
-  server.getCards((ex, cards) => {
+export const getCards = (projectId) => dispatch => {
+  server.getCards(projectId, (ex, cards) => {
     dispatch({type: types.RECEIVE_CARDS, cards})
   })
 }
