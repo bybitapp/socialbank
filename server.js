@@ -8,6 +8,7 @@ const cors = require('cors')
 const config = require('./config');
 const middleware = require('lib/middleware');
 const routes = require('lib/routes');
+require('lib/db');
 
 const server = express()
 
