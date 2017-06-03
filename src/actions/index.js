@@ -28,6 +28,7 @@ export const registerAccount = (account, cb) => (dispatch, getState) => {
 
 export const login = (account, cb) => (dispatch, getState) => {
   return server.login(account, (ex, account) => {
+    debugger;
     if (!ex) {
       dispatch({type: types.LOGIN_SUCCESS, account})
       cb(null, account)
