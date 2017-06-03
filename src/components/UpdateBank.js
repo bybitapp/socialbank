@@ -1,7 +1,7 @@
 import React from 'react'
 import { compose } from 'recompose'
-// import { connect } from 'react-redux'
-import { reduxForm, Field } from 'redux-form'
+import { connect } from 'react-redux'
+import { reduxForm, Field, change } from 'redux-form'
 import Input from './Input'
 import {IBAN_CODE, SWIFT_CODE} from '../constants/Validation'
 
@@ -26,8 +26,15 @@ const validate = values => {
     return errors
 }
 
+function mapStateToProps(state) {
+  const { account } = state
+  return {
+    account
+  }
+}
+
 const enhance = compose(
-    // connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
+    connect(mapStateToProps),
     reduxForm({
           form: 'updateBank',
           validate,
@@ -51,7 +58,15 @@ const enhance = compose(
 
 class UpdateBank extends React.Component {
   render() {
-      const { handleSubmit } = this.props;
+      const { handleSubmit, account, dispatch } = this.props;
+
+      if (account.organization) {
+        dispatch(change('updateBank', 'accountOwner', account.organization.owner));
+        dispatch(change('updateBank', 'bankName', account.organization.bankName));
+        dispatch(change('updateBank', 'ibanCode', account.organization.ibanCode));
+        dispatch(change('updateBank', 'swiftCode', account.organization.swiftCode));
+      }
+
       return (
           <div>
               <h5>External Account</h5>
