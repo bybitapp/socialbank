@@ -7,6 +7,7 @@ const cors = require('cors')
 
 const config = require('./config');
 const middleware = require('server/middleware');
+const routes = require('server/routes');
 
 const server = express()
 
@@ -17,10 +18,7 @@ server.use(bodyParser.json())
 server.use(cors())
 server.use(express.static('./build'));
 
-// Insert routes below
-server.use('/api/account',      require('server/routes/api/accounts/routes'));
-server.use('/api/project',      require('server/routes/api/projects/routes'));
-server.use('/api/card',         require('server/routes/api/cards/routes'));
+routes(server)
 
 server.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, './build', 'index.html'));
