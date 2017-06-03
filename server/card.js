@@ -21,6 +21,7 @@ const getToken = () => {
 
 // TEMPORARY: START
 const cards = [{
+  projectId:98046814839373820,
   state: "ACTIVE",
   nameOnCard: "John Due",
   cardBrand: "MASTERCARD",
@@ -35,12 +36,28 @@ const cards = [{
   maxNumberOfSpends: 20
 },
 {
+  projectId:98046823654948860,
   state: "DESTROYED",
   nameOnCard: "John Smith",
   cardBrand: "VISA",
   cardNumber: "5555.3232.1212.2222",
   expiryPeriod:{
     periodLength: 1,
+    timeUnit: "YEAR"
+  },
+  currentNumberOfLoads: 2,
+  maxNumberOfLoads: 5,
+  currentNumberOfSpends: 36,
+  maxNumberOfSpends: 40
+},
+{
+  projectId:98046823654948860,
+  state: "PRE_ACTIVE",
+  nameOnCard: "Adams Smith",
+  cardBrand: "VISA",
+  cardNumber: "2222.3232.1212.2222",
+  expiryPeriod:{
+    periodLength: 2,
     timeUnit: "YEAR"
   },
   currentNumberOfLoads: 2,
@@ -59,9 +76,10 @@ router.post('/add', async(req, res) => {
     }
 });
 
-router.get('/list', async(req, res) => {
-  console.log('GET api/cards');
-  return res.send(cards);
+router.get('/list/project/:projectId', async(req, res) => {
+  console.log(req.params.projectId)
+  const result = cards.filter((card)=>(card.projectId == req.params.projectId))
+  return res.send(result);
 })
 
 module.exports = router;
