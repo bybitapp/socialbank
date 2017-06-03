@@ -1,7 +1,7 @@
 import React from 'react'
 import { compose } from 'recompose'
-// import { connect } from 'react-redux'
-import { reduxForm, Field } from 'redux-form'
+import { connect } from 'react-redux'
+import { reduxForm, Field, change } from 'redux-form'
 import Input from './Input'
 import {POSTCODE} from '../constants/Validation'
 
@@ -21,8 +21,15 @@ const validate = values => {
     return errors
 }
 
+function mapStateToProps(state) {
+  const { account } = state
+  return {
+    account
+  }
+}
+
 const enhance = compose(
-    // connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
+    connect(mapStateToProps),
     reduxForm({
           form: 'updateAddress',
           validate,
@@ -46,7 +53,14 @@ const enhance = compose(
 
 class UpdateAddress extends React.Component {
   render() {
-      const { handleSubmit } = this.props;
+      const { handleSubmit, account, dispatch } = this.props;
+
+      if (account.organization) {
+        dispatch(change('updateAddress', 'address', account.organization.address));
+        dispatch(change('updateAddress', 'city', account.organization.city));
+        dispatch(change('updateAddress', 'postcode', account.organization.postcode));
+      }
+
       return (
           <div>
               <h5>Address</h5>

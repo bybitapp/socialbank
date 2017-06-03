@@ -6,10 +6,25 @@ import { login } from '../actions'
 import Input from '../components/Input'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import {EMAIL} from '../constants/Validation'
+
+const validate = values => {
+    const errors = {}
+    if (!values.email) {
+        errors.email = 'Required'
+    } else if (!EMAIL.test(values.email)) {
+        errors.email = 'Invalid email address'
+    }
+    if (!values.password) {
+        errors.password = 'Required'
+    }
+    return errors
+}
 
 const enhance = compose(
   reduxForm({
     form: 'login',
+    validate,
     onSubmit: (values, dispatch, ownProps) => {
       return new Promise((resolve, reject) => {
           dispatch(login(values, (_error, data) => {
