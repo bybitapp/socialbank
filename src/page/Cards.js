@@ -160,7 +160,7 @@ class Cards extends React.Component {
                           <div className="mdl-grid">
                               <ProjectSelector projects={projects} onSelectProject={this.onSelectProject} selectedProject={this.state.selectedProject}/>
                               <div className="mdl-cell mdl-cell--5-col" style={styleButton}>
-                                  <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={() => setModal('cardModal')}>
+                                  <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" disabled={this.state.selectedProject} onClick={() => setModal('cardModal')}>
                                       Add Card
                                   </button>
                               </div>
