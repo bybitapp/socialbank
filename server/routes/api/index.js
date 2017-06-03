@@ -6,9 +6,10 @@ const requireDirectory = require('require-directory'),
   whitelist = /routes.js$/,
   hash = requireDirectory(module, {include: whitelist});
 
-const routes = requireDirectory(module, '.')
-for (var r in routes) {
-  if (routes.hasOwnProperty(r)) {
+const routeModules = requireDirectory(module, '.')
+const routes = []
+for (var r in routeModules) {
+  if (routeModules.hasOwnProperty(r)) {
     router.use(`/${r}`, require(`./${r}/routes.js`))
   }
 }

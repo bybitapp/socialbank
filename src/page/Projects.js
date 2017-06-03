@@ -31,13 +31,13 @@ const ProjectItem = ({project}) => (
       <td>{ project.balance.actual }</td>
       <td>{ project.cards }</td>
       <td className="sb-menu-table">
-          <Link className="mdl-list__item-primary-content" to={ '/project/1' }>
+          <Link className="mdl-list__item-primary-content" to={ '/projects/1' }>
             <i className="material-icons mdl-list__item-avatar sb-icon-list_item">attach_money</i>
           </Link>
-          <Link className="mdl-list__item-primary-content" to={ '/project/1' }>
+          <Link className="mdl-list__item-primary-content" to={ '/projects/1' }>
             <i className="material-icons mdl-list__item-avatar sb-icon-list_item">mode_edit</i>
           </Link>
-          <Link className="mdl-list__item-primary-content" to={ '/project/delete/1' }>
+          <Link className="mdl-list__item-primary-content" to={ '/projects/delete/1' }>
             <i className="material-icons mdl-list__item-avatar sb-icon-list_item">delete</i>
           </Link>
       </td>
