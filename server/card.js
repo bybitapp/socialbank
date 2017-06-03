@@ -21,6 +21,7 @@ const getToken = () => {
 
 // TEMPORARY: START
 const cards = [{
+  id:1,
   state: "ACTIVE",
   nameOnCard: "John Due",
   cardBrand: "MASTERCARD",
@@ -35,12 +36,28 @@ const cards = [{
   maxNumberOfSpends: 20
 },
 {
+  id: 2,
   state: "DESTROYED",
   nameOnCard: "John Smith",
   cardBrand: "VISA",
   cardNumber: "5555.3232.1212.2222",
   expiryPeriod:{
     periodLength: 1,
+    timeUnit: "YEAR"
+  },
+  currentNumberOfLoads: 2,
+  maxNumberOfLoads: 5,
+  currentNumberOfSpends: 36,
+  maxNumberOfSpends: 40
+},
+{
+  id: 3,
+  state: "PRE_ACTIVE",
+  nameOnCard: "Adam Smith",
+  cardBrand: "VISA",
+  cardNumber: "7777.3232.1212.2222",
+  expiryPeriod:{
+    periodLength: 2,
     timeUnit: "YEAR"
   },
   currentNumberOfLoads: 2,
@@ -60,7 +77,6 @@ router.post('/add', async(req, res) => {
 });
 
 router.get('/list', async(req, res) => {
-  console.log('GET api/cards');
   return res.send(cards);
 })
 

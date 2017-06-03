@@ -8,5 +8,6 @@ export default combineReducers({
   projects,
   account,
   cards,
+  projectCards,
   form
 })

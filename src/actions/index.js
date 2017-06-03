@@ -13,6 +13,12 @@ export const getCards = () => dispatch => {
   })
 }
 
+export const getProjectCards = (projectId) => dispatch => {
+  server.getProjectCards(projectId, (ex, cards) => {
+    dispatch({type: types.RECEIVE_PROJECT_CARDS, cards})
+  })
+}
+
 export const registerAccount = (account, cb) => (dispatch, getState) => {
   return server.registerAccount(account, (ex, account) => {
     if (!ex) {
