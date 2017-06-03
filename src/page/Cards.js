@@ -3,22 +3,25 @@ import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { reduxForm, Field } from 'redux-form'
+import { getCards } from '../actions'
 import AddCardForm from '../components/AddCardForm'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 
 const stateLabel = {
-  "NO_MANAGED_CARD_STATE": {label: 'no state', color:"grey", icon: 'report problem'},
-  "PRE_ACTIVE": {label: 'pre-active', color: "yellow", icon: 'check circle'},
-  "ACTIVE": {label: 'active', color:"green", icon: 'check circle '},
-  "PRE_DESTROYED": {label: 'pre-destroyed', color:"yellow", icon: 'remove circle'},
-  "DESTROYED": {label: 'destroyed', color:"red", icon: 'remove circle'},
+  "NO_MANAGED_CARD_STATE": {label: 'No state', className: 'no-state'},
+  "PRE_ACTIVE": {label: 'Pre-active', className: 'pre-active'},
+  "ACTIVE": {label: 'Active', className: 'active'},
+  "PRE_DESTROYED": {label: 'Pre-destroyed', className: 'pre-destroyed'},
+  "DESTROYED": {label: 'Destroyed', className: 'destroyed'},
 }
 
 function mapStateToProps(state) {
   //const { cards, projects, modal } = state
   const { cards, modal } = state
+
+  console.log(cards);
 
   const projects = [{
     id: 1,
@@ -114,6 +117,18 @@ const CardTable = ({cards = [], styleTable}) => (
     </table>)
 
 class Cards extends React.Component {
+
+  componentDidMount() {
+    const { dispatch } = this.props
+    dispatch(getCards())
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.cards !== prevProps.cards) {
+      const { dispatch } = this.props
+      dispatch(getCards())
+    }
+  }
 
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
