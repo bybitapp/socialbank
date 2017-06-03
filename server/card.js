@@ -19,9 +19,49 @@ const getToken = () => {
     return api.authLogin(uuid(), programmeKey, request)
 }
 
+// TEMPORARY: START
+const cards = [{
+  state: "ACTIVE",
+  nameOnCard: "John Due",
+  cardBrand: "MASTERCARD",
+  cardNumber: "5555.3232.1212.2222",
+  expiryPeriod:{
+    periodLength: 3,
+    timeUnit: "MONTH"
+  },
+  currentNumberOfLoads: 5,
+  maxNumberOfLoads: 23,
+  currentNumberOfSpends: 10,
+  maxNumberOfSpends: 20
+},
+{
+  state: "DESTROYED",
+  nameOnCard: "Yugo Sakamoto",
+  cardBrand: "VISA",
+  cardNumber: "5555.3232.1212.2222",
+  expiryPeriod:{
+    periodLength: 1,
+    timeUnit: "YEAR"
+  },
+  currentNumberOfLoads: 2,
+  maxNumberOfLoads: 5,
+  currentNumberOfSpends: 36,
+  maxNumberOfSpends: 40
+}];
+
+router.post('/add', async(req, res) => {
+    try {
+      return res.send(cards[0])
+    } catch (err) {
+      console.error(err)
+      return res.status(409).send(err)
+    }
+}
+
 router.get('/list', async(req, res) => {
   console.log('GET api/cards');
-  return res.send([{'test': "test text"}]);
+  // TEMPORARY: END
+  return res.send(cards);
 })
 
 module.exports = router;
