@@ -18,36 +18,7 @@ const stateLabel = {
 
 function mapStateToProps(state) {
   //const { cards, projects, modal } = state
-  const { modal } = state
-
-  const cards = [{
-    state: "ACTIVE",
-    nameOnCard: "John Due",
-    cardBrand: "MASTERCARD",
-    cardNumber: "5555.3232.1212.2222",
-    expiryPeriod:{
-      periodLength: 3,
-      timeUnit: "MONTH"
-    },
-    currentNumberOfLoads: 5,
-    maxNumberOfLoads: 23,
-    currentNumberOfSpends: 10,
-    maxNumberOfSpends: 20
-  },
-  {
-    state: "DESTROYED",
-    nameOnCard: "Yugo Sakamoto",
-    cardBrand: "VISA",
-    cardNumber: "5555.3232.1212.2222",
-    expiryPeriod:{
-      periodLength: 1,
-      timeUnit: "YEAR"
-    },
-    currentNumberOfLoads: 2,
-    maxNumberOfLoads: 5,
-    currentNumberOfSpends: 36,
-    maxNumberOfSpends: 40
-  }];
+  const { cards, modal } = state
 
   const projects = [{
     id: 1,
