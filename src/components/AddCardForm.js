@@ -55,8 +55,8 @@ class AddCardForm extends React.Component {
                   <main className="mdl-layout__content">
                     <div className="page-content">
                         <Field name="cardName" label="Name On Card" component={Input} />
-                        <Field name="issuingProvider" label="Issuing Bank" component={Input} />
-
+                        <Field name="maxNumberOfLoads" label="Max. Number of Loads" component={Input} />
+                        <Field name="maxNumberOfSpends" label="Max. Number of Spends" component={Input} />
                     </div>
                   </main>
                   <footer className="sb-footer">
