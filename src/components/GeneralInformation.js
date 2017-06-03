@@ -23,6 +23,10 @@ class GeneralInformation extends React.Component {
     const { account, dispatch } = this.props
 
     dispatch(change('generalInformation', 'email', account.email));
+    if (account.organization) {
+      dispatch(change('generalInformation', 'charityName', account.organization.name));
+      dispatch(change('generalInformation', 'charityNumber', account.organization.number));
+    }
 
     return (
         <div>

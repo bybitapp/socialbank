@@ -1,14 +1,13 @@
 import React from 'react'
-import { compose } from 'recompose'
+import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { reduxForm, Field } from 'redux-form'
 import { getProjects } from '../actions'
 import { dateFormat } from '../util/date'
-import Input from '../components/Input'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
+import ProjectForm from '../components/ProjectForm'
 
 function mapStateToProps(state) {
   const { projects } = state
@@ -19,9 +18,7 @@ function mapStateToProps(state) {
 
 const enhance = compose(
   connect(mapStateToProps),
-  reduxForm({
-      form: 'project'
-  })
+  withState('modal', 'setModal')
 )
 
 const ProjectItem = ({project}) => (
@@ -82,11 +79,12 @@ class Projects extends React.Component {
     const stylePadding = {padding: '15px'}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
-    const { projects } = this.props
+    const { projects, modal, setModal } = this.props
 
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
           <Header />
+          <ProjectForm open={(modal === 'projectModal')} handleClose={() => setModal(null)} />
           <main className="mdl-layout__content">
             <div className="page-content">
                 <div className="mdl-grid">
@@ -96,11 +94,8 @@ class Projects extends React.Component {
                     <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
                         <div style={stylePadding}>
                             <div className="mdl-grid">
-                                <div className="mdl-cell mdl-cell--7-col" >
-                                    <Field name="projectName" label="Project Name" component={Input} />
-                                </div>
-                                <div className="mdl-cell mdl-cell--5-col" style={styleButton}>
-                                    <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+                                <div className="mdl-cell mdl-cell--12-col" style={styleButton}>
+                                    <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={() => setModal('projectModal')}>
                                         Add Project
                                     </button>
                                 </div>
