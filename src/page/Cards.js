@@ -56,11 +56,12 @@ const ProjectSelector = ({projects = [], onSelectProject, selectedProject}) => (
 
 const CardItem = ({card}) => (
     <tr>
-      <td className="mdl-data-table__cell--non-numeric">
-        <i className="material-icons mdl-list__item-avatar sb-icon-list_item">{ stateLabel[card.state].icon }</i>
+      <td>
+        <span className={`mdl-chip sb-status ${stateLabel[card.state].className}`}>
+          <span className="mdl-chip__text">{stateLabel[card.state].label}</span>
+        </span>
       </td>
       <td className="mdl-data-table__cell--non-numeric">{ card.nameOnCard }</td>
-      <td className="mdl-data-table__cell--non-numeric">{ card.cardBrand }</td>
       <td className="mdl-data-table__cell--non-numeric">{ card.cardNumber }</td>
       <td className="mdl-data-table__cell--non-numeric">{ `${card.expiryPeriod.periodLength} ${String.toLowerCase(card.expiryPeriod.timeUnit)}s` }</td>
       <td className="mdl-data-table__cell--non-numeric">{ `${card.currentNumberOfLoads} / ${card.maxNumberOfLoads}` }</td>
@@ -87,7 +88,6 @@ const CardTable = ({cards = [], styleTable}) => (
         <tr>
           <th className="mdl-data-table__cell--non-numeric">State</th>
           <th className="mdl-data-table__cell--non-numeric">Name on Card</th>
-          <th className="mdl-data-table__cell--non-numeric">Card Brand</th>
           <th className="mdl-data-table__cell--non-numeric">Card Number</th>
           <th className="mdl-data-table__cell--non-numeric">Expirity</th>
           <th>Loads / Total</th>
@@ -109,7 +109,7 @@ class Cards extends React.Component {
      super(props);
      this.state = {
        selectedProject: null
-     };
+     }
      this.onSelectProject = this.onSelectProject.bind(this)
    }
 
@@ -119,11 +119,14 @@ class Cards extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log("componentDidUpdate: Cards")
-    console.log(this.state.selectedProject)
-    if(this.state.selectedProject) {
+    if(this.state && this.state.selectedProject) {
       const { dispatch } = this.props
       dispatch(getCards(this.state.selectedProject.id))
+    }
+
+    if (this.props.projects !== prevProps.projects) {
+      const { dispatch } = this.props
+      dispatch(getProjects())
     }
 
   }
