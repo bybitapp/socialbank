@@ -6,8 +6,8 @@ const path = require('path');
 const cors = require('cors')
 
 const config = require('./config');
-const middleware = require('server/middleware');
-const routes = require('server/routes');
+const middleware = require('lib/middleware');
+const routes = require('lib/routes');
 
 const server = express()
 
