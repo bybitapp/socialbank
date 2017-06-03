@@ -10,31 +10,31 @@ import axios from 'axios'
 export default {
   registerAccount: (values, cb) => {
       // return cb(null, project)
-      axios.post('/api/account/register', values)
+      axios.post('/api/accounts/register', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
   login: (values, cb) => {
       // return cb(null, account)
-      axios.post('/api/account/login', values)
+      axios.post('/api/accounts/login', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
   getProjects: (cb) => {
       // return cb(null, projects)
-      axios.get('/api/project/list')
+      axios.get('/api/projects/list')
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
   addProject: (values, cb) => {
     //   return cb(null, project)
-      axios.post('/api/project/add', values)
+      axios.post('/api/projects/add', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
   addCard: (values, cb) => {
     //   return cb(null, project)
-      axios.post('/api/card/add', values)
+      axios.post('/api/cards/add', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
