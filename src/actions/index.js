@@ -7,6 +7,12 @@ export const getProjects = () => dispatch => {
   })
 }
 
+export const getCards = () => dispatch => {
+  server.getCards((ex, cards) => {
+    dispatch({type: types.RECEIVE_CARDS, cards})
+  })
+}
+
 export const registerAccount = (account, cb) => (dispatch, getState) => {
   return server.registerAccount(account, (ex, account) => {
     if (!ex) {
