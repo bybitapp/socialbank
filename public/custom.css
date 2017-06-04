@@ -73,10 +73,15 @@
     text-decoration: none;
 }
 
+.mdl-layout__header .mdl-layout-title {
+  color: #8bc34a;
+  font-weight: bold;
+}
+
 .mdl-layout__header .mdl-layout-title a {
     color: #8bc34a;
-    text-decoration: none;
     font-weight: bold;
+    text-decoration: none;
 }
 
 /* MODAL FORMS */
