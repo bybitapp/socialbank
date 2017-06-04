@@ -6,8 +6,16 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 
+function mapStateToProps(state) {
+  const { projects } = state
+  return {
+    projects
+  }
+}
+
+
 const enhance = compose(
-  connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
+  connect(mapStateToProps),
 )
 
 class History extends React.Component {
