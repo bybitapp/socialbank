@@ -116,22 +116,6 @@
     border-bottom: 1px solid rgb(0,150,136);
 }
 
-.mdl-chip.sb-status.active {
-  background-color: #98FB98;
-}
-
-.mdl-chip.sb-status.pre-active {
-  background-color: #B6FCB6;
-}
-
-.mdl-chip.sb-status.destroyed {
-  background-color: #FA8072;
-}
-
-.mdl-chip.sb-status.pre-destroyed {
-  background-color: #FBA69C;
-}
-
 /* OTHER */
 .sb-no-project {
     text-align: center;
