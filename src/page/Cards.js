@@ -3,7 +3,7 @@ import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { reduxForm } from 'redux-form'
-import { getCards, getProjects } from '../actions'
+import { getCards } from '../actions'
 import AddCardForm from '../components/AddCardForm'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -64,7 +64,7 @@ const CardItem = ({card}) => (
       <td className="mdl-data-table__cell--non-numeric">{ card.nameOnCard }</td>
       <td className="mdl-data-table__cell--non-numeric">{ card.cardNumber }</td>
       <td className="mdl-data-table__cell--non-numeric">{ card.cardBrand }</td>
-      <td className="mdl-data-table__cell--non-numeric">{ `${card.expiryPeriod.periodLength} ${String.toLowerCase(card.expiryPeriod.timeUnit)}s` }</td>
+      <td className="mdl-data-table__cell--non-numeric">{ `${card.expiryPeriod.periodLength} ${card.expiryPeriod.timeUnit.toLowerCase()}s` }</td>
       <td className="mdl-data-table__cell--non-numeric">{ `${card.currentNumberOfLoads} / ${card.maxNumberOfLoads}` }</td>
       <td className="mdl-data-table__cell--non-numeric">{ `${card.currentNumberOfSpends} / ${card.maxNumberOfSpends}` }</td>
       <td className="sb-menu-table">
@@ -116,8 +116,9 @@ class Cards extends React.Component {
    }
 
   componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(getProjects())
+    // TODO we should select first project from list as default
+    // const { dispatch } = this.props
+    // dispatch(getCards(-1))
   }
 
   componentDidUpdate(prevProps) {
@@ -125,12 +126,6 @@ class Cards extends React.Component {
       const { dispatch } = this.props
       dispatch(getCards(this.state.selectedProject.id))
     }
-
-    if (this.props.projects !== prevProps.projects) {
-      const { dispatch } = this.props
-      dispatch(getProjects())
-    }
-
   }
 
   onSelectProject(project) {
