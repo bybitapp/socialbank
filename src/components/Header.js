@@ -17,8 +17,6 @@ class Header extends React.Component {
           <div className="android-navigation-container">
             <nav className="android-navigation mdl-navigation">
               <Link className="mdl-navigation__link mdl-typography--text-uppercase" to={'/login'}>Login</Link>
-              <Link className="mdl-navigation__link mdl-typography--text-uppercase" to={'/about'}>About us</Link>
-              <Link className="mdl-navigation__link mdl-typography--text-uppercase" to={'/help'}>Help</Link>
               <Link className="mdl-navigation__link mdl-typography--text-uppercase" to={'/contact'}>Contact</Link>
             </nav>
           </div>
