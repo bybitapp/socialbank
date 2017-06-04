@@ -3,8 +3,9 @@ import { REGISTER_ACCOUNT_SUCCESS, LOGIN_SUCCESS } from '../constants/ActionType
 export const account = (state = [], action) => {
   switch (action.type) {
     case REGISTER_ACCOUNT_SUCCESS:
-    case LOGIN_SUCCESS:
       return (action.account) ? action.account : state
+    case LOGIN_SUCCESS:
+      return (action.data.account) ? action.data.account : state
     default:
       return state
   }
