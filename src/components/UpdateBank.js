@@ -56,17 +56,36 @@ const enhance = compose(
     })
 )
 
+const updateData = (organization, dispatch) => {
+  const { bankAccount } = organization
+  if (organization.bankAccount) {
+    dispatch(change('updateBank', 'accountOwner', bankAccount.owner));
+    dispatch(change('updateBank', 'bankName', bankAccount.bankName));
+    dispatch(change('updateBank', 'ibanCode', bankAccount.ibanCode));
+    dispatch(change('updateBank', 'swiftCode', bankAccount.swiftCode));
+  }
+}
+
 class UpdateBank extends React.Component {
-  render() {
-      const { handleSubmit, account, dispatch } = this.props;
 
-      if (account.organization) {
-        dispatch(change('updateBank', 'accountOwner', account.organization.owner));
-        dispatch(change('updateBank', 'bankName', account.organization.bankName));
-        dispatch(change('updateBank', 'ibanCode', account.organization.ibanCode));
-        dispatch(change('updateBank', 'swiftCode', account.organization.swiftCode));
+  componentDidMount() {
+    const { account, dispatch } = this.props
+    if (account && account.organization) {
+      updateData(account.organization, dispatch)
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { account, dispatch } = this.props
+    if (account !== prevProps.account) {
+      if (account && account.organization) {
+        updateData(account.organization, dispatch)
       }
+    }
+  }
 
+  render() {
+      const { handleSubmit } = this.props;
       return (
           <div>
               <h5>External Account</h5>

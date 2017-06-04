@@ -21,10 +21,10 @@ export const registerAccount = (account, cb) => (dispatch, getState) => {
 }
 
 export const login = (account, cb) => (dispatch, getState) => {
-  return server.login(account, (ex, account) => {
+  return server.login(account, (ex, data) => {
     if (!ex) {
-      dispatch({type: types.LOGIN_SUCCESS, account})
-      cb(null, account)
+      dispatch({type: types.LOGIN_SUCCESS, data})
+      cb(null, data)
     } else {
       // Replace the line above with line below to rollback on failure:
       //return dispatch({ type: types.LOGIN_FAILURE, account })
