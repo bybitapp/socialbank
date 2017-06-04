@@ -2,6 +2,7 @@ import React from 'react'
 import Map from '../components/Map'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import ContactInfo from '../components/ContactInfo'
 import { Link } from 'react-router-dom'
 
 const styleHeight = {height: 'inherit'}
@@ -46,6 +47,7 @@ export default ({ projects = {} }) => (
             <div className="android-wear-section">
                 <Map projects={projects} />
             </div>
+            <ContactInfo styleText={styleText}/>
             <Footer/>
         </div>
     </div>)
