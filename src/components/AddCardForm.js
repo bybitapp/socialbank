@@ -24,12 +24,12 @@ const enhance = compose(
   reduxForm({
     form: 'addCard',
     onSubmit: (values, dispatch, ownProps) => {
-            dispatch(addCard(values, () => {
-                dispatch(ownProps.reset('addCard'))
-                ownProps.handleClose()
-            }))
-        }
-    })
+      dispatch(addCard(values, () => {
+          dispatch(ownProps.reset('addCard'))
+          ownProps.handleClose()
+      }))
+    }
+  })
 )
 
 class AddCardForm extends React.Component {
@@ -55,8 +55,14 @@ class AddCardForm extends React.Component {
                   <main className="mdl-layout__content">
                     <div className="page-content">
                         <Field name="cardName" label="Name On Card" component={Input} />
-                        <Field name="issuingProvider" label="Issuing Bank" component={Input} />
-
+                        <Field name="maxNumberOfLoads" label="Max. Number of Loads" component={Input} />
+                        <Field name="maxNumberOfSpends" label="Max. Number of Spends" component={Input} />
+                        <input id="demo-menu-lower-left" className="mdl-button mdl-js-buttons" value="Card Brand" type="button"/>
+                        <ul className="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
+                            htmlFor="demo-menu-lower-left">
+                          <li className="mdl-menu__item">Master Card</li>
+                          <li className="mdl-menu__item">Visa</li>
+                        </ul>
                     </div>
                   </main>
                   <footer className="sb-footer">
