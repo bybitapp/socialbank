@@ -17,9 +17,15 @@ class Contact extends React.Component {
           <main className="mdl-layout__content">
             <div className="page-content">
                 <div className="sb-form-content sb-page" style={styleText}>
-                        <h5>Connect with us</h5>
-                        Email: contact@socialbank.co
-                        Twitter: <a href="https://twitter.com/socialbankco"> @socialbankco</a>
+                <div className="mdl-grid">
+                    <div className="mdl-cell mdl-cell--12-col">
+                      <h5>Connect with us</h5>
+                      <br/><br/>
+                      Email: contact@socialbank.co
+                      <br/>
+                      Twitter: <a href="https://twitter.com/socialbankco"> @socialbankco</a>
+                    </div>
+                  </div>
                 </div>
             </div>
             <Footer />
