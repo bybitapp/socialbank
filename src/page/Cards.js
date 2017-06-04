@@ -68,16 +68,16 @@ const CardItem = ({card}) => (
       <td className="mdl-data-table__cell--non-numeric">{ `${card.currentNumberOfLoads} / ${card.maxNumberOfLoads}` }</td>
       <td className="mdl-data-table__cell--non-numeric">{ `${card.currentNumberOfSpends} / ${card.maxNumberOfSpends}` }</td>
       <td className="sb-menu-table">
-        <Link className="mdl-list__item-primary-content" to={ '/card/1' }>
+        <Link className="mdl-list__item-primary-content" to={ '/cards/1' }>
           <i className="material-icons mdl-list__item-avatar sb-icon-list_item">edit</i>
         </Link>
-        <Link className="mdl-list__item-primary-content" to={ '/card/block/1' }>
+        <Link className="mdl-list__item-primary-content" to={ '/cards/block/1' }>
           <i className="material-icons mdl-list__item-avatar sb-icon-list_item">block</i>
         </Link>
-        <Link className="mdl-list__item-primary-content" to={ '/card/delete/1' }>
+        <Link className="mdl-list__item-primary-content" to={ '/cards/delete/1' }>
           <i className="material-icons mdl-list__item-avatar sb-icon-list_item">delete</i>
         </Link>
-        <Link className="mdl-list__item-primary-content" to={ '/card/1' }>
+        <Link className="mdl-list__item-primary-content" to={ '/cards/1' }>
           <i className="material-icons mdl-list__item-avatar sb-icon-list_item">details</i>
         </Link>
       </td>
