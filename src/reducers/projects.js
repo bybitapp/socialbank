@@ -1,7 +1,9 @@
-import { RECEIVE_PROJECTS, ADD_PROJECT_SUCCESS, SELECT_CURRENT_PROJECT } from '../constants/ActionTypes'
+import { RECEIVE_PROJECTS, ADD_PROJECT_SUCCESS, SELECT_CURRENT_PROJECT, LOGIN_SUCCESS } from '../constants/ActionTypes'
 
 export const projects = (state = [], action) => {
   switch (action.type) {
+    case LOGIN_SUCCESS:
+      return (action.data.projects) ? action.data.projects : state
     case RECEIVE_PROJECTS:
       return (action.projects) ? action.projects : state
     case ADD_PROJECT_SUCCESS:

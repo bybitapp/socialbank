@@ -2,7 +2,7 @@ import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { getProjects } from '../actions'
+// import { getProjects } from '../actions'
 import { dateFormat } from '../util/date'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -61,17 +61,17 @@ const ProjectTable = ({projects = [], styleTable}) => (
 
 class Projects extends React.Component {
 
-  componentDidMount() {
-    const { dispatch } = this.props
-    dispatch(getProjects())
-  }
-
-  componentDidUpdate(prevProps) {
-    if (this.props.projects !== prevProps.projects) {
-      const { dispatch } = this.props
-      dispatch(getProjects())
-    }
-  }
+  // componentDidMount() {
+  //   const { dispatch } = this.props
+  //   dispatch(getProjects())
+  // }
+  //
+  // componentDidUpdate(prevProps) {
+  //   if (this.props.projects !== prevProps.projects) {
+  //     const { dispatch } = this.props
+  //     dispatch(getProjects())
+  //   }
+  // }
 
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
