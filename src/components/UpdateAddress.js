@@ -51,16 +51,31 @@ const enhance = compose(
     })
 )
 
+const updateData = (account, dispatch) => {
+  const { organization } = account
+  if (account && organization) {
+    dispatch(change('updateAddress', 'address', account.organization.address));
+    dispatch(change('updateAddress', 'city', account.organization.city));
+    dispatch(change('updateAddress', 'postcode', account.organization.postcode));
+  }
+}
+
 class UpdateAddress extends React.Component {
+
+  componentDidMount() {
+    const { account, dispatch } = this.props
+    updateData(account, dispatch)
+  }
+
+  componentDidUpdate(prevProps) {
+    const { account, dispatch } = this.props
+    if (account !== prevProps.account) {
+      updateData(account, dispatch)
+    }
+  }
+
   render() {
-      const { handleSubmit, account, dispatch } = this.props;
-
-      if (account.organization) {
-        dispatch(change('updateAddress', 'address', account.organization.address));
-        dispatch(change('updateAddress', 'city', account.organization.city));
-        dispatch(change('updateAddress', 'postcode', account.organization.postcode));
-      }
-
+      const { handleSubmit } = this.props
       return (
           <div>
               <h5>Address</h5>

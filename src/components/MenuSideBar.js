@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 const menuItems = [
     {label: 'Account Details', path: '/details', icon: 'settings'},
-    {label: 'Transaction History', path: '/history', icon: 'history'},
     {label: 'Projects', path: '/projects', icon: 'account_balance'},
+    {label: 'Transaction History', path: '/history', icon: 'history'},
     {label: 'Virtual Cards', path: '/cards', icon: 'credit_card'},
 ]
 

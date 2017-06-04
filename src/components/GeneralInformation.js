@@ -18,16 +18,30 @@ const enhance = compose(
     })
 )
 
-class GeneralInformation extends React.Component {
-  render() {
-    const { account, dispatch } = this.props
-
+const updateData = (account, dispatch) => {
+  const { organization } = account
+  if (account && organization) {
     dispatch(change('generalInformation', 'email', account.email));
-    if (account.organization) {
-      dispatch(change('generalInformation', 'charityName', account.organization.name));
-      dispatch(change('generalInformation', 'charityNumber', account.organization.number));
-    }
+    dispatch(change('generalInformation', 'charityName', account.organization.name));
+    dispatch(change('generalInformation', 'charityNumber', account.organization.number));
+  }
+}
 
+class GeneralInformation extends React.Component {
+
+  componentDidMount() {
+    const { account, dispatch } = this.props
+    updateData(account, dispatch)
+  }
+
+  componentDidUpdate(prevProps) {
+    const { account, dispatch } = this.props
+    if (account !== prevProps.account) {
+      updateData(account, dispatch)
+    }
+  }
+
+  render() {
     return (
         <div>
             <h5>General Information</h5>
