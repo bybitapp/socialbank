@@ -10,11 +10,11 @@ import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 
 const stateLabel = {
-  "NO_MANAGED_CARD_STATE": {label: 'No state', className: 'no-state'},
-  "PRE_ACTIVE": {label: 'Pre-active', className: 'pre-active'},
-  "ACTIVE": {label: 'Active', className: 'active'},
-  "PRE_DESTROYED": {label: 'Pre-destroyed', className: 'pre-destroyed'},
-  "DESTROYED": {label: 'Destroyed', className: 'destroyed'},
+  "NO_MANAGED_CARD_STATE": {label: 'No state', style: {"width":"100%", "background-color": "gray"}},
+  "PRE_ACTIVE": {label: 'Pre-active', style: {"width":"100%", "background-color": "#B6FCB6"}},
+  "ACTIVE": {label: 'Active', style: {"width":"100%", "background-color": "#98FB98"}},
+  "PRE_DESTROYED": {label: 'Pre-destroyed', style: {"width":"100%", "background-color": "#FBA69C"}},
+  "DESTROYED": {label: 'Destroyed', style: {"width":"100%", "background-color": "#FA8072"}},
 }
 
 function mapStateToProps(state) {
@@ -57,12 +57,13 @@ const ProjectSelector = ({projects = [], onSelectProject, selectedProject}) => (
 const CardItem = ({card}) => (
     <tr>
       <td>
-        <span className={`mdl-chip sb-status ${stateLabel[card.state].className}`}>
+        <span className="mdl-chip" style={stateLabel[card.state].style}>
           <span className="mdl-chip__text">{stateLabel[card.state].label}</span>
         </span>
       </td>
       <td className="mdl-data-table__cell--non-numeric">{ card.nameOnCard }</td>
       <td className="mdl-data-table__cell--non-numeric">{ card.cardNumber }</td>
+      <td className="mdl-data-table__cell--non-numeric">{ card.cardBrand }</td>
       <td className="mdl-data-table__cell--non-numeric">{ `${card.expiryPeriod.periodLength} ${String.toLowerCase(card.expiryPeriod.timeUnit)}s` }</td>
       <td className="mdl-data-table__cell--non-numeric">{ `${card.currentNumberOfLoads} / ${card.maxNumberOfLoads}` }</td>
       <td className="mdl-data-table__cell--non-numeric">{ `${card.currentNumberOfSpends} / ${card.maxNumberOfSpends}` }</td>
@@ -89,6 +90,7 @@ const CardTable = ({cards = [], styleTable}) => (
           <th className="mdl-data-table__cell--non-numeric">State</th>
           <th className="mdl-data-table__cell--non-numeric">Name on Card</th>
           <th className="mdl-data-table__cell--non-numeric">Card Number</th>
+          <th className="mdl-data-table__cell--non-numeric">Card Brand</th>
           <th className="mdl-data-table__cell--non-numeric">Expirity</th>
           <th>Loads / Total</th>
           <th>Spends / Total</th>
@@ -160,7 +162,7 @@ class Cards extends React.Component {
                           <div className="mdl-grid">
                               <ProjectSelector projects={projects} onSelectProject={this.onSelectProject} selectedProject={this.state.selectedProject}/>
                               <div className="mdl-cell mdl-cell--5-col" style={styleButton}>
-                                  <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" disabled={this.state.selectedProject} onClick={() => setModal('cardModal')}>
+                                  <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" disabled={!this.state.selectedProject} onClick={() => setModal('cardModal')}>
                                       Add Card
                                   </button>
                               </div>
