@@ -54,6 +54,12 @@ const ProjectSelector = ({projects = [], onSelectProject, selectedProject}) => (
   </div>
 )
 
+const ActionLink = ({icon}) => (
+  <Link className="mdl-list__item-primary-content" to={ '/cards/action' }>
+    <i className="material-icons mdl-list__item-avatar sb-icon-list_item">{ icon }</i>
+  </Link>
+)
+
 const CardItem = ({card}) => (
     <tr>
       <td>
@@ -61,25 +67,17 @@ const CardItem = ({card}) => (
           <span className="mdl-chip__text">{stateLabel[card.state].label}</span>
         </span>
       </td>
-      <td className="mdl-data-table__cell--non-numeric">{ card.nameOnCard }</td>
-      <td className="mdl-data-table__cell--non-numeric">{ card.cardNumber }</td>
-      <td className="mdl-data-table__cell--non-numeric">{ card.cardBrand }</td>
-      <td className="mdl-data-table__cell--non-numeric">{ `${card.expiryPeriod.periodLength} ${card.expiryPeriod.timeUnit.toLowerCase()}s` }</td>
-      <td className="mdl-data-table__cell--non-numeric">{ `${card.currentNumberOfLoads} / ${card.maxNumberOfLoads}` }</td>
-      <td className="mdl-data-table__cell--non-numeric">{ `${card.currentNumberOfSpends} / ${card.maxNumberOfSpends}` }</td>
+      <td>{ card.nameOnCard }</td>
+      <td>{ card.cardNumber }</td>
+      <td>{ card.cardBrand }</td>
+      <td>{ `${card.expiryPeriod.periodLength} ${card.expiryPeriod.timeUnit.toLowerCase()}s` }</td>
+      <td>{ `${card.currentNumberOfLoads} / ${card.maxNumberOfLoads}` }</td>
+      <td>{ `${card.currentNumberOfSpends} / ${card.maxNumberOfSpends}` }</td>
       <td className="sb-menu-table">
-        <Link className="mdl-list__item-primary-content" to={ '/cards/1' }>
-          <i className="material-icons mdl-list__item-avatar sb-icon-list_item">edit</i>
-        </Link>
-        <Link className="mdl-list__item-primary-content" to={ '/cards/block/1' }>
-          <i className="material-icons mdl-list__item-avatar sb-icon-list_item">block</i>
-        </Link>
-        <Link className="mdl-list__item-primary-content" to={ '/cards/delete/1' }>
-          <i className="material-icons mdl-list__item-avatar sb-icon-list_item">delete</i>
-        </Link>
-        <Link className="mdl-list__item-primary-content" to={ '/cards/1' }>
-          <i className="material-icons mdl-list__item-avatar sb-icon-list_item">details</i>
-        </Link>
+        <ActionLink icon="edit" />
+        <ActionLink icon="block" />
+        <ActionLink icon="delete" />
+        <ActionLink icon="details" />
       </td>
     </tr>)
 
@@ -87,11 +85,11 @@ const CardTable = ({cards = [], styleTable}) => (
     <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
       <thead>
         <tr>
-          <th className="mdl-data-table__cell--non-numeric">State</th>
-          <th className="mdl-data-table__cell--non-numeric">Name on Card</th>
-          <th className="mdl-data-table__cell--non-numeric">Card Number</th>
-          <th className="mdl-data-table__cell--non-numeric">Card Brand</th>
-          <th className="mdl-data-table__cell--non-numeric">Expirity</th>
+          <th>State</th>
+          <th>Name on Card</th>
+          <th>Card Number</th>
+          <th>Card Brand</th>
+          <th>Expirity</th>
           <th>Loads / Total</th>
           <th>Spends / Total</th>
           <th>Actions</th>
