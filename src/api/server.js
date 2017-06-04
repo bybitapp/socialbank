@@ -20,6 +20,11 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
+  getOrganizations: (cb) => {
+      axios.get('/api/organizations/list')
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
   getProjects: (cb) => {
       // return cb(null, projects)
       axios.get('/api/projects/list')

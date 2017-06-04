@@ -1,6 +1,12 @@
 import server from '../api/server'
 import * as types from '../constants/ActionTypes'
 
+export const getOrganizations = () => dispatch => {
+  server.getOrganizations((ex, organizations) => {
+    dispatch({type: types.RECEIVE_ORGANIZATIONS, organizations})
+  })
+}
+
 export const getProjects = () => dispatch => {
   server.getProjects((ex, projects) => {
     dispatch({type: types.RECEIVE_PROJECTS, projects})

@@ -1,11 +1,11 @@
 import React from 'react'
 import GoogleMapReact from 'google-map-react'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 import { compose } from 'recompose'
 import Marker from './Marker'
 
 const enhance = compose(
-  connect(state => ({ projects: state.projects }))
+  // connect(state => ({ projects: state.projects }))
 )
 
 class Map extends React.Component {
@@ -21,7 +21,7 @@ class Map extends React.Component {
   }
 
   render() {
-    const { projects } = this.props
+    const { organizations } = this.props
 
     return (
       <GoogleMapReact
@@ -31,16 +31,16 @@ class Map extends React.Component {
         onChildClick={this.onChildClick}
         options={this.props.options}
       >
-      { Object.keys(projects).map((key, index) => {
-          const p = projects[key]
+      { Object.keys(organizations).map((key, index) => {
+          const o = organizations[key]
           return (
               <Marker
-                key={p.id}
-                lat={p.lat}
-                lng={p.lng}
-                text={p.name}
-                icon={p.icon}
-                {...p}/>
+                key={o.id}
+                lat={o.lat}
+                lng={o.lng}
+                text={o.name}
+                icon={o.icon}
+                {...o}/>
           ) ;
       })}
       </GoogleMapReact>
