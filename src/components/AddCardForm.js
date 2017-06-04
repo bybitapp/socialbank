@@ -57,16 +57,11 @@ class AddCardForm extends React.Component {
                         <Field name="cardName" label="Name On Card" component={Input} />
                         <Field name="maxNumberOfLoads" label="Max. Number of Loads" component={Input} />
                         <Field name="maxNumberOfSpends" label="Max. Number of Spends" component={Input} />
-                        <Field name="cardBrand" label="Card Brand" component={Input} />
-                        <button id="demo-menu-lower-left" className="mdl-button mdl-js-button mdl-button--icon">
-                          <i className="material-icons">more_vert</i>
-                        </button>
+                        <input id="demo-menu-lower-left" className="mdl-button mdl-js-buttons" value="Card Brand" type="button">
                         <ul className="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
                             htmlFor="demo-menu-lower-left">
-                          <li className="mdl-menu__item">Some Action</li>
-                          <li className="mdl-menu__item mdl-menu__item--full-bleed-divider">Another Action</li>
-                          <li disabled className="mdl-menu__item">Disabled Action</li>
-                          <li className="mdl-menu__item">Yet Another Action</li>
+                          <li className="mdl-menu__item">Master Card</li>
+                          <li className="mdl-menu__item">Visa</li>
                         </ul>
                     </div>
                   </main>
