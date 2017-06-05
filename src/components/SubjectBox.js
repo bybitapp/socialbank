@@ -1,28 +1,19 @@
 import React from 'react'
 
-export default ({title, description, headerStyle, bodyStyle, icon}) => {
-  const defaultHeaderStyle = {color: "white", margin:"0px", padding:"10px"}
-  const defaultBodyStyle = {color: "#767777", margin:"0px", padding:"10px"}
-  icon = icon ? icon : "error"
-  headerStyle = Object.assign({}, defaultHeaderStyle, headerStyle)
-  bodyStyle = Object.assign({}, defaultBodyStyle, bodyStyle)
-  // TODO: Extract mdl-cell mdl-cell--3-col classes (should not be inside this component)
+export default ({title, description, image}) => {
   return (
-    <div className="mdl-cell mdl-cell--3-col content__item content__item--subject mdl-shadow--2dp">
-    <div className="subject__header" style={headerStyle}>
-      <div style={{margin:"5px", display:"inline-block", "vertical-align":"middle"}}>
-        <i className="material-icons">{icon}</i>
+    <div className="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+      <div className="mdl-card__media">
+        <img src={'images/' + image} alt="{title}" />
       </div>
-      <div style={{display:"inline-block"}}>
-        <h5>
-          {title}
-        </h5>
+      <div className="mdl-card__title">
+         <h4 className="mdl-card__title-text">{title}</h4>
       </div>
-    </div>
-    <div className="subject__body" style={bodyStyle}>
-    {description}
-    <br/><br/>
-    </div>
+      <div className="mdl-card__supporting-text">
+        <span className="mdl-typography--font-light mdl-typography--subhead">
+          {description}
+        </span>
+      </div>
     </div>
   )
 }

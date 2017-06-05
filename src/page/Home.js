@@ -38,6 +38,7 @@ class Home extends React.Component {
 
     const styleHeight = {height: 'inherit'}
     const styleText = {textAlign: 'justify', padding: '0 50px'}
+    const styleButtonBottom= {marginBottom: '40px'}
 
     const { organizations } = this.props
 
@@ -49,33 +50,30 @@ class Home extends React.Component {
               <div className="logo-font android-slogan">be together. not the same.</div>
               <div className="logo-font android-sub-slogan">welcome to socialbank... be yourself. do your thing. see whats going on.</div>
               <div className="logo-font android-create-character">
-                <Link className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" to={'/registration'}>
+                <Link style={styleButtonBottom} className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" to={'/registration'}>
                     Create your bank account
                 </Link>
               </div>
             </div>
-            <div className="android-screen-section mdl-typography--text-center">
-              <div className="mdl-grid" style={styleText}>
+            <div className="android-more-section">
+              <div className="android-section-title mdl-typography--display-1-color-contrast">More from SocialBank</div>
+              <div className="android-card-container mdl-grid">
                 <SubjectBox
                   title="Building Trust"
                   description="SocialBank gives donors complete transparency and information regarding finance distribution in charitable and community projects."
-                  headerStyle={{"background-color":"#0392cf"}}
-                  icon="thumb_up"/>
+                  image="more-from-1.png" />
                 <SubjectBox
                   title="Activating communities"
                   description="Helping local leaders to engage volunteers and fund projects."
-                  headerStyle={{"background-color":"#7bc043"}}
-                  icon="public"/>
+                  image="more-from-4.png" />
                 <SubjectBox
                   title="Financial Control"
-                  description="Simple system supporting processing financial activities in organisations of any size. "
-                  headerStyle={{"background-color":"#4f372d"}}
-                  icon="attach_money"/>
+                  description="Simple system supporting processing financial activities in organisations of any size."
+                  image="more-from-2.png" />
                 <SubjectBox
                   title="Fundraising Support"
                   description="Platform for social and charitable organisations to support their fundraising activities."
-                  headerStyle={{"background-color":"#ee4035"}}
-                  icon="mood"/>
+                  image="more-from-3.png" />
               </div>
             </div>
             <div className="android-wear-section">
