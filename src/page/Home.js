@@ -76,8 +76,19 @@ class Home extends React.Component {
                   image="more-from-3.png" />
               </div>
             </div>
-            <div className="android-wear-section">
+            <div className="sb-map-section">
                 <Map organizations={organizations} />
+            </div>
+            <div className="android-customized-section">
+              <div className="android-customized-section-text">
+                <div className="mdl-typography--font-light mdl-typography--display-1-color-contrast">Customised by you, for you</div>
+                <p className="mdl-typography--font-light">
+                  Put the stuff that you care about right on your home screen: the latest news, the weather or a stream of your recent photos.
+                  <br/>
+                  <a href="" className="android-link mdl-typography--font-light">Customise your phone</a>
+                </p>
+              </div>
+              <div className="android-customized-section-image"></div>
             </div>
             <ContactInfo styleText={styleText}/>
             <Footer />
