@@ -10,11 +10,11 @@ import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 
 const stateLabel = {
-  "NO_MANAGED_CARD_STATE": {label: 'No state', style: {"width":"100%", "background-color": "gray"}},
-  "PRE_ACTIVE": {label: 'Pre-active', style: {"width":"100%", "background-color": "#B6FCB6"}},
-  "ACTIVE": {label: 'Active', style: {"width":"100%", "background-color": "#98FB98"}},
-  "PRE_DESTROYED": {label: 'Pre-destroyed', style: {"width":"100%", "background-color": "#FBA69C"}},
-  "DESTROYED": {label: 'Destroyed', style: {"width":"100%", "background-color": "#FA8072"}},
+  "NO_MANAGED_CARD_STATE": {label: 'No state', style: {"text-align":"center", "width":"80px", "background-color": "gray"}},
+  "PRE_ACTIVE": {label: 'Pre-active', style: {"text-align":"center", "width":"80px", "background-color": "#B6FCB6"}},
+  "ACTIVE": {label: 'Active', style: {"text-align":"center", "width":"80px", "background-color": "#98FB98"}},
+  "PRE_DESTROYED": {label: 'Pre-destroyed', style: {"text-align":"center", "width":"80px", "background-color": "#FBA69C"}},
+  "DESTROYED": {label: 'Destroyed', style: {"text-align":"center", "width":"80px", "background-color": "#FA8072"}},
 }
 
 function mapStateToProps(state) {
@@ -134,7 +134,7 @@ class Cards extends React.Component {
 
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
-    const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0}
+    const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0, overflow:"auto"}
     const stylePadding = {padding: '15px'}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
