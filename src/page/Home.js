@@ -5,6 +5,7 @@ import Map from '../components/Map'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import ContactInfo from '../components/ContactInfo'
+import SubjectBox from '../components/SubjectBox'
 import { Link } from 'react-router-dom'
 import { getOrganizations } from '../actions'
 
@@ -55,23 +56,26 @@ class Home extends React.Component {
             </div>
             <div className="android-screen-section mdl-typography--text-center">
               <div className="mdl-grid" style={styleText}>
-                <div className="mdl-cell mdl-cell--3-col">
-                  <h5>Building Trust</h5>
-                  SocialBank gives donors complete transparency and information regarding finance distribution in charitable and community projects.
-                  <br/><br/>
-                </div>
-                <div className="mdl-cell mdl-cell--3-col">
-                  <h5>Activating communities</h5>
-                  Helping local leaders to engage volunteers and fund projects.<br/><br/>
-                </div>
-                <div className="mdl-cell mdl-cell--3-col">
-                  <h5>Financial Control</h5>
-                  Simple system supporting processing financial activities in organisations of any size. <br/><br/>
-                </div>
-                <div className="mdl-cell mdl-cell--3-col">
-                  <h5>Fundraising Support</h5>
-                  Platform for social and charitable organisations to support their fundraising activities.<br/><br/>
-                </div>
+                <SubjectBox
+                  title="Building Trust"
+                  description="SocialBank gives donors complete transparency and information regarding finance distribution in charitable and community projects."
+                  headerStyle={{"background-color":"#0392cf"}}
+                  icon="thumb_up"/>
+                <SubjectBox
+                  title="Activating communities"
+                  description="Helping local leaders to engage volunteers and fund projects."
+                  headerStyle={{"background-color":"#7bc043"}}
+                  icon="public"/>
+                <SubjectBox
+                  title="Financial Control"
+                  description="Simple system supporting processing financial activities in organisations of any size. "
+                  headerStyle={{"background-color":"#4f372d"}}
+                  icon="attach_money"/>
+                <SubjectBox
+                  title="Fundraising Support"
+                  description="Platform for social and charitable organisations to support their fundraising activities."
+                  headerStyle={{"background-color":"#ee4035"}}
+                  icon="mood"/>
               </div>
             </div>
             <div className="android-wear-section">
