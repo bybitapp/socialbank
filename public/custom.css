@@ -66,6 +66,10 @@
     padding: 15px;
 }
 
+.mdl-textfield__label {
+    top: 0;
+}
+
 /* OLD */
 
 .mdl-list .mdl-list__item:hover {
@@ -117,9 +121,6 @@
     min-width: 400px;
 }
 
-.sb-modal-form .mdl-textfield__label {
-    top: 0;
-}
 
 .sb-modal-form input:focus, .sb-modal-form textarea:focus  {
     outline: none;

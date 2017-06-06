@@ -1,8 +1,6 @@
 import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
-// import { getProjects } from '../actions'
 import { dateFormat } from '../util/date'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -21,26 +19,26 @@ const enhance = compose(
   withState('modal', 'setModal')
 )
 
-const ProjectItem = ({project}) => (
+const ProjectItem = ({project, onEdit}) => (
     <tr>
       <td className="mdl-data-table__cell--non-numeric">{ project.name }</td>
       <td>{ dateFormat(project.created) }</td>
       <td>{ project.balance.actual }</td>
       <td>{ project.cards }</td>
       <td className="sb-menu-table">
-          <Link className="mdl-list__item-primary-content" to={ '/projects/1' }>
+          <a href="" className="mdl-list__item-primary-content">
             <i className="material-icons mdl-list__item-avatar sb-icon-list_item">attach_money</i>
-          </Link>
-          <Link className="mdl-list__item-primary-content" to={ '/projects/1' }>
+          </a>
+          <a href="" className="mdl-list__item-primary-content" onClick={onEdit}>
             <i className="material-icons mdl-list__item-avatar sb-icon-list_item">mode_edit</i>
-          </Link>
-          <Link className="mdl-list__item-primary-content" to={ '/projects/delete/1' }>
+          </a>
+          <a href="" className="mdl-list__item-primary-content">
             <i className="material-icons mdl-list__item-avatar sb-icon-list_item">delete</i>
-          </Link>
+          </a>
       </td>
     </tr>)
 
-const ProjectTable = ({projects = [], styleTable}) => (
+const ProjectTable = ({projects = [], styleTable, onEdit}) => (
     <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
       <thead>
         <tr>
@@ -54,24 +52,12 @@ const ProjectTable = ({projects = [], styleTable}) => (
       <tbody>
       { Object.keys(projects).map((key, index) => {
         const p = projects[key]
-        return (<ProjectItem key={key} project={p}/>)
+        return (<ProjectItem key={key} project={p} onEdit={onEdit} />)
       })}
       </tbody>
     </table>)
 
 class Projects extends React.Component {
-
-  // componentDidMount() {
-  //   const { dispatch } = this.props
-  //   dispatch(getProjects())
-  // }
-  //
-  // componentDidUpdate(prevProps) {
-  //   if (this.props.projects !== prevProps.projects) {
-  //     const { dispatch } = this.props
-  //     dispatch(getProjects())
-  //   }
-  // }
 
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
@@ -100,7 +86,7 @@ class Projects extends React.Component {
                                     </button>
                                 </div>
                             </div>
-                            <ProjectTable projects={projects} styleTable={styleTable} />
+                            <ProjectTable projects={projects} styleTable={styleTable} onEdit={() => setModal('projectModal')} />
                         </div>
                     </div>
                 </div>
