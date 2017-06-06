@@ -10,11 +10,11 @@ import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 
 const stateLabel = {
-  "NO_MANAGED_CARD_STATE": {label: 'No state', style: {"text-align":"center", "width":"80px", "background-color": "gray"}},
-  "PRE_ACTIVE": {label: 'Pre-active', style: {"text-align":"center", "width":"80px", "background-color": "#B6FCB6"}},
-  "ACTIVE": {label: 'Active', style: {"text-align":"center", "width":"80px", "background-color": "#98FB98"}},
-  "PRE_DESTROYED": {label: 'Pre-destroyed', style: {"text-align":"center", "width":"80px", "background-color": "#FBA69C"}},
-  "DESTROYED": {label: 'Destroyed', style: {"text-align":"center", "width":"80px", "background-color": "#FA8072"}},
+  "NO_MANAGED_CARD_STATE": {label: 'No state', style: {textAlign:"center", width:"80px", backgroundColor: "gray"}},
+  "PRE_ACTIVE": {label: 'Pre-active', style: {textAlign:"center", width:"80px", backgroundColor: "#B6FCB6"}},
+  "ACTIVE": {label: 'Active', style: {textAlign:"center", width:"80px", backgroundColor: "#98FB98"}},
+  "PRE_DESTROYED": {label: 'Pre-destroyed', style: {textAlign:"center", width:"80px", backgroundColor: "#FBA69C"}},
+  "DESTROYED": {label: 'Destroyed', style: {textAlign:"center", width:"80px", backgroundColor: "#FA8072"}},
 }
 
 function mapStateToProps(state) {
@@ -47,7 +47,7 @@ const ProjectSelector = ({projects = [], onSelectProject, selectedProject}) => (
         <ul className="mdl-menu mdl-menu--bottom-left mdl-js-menu" htmlFor="selectedProject">
             { Object.keys(projects).map((key, index) => {
               const p = projects[key]
-              return (<ProjectSelectorItem project={p} onSelectProject={onSelectProject}/>)
+              return (<ProjectSelectorItem key={key} project={p} onSelectProject={onSelectProject}/>)
             })}
         </ul>
     </div>
@@ -107,9 +107,7 @@ class Cards extends React.Component {
 
   constructor(props) {
      super(props);
-     this.state = {
-       selectedProject: null
-     }
+     this.state = {selectedProject: null}
      this.onSelectProject = this.onSelectProject.bind(this)
    }
 
@@ -120,16 +118,12 @@ class Cards extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.state && this.state.selectedProject) {
-      const { dispatch } = this.props
-      dispatch(getCards(this.state.selectedProject.id))
-    }
   }
 
-  onSelectProject(project) {
-    this.setState({
-      selectedProject: project
-    })
+  onSelectProject(selectedProject) {
+    const { dispatch } = this.props
+    this.setState({selectedProject})
+    dispatch(getCards(selectedProject.id))
   }
 
   render () {
