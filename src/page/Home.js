@@ -27,13 +27,6 @@ class Home extends React.Component {
     dispatch(getOrganizations())
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.organizations !== prevProps.organizations) {
-      const { dispatch } = this.props
-      dispatch(getOrganizations())
-    }
-  }
-
   render () {
 
     const styleHeight = {height: 'inherit'}
