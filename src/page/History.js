@@ -1,30 +1,58 @@
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
-
+import { reduxForm, Field, formValueSelector } from 'redux-form'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
+import Select from '../components/Select'
+
+const selector = formValueSelector('history')
 
 function mapStateToProps(state) {
   const { projects } = state
+  const selectedProject = selector(state, 'project')
   return {
-    projects
+    projects,
+    selectedProject
   }
 }
 
 
 const enhance = compose(
   connect(mapStateToProps),
+  reduxForm({
+    form: 'history'
+  })
 )
 
 class History extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.onChangeProject = this.onChangeProject.bind(this)
+  }
+
+  onChangeProject(e) {
+    // const { value } = e.target
+    // const { dispatch } = this.props
+    //dispatch(getCards(value))
+  }
 
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
     const styleH3Right = {margin: 0, textAlign: 'right', paddingTop: '25px'}
     const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0}
     const stylePadding = {padding: '15px'}
+
+    const { projects } = this.props
+
+    const projectList = projects.map((item, index) => {
+      return {
+        id: item.id,
+        name: item.name
+      }
+    })
 
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -39,14 +67,8 @@ class History extends React.Component {
                         <div style={stylePadding}>
                             <div className="mdl-grid">
                                 <div className="mdl-cell mdl-cell--9-col">
-                                    <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-                                        <input className="mdl-textfield__input" id="selectedProject" name="selectedProject" value="Project Name 1" type="text" readOnly tabIndex="-1" data-val="BLR"/>
-                                        <ul className="mdl-menu mdl-menu--bottom-left mdl-js-menu" htmlFor="selectedProject">
-                                            <li className="mdl-menu__item" data-val="1">Project Name 1</li>
-                                            <li className="mdl-menu__item" data-val="2">Project Name 2</li>
-                                            <li className="mdl-menu__item" data-val="2">Project Name 3</li>
-                                        </ul>
-                                    </div>
+                                  <Field name="project" label="Project Name" component={Select} items={projectList}
+                                    onChange={this.onChangeProject} />
                                 </div>
                                 <div className="mdl-cell mdl-cell--3-col">
                                     <h5 style={styleH3Right}>£100.000</h5>

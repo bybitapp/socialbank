@@ -2,12 +2,13 @@ import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { reduxForm } from 'redux-form'
+import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { getCards } from '../actions'
 import AddCardForm from '../components/AddCardForm'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
+import Select from '../components/Select'
 
 const stateLabel = {
   "NO_MANAGED_CARD_STATE": {label: 'No state', style: {textAlign:"center", width:"80px", backgroundColor: "gray"}},
@@ -17,41 +18,25 @@ const stateLabel = {
   "DESTROYED": {label: 'Destroyed', style: {textAlign:"center", width:"80px", backgroundColor: "#FA8072"}},
 }
 
+const selector = formValueSelector('cards')
+
 function mapStateToProps(state) {
   const { cards, projects, modal } = state
+  const selectedProject = selector(state, 'project')
   return {
     cards,
     projects,
+    selectedProject,
     modal
   }
 }
 
 const enhance = compose(
   connect(mapStateToProps),
+  withState('modal', 'setModal'),
   reduxForm({
-      form: 'card'
-  }),
-  withState('modal', 'setModal')
-)
-
-const ProjectSelectorItem = ({project, onSelectProject}) => (
-    <li className="mdl-menu__item" data-val={project.id} onClick={(e)=>onSelectProject(project)}>{project.name}</li>
-)
-
-const ProjectSelector = ({projects = [], onSelectProject, selectedProject}) => (
-  <div className="mdl-cell mdl-cell--7-col">
-    <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fullwidth">
-        <input className="mdl-textfield__input" id="selectedProject" name="selectedProject" type="text" readOnly tabIndex="-1"
-          value={selectedProject ? selectedProject.name : ""}
-          data-val={selectedProject ? selectedProject.id : ""}/>
-        <ul className="mdl-menu mdl-menu--bottom-left mdl-js-menu" htmlFor="selectedProject">
-            { Object.keys(projects).map((key, index) => {
-              const p = projects[key]
-              return (<ProjectSelectorItem key={key} project={p} onSelectProject={onSelectProject}/>)
-            })}
-        </ul>
-    </div>
-  </div>
+    form: 'cards'
+  })
 )
 
 const ActionLink = ({icon}) => (
@@ -106,24 +91,14 @@ const CardTable = ({cards = [], styleTable}) => (
 class Cards extends React.Component {
 
   constructor(props) {
-     super(props);
-     this.state = {selectedProject: null}
-     this.onSelectProject = this.onSelectProject.bind(this)
-   }
-
-  componentDidMount() {
-    // TODO we should select first project from list as default
-    // const { dispatch } = this.props
-    // dispatch(getCards(-1))
+    super(props);
+    this.onChangeProject = this.onChangeProject.bind(this)
   }
 
-  componentDidUpdate(prevProps) {
-  }
-
-  onSelectProject(selectedProject) {
+  onChangeProject(e) {
+    const { value } = e.target
     const { dispatch } = this.props
-    this.setState({selectedProject})
-    dispatch(getCards(selectedProject.id))
+    dispatch(getCards(value))
   }
 
   render () {
@@ -132,7 +107,14 @@ class Cards extends React.Component {
     const stylePadding = {padding: '15px'}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
-    const { cards, projects, modal, setModal } = this.props
+    const { cards, projects, modal, setModal, selectedProject } = this.props
+
+    const projectList = projects.map((item, index) => {
+      return {
+        id: item.id,
+        name: item.name
+      }
+    })
 
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -147,12 +129,16 @@ class Cards extends React.Component {
                     <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
                         <div style={stylePadding}>
                           <div className="mdl-grid">
-                              <ProjectSelector projects={projects} onSelectProject={this.onSelectProject} selectedProject={this.state.selectedProject}/>
-                              <div className="mdl-cell mdl-cell--5-col" style={styleButton}>
-                                  <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" disabled={!this.state.selectedProject} onClick={() => setModal('cardModal')}>
-                                      Add Card
-                                  </button>
-                              </div>
+                            <div className="mdl-cell mdl-cell--7-col">
+                              <Field name="project" label="Project Name" component={Select} items={projectList}
+                                onChange={this.onChangeProject} />
+                            </div>
+                            <div className="mdl-cell mdl-cell--5-col" style={styleButton}>
+                                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                                  disabled={!selectedProject} onClick={() => setModal('cardModal')}>
+                                    Add Card
+                                </button>
+                            </div>
                           </div>
                           <CardTable cards={cards} styleTable={styleTable} />
                         </div>

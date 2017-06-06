@@ -31,8 +31,8 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
-  getCards: (projectId, cb) => {
-    axios.get(`/api/cards/list/project/${projectId}`)
+  getCards: (projId, cb) => {
+    axios.get(`/api/cards/list/p/${projId}`)
     .then((res) => cb(null, res.data))
     .catch((e) => cb(e))
   }
