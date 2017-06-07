@@ -49,6 +49,7 @@ export const addProject = (project, cb) => (dispatch, getState) => {
   server.addProject(project, (ex, project) => {
     if (!ex) {
         dispatch({type: types.ADD_PROJECT_SUCCESS, project})
+        cb(null, project)
     } else {
       // Replace the line above with line below to rollback on failure:
       // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
