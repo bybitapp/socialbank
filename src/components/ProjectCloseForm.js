@@ -60,7 +60,7 @@ class ProjectCloseForm extends React.Component {
                 <div className="page-content" style={styleCenter}>
                   {error && <span className="sb-error">{error}</span>}
                   <Field name="pid" type="hidden" component="input" />
-                  <p>Do you want to close selected project ?</p>
+                  <h5>Do you want to close selected project ?</h5>
                 </div>
               </main>
               <footer className="sb-footer">
