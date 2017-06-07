@@ -1,4 +1,7 @@
 /* NEW */
+.sb-menu-table a {
+  cursor: pointer
+}
 
 .android-be-together-section {
     background-color: #f3f3f3
@@ -119,6 +122,10 @@
 .sb-modal-form .page-content {
     padding: 16px;
     min-width: 400px;
+}
+
+.sb-modal-form .mdl-layout__header .mdl-layout-title {
+  color: #FFF
 }
 
 

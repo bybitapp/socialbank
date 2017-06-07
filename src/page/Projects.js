@@ -1,16 +1,20 @@
 import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
+import { change } from 'redux-form'
 import { dateFormat } from '../util/date'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 import ProjectForm from '../components/ProjectForm'
+import ProjectCloseForm from '../components/ProjectCloseForm'
+import ProjectDepositForm from '../components/ProjectDepositForm'
 
 function mapStateToProps(state) {
-  const { projects } = state
+  const { projects, account } = state
   return {
-    projects
+    projects,
+    account
   }
 }
 
@@ -19,26 +23,24 @@ const enhance = compose(
   withState('modal', 'setModal')
 )
 
-const ProjectItem = ({project, onEdit}) => (
+const ActionButton = (pid, action) => (
+  <a key={action.icon} className="mdl-list__item-primary-content" onClick={(event)=>action.onclick(pid, event)}>
+    <i className="material-icons mdl-list__item-avatar sb-icon-list_item">{action.icon}</i>
+  </a>
+)
+
+const ProjectItem = ({project, actions}) => (
     <tr>
       <td className="mdl-data-table__cell--non-numeric">{ project.name }</td>
       <td>{ dateFormat(project.created) }</td>
       <td>{ project.balance.actual }</td>
       <td>{ project.cards }</td>
       <td className="sb-menu-table">
-          <a href="" className="mdl-list__item-primary-content">
-            <i className="material-icons mdl-list__item-avatar sb-icon-list_item">attach_money</i>
-          </a>
-          <a href="" className="mdl-list__item-primary-content" onClick={onEdit}>
-            <i className="material-icons mdl-list__item-avatar sb-icon-list_item">mode_edit</i>
-          </a>
-          <a href="" className="mdl-list__item-primary-content">
-            <i className="material-icons mdl-list__item-avatar sb-icon-list_item">delete</i>
-          </a>
+        { actions.map((action)=>ActionButton(project.id, action)) }
       </td>
     </tr>)
 
-const ProjectTable = ({projects = [], styleTable, onEdit}) => (
+const ProjectTable = ({projects = [], styleTable, actions}) => (
     <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
       <thead>
         <tr>
@@ -52,12 +54,55 @@ const ProjectTable = ({projects = [], styleTable, onEdit}) => (
       <tbody>
       { Object.keys(projects).map((key, index) => {
         const p = projects[key]
-        return (<ProjectItem key={key} project={p} onEdit={onEdit} />)
+        return (<ProjectItem key={key} project={p} actions={actions} />)
       })}
       </tbody>
     </table>)
 
 class Projects extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.onEdit = this.onEdit.bind(this)
+    this.onCloseProject = this.onCloseProject.bind(this)
+    this.onDeposit = this.onDeposit.bind(this)
+  }
+
+  onEdit (pid, event) {
+    const { projects, setModal, dispatch } = this.props
+    const project = projects.find((project)=>{return project.id === pid})
+    if (project) {
+      dispatch(change('projectForm', 'pid', project.id));
+      dispatch(change('projectForm', 'name', project.name));
+      dispatch(change('projectForm', 'description', project.description));
+      dispatch(change('projectForm', 'access', project.access));
+      setModal('projectModal')
+    }
+  }
+
+  onCloseProject (pid, event) {
+    const { projects, setModal, dispatch } = this.props
+    const project = projects.find((project)=>{return project.id === pid})
+    if (project) {
+      dispatch(change('projectCloseForm', 'pid', project.id));
+      setModal('projectCloseModal')
+    }
+  }
+
+  onDeposit (pid, event) {
+    const { projects, account, setModal, dispatch } = this.props
+    const project = projects.find((project)=>{return project.id === pid})
+    if (project) {
+      if (account.organization) {
+        const { bankAccount } = account.organization
+        dispatch(change('projectDepositForm', 'pid', project.id));
+        dispatch(change('projectDepositForm', 'bank', bankAccount.bankName));
+        dispatch(change('projectDepositForm', 'iban', bankAccount.ibanCode));
+        dispatch(change('projectDepositForm', 'name', project.name));
+        setModal('projectDepositModal')
+      }
+    }
+  }
 
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
@@ -67,10 +112,18 @@ class Projects extends React.Component {
 
     const { projects, modal, setModal } = this.props
 
+    const actions = [
+      {icon: 'attach_money', onclick: this.onDeposit},
+      {icon: 'mode_edit', onclick: this.onEdit},
+      {icon: 'archive', onclick: this.onCloseProject}
+    ]
+
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
           <Header />
           <ProjectForm open={(modal === 'projectModal')} handleClose={() => setModal(null)} />
+          <ProjectCloseForm open={(modal === 'projectCloseModal')} handleClose={() => setModal(null)} />
+          <ProjectDepositForm open={(modal === 'projectDepositModal')} handleClose={() => setModal(null)} />
           <main className="mdl-layout__content">
             <div className="page-content">
                 <div className="mdl-grid">
@@ -81,12 +134,13 @@ class Projects extends React.Component {
                         <div style={stylePadding}>
                             <div className="mdl-grid">
                                 <div className="mdl-cell mdl-cell--12-col" style={styleButton}>
-                                    <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={() => setModal('projectModal')}>
+                                    <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                                      onClick={() => setModal('projectModal')}>
                                         Add Project
                                     </button>
                                 </div>
                             </div>
-                            <ProjectTable projects={projects} styleTable={styleTable} onEdit={() => setModal('projectModal')} />
+                            <ProjectTable projects={projects} styleTable={styleTable} actions={actions}/>
                         </div>
                     </div>
                 </div>

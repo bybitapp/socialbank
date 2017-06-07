@@ -2,45 +2,22 @@ import React from 'react'
 import Modal from 'react-modal'
 import { compose } from 'recompose'
 import { reduxForm, Field } from 'redux-form'
-import { addProject } from '../actions'
-import Input from './Input'
-import TextField from './TextField'
-import Select from '../components/Select'
+import { closeProject } from '../actions'
 import { SubmissionError } from 'redux-form'
-
-const projectAccess = [
-  {name: 'public', id: 'public'},
-  {name: 'donors', id: 'donors'},
-  {name: 'private', id: 'private'}
-]
 
 const customStyles = {
     content : {top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', padding: '5px', transform: 'translate(-50%, -50%)'},
     overlay : {zIndex: 4}
 }
 
-const validate = values => {
-    const errors = {}
-    if (!values.name) {
-        errors.name = 'Required'
-    } else if (values.name.length > 30) {
-        errors.name = 'Must be 30 characters or less'
-    }
-    if (!values.description) {
-        errors.description = 'Required'
-    }
-    return errors
-}
-
 const enhance = compose(
   reduxForm({
-    form: 'projectForm',
-    validate,
+    form: 'projectCloseForm',
     onSubmit: (values, dispatch, ownProps) => {
       return new Promise((resolve, reject) => {
-        dispatch(addProject(values, (_error) => {
+        dispatch(closeProject(values, (_error) => {
           if(!_error) {
-            dispatch(ownProps.reset('projectForm'))
+            dispatch(ownProps.reset('projectCloseForm'))
             ownProps.handleClose()
             resolve()
           } else {
@@ -52,11 +29,11 @@ const enhance = compose(
   })
 )
 
-class ProjectForm extends React.Component {
+class ProjectCloseForm extends React.Component {
 
   onCancel() {
     const { handleClose, dispatch } = this.props
-    dispatch(this.props.reset('projectForm'))
+    dispatch(this.props.reset('projectCloseForm'))
     handleClose()
   }
 
@@ -69,13 +46,13 @@ class ProjectForm extends React.Component {
           isOpen={open}
           onRequestClose={handleClose}
           style={customStyles}
-          contentLabel="Project"
+          contentLabel="Close Project"
         >
         <form onSubmit={handleSubmit}>
             <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header sb-modal-form">
               <header className="mdl-layout__header">
                 <div className="mdl-layout__header-row">
-                  <span className="mdl-layout-title">Project</span>
+                  <span className="mdl-layout-title">Close Project</span>
                   <div className="mdl-layout-spacer"></div>
                 </div>
               </header>
@@ -83,16 +60,14 @@ class ProjectForm extends React.Component {
                 <div className="page-content" style={styleCenter}>
                   {error && <span className="sb-error">{error}</span>}
                   <Field name="pid" type="hidden" component="input" />
-                  <Field name="name" label="Project Name" component={Input} />
-                  <Field name="access" label="Project Access" component={Select} items={projectAccess} />
-                  <Field name="description" label="Description" component={TextField} />
+                  <p>Do you want to close selected project ?</p>
                 </div>
               </main>
               <footer className="sb-footer">
                 <div className="mdl-mega-footer__bottom-section">
                   <ul className="mdl-mega-footer__link-list">
-                    <li><button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={this.onCancel.bind(this)}>Cancel</button></li>
-                    <li><button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">Ok</button></li>
+                    <li><button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={this.onCancel.bind(this)}>No</button></li>
+                    <li><button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">Yes</button></li>
                   </ul>
                 </div>
               </footer>
@@ -103,4 +78,4 @@ class ProjectForm extends React.Component {
   }
 }
 
-export default enhance(ProjectForm)
+export default enhance(ProjectCloseForm)
