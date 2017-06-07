@@ -7,8 +7,8 @@ import {IBAN_CODE, SWIFT_CODE} from '../constants/Validation'
 
 const validate = values => {
     const errors = {}
-    if (!values.accountOwner) {
-        errors.accountOwner = 'Required'
+    if (!values.owner) {
+        errors.owner = 'Required'
     }
     if (!values.bankName) {
         errors.bankName = 'Required'
@@ -59,7 +59,7 @@ const enhance = compose(
 const updateData = (organization, dispatch) => {
   const { bankAccount } = organization
   if (organization.bankAccount) {
-    dispatch(change('updateBank', 'accountOwner', bankAccount.owner));
+    dispatch(change('updateBank', 'owner', bankAccount.owner));
     dispatch(change('updateBank', 'bankName', bankAccount.bankName));
     dispatch(change('updateBank', 'ibanCode', bankAccount.ibanCode));
     dispatch(change('updateBank', 'swiftCode', bankAccount.swiftCode));
@@ -92,7 +92,7 @@ class UpdateBank extends React.Component {
               <form onSubmit={handleSubmit}>
               <div className="mdl-grid">
                   <div className="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
-                      <Field name="accountOwner" label="Account Owner" component={Input} />
+                      <Field name="owner" label="Account Owner" component={Input} />
                       <Field name="bankName" label="Bank Name" component={Input} />
                   </div>
                   <div className="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
