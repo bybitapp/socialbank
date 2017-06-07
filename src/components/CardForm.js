@@ -20,19 +20,35 @@ const customStyles = {
     }
 }
 
+const validate = values => {
+    const errors = {}
+    if (!values.cardName) {
+        errors.name = 'Required'
+    }
+    if (!values.cardBrand) {
+        errors.description = 'Required'
+    }
+    return errors
+}
+
 const enhance = compose(
   reduxForm({
     form: 'addCard',
+    validate,
     onSubmit: (values, dispatch, ownProps) => {
-      dispatch(addCard(values, () => {
+      console.log(ownProps)
+      if(ownProps.projectId) {
+        values.projectId = ownProps.projectId
+        dispatch(addCard(values, () => {
           dispatch(ownProps.reset('addCard'))
           ownProps.handleClose()
-      }))
+        }))
+      }
     }
   })
 )
 
-class AddCardForm extends React.Component {
+class CardForm extends React.Component {
 
     render() {
         const { handleClose, open, handleSubmit } = this.props
@@ -54,15 +70,8 @@ class AddCardForm extends React.Component {
                   </header>
                   <main className="mdl-layout__content">
                     <div className="page-content">
-                        <Field name="cardName" label="Name On Card" component={Input} />
-                        <Field name="maxNumberOfLoads" label="Max. Number of Loads" component={Input} />
-                        <Field name="maxNumberOfSpends" label="Max. Number of Spends" component={Input} />
-                        <input id="demo-menu-lower-left" className="mdl-button mdl-js-buttons" value="Card Brand" type="button"/>
-                        <ul className="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect"
-                            htmlFor="demo-menu-lower-left">
-                          <li className="mdl-menu__item">Master Card</li>
-                          <li className="mdl-menu__item">Visa</li>
-                        </ul>
+                        <Field name="friendlyName" label="Friendly Card's Name" component={Input} />
+                        <Field name="nameOnCard" label="Name On Card" component={Input} />
                     </div>
                   </main>
                   <footer className="sb-footer">
@@ -80,4 +89,4 @@ class AddCardForm extends React.Component {
     }
 }
 
-export default enhance(AddCardForm)
+export default enhance(CardForm)
