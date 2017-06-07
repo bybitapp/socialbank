@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { getCards } from '../actions'
-import AddCardForm from '../components/AddCardForm'
+import CardForm from '../components/CardForm'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
@@ -119,7 +119,7 @@ class Cards extends React.Component {
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
           <Header />
-          <AddCardForm open={(modal === 'cardModal')} handleClose={() => setModal(null)} />
+          <CardForm open={(modal === 'cardModal')} handleClose={() => setModal(null)} projectId={selectedProject}/>
           <main className="mdl-layout__content">
             <div className="page-content">
                 <div className="mdl-grid">
