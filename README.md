@@ -33,9 +33,9 @@ A full set of guidance documents including snippets of example code can be found
 
 Full names and descriptions should be stored in our internal database
 
-* External Accounts   - SOCIALBANK.[OrganizationUUID]
-* Managed Accounts    - SOCIALBANK.[OrganizationUUID].[ProjectUUID]
-* Virtual Cards       - SOCIALBANK.[OrganizationUUID].[ProjectUUID].[CardUUID]
+* External Accounts   - SOCIALBANK.uuid()
+* Managed Accounts    - SOCIALBANK.uuid()
+* Virtual Cards       - SOCIALBANK.uuid()
 
 ## TODO
 
@@ -55,4 +55,3 @@ Full names and descriptions should be stored in our internal database
 * Langing page with proper content
 
 Please feel free to add more taks if you thinking that has to be done
-
