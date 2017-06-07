@@ -1,7 +1,7 @@
 import React from 'react'
 import Modal from 'react-modal'
 import { compose } from 'recompose'
-import { reduxForm, Field } from 'redux-form'
+import { reduxForm, Field, change } from 'redux-form'
 import { addProject } from '../actions'
 import Input from './Input'
 import TextField from './TextField'
@@ -60,6 +60,13 @@ class ProjectForm extends React.Component {
     handleClose()
   }
 
+  componentDidMount() {
+    const { account, dispatch } = this.props
+    if (account && account.organization) {
+      dispatch(change('projectForm', 'oid', account.organization._id));
+    }
+  }
+
   render() {
     const styleCenter = {textAlign: 'center'}
     const { handleClose, open, handleSubmit, error } = this.props
@@ -83,6 +90,7 @@ class ProjectForm extends React.Component {
                 <div className="page-content" style={styleCenter}>
                   {error && <span className="sb-error">{error}</span>}
                   <Field name="pid" type="hidden" component="input" />
+                  <Field name="oid" type="hidden" component="input" />
                   <Field name="name" label="Project Name" component={Input} />
                   <Field name="access" label="Project Access" component={Select} items={projectAccess} />
                   <Field name="description" label="Description" component={TextField} />

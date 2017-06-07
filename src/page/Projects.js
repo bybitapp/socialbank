@@ -110,7 +110,7 @@ class Projects extends React.Component {
     const stylePadding = {padding: '15px'}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
-    const { projects, modal, setModal } = this.props
+    const { projects, modal, setModal, account } = this.props
 
     const actions = [
       {icon: 'attach_money', onclick: this.onDeposit},
@@ -121,7 +121,7 @@ class Projects extends React.Component {
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
           <Header />
-          <ProjectForm open={(modal === 'projectModal')} handleClose={() => setModal(null)} />
+          <ProjectForm open={(modal === 'projectModal')} handleClose={() => setModal(null)} account={account}/>
           <ProjectCloseForm open={(modal === 'projectCloseModal')} handleClose={() => setModal(null)} />
           <ProjectDepositForm open={(modal === 'projectDepositModal')} handleClose={() => setModal(null)} />
           <main className="mdl-layout__content">
