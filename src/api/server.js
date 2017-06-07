@@ -26,6 +26,16 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
+  closeProject: (values, cb) => {
+      axios.post('/api/projects/delete', values)
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
+  depositProject: (values, cb) => {
+      axios.post('/api/projects/deposit', values)
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
   addCard: (values, cb) => {
       axios.post('/api/cards/add', values)
       .then((res) => cb(null, res.data))

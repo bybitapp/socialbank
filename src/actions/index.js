@@ -49,10 +49,37 @@ export const addProject = (project, cb) => (dispatch, getState) => {
   server.addProject(project, (ex, project) => {
     if (!ex) {
         dispatch({type: types.ADD_PROJECT_SUCCESS, project})
+    } else {
+      // Replace the line above with line below to rollback on failure:
+      // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
+      cb('Add Failed!');
     }
-    // Replace the line above with line below to rollback on failure:
-    // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
-    cb();
+  })
+}
+
+export const closeProject = (project, cb) => (dispatch, getState) => {
+  server.closeProject(project, (ex, project) => {
+    if (!ex) {
+        dispatch({type: types.CLOSE_PROJECT_SUCCESS, project})
+        cb(null, project)
+    } else {
+      // Replace the line above with line below to rollback on failure:
+      // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
+      cb('Close Failed!')
+    }
+  })
+}
+
+export const depositProject = (project, cb) => (dispatch, getState) => {
+  server.depositProject(project, (ex, project) => {
+    if (!ex) {
+        dispatch({type: types.DEPOSIT_PROJECT_SUCCESS, project})
+        cb(null, project)
+    } else {
+      // Replace the line above with line below to rollback on failure:
+      // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
+      cb('Deposit Failed!')
+    }
   })
 }
 

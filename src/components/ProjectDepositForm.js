@@ -2,17 +2,9 @@ import React from 'react'
 import Modal from 'react-modal'
 import { compose } from 'recompose'
 import { reduxForm, Field } from 'redux-form'
-import { addProject } from '../actions'
+import { depositProject } from '../actions'
 import Input from './Input'
-import TextField from './TextField'
-import Select from '../components/Select'
 import { SubmissionError } from 'redux-form'
-
-const projectAccess = [
-  {name: 'public', id: 'public'},
-  {name: 'donors', id: 'donors'},
-  {name: 'private', id: 'private'}
-]
 
 const customStyles = {
     content : {top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', padding: '5px', transform: 'translate(-50%, -50%)'},
@@ -21,26 +13,23 @@ const customStyles = {
 
 const validate = values => {
     const errors = {}
-    if (!values.name) {
+    if (!values.amount) {
         errors.name = 'Required'
-    } else if (values.name.length > 30) {
-        errors.name = 'Must be 30 characters or less'
-    }
-    if (!values.description) {
-        errors.description = 'Required'
+    } else if (isNaN(Number(values.amount))) {
+        errors.amount = 'Must be a number'
     }
     return errors
 }
 
 const enhance = compose(
   reduxForm({
-    form: 'projectForm',
+    form: 'projectDepositForm',
     validate,
     onSubmit: (values, dispatch, ownProps) => {
       return new Promise((resolve, reject) => {
-        dispatch(addProject(values, (_error) => {
+        dispatch(depositProject(values, (_error) => {
           if(!_error) {
-            dispatch(ownProps.reset('projectForm'))
+            dispatch(ownProps.reset('projectDepositForm'))
             ownProps.handleClose()
             resolve()
           } else {
@@ -52,11 +41,11 @@ const enhance = compose(
   })
 )
 
-class ProjectForm extends React.Component {
+class ProjectDepositForm extends React.Component {
 
   onCancel() {
     const { handleClose, dispatch } = this.props
-    dispatch(this.props.reset('projectForm'))
+    dispatch(this.props.reset('projectDepositForm'))
     handleClose()
   }
 
@@ -69,13 +58,13 @@ class ProjectForm extends React.Component {
           isOpen={open}
           onRequestClose={handleClose}
           style={customStyles}
-          contentLabel="Project"
+          contentLabel="Project Deposit"
         >
         <form onSubmit={handleSubmit}>
             <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header sb-modal-form">
               <header className="mdl-layout__header">
                 <div className="mdl-layout__header-row">
-                  <span className="mdl-layout-title">Project</span>
+                  <span className="mdl-layout-title">Project Deposit</span>
                   <div className="mdl-layout-spacer"></div>
                 </div>
               </header>
@@ -83,9 +72,12 @@ class ProjectForm extends React.Component {
                 <div className="page-content" style={styleCenter}>
                   {error && <span className="sb-error">{error}</span>}
                   <Field name="pid" type="hidden" component="input" />
-                  <Field name="name" label="Project Name" component={Input} />
-                  <Field name="access" label="Project Access" component={Select} items={projectAccess} />
-                  <Field name="description" label="Description" component={TextField} />
+                  <h5>External account</h5>
+                  <Field name="bank" label="Bank Name" component={Input} disabled={true} />
+                  <Field name="iban" label="Iban Code" component={Input} disabled={true} />
+                  <h5>Project</h5>
+                  <Field name="name" label="Project Name" component={Input} disabled={true} />
+                  <Field name="amount" label="Amount" component={Input} />
                 </div>
               </main>
               <footer className="sb-footer">
@@ -103,4 +95,4 @@ class ProjectForm extends React.Component {
   }
 }
 
-export default enhance(ProjectForm)
+export default enhance(ProjectDepositForm)

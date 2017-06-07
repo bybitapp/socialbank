@@ -6,7 +6,7 @@ import MenuSideBar from '../components/MenuSideBar'
 import UpdateAddress from '../components/UpdateAddress'
 import UpdateBank from '../components/UpdateBank'
 import UpdatePassword from '../components/UpdatePassword'
-import GeneralInformation from '../components/GeneralInformation'
+import GeneralData from '../components/GeneralData'
 
 class Details extends React.Component {
 
@@ -25,7 +25,7 @@ class Details extends React.Component {
                     </div>
                     <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
                         <div style={stylePadding}>
-                            <GeneralInformation />
+                            <GeneralData />
                             <UpdateAddress />
                             <UpdateBank />
                             <UpdatePassword />
