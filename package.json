@@ -8,7 +8,7 @@
     "node": ">=7.0.0"
   },
   "scripts": {
-    "dev": "concurrently \"PORT=8088 NODE_PATH=. node server.js\" \"react-scripts start\"",
+    "dev": "concurrently \"PORT=8088 NODE_PATH=. nodemon --watch lib server.js\" \"react-scripts start\"",
     "start": "NODE_PATH=. node server.js",
     "build": "react-scripts build",
     "test": "NODE_PATH=. react-scripts test --env=jsdom",
@@ -53,12 +53,13 @@
     "uuid": "^3.0.1"
   },
   "devDependencies": {
-    "mocha": "^3.4.2",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-mocha": "^4.9.0",
     "eslint-plugin-node": "^5.0.0",
     "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1"
+    "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^3.4.2",
+    "nodemon": "^1.11.0"
   }
 }

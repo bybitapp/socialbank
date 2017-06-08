@@ -33,8 +33,8 @@ const ProjectItem = ({project, actions}) => (
     <tr>
       <td className="mdl-data-table__cell--non-numeric">{ project.name }</td>
       <td>{ dateFormat(project.created) }</td>
-      <td>{ project.balances.actual }</td>
-      <td>{ project.cards }</td>
+      <td>{ (project.balances) ? project.balances.actual : 0 }</td>
+      <td>{ project.access }</td>
       <td className="sb-menu-table">
         { actions.map((action)=>ActionButton(project.id, action)) }
       </td>
@@ -47,7 +47,7 @@ const ProjectTable = ({projects = [], styleTable, actions}) => (
           <th className="mdl-data-table__cell--non-numeric">Name</th>
           <th>Date Created</th>
           <th>Budget</th>
-          <th>Virtual Cards</th>
+          <th>Access</th>
           <th>Actions</th>
         </tr>
       </thead>
