@@ -1,5 +1,5 @@
 import { RECEIVE_PROJECTS, ADD_PROJECT_SUCCESS, SELECT_CURRENT_PROJECT, LOGIN_SUCCESS } from '../constants/ActionTypes'
-import { CLOSE_PROJECT_SUCCESS, UPDATE_PROJECT_SUCCESS } from '../constants/ActionTypes'
+import { CLOSE_PROJECT_SUCCESS, UPDATE_PROJECT_SUCCESS, DEPOSIT_PROJECT_SUCCESS } from '../constants/ActionTypes'
 
 export const projects = (state = [], action) => {
   switch (action.type) {
@@ -20,7 +20,14 @@ export const projects = (state = [], action) => {
       })
       return newProjects
     case CLOSE_PROJECT_SUCCESS:
-      return state.filter(item => item.id !== action.project.id)
+      return state.filter(item => item.id !== action.projectId)
+    case DEPOSIT_PROJECT_SUCCESS:
+      return state.map(item => {
+        if (item.id === action.data.projectId) {
+          item.balances.actual += action.data.amount
+        }
+        return item
+      })
     case SELECT_CURRENT_PROJECT:
       return state.map((project) => {
           if (project.id === action.id) {
