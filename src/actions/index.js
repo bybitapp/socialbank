@@ -46,14 +46,21 @@ export const login = (account, cb) => (dispatch, getState) => {
 }
 
 export const addProject = (project, cb) => (dispatch, getState) => {
-  server.addProject(project, (ex, project) => {
-    if (!ex) {
-        dispatch({type: types.ADD_PROJECT_SUCCESS, project})
-        cb(null, project)
+  server.addProject(project, (ex, data) => {
+    if (project.pid) {
+      if (!ex) {
+        dispatch({type: types.UPDATE_PROJECT_SUCCESS, data})
+        cb(null, data)
+      } else {
+        cb('Update Failed!');
+      }
     } else {
-      // Replace the line above with line below to rollback on failure:
-      // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
-      cb('Add Failed!');
+      if (!ex) {
+        dispatch({type: types.ADD_PROJECT_SUCCESS, data})
+        cb(null, data)
+      } else {
+        cb('Add Failed!');
+      }
     }
   })
 }
