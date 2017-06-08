@@ -39,19 +39,15 @@ Full names and descriptions should be stored in our internal database
 
 ## TODO
 
-* mongodb (noSQL) integration
 * React authorization and permissions (authorization session)
 * login to app (authorization session)
-* create project (managed account)
 * create virtual cards
 * list of virtual cards
-* transfer from external to project
 * transfer from project to virtual cards
 * list of transaction history per project
-* get account details
 * map of organizations
 * open page about organization and projects
 * contact form on page contact
 * Langing page with proper content
 
-Please feel free to add more taks if you thinking that has to be done
+Please feel free to add more task if you thinking that has to be done
