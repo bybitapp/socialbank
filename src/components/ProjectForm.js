@@ -66,7 +66,7 @@ class ProjectForm extends React.Component {
       dispatch(change('projectForm', 'oid', account.organization._id));
     }
   }
-  
+
   componentDidUpdate(prevProps) {
     const { account, dispatch } = this.props
     if (account && account.organization) {
