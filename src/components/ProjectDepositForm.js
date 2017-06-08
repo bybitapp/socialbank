@@ -27,7 +27,12 @@ const enhance = compose(
     validate,
     onSubmit: (values, dispatch, ownProps) => {
       return new Promise((resolve, reject) => {
-        dispatch(depositProject(values, (_error) => {
+        const params = {
+          amount: values.amount,
+          pid: values.pid,
+          oid: values.oid
+        }
+        dispatch(depositProject(params, (_error) => {
           if(!_error) {
             dispatch(ownProps.reset('projectDepositForm'))
             ownProps.handleClose()
@@ -72,6 +77,7 @@ class ProjectDepositForm extends React.Component {
                 <div className="page-content" style={styleCenter}>
                   {error && <span className="sb-error">{error}</span>}
                   <Field name="pid" type="hidden" component="input" />
+                  <Field name="oid" type="hidden" component="input" />
                   <h5>External account</h5>
                   <Field name="bank" label="Bank Name" component={Input} disabled={true} />
                   <Field name="iban" label="Iban Code" component={Input} disabled={true} />
