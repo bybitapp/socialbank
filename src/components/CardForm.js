@@ -4,6 +4,7 @@ import { compose } from 'recompose'
 import { reduxForm, Field } from 'redux-form'
 import { addCard } from '../actions'
 import Input from './Input'
+import { SubmissionError } from 'redux-form'
 
 const customStyles = {
     content : {
@@ -22,11 +23,8 @@ const customStyles = {
 
 const validate = values => {
     const errors = {}
-    if (!values.cardName) {
+    if (!values.name) {
         errors.name = 'Required'
-    }
-    if (!values.cardBrand) {
-        errors.description = 'Required'
     }
     return errors
 }
@@ -36,14 +34,19 @@ const enhance = compose(
     form: 'addCard',
     validate,
     onSubmit: (values, dispatch, ownProps) => {
-      console.log(ownProps)
-      if(ownProps.projectId) {
-        values.projectId = ownProps.projectId
-        dispatch(addCard(values, () => {
-          dispatch(ownProps.reset('addCard'))
-          ownProps.handleClose()
-        }))
-      }
+      return new Promise((resolve, reject) => {
+        if(ownProps.projectId) {
+          values.projectId = ownProps.projectId
+          dispatch(addCard(values, (_error) => {
+            if (!_error) {
+              dispatch(ownProps.reset('addCard'))
+              ownProps.handleClose()
+            } else {
+              reject(new SubmissionError({_error}))
+            }
+          }))
+        }
+      })
     }
   })
 )
@@ -51,27 +54,28 @@ const enhance = compose(
 class CardForm extends React.Component {
 
     render() {
-        const { handleClose, open, handleSubmit } = this.props
+        const styleCenter = {textAlign: 'center'}
+        const { handleClose, open, handleSubmit, error } = this.props
 
         return (
             <Modal
               isOpen={open}
               onRequestClose={handleClose}
               style={customStyles}
-              contentLabel="Add Card"
+              contentLabel="Card Form"
             >
             <form onSubmit={handleSubmit}>
                 <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header sb-modal-form">
                   <header className="mdl-layout__header">
                     <div className="mdl-layout__header-row">
-                      <span className="mdl-layout-title">Add Card</span>
+                      <span className="mdl-layout-title">Card Form</span>
                       <div className="mdl-layout-spacer"></div>
                     </div>
                   </header>
                   <main className="mdl-layout__content">
-                    <div className="page-content">
-                        <Field name="friendlyName" label="Friendly Card's Name" component={Input} />
-                        <Field name="nameOnCard" label="Name On Card" component={Input} />
+                    <div className="page-content" style={styleCenter}>
+                      {error && <span className="sb-error">{error}</span>}
+                      <Field name="name" label="Name On Card" component={Input} />
                     </div>
                   </main>
                   <footer className="sb-footer">
