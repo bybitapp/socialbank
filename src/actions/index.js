@@ -14,8 +14,8 @@ export const getProjects = () => dispatch => {
 }
 
 export const getCards = (projId) => dispatch => {
-  server.getCards(projId, (ex, cards) => {
-    dispatch({type: types.RECEIVE_CARDS, cards})
+  server.getCards(projId, (ex, data) => {
+    dispatch({type: types.RECEIVE_CARDS, data})
   })
 }
 
@@ -92,13 +92,15 @@ export const depositProject = (project, cb) => (dispatch, getState) => {
 }
 
 export const addCard = (card, cb) => (dispatch, getState) => {
-  server.addCard(card, (ex, card) => {
+  server.addCard(card, (ex, data) => {
     if (!ex) {
-        dispatch({type: types.ADD_CARD_SUCCESS, card})
+        dispatch({type: types.ADD_CARD_SUCCESS, data})
+        cb(null, data)
+    } else {
+      // Replace the line above with line below to rollback on failure:
+      // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
+      cb('Add Failed!');
     }
-    // Replace the line above with line below to rollback on failure:
-    // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
-    cb();
   })
 }
 

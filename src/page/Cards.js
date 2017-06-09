@@ -1,7 +1,6 @@
 import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { getCards } from '../actions'
 import CardForm from '../components/CardForm'
@@ -10,19 +9,16 @@ import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 import Select from '../components/Select'
 
-const stateLabel = {
-  "NO_MANAGED_CARD_STATE": {label: 'No state', style: {textAlign:"center", width:"80px", backgroundColor: "gray"}},
-  "PRE_ACTIVE": {label: 'Pre-active', style: {textAlign:"center", width:"80px", backgroundColor: "#B6FCB6"}},
-  "ACTIVE": {label: 'Active', style: {textAlign:"center", width:"80px", backgroundColor: "#98FB98"}},
-  "PRE_DESTROYED": {label: 'Pre-destroyed', style: {textAlign:"center", width:"80px", backgroundColor: "#FBA69C"}},
-  "DESTROYED": {label: 'Destroyed', style: {textAlign:"center", width:"80px", backgroundColor: "#FA8072"}},
-}
-
 const selector = formValueSelector('cards')
 
 function mapStateToProps(state) {
   const { cards, projects, modal } = state
-  const selectedProject = selector(state, 'project')
+  let selectedProject = selector(state, 'project')
+  if (!selectedProject) {
+    if (projects && projects.length) {
+      selectedProject = projects[0].id
+    }
+  }
   return {
     cards,
     projects,
@@ -39,51 +35,44 @@ const enhance = compose(
   })
 )
 
-const ActionLink = ({icon}) => (
-  <Link className="mdl-list__item-primary-content" to={ '/cards/action' }>
-    <i className="material-icons mdl-list__item-avatar sb-icon-list_item">{ icon }</i>
-  </Link>
+const ActionButton = (cid, action) => (
+  <a key={action.icon} className="mdl-list__item-primary-content" onClick={(event)=>action.onclick(cid, event)}>
+    <i className="material-icons mdl-list__item-avatar sb-icon-list_item">{action.icon}</i>
+  </a>
 )
 
-const CardItem = ({card}) => (
+const CardItem = ({card, actions}) => (
     <tr>
-      <td>
-        <span className="mdl-chip" style={stateLabel[card.state].style}>
-          <span className="mdl-chip__text">{stateLabel[card.state].label}</span>
-        </span>
-      </td>
-      <td>{ card.nameOnCard }</td>
+      <td className="mdl-data-table__cell--non-numeric">{ card.name }</td>
       <td>{ card.cardNumber }</td>
       <td>{ card.cardBrand }</td>
-      <td>{ `${card.expiryPeriod.periodLength} ${card.expiryPeriod.timeUnit.toLowerCase()}s` }</td>
-      <td>{ `${card.currentNumberOfLoads} / ${card.maxNumberOfLoads}` }</td>
-      <td>{ `${card.currentNumberOfSpends} / ${card.maxNumberOfSpends}` }</td>
+      <td>{ card.startDate }</td>
+      <td>{ card.endDate }</td>
+      <td>{ card.state }</td>
+      <td>{ card.balances.actual }</td>
       <td className="sb-menu-table">
-        <ActionLink icon="edit" />
-        <ActionLink icon="block" />
-        <ActionLink icon="delete" />
-        <ActionLink icon="details" />
+        { actions.map((action)=>ActionButton(card.id, action)) }
       </td>
     </tr>)
 
-const CardTable = ({cards = [], styleTable}) => (
+const CardTable = ({cards = [], styleTable, actions}) => (
     <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
       <thead>
         <tr>
-          <th>State</th>
-          <th>Name on Card</th>
+          <th className="mdl-data-table__cell--non-numeric">Name</th>
           <th>Card Number</th>
-          <th>Card Brand</th>
-          <th>Expirity</th>
-          <th>Loads / Total</th>
-          <th>Spends / Total</th>
+          <th>Brand</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>State</th>
+          <th>Balance</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
       { Object.keys(cards).map((key, index) => {
         const c = cards[key]
-        return (<CardItem key={key} card={c}/>)
+        return (<CardItem key={key} card={c} actions={actions}/>)
       })}
       </tbody>
     </table>)
@@ -95,10 +84,54 @@ class Cards extends React.Component {
     this.onChangeProject = this.onChangeProject.bind(this)
   }
 
+  componentDidMount() {
+    const { dispatch, selectedProject } = this.props
+    if (selectedProject) {
+      dispatch(getCards(selectedProject))
+    }
+  }
+
   onChangeProject(e) {
     const { value } = e.target
     const { dispatch } = this.props
     dispatch(getCards(value))
+  }
+
+  onEdit (pid, event) {
+    // const { projects, setModal, dispatch } = this.props
+    // const project = projects.find((project)=>{return project.id === pid})
+    // if (project) {
+    //   dispatch(change('projectForm', 'pid', project.id));
+    //   dispatch(change('projectForm', 'name', project.name));
+    //   dispatch(change('projectForm', 'description', project.description));
+    //   dispatch(change('projectForm', 'access', project.access));
+    //   setModal('projectModal')
+    // }
+  }
+
+  onDestroy (pid, event) {
+    // const { projects, setModal, dispatch } = this.props
+    // const project = projects.find((project)=>{return project.id === pid})
+    // if (project) {
+    //   dispatch(change('projectCloseForm', 'pid', project.id));
+    //   setModal('projectCloseModal')
+    // }
+  }
+
+  onTransfer (pid, event) {
+    // const { projects, account, setModal, dispatch } = this.props
+    // const project = projects.find((project)=>{return project.id === pid})
+    // if (project) {
+    //   if (account.organization) {
+    //     const { bankAccount } = account.organization
+    //     dispatch(change('projectDepositForm', 'pid', project.id));
+    //     dispatch(change('projectDepositForm', 'oid', account.organization._id));
+    //     dispatch(change('projectDepositForm', 'bank', bankAccount.bankName));
+    //     dispatch(change('projectDepositForm', 'iban', bankAccount.ibanCode));
+    //     dispatch(change('projectDepositForm', 'name', project.name));
+    //     setModal('projectDepositModal')
+    //   }
+    // }
   }
 
   render () {
@@ -115,6 +148,12 @@ class Cards extends React.Component {
         name: item.name
       }
     })
+
+    const actions = [
+      {icon: 'attach_money', onclick: this.onTransfer},
+      {icon: 'mode_edit', onclick: this.onEdit},
+      {icon: 'delete', onclick: this.onDestroy}
+    ]
 
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
@@ -135,12 +174,12 @@ class Cards extends React.Component {
                             </div>
                             <div className="mdl-cell mdl-cell--5-col" style={styleButton}>
                                 <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-                                  disabled={!selectedProject} onClick={() => setModal('cardModal')}>
+                                  disabled={!cards.length} onClick={() => setModal('cardModal')}>
                                     Add Card
                                 </button>
                             </div>
                           </div>
-                          <CardTable cards={cards} styleTable={styleTable} />
+                          <CardTable cards={cards} styleTable={styleTable} actions={actions} />
                         </div>
                     </div>
                 </div>
