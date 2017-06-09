@@ -19,6 +19,12 @@ export const getCards = (projId) => dispatch => {
   })
 }
 
+export const getHistory = (projId) => dispatch => {
+  server.getHistory(projId, (ex, data) => {
+    dispatch({type: types.RECEIVE_HISTORY, data})
+  })
+}
+
 export const registerAccount = (account, cb) => (dispatch, getState) => {
   return server.registerAccount(account, (ex, account) => {
     if (!ex) {
