@@ -52,12 +52,10 @@ const CardItem = ({card}) => (
           <span className="mdl-chip__text">{stateLabel[card.state].label}</span>
         </span>
       </td>
-      <td>{ card.nameOnCard }</td>
+      <td className="mdl-data-table__cell--non-numeric">{ card.name }</td>
+      <td className="mdl-data-table__cell--non-numeric">{ card.nameOnCard }</td>
       <td>{ card.cardNumber }</td>
-      <td>{ card.cardBrand }</td>
-      <td>{ `${card.expiryPeriod.periodLength} ${card.expiryPeriod.timeUnit.toLowerCase()}s` }</td>
-      <td>{ `${card.currentNumberOfLoads} / ${card.maxNumberOfLoads ? card.maxNumberOfLoads : '-'}` }</td>
-      <td>{ `${card.currentNumberOfSpends} / ${card.maxNumberOfSpends ? card.maxNumberOfSpends : '-'}` }</td>
+      <td>{ `${card.expiryPeriod.periodLength} ${card.expiryPeriod.timeUnit.toLowerCase()}` }</td>
       <td className="sb-menu-table">
         <ActionLink icon="edit" />
         <ActionLink icon="block" />
@@ -70,13 +68,11 @@ const CardTable = ({cards = [], styleTable}) => (
     <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
       <thead>
         <tr>
-          <th>State</th>
-          <th>Name on Card</th>
+          <th className="mdl-data-table__cell--non-numeric">State</th>
+          <th className="mdl-data-table__cell--non-numeric">Card Name</th>
+          <th className="mdl-data-table__cell--non-numeric">Name on Card</th>
           <th>Card Number</th>
-          <th>Card Brand</th>
           <th>Expirity</th>
-          <th>Loads / Total</th>
-          <th>Spends / Total</th>
           <th>Actions</th>
         </tr>
       </thead>
