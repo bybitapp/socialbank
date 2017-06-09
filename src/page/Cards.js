@@ -174,7 +174,7 @@ class Cards extends React.Component {
                             </div>
                             <div className="mdl-cell mdl-cell--5-col" style={styleButton}>
                                 <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-                                  disabled={!cards.length} onClick={() => setModal('cardModal')}>
+                                  disabled={!selectedProject} onClick={() => setModal('cardModal')}>
                                     Add Card
                                 </button>
                             </div>
