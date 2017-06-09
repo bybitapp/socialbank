@@ -41,13 +41,11 @@ Full names and descriptions should be stored in our internal database
 
 * React authorization and permissions (authorization session)
 * login to app (authorization session)
-* create virtual cards
-* list of virtual cards
 * transfer from project to virtual cards
 * list of transaction history per project
 * map of organizations
 * open page about organization and projects
 * contact form on page contact
-* Langing page with proper content
+* Landing page with proper content
 
 Please feel free to add more task if you thinking that has to be done
