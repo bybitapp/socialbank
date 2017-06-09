@@ -2,6 +2,7 @@ import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
+import { getHistory } from '../actions'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
@@ -11,7 +12,12 @@ const selector = formValueSelector('history')
 
 function mapStateToProps(state) {
   const { projects } = state
-  const selectedProject = selector(state, 'project')
+  let selectedProject = selector(state, 'project')
+  if (!selectedProject) {
+    if (projects && projects.length) {
+      selectedProject = projects[0].id
+    }
+  }
   return {
     projects,
     selectedProject
@@ -33,10 +39,17 @@ class History extends React.Component {
     this.onChangeProject = this.onChangeProject.bind(this)
   }
 
+  componentDidMount() {
+    const { dispatch, selectedProject } = this.props
+    if (selectedProject) {
+      dispatch(getHistory(selectedProject))
+    }
+  }
+
   onChangeProject(e) {
-    // const { value } = e.target
-    // const { dispatch } = this.props
-    //dispatch(getCards(value))
+    const { value } = e.target
+    const { dispatch } = this.props
+    dispatch(getHistory(value))
   }
 
   render () {
@@ -45,8 +58,9 @@ class History extends React.Component {
     const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0}
     const stylePadding = {padding: '15px'}
 
-    const { projects } = this.props
-
+    const { projects, selectedProject } = this.props
+    const project = projects.find(p => p.id === selectedProject)
+    const balance = (project) ? project.balances.actual : 0
     const projectList = projects.map((item, index) => {
       return {
         id: item.id,
@@ -71,7 +85,7 @@ class History extends React.Component {
                                     onChange={this.onChangeProject} />
                                 </div>
                                 <div className="mdl-cell mdl-cell--3-col">
-                                    <h5 style={styleH3Right}>£100.000</h5>
+                                    <h5 style={styleH3Right}>£{balance}</h5>
                                 </div>
                             </div>
                             <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>

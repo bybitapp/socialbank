@@ -45,5 +45,10 @@ export default {
     axios.get(`/api/cards/list/p/${projId}`)
     .then((res) => cb(null, res.data))
     .catch((e) => cb(e))
+  },
+  getHistory: (projId, cb) => {
+    axios.get(`/api/history/list/p/${projId}`)
+    .then((res) => cb(null, res.data))
+    .catch((e) => cb(e))
   }
 }
