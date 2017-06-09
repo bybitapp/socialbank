@@ -56,8 +56,8 @@ const CardItem = ({card}) => (
       <td>{ card.cardNumber }</td>
       <td>{ card.cardBrand }</td>
       <td>{ `${card.expiryPeriod.periodLength} ${card.expiryPeriod.timeUnit.toLowerCase()}s` }</td>
-      <td>{ `${card.currentNumberOfLoads} / ${card.maxNumberOfLoads}` }</td>
-      <td>{ `${card.currentNumberOfSpends} / ${card.maxNumberOfSpends}` }</td>
+      <td>{ `${card.currentNumberOfLoads} / ${card.maxNumberOfLoads ? card.maxNumberOfLoads : '-'}` }</td>
+      <td>{ `${card.currentNumberOfSpends} / ${card.maxNumberOfSpends ? card.maxNumberOfSpends : '-'}` }</td>
       <td className="sb-menu-table">
         <ActionLink icon="edit" />
         <ActionLink icon="block" />
