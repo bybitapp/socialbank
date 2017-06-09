@@ -42,9 +42,11 @@ Full names and descriptions should be stored in our internal database
 * React authorization and permissions (authorization session)
 * login to app (authorization session)
 * transfer from project to virtual cards
+* destroy card
+* edit with option inactive/active card
 * list of transaction history per project
-* map of organizations
-* open page about organization and projects
+* map of organizations (during creation we should get lat/lng from address)
+* public page about organization and projects (link available from map)
 * contact form on page contact
 * Landing page with proper content
 
