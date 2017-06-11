@@ -31,6 +31,15 @@ var config = {
   },
   google: {
     mapKey: 'AIzaSyCkwfHICB6QowBNjiGBZc12MH2HbdZnHbM'
+  },
+  smtp: {
+    host: 'smtp.zoho.com',
+    port: 465,
+    secure: true,
+    auth: {
+      user: 'contact@socialbank.co',
+      pass: 'SOcialBank123456!'
+    }
   }
 };
 
