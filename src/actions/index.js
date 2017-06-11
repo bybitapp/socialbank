@@ -113,3 +113,16 @@ export const addCard = (card, cb) => (dispatch, getState) => {
 export const selectCurrentProject = id => dispatch => {
   dispatch({type: types.SELECT_CURRENT_PROJECT, id})
 }
+
+export const sendMessage = (contact, cb) => (dispatch, getState) => {
+  server.sendMessage(contact, (ex, data) => {
+    if (!ex) {
+        dispatch({type: types.SEND_MESSAGE_SUCCESS, data})
+        cb(null, data)
+    } else {
+      // Replace the line above with line below to rollback on failure:
+      // dispatch({ type: types.SEND_MESSAGE_FAILURE, projects })
+      cb('Send Message Failed!');
+    }
+  })
+}
