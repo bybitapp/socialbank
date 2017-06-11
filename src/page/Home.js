@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Map from '../components/Map'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import ContactInfo from '../components/ContactInfo'
+import ContactForm from '../components/ContactForm'
 import SubjectBox from '../components/SubjectBox'
 import { Link } from 'react-router-dom'
 import { getOrganizations } from '../actions'
@@ -30,7 +30,6 @@ class Home extends React.Component {
   render () {
 
     const styleHeight = {height: 'inherit'}
-    const styleText = {textAlign: 'justify', padding: '0 50px'}
     const styleButtonBottom= {marginBottom: '40px'}
 
     const { organizations } = this.props
@@ -83,7 +82,7 @@ class Home extends React.Component {
               </div>
               <div className="android-customized-section-image"></div>
             </div>
-            <ContactInfo styleText={styleText}/>
+            <ContactForm />
             <Footer />
           </div>
       </div>)

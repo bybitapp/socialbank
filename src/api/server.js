@@ -50,5 +50,10 @@ export default {
     axios.get(`/api/history/list/p/${projId}`)
     .then((res) => cb(null, res.data))
     .catch((e) => cb(e))
+  },
+  sendMessage: (values, cb) => {
+    axios.post('/api/contacts/send', values)
+    .then((res) => cb(null, res.data))
+    .catch((e) => cb(e))
   }
 }
