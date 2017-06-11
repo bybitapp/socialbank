@@ -121,7 +121,7 @@ export const sendMessage = (contact, cb) => (dispatch, getState) => {
         cb(null, data)
     } else {
       // Replace the line above with line below to rollback on failure:
-      // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
+      // dispatch({ type: types.SEND_MESSAGE_FAILURE, projects })
       cb('Send Message Failed!');
     }
   })
