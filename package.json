@@ -17,6 +17,7 @@
   },
   "proxy": "http://localhost:8088",
   "dependencies": {
+    "@google/maps": "^0.4.0",
     "axios": "^0.16.2",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
