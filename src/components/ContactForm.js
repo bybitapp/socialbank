@@ -48,34 +48,39 @@ class ContactForm extends React.Component {
 
     const styleText = {textAlign: 'justify', padding: '0 50px'}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
+    const styleError = {textAlign: 'center', width: '100%'}
+    const styleH5 = {padding: 0}
+    const styleColor = {backgroundColor: 'white'}
     const { handleSubmit, error } = this.props
 
     return (
-      <div className="page-content">
-        <div className="sb-form-content sb-page" style={styleText}>
-          {error && <span className="sb-error">{error}</span>}
-          <form onSubmit={handleSubmit}>
-            <div className="mdl-grid">
-              <div className="mdl-cell mdl-cell--4-col">
-                    <h5>Connect with us</h5>
+      <div className="android-more-section" style={styleColor}>
+        <div className="page-content">
+          <div style={styleText}>
+            {error && <div style={styleError}><span className="sb-error">{error}</span></div>}
+            <form onSubmit={handleSubmit}>
+              <div className="mdl-grid">
+                <div className="mdl-cell mdl-cell--4-col">
+                      <h5 style={styleH5}>Connect with us</h5>
+                      <br/>
+                      Email: contact@socialbank.co
+                      <br/>
+                      Twitter: <a href="https://twitter.com/socialbankco"> @socialbankco</a>
+                  </div>
+                  <div className="mdl-cell mdl-cell--8-col">
                     <br/>
-                    Email: contact@socialbank.co
-                    <br/>
-                    Twitter: <a href="https://twitter.com/socialbankco"> @socialbankco</a>
-                </div>
-                <div className="mdl-cell mdl-cell--8-col">
-                  <br/>
-                  <Field name="name" label="Name" component={Input} />
-                  <Field name="email" label="Email" component={Input} />
-                  <Field name="message" label="Message" component={TextField} />
-                  <div className="mdl-cell mdl-cell--12-col" style={styleButton}>
-                    <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
-                      Submit
-                    </button>
+                    <Field name="name" label="Name" component={Input} />
+                    <Field name="email" label="Email" component={Input} />
+                    <Field name="message" label="Message" component={TextField} />
+                    <div className="mdl-cell mdl-cell--12-col" style={styleButton}>
+                      <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">
+                        Submit
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
     )
