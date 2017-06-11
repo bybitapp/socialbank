@@ -29,9 +29,9 @@ const enhance = compose(
         validate,
         onSubmit: (values, dispatch, ownProps) => {
           return new Promise((resolve, reject) => {
-              dispatch(sendMessage(values, (_error) => {
+              dispatch(sendMessage(values, (_error, data) => {
                 if (!_error){
-                  alert('success')
+                  alert(data)
                   resolve()
                 } else {
                   reject(new SubmissionError({_error}))
