@@ -35,11 +35,8 @@ class Map extends React.Component {
           const o = organizations[key]
           return (
               <Marker
-                key={o.id}
-                lat={o.lat}
-                lng={o.lng}
+                key={key}
                 text={o.name}
-                icon={o.icon}
                 {...o}/>
           ) ;
       })}
