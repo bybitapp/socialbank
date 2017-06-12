@@ -3,14 +3,16 @@ import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
 import { getHistory, getOrganizationById } from '../actions'
+import { dateFormat } from '../util/date'
+import { isEmpty } from 'ramda'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Select from '../components/Select'
 
-const selector = formValueSelector('organization')
+const selector = formValueSelector('public')
 
 function mapStateToProps(state) {
-  const { organizations } = state
+  const { organizations, history } = state
   const projects = organizations.projects || []
   let selectedProject = selector(state, 'project')
   if (!selectedProject) {
@@ -21,6 +23,7 @@ function mapStateToProps(state) {
   return {
     organizations,
     projects,
+    history,
     selectedProject
   }
 }
@@ -28,9 +31,39 @@ function mapStateToProps(state) {
 const enhance = compose(
   connect(mapStateToProps),
   reduxForm({
-    form: 'organization'
+    form: 'public'
   })
 )
+
+const PublicItem = ({transaction}) => (
+    <tr>
+      <td className="mdl-data-table__cell--non-numeric">{ dateFormat(transaction.datetime) }</td>
+      <td>{ transaction.name}</td>
+      <td>{ transaction.currency }</td>
+      <td>{ transaction.amount }</td>
+      <td>{ transaction.status }</td>
+      <td>{ transaction.type }</td>
+    </tr>)
+
+const PublicTable = ({transactions = [], styleTable}) => (
+    <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
+      <thead>
+        <tr>
+          <th className="mdl-data-table__cell--non-numeric">Date</th>
+          <th>Name</th>
+          <th>Currency</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody>
+      { Object.keys(transactions).map((key, index) => {
+        const transaction = transactions[key]
+        return (<PublicItem key={key} transaction={transaction} />)
+      })}
+      </tbody>
+    </table>)
 
 class Public extends React.Component {
 
@@ -46,12 +79,6 @@ class Public extends React.Component {
     }
   }
 
-    // const { dispatch, selectedProject } = this.props
-    // if (selectedProject) {
-    //   dispatch(getHistory(selectedProject))
-    // }
-  // }
-
   onChangeProject(e) {
     const { value } = e.target
     const { dispatch } = this.props
@@ -60,14 +87,11 @@ class Public extends React.Component {
 
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
-    const styleH3Right = {margin: 0, textAlign: 'right', paddingTop: '25px'}
     const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0}
     const stylePadding = {padding: '15px'}
 
-    const { organizations, projects, selectedProject } = this.props
+    const { history, organizations, projects } = this.props
 
-    const project = projects.find(p => p.id === selectedProject)
-    const balance = (project) ? project.balances.actual : 0
     const projectList = projects.map((item, index) => {
       return {
         id: item.id,
@@ -100,63 +124,22 @@ class Public extends React.Component {
                     </div>
                     <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
                         <div style={stylePadding}>
-                            <div className="mdl-grid">
-                                <div className="mdl-cell mdl-cell--9-col">
-                                  <Field name="project" label="Project Name" component={Select} items={projectList}
-                                    onChange={this.onChangeProject} />
+                          { isEmpty(projects) ?
+                            <p className="sb-no-project">No available projects</p> :
+                            (
+                              <div>
+                                <div className="mdl-grid">
+                                  <div className="mdl-cell mdl-cell--9-col">
+                                    <Field name="project" label="Project Name" component={Select} items={projectList}
+                                      onChange={this.onChangeProject} />
+                                  </div>
+                                  <div className="mdl-cell mdl-cell--3-col">
+                                  </div>
                                 </div>
-                                <div className="mdl-cell mdl-cell--3-col">
-                                    <h5 style={styleH3Right}>£{balance}</h5>
-                                </div>
-                            </div>
-                            <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
-                              <thead>
-                                <tr>
-                                  <th className="mdl-data-table__cell--non-numeric">Material</th>
-                                  <th>Date</th>
-                                  <th>Card Holder</th>
-                                  <th>Unit price</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td className="mdl-data-table__cell--non-numeric">Acrylic (Transparent)</td>
-                                  <td>2017-04-20 16:44:00</td>
-                                  <td>Seweryn Bidolach</td>
-                                  <td>$2.90</td>
-                                </tr>
-                                <tr>
-                                  <td className="mdl-data-table__cell--non-numeric">Plywood (Birch)</td>
-                                  <td>2017-04-20 16:44:00</td>
-                                  <td>Seweryn Bidolach</td>
-                                  <td>$1.25</td>
-                                </tr>
-                                <tr>
-                                  <td className="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-                                  <td>2017-04-20 16:44:00</td>
-                                  <td>Seweryn Bidolach</td>
-                                  <td>$2.35</td>
-                                </tr>
-                                <tr>
-                                  <td className="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-                                  <td>2017-04-20 16:44:00</td>
-                                  <td>Aga Gajownik</td>
-                                  <td>$2.35</td>
-                                </tr>
-                                <tr>
-                                  <td className="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-                                  <td>2017-04-20 16:44:00</td>
-                                  <td>Aga Gajownik</td>
-                                  <td>$2.35</td>
-                                </tr>
-                                <tr>
-                                  <td className="mdl-data-table__cell--non-numeric">Laminate (Gold on Blue)</td>
-                                  <td>2017-04-20 16:44:00</td>
-                                  <td>Seweryn Bidolach</td>
-                                  <td>$2.35</td>
-                                </tr>
-                              </tbody>
-                            </table>
+                                <PublicTable transactions={history} styleTable={styleTable} />
+                              </div>
+                            )
+                          }
                         </div>
                     </div>
                 </div>
