@@ -11,7 +11,7 @@ const enhance = compose(
 class Map extends React.Component {
   static defaultProps = {
     center: {lat: 51.52, lng: -0.085},
-    zoom: 16,
+    zoom: 12,
     options: {scrollwheel: false},
     projects: {}
   };
@@ -35,11 +35,8 @@ class Map extends React.Component {
           const o = organizations[key]
           return (
               <Marker
-                key={o.id}
-                lat={o.lat}
-                lng={o.lng}
+                key={key}
                 text={o.name}
-                icon={o.icon}
                 {...o}/>
           ) ;
       })}
