@@ -1,15 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 class Marker extends React.Component {
 
   static defaultProps = {};
 
-  // TODO when you click on the marker then user shoudl be redirect to organization
-  // page with information about public projects
-
   render () {
     return (
-      <i className="material-icons mdl-list__item-avatar">{this.props.icon}</i>
+      <Link to={ '/public/o/' + this.props.id }>
+        <i className="material-icons sb-map-icon">{this.props.icon}</i>
+      </Link>
     )
   }
 

@@ -48,7 +48,7 @@ const CardItem = ({card, actions}) => (
       <td>{ card.cardBrand }</td>
       <td>{ card.startDate }</td>
       <td>{ card.endDate }</td>
-      <td>{ card.state }</td>
+      <td>{ card.status }</td>
       <td>{ card.balances.actual }</td>
       <td className="sb-menu-table">
         { actions.map((action)=>ActionButton(card.id, action)) }
@@ -64,7 +64,7 @@ const CardTable = ({cards = [], styleTable, actions}) => (
           <th>Brand</th>
           <th>Start</th>
           <th>End</th>
-          <th>State</th>
+          <th>Status</th>
           <th>Balance</th>
           <th>Actions</th>
         </tr>
@@ -141,7 +141,7 @@ class Cards extends React.Component {
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
     const { cards, projects, modal, setModal, selectedProject } = this.props
-
+    console.log(cards);
     const projectList = projects.map((item, index) => {
       return {
         id: item.id,

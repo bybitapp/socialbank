@@ -18,6 +18,7 @@ import Login from './page/Login'
 import Registration from './page/Registration'
 import Details from './page/Details'
 import History from './page/History'
+import Public from './page/Public'
 import Projects from './page/Projects'
 import Cards from './page/Cards'
 
@@ -41,6 +42,7 @@ const App = () => (
         <Route path="/history" component={History} />
         <Route path="/projects" component={Projects} />
         <Route path="/cards" component={Cards} />
+        <Route path="/public/o/:id" component={Public} />
         <Route path="/" component={Home} />
       </Switch>
     </Router>
