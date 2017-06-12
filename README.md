@@ -44,10 +44,6 @@ Full names and descriptions should be stored in our internal database
 * transfer from project to virtual cards
 * destroy card
 * edit with option inactive/active card
-* list of transaction history per project
-* map of organizations (during creation we should get lat/lng from address)
-* public page about organization and projects (link available from map)
-* contact form on page contact
 * Landing page with proper content
 
 Please feel free to add more task if you thinking that has to be done
