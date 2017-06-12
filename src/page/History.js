@@ -43,6 +43,7 @@ const HistoryItem = ({transaction}) => (
       <td>{ transaction.amount }</td>
       <td>{ transaction.status }</td>
       <td>{ transaction.type }</td>
+      <td>{ transaction.balance }</td>
     </tr>)
 
 const HistoryTable = ({transactions = [], styleTable}) => (
@@ -55,6 +56,7 @@ const HistoryTable = ({transactions = [], styleTable}) => (
           <th>Amount</th>
           <th>Status</th>
           <th>Type</th>
+          <th>Balance</th>
         </tr>
       </thead>
       <tbody>
@@ -67,11 +69,6 @@ const HistoryTable = ({transactions = [], styleTable}) => (
 
 class History extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.onChangeProject = this.onChangeProject.bind(this)
-  }
-
   componentDidMount() {
     const { dispatch, selectedProject } = this.props
     if (selectedProject) {
@@ -79,10 +76,11 @@ class History extends React.Component {
     }
   }
 
-  onChangeProject(e) {
-    const { value } = e.target
-    const { dispatch } = this.props
-    dispatch(getHistory(value))
+  componentDidUpdate(prevProps) {
+    const { selectedProject, dispatch } = this.props
+    if (selectedProject !== prevProps.selectedProject) {
+      dispatch(getHistory(selectedProject))
+    }
   }
 
   render () {
@@ -116,8 +114,7 @@ class History extends React.Component {
                             <div>
                               <div className="mdl-grid">
                                   <div className="mdl-cell mdl-cell--9-col">
-                                    <Field name="project" label="Project Name" component={Select} items={projectList}
-                                      onChange={this.onChangeProject} />
+                                    <Field name="project" label="Project Name" component={Select} items={projectList} />
                                   </div>
                                   <div className="mdl-cell mdl-cell--3-col">
                                   </div>
