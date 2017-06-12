@@ -7,6 +7,12 @@ export const getOrganizations = () => dispatch => {
   })
 }
 
+export const getOrganizationById = (oid) => dispatch => {
+  server.getOrganizationById(oid, (ex, data) => {
+    dispatch({type: types.RECEIVE_ORGANIZATION, data})
+  })
+}
+
 export const getProjects = () => dispatch => {
   server.getProjects((ex, projects) => {
     dispatch({type: types.RECEIVE_PROJECTS, projects})
