@@ -17,8 +17,8 @@ const validate = values => {
     }
     if (!values.charityName) {
         errors.charityName = 'Required'
-    } else if (values.charityName.length > 30) {
-        errors.charityName = 'Must be 30 characters or less'
+    } else if (values.charityName.length > 255) {
+        errors.charityName = 'Must be 255 characters or less'
     }
     if (!values.address) {
         errors.address = 'Required'
