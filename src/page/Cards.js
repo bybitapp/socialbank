@@ -141,7 +141,7 @@ class Cards extends React.Component {
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
     const { cards, projects, modal, setModal, selectedProject } = this.props
-
+    console.log(cards);
     const projectList = projects.map((item, index) => {
       return {
         id: item.id,
