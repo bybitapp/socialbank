@@ -1,8 +1,9 @@
 import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
-import { reduxForm, Field, formValueSelector } from 'redux-form'
+import { reduxForm, change, Field, formValueSelector } from 'redux-form'
 import { getCards } from '../actions'
+import { CARD_STATUS } from '../constants/Option'
 import CardForm from '../components/CardForm'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -48,12 +49,13 @@ const CardItem = ({card, actions}) => (
       <td>{ card.cardBrand }</td>
       <td>{ card.startDate }</td>
       <td>{ card.endDate }</td>
-      <td>{ card.status }</td>
+      <td>{ card.state }</td>
       <td>{ card.balances.actual }</td>
       <td className="sb-menu-table">
         { actions.map((action)=>ActionButton(card.id, action)) }
       </td>
-    </tr>)
+      </tr>)
+}
 
 const CardTable = ({cards = [], styleTable, actions}) => (
     <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
@@ -82,6 +84,7 @@ class Cards extends React.Component {
   constructor(props) {
     super(props);
     this.onChangeProject = this.onChangeProject.bind(this)
+    this.onEdit = this.onEdit.bind(this)
   }
 
   componentDidMount() {
@@ -97,16 +100,15 @@ class Cards extends React.Component {
     dispatch(getCards(value))
   }
 
-  onEdit (pid, event) {
-    // const { projects, setModal, dispatch } = this.props
-    // const project = projects.find((project)=>{return project.id === pid})
-    // if (project) {
-    //   dispatch(change('projectForm', 'pid', project.id));
-    //   dispatch(change('projectForm', 'name', project.name));
-    //   dispatch(change('projectForm', 'description', project.description));
-    //   dispatch(change('projectForm', 'access', project.access));
-    //   setModal('projectModal')
-    // }
+  onEdit (cid, event) {
+    const { cards, setModal, dispatch } = this.props
+    const card = cards.find((card)=>{return card.id === cid})
+    if (card) {
+      dispatch(change('cardForm', 'cid', card.id));
+      dispatch(change('cardForm', 'name', card.name));
+      dispatch(change('cardForm', 'status', card.status));
+      setModal('cardModal')
+    }
   }
 
   onDestroy (pid, event) {
@@ -193,3 +195,18 @@ class Cards extends React.Component {
 }
 
 export default enhance(Cards)
+
+const CardItem = ({card, actions}) => {
+  const cardStatus = CARD_STATUS.find((status) => (status.id === card.status))
+  const cardStatusName = cardStatus ? cardStatus.name : "Unknown"
+  return (
+      <tr>
+      <td className="mdl-data-table__cell--non-numeric">{ card.name }</td>
+      <td>{ card.cardNumber }</td>
+      <td>{ card.cardBrand }</td>
+      <td>{ card.startDate }</td>
+      <td>{ card.endDate }</td>
+      <td>{ cardStatusName }</td>
+      <td>{ card.balances.actual }</td>
+      <td className="sb-menu-table">
+      { actions.map((action)=>ActionButton(card.id, action)) }
