@@ -1,13 +1,11 @@
-const localStorage = {}
-
 class Auth {
   /**
    * Authenticate a user. Save a token string in Local Storage
    *
    * @param {string} token
    */
-  static authenticateUser (token) {
-    localStorage.setItem('token', token)
+  static authenticateUser (user) {
+    localStorage.setItem('user', user)
   }
 
   /**
@@ -16,7 +14,7 @@ class Auth {
    * @returns {boolean}
    */
   static isUserAuthenticated () {
-    return localStorage.getItem('token') !== null
+    return localStorage.getItem('user') !== null
   }
 
   /**
@@ -24,7 +22,7 @@ class Auth {
    *
    */
   static deauthenticateUser () {
-    localStorage.removeItem('token')
+    localStorage.removeItem('user')
   }
 
   /**
@@ -33,8 +31,8 @@ class Auth {
    * @returns {string}
    */
 
-  static getToken () {
-    return localStorage.getItem('token')
+  static getUser () {
+    return localStorage.getItem('user')
   }
 }
 

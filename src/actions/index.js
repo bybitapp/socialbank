@@ -1,4 +1,5 @@
 import server from '../api/server'
+import Auth from '../modules/Auth'
 import * as types from '../constants/ActionTypes'
 
 export const getOrganizations = () => dispatch => {
@@ -38,8 +39,8 @@ export const registerAccount = (account, cb) => (dispatch, getState) => {
       cb(null, account)
     } else {
       // Replace the line above with line below to rollback on failure:
-      //return dispatch({ type: types.REGISTER_ACCOUNT_FAILURE, account })
-      cb('You account can not be created, please contact with us!')
+      // return dispatch({ type: types.REGISTER_ACCOUNT_FAILURE, account })
+      cb(new Error('You account can not be created, please contact with us!'))
     }
   })
 }
@@ -47,13 +48,34 @@ export const registerAccount = (account, cb) => (dispatch, getState) => {
 export const login = (account, cb) => (dispatch, getState) => {
   return server.login(account, (ex, data) => {
     if (!ex) {
+      Auth.authenticateUser(data)
       dispatch({type: types.LOGIN_SUCCESS, data})
       cb(null, data)
     } else {
       // Replace the line above with line below to rollback on failure:
-      //return dispatch({ type: types.LOGIN_FAILURE, account })
-      cb('Login Failed!')
+      // return dispatch({ type: types.LOGIN_FAILURE, account })
+      cb(new Error('Login Failed!'))
     }
+  })
+}
+
+export const logout = (cb) => (dispatch, getState) => {
+  return server.logout((ex) => {
+    if (!ex) {
+      Auth.deauthenticateUser()
+      dispatch({type: types.LOGOUT_SUCCESS})
+      cb(null)
+    } else {
+      // Replace the line above with line below to rollback on failure:
+      // return dispatch({ type: types.LOGIN_FAILURE, account })
+      cb(new Error('Logout Failed!'))
+    }
+  })
+}
+
+export const isLoggedIn = (cb) => (dispatch, getState) => {
+  return server.isLoggedIn((err, data) => {
+    cb(err, data)
   })
 }
 
@@ -64,14 +86,14 @@ export const addProject = (project, cb) => (dispatch, getState) => {
         dispatch({type: types.UPDATE_PROJECT_SUCCESS, data})
         cb(null, data)
       } else {
-        cb('Update Failed!');
+        cb(new Error('Update Failed!'))
       }
     } else {
       if (!ex) {
         dispatch({type: types.ADD_PROJECT_SUCCESS, data})
         cb(null, data)
       } else {
-        cb('Add Failed!');
+        cb(new Error('Add Failed!'))
       }
     }
   })
@@ -80,12 +102,12 @@ export const addProject = (project, cb) => (dispatch, getState) => {
 export const closeProject = (project, cb) => (dispatch, getState) => {
   server.closeProject(project, (ex, data) => {
     if (!ex) {
-        dispatch({type: types.CLOSE_PROJECT_SUCCESS, projectId: data.projectId})
-        cb(null, data)
+      dispatch({type: types.CLOSE_PROJECT_SUCCESS, projectId: data.projectId})
+      cb(null, data)
     } else {
       // Replace the line above with line below to rollback on failure:
       // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
-      cb('Close Failed!')
+      cb(new Error('Close Failed!'))
     }
   })
 }
@@ -93,31 +115,31 @@ export const closeProject = (project, cb) => (dispatch, getState) => {
 export const depositProject = (project, cb) => (dispatch, getState) => {
   server.depositProject(project, (ex, data) => {
     if (!ex) {
-        dispatch({type: types.DEPOSIT_PROJECT_SUCCESS, data})
-        cb(null, data)
+      dispatch({type: types.DEPOSIT_PROJECT_SUCCESS, data})
+      cb(null, data)
     } else {
       // Replace the line above with line below to rollback on failure:
       // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
-      cb('Deposit Failed!')
+      cb(new Error('Deposit Failed!'))
     }
   })
 }
 
 export const addCard = (card, cb) => (dispatch, getState) => {
   server.addCard(card, (ex, data) => {
-    if(card.cid) {
+    if (card.cid) {
       if (!ex) {
         dispatch({type: types.UPDATE_CARD_SUCCESS, data})
         cb(null, data)
       } else {
-        cb('Update Failed!');
+        cb(new Error('Update Failed!'))
       }
     } else {
       if (!ex) {
         dispatch({type: types.ADD_CARD_SUCCESS, data})
         cb(null, data)
       } else {
-        cb('Add Failed!');
+        cb(new Error('Add Failed!'))
       }
     }
   })
@@ -139,10 +161,10 @@ export const transferCard = (project, cb) => (dispatch, getState) => {
 export const destroyCard = (card, cb) => (dispatch, getState) => {
   server.destroyCard(card, (ex, data) => {
     if (!ex) {
-        dispatch({type: types.DESTROY_CARD_SUCCESS, data: data})
-        cb(null, data)
+      dispatch({type: types.DESTROY_CARD_SUCCESS, data: data})
+      cb(null, data)
     } else {
-      cb('Destroy Failed!')
+      cb(new Error('Destroy Failed!'))
     }
   })
 }
@@ -154,12 +176,12 @@ export const selectCurrentProject = id => dispatch => {
 export const sendMessage = (contact, cb) => (dispatch, getState) => {
   server.sendMessage(contact, (ex, data) => {
     if (!ex) {
-        dispatch({type: types.SEND_MESSAGE_SUCCESS, data})
-        cb(null, data)
+      dispatch({type: types.SEND_MESSAGE_SUCCESS, data})
+      cb(null, data)
     } else {
       // Replace the line above with line below to rollback on failure:
       // dispatch({ type: types.SEND_MESSAGE_FAILURE, projects })
-      cb('Send Message Failed!');
+      cb(new Error('Send Message Failed!'))
     }
   })
 }
