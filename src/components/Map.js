@@ -9,6 +9,10 @@ const enhance = compose(
 )
 
 class Map extends React.Component {
+  onChildClick (key, { id }) {
+    console.log('onChildClick')
+  }
+
   render () {
     const { organizations } = this.props
 
@@ -39,10 +43,6 @@ Map.defaultProps = {
   zoom: 12,
   options: {scrollwheel: false},
   projects: {}
-}
-
-Map.onChildClick = (key, { id }) => {
-  console.log('onChildClick')
 }
 
 export default enhance(Map)

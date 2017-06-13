@@ -11,7 +11,7 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
-  isLoggedin: (cb) => {
+  isLoggedIn: (cb) => {
     axios.get('/api/accounts/login')
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
