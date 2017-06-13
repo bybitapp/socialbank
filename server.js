@@ -43,7 +43,7 @@ server.use(lusca({
 
 server.use(routes)
 
-server.get('/*', function(req, res) {
+server.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, './build', 'index.html'))
 })
 

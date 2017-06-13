@@ -2,10 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 class Header extends React.Component {
-
-  static defaultProps = {
-  }
-
   render () {
     return (
     <div className="android-header mdl-layout__header mdl-layout__header--waterfall">
@@ -27,7 +23,6 @@ class Header extends React.Component {
     </div>
     )
   }
-
 }
 
 export default Header
