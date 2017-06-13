@@ -1,6 +1,11 @@
 import React from 'react'
 
 class Select extends React.Component {
+
+  renderSelectOptions = item => (
+    <option key={item.id} value={item.id}>{item.name}</option>
+  )
+
   render () {
     const { input, name, label, items = [] } = this.props
     return (
@@ -14,8 +19,9 @@ class Select extends React.Component {
   }
 }
 
-Select.renderSelectOptions = item => (
-  <option key={item.id} value={item.id}>{item.name}</option>
-)
+// Does not working on my pc :(...
+// Select.renderSelectOptions = item => (
+//   <option key={item.id} value={item.id}>{item.name}</option>
+// )
 
 export default Select
