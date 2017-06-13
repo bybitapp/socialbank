@@ -1,7 +1,6 @@
 import React from 'react'
 import { compose } from 'recompose'
-import { reduxForm, Field } from 'redux-form'
-import { SubmissionError } from 'redux-form'
+import { reduxForm, Field, SubmissionError } from 'redux-form'
 import { login } from '../actions'
 import Input from '../components/Input'
 import Header from '../components/Header'
@@ -29,7 +28,7 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(login(values, (_error, data) => {
           if (!_error) {
-            ownProps.history.push('/details') // temporary redirect
+            ownProps.history.push('/details')
             resolve()
           } else {
             reject(new SubmissionError({_error}))

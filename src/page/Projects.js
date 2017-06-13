@@ -46,7 +46,7 @@ const ProjectTable = ({projects = [], styleTable, actions}) => (
         <tr>
           <th className="mdl-data-table__cell--non-numeric">Name</th>
           <th>Date Created</th>
-          <th>Budget</th>
+          <th>Balance</th>
           <th>Access</th>
           <th>Actions</th>
         </tr>
