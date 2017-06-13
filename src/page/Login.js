@@ -9,16 +9,16 @@ import Footer from '../components/Footer'
 import {EMAIL} from '../constants/Validation'
 
 const validate = values => {
-    const errors = {}
-    if (!values.email) {
-        errors.email = 'Required'
-    } else if (!EMAIL.test(values.email)) {
-        errors.email = 'Invalid email address'
-    }
-    if (!values.password) {
-        errors.password = 'Required'
-    }
-    return errors
+  const errors = {}
+  if (!values.email) {
+    errors.email = 'Required'
+  } else if (!EMAIL.test(values.email)) {
+    errors.email = 'Invalid email address'
+  }
+  if (!values.password) {
+    errors.password = 'Required'
+  }
+  return errors
 }
 
 const enhance = compose(
@@ -27,21 +27,20 @@ const enhance = compose(
     validate,
     onSubmit: (values, dispatch, ownProps) => {
       return new Promise((resolve, reject) => {
-          dispatch(login(values, (_error, data) => {
-            if (!_error){
-              ownProps.history.push('/details') // temporary redirect
-              resolve()
-            } else {
-              reject(new SubmissionError({_error}))
-            }
-          }))
-        })
+        dispatch(login(values, (_error, data) => {
+          if (!_error) {
+            ownProps.history.push('/details') // temporary redirect
+            resolve()
+          } else {
+            reject(new SubmissionError({_error}))
+          }
+        }))
+      })
     }
   })
 )
 
 class Login extends React.Component {
-
   render () {
     const { handleSubmit, error } = this.props
     return (
@@ -63,7 +62,6 @@ class Login extends React.Component {
         </div>
     )
   }
-
 }
 
 export default enhance(Login)

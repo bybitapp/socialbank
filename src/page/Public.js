@@ -11,7 +11,7 @@ import Select from '../components/Select'
 
 const selector = formValueSelector('public')
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   const { organizations, history } = state
   const projects = organizations.projects || []
   let selectedProject = selector(state, 'project')
@@ -69,14 +69,14 @@ const PublicTable = ({transactions = [], styleTable}) => (
 
 class Public extends React.Component {
 
-  componentDidMount() {
+  componentDidMount () {
     const { dispatch, match } = this.props
     if (match.params.id) {
       dispatch(getOrganizationById(match.params.id))
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate (prevProps) {
     const { selectedProject, dispatch } = this.props
     if (selectedProject !== prevProps.selectedProject) {
       dispatch(getHistory(selectedProject))
@@ -146,7 +146,6 @@ class Public extends React.Component {
         </div>
     )
   }
-
 }
 
 export default enhance(Public)
