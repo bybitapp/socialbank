@@ -51,6 +51,11 @@ export default {
     .then((res) => cb(null, res.data))
     .catch((e) => cb(e))
   },
+  destroyCard: (values, cb) => {
+      axios.post('/api/cards/delete', values)
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
   getCards: (projId, cb) => {
     axios.get(`/api/cards/list/p/${projId}`)
     .then((res) => cb(null, res.data))

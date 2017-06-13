@@ -105,13 +105,31 @@ export const depositProject = (project, cb) => (dispatch, getState) => {
 
 export const addCard = (card, cb) => (dispatch, getState) => {
   server.addCard(card, (ex, data) => {
-    if (!ex) {
+    if(card.cid) {
+      if (!ex) {
+        dispatch({type: types.UPDATE_CARD_SUCCESS, data})
+        cb(null, data)
+      } else {
+        cb('Update Failed!');
+      }
+    } else {
+      if (!ex) {
         dispatch({type: types.ADD_CARD_SUCCESS, data})
         cb(null, data)
+      } else {
+        cb('Add Failed!');
+      }
+    }
+  })
+}
+
+export const destroyCard = (card, cb) => (dispatch, getState) => {
+  server.destroyCard(card, (ex, data) => {
+    if (!ex) {
+        dispatch({type: types.DESTROY_CARD_SUCCESS, data: data})
+        cb(null, data)
     } else {
-      // Replace the line above with line below to rollback on failure:
-      // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
-      cb('Add Failed!');
+      cb('Destroy Failed!')
     }
   })
 }
