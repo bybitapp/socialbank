@@ -60,16 +60,9 @@ export const login = (account, cb) => (dispatch, getState) => {
 }
 
 export const logout = (cb) => (dispatch, getState) => {
-  return server.logout((ex) => {
-    if (!ex) {
-      Auth.deauthenticateUser()
-      dispatch({type: types.LOGOUT_SUCCESS})
-      cb(null)
-    } else {
-      // Replace the line above with line below to rollback on failure:
-      // return dispatch({ type: types.LOGIN_FAILURE, account })
-      cb(new Error('Logout Failed!'))
-    }
+  return server.logout((ex, data) => {
+    Auth.deauthenticateUser()
+    dispatch({type: types.LOGOUT_SUCCESS})
   })
 }
 
@@ -148,12 +141,12 @@ export const addCard = (card, cb) => (dispatch, getState) => {
 export const transferCard = (project, cb) => (dispatch, getState) => {
   server.transferCard(project, (ex, data) => {
     if (!ex) {
-        dispatch({type: types.TRANSFER_CARD_SUCCESS, data})
-        cb(null, data)
+      dispatch({type: types.TRANSFER_CARD_SUCCESS, data})
+      cb(null, data)
     } else {
       // Replace the line above with line below to rollback on failure:
       // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
-      cb('Transfer Failed!')
+      cb(new Error('Transfer Failed!'))
     }
   })
 }

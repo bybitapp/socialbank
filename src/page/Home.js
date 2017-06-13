@@ -17,7 +17,7 @@ function mapStateToProps(state) {
 }
 
 const enhance = compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps)
 )
 
 class Home extends React.Component {

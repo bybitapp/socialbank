@@ -11,6 +11,11 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
+  logout: (cb) => {
+    axios.get('/api/accounts/logout')
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
   isLoggedIn: (cb) => {
     axios.get('/api/accounts/login')
       .then((res) => cb(null, res.data))
