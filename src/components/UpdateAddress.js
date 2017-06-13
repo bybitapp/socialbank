@@ -41,9 +41,10 @@ const enhance = compose(
 const updateData = (account, dispatch) => {
   const { organization } = account
   if (account && organization) {
-    dispatch(change('updateAddress', 'address', account.organization.address));
-    dispatch(change('updateAddress', 'city', account.organization.city));
-    dispatch(change('updateAddress', 'postcode', account.organization.postcode));
+    const {address, city, postcode} = organization.location
+    dispatch(change('updateAddress', 'address', address));
+    dispatch(change('updateAddress', 'city', city));
+    dispatch(change('updateAddress', 'postcode', postcode));
   }
 }
 
