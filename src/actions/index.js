@@ -123,6 +123,17 @@ export const addCard = (card, cb) => (dispatch, getState) => {
   })
 }
 
+export const destroyCard = (card, cb) => (dispatch, getState) => {
+  server.destroyCard(card, (ex, data) => {
+    if (!ex) {
+        dispatch({type: types.DESTROY_CARD_SUCCESS, data: data})
+        cb(null, data)
+    } else {
+      cb('Destroy Failed!')
+    }
+  })
+}
+
 export const selectCurrentProject = id => dispatch => {
   dispatch({type: types.SELECT_CURRENT_PROJECT, id})
 }
