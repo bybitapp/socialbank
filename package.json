@@ -60,6 +60,7 @@
     "eslint-plugin-mocha": "^4.10.1",
     "eslint-plugin-node": "^5.0.0",
     "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.0.1",
     "eslint-plugin-standard": "^3.0.1",
     "mocha": "^3.4.2",
     "nodemon": "^1.11.0"
