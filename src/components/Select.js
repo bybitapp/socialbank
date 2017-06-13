@@ -6,7 +6,7 @@ class Select extends React.Component {
     <option key={item.id} value={item.id}>{item.name}</option>
   )
 
-  render() {
+  render () {
     const { input, name, label, items = [] } = this.props
     return (
       <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -18,5 +18,10 @@ class Select extends React.Component {
     )
   }
 }
+
+// Does not working on my pc :(...
+// Select.renderSelectOptions = item => (
+//   <option key={item.id} value={item.id}>{item.name}</option>
+// )
 
 export default Select

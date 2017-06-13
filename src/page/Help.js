@@ -4,10 +4,6 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 class Help extends React.Component {
-
-  static defaultProps = {
-  }
-
   render () {
     const styleText = {textAlign: 'justify'}
 
@@ -40,7 +36,6 @@ class Help extends React.Component {
         </div>
     )
   }
-
 }
 
 export default Help
