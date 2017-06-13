@@ -38,12 +38,12 @@ const enhance = compose(
 const HistoryItem = ({transaction}) => (
     <tr>
       <td className="mdl-data-table__cell--non-numeric">{ dateFormat(transaction.datetime) }</td>
-      <td>{ transaction.name}</td>
+      <td>{ transaction.type }</td>
+      <td>{ transaction.name }</td>
       <td>{ transaction.currency }</td>
       <td>{ transaction.amount }</td>
       <td>{ transaction.status }</td>
-      <td>{ transaction.type }</td>
-      <td>{ transaction.balance }</td>
+      <td>{ transaction.transaction }</td>
     </tr>)
 
 const HistoryTable = ({transactions = [], styleTable}) => (
@@ -51,12 +51,12 @@ const HistoryTable = ({transactions = [], styleTable}) => (
       <thead>
         <tr>
           <th className="mdl-data-table__cell--non-numeric">Date</th>
+          <th>Type</th>
           <th>Name</th>
           <th>Currency</th>
           <th>Amount</th>
           <th>Status</th>
-          <th>Type</th>
-          <th>Balance</th>
+          <th>Transaction</th>
         </tr>
       </thead>
       <tbody>
