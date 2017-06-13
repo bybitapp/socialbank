@@ -133,7 +133,7 @@ class Cards extends React.Component {
     //   if (account.organization) {
     //     const { bankAccount } = account.organization
     //     dispatch(change('projectDepositForm', 'pid', project.id));
-    //     dispatch(change('projectDepositForm', 'oid', account.organization._id));
+    //     dispatch(change('projectDepositForm', 'oid', account.organization.id));
     //     dispatch(change('projectDepositForm', 'bank', bankAccount.bankName));
     //     dispatch(change('projectDepositForm', 'iban', bankAccount.ibanCode));
     //     dispatch(change('projectDepositForm', 'name', project.name));
