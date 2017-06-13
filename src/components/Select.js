@@ -6,7 +6,7 @@ class Select extends React.Component {
     return (
       <div className="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
         <select {...input} className="mdl-textfield__input">
-          {items.map(this.renderSelectOptions)}
+          {items.map(renderSelectOptions)}
         </select>
         <label className="mdl-textfield__label" htmlFor={name}>{label}</label>
       </div>
@@ -14,7 +14,7 @@ class Select extends React.Component {
   }
 }
 
-Select.renderSelectOptions = function (item) {
+const renderSelectOptions = function (item) {
   return (
     <option key={item.id} value={item.id}>{item.name}</option>
   )
