@@ -2,9 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 class Marker extends React.Component {
-
-  static defaultProps = {};
-
   render () {
     return (
       <Link to={ '/public/o/' + this.props.id }>
@@ -12,7 +9,6 @@ class Marker extends React.Component {
       </Link>
     )
   }
-
 }
 
 export default Marker

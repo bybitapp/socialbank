@@ -1,10 +1,6 @@
 import React from 'react'
 
 class Footer extends React.Component {
-
-  static defaultProps = {
-  }
-
   render () {
     return (
         <footer className="android-footer mdl-mega-footer">
@@ -19,7 +15,6 @@ class Footer extends React.Component {
         </footer>
     )
   }
-
 }
 
 export default Footer
