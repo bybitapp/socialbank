@@ -6,6 +6,7 @@ import { getCards } from '../actions'
 import { CARD_STATUS } from '../constants/Option'
 import CardForm from '../components/CardForm'
 import CardDestroyForm from '../components/CardDestroyForm'
+import CardTransferForm from '../components/CardTransferForm'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
@@ -126,20 +127,17 @@ class Cards extends React.Component {
     }
   }
 
-  onTransfer (pid, event) {
-    // const { projects, account, setModal, dispatch } = this.props
-    // const project = projects.find((project)=>{return project.id === pid})
-    // if (project) {
-    //   if (account.organization) {
-    //     const { bankAccount } = account.organization
-    //     dispatch(change('projectDepositForm', 'pid', project.id));
-    //     dispatch(change('projectDepositForm', 'oid', account.organization.id));
-    //     dispatch(change('projectDepositForm', 'bank', bankAccount.bankName));
-    //     dispatch(change('projectDepositForm', 'iban', bankAccount.ibanCode));
-    //     dispatch(change('projectDepositForm', 'name', project.name));
-    //     setModal('projectDepositModal')
-    //   }
-    // }
+  onTransfer (cid, event) {
+    const { projects, cards, setModal, dispatch, selectedProject } = this.props
+    const card = cards.find((c)=> c.id === cid)
+    const project = projects.find((p)=> p.id === selectedProject)
+    if (card && project) {
+      dispatch(change('cardTransferForm', 'pid', project.id));
+      dispatch(change('cardTransferForm', 'cid', card.id));
+      dispatch(change('cardTransferForm', 'projectName', project.name));
+      dispatch(change('cardTransferForm', 'cardName', card.name));
+      setModal('cardTransferModal')
+    }
   }
 
   render () {
@@ -168,6 +166,7 @@ class Cards extends React.Component {
           <Header />
           <CardForm open={(modal === 'cardModal')} handleClose={() => setModal(null)} projectId={selectedProject}/>
           <CardDestroyForm open={(modal === 'cardDestroyModal')} handleClose={() => setModal(null)}/>
+          <CardTransferForm open={(modal === 'cardTransferModal')} handleClose={() => setModal(null)} />
           <main className="mdl-layout__content">
             <div className="page-content">
                 <div className="mdl-grid">

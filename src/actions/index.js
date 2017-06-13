@@ -123,6 +123,19 @@ export const addCard = (card, cb) => (dispatch, getState) => {
   })
 }
 
+export const transferCard = (project, cb) => (dispatch, getState) => {
+  server.transferCard(project, (ex, data) => {
+    if (!ex) {
+        dispatch({type: types.TRANSFER_CARD_SUCCESS, data})
+        cb(null, data)
+    } else {
+      // Replace the line above with line below to rollback on failure:
+      // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
+      cb('Transfer Failed!')
+    }
+  })
+}
+
 export const destroyCard = (card, cb) => (dispatch, getState) => {
   server.destroyCard(card, (ex, data) => {
     if (!ex) {

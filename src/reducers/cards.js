@@ -1,4 +1,5 @@
 import { RECEIVE_CARDS, ADD_CARD_SUCCESS, UPDATE_CARD_SUCCESS, DESTROY_CARD_SUCCESS } from '../constants/ActionTypes'
+import { TRANSFER_CARD_SUCCESS } from '../constants/ActionTypes'
 
 export const cards = (state = [], action) => {
   switch (action.type) {
@@ -21,6 +22,13 @@ export const cards = (state = [], action) => {
 
       })
       return deleteResult
+    case TRANSFER_CARD_SUCCESS:
+      return state.map(item => {
+        if (item.id === action.data.cardId) {
+          item.balances.actual += action.data.amount
+        }
+        return item
+      })
     default:
       return state
   }

@@ -56,6 +56,11 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
+  transferCard: (values, cb) => {
+    axios.post('/api/cards/transfer', values)
+    .then((res) => cb(null, res.data))
+    .catch((e) => cb(e))
+  },
   getCards: (projId, cb) => {
     axios.get(`/api/cards/list/p/${projId}`)
     .then((res) => cb(null, res.data))
