@@ -4,6 +4,7 @@ import { reduxForm, Field } from 'redux-form'
 import { SubmissionError } from 'redux-form'
 import { registerAccount } from '../actions'
 import Input from '../components/Input'
+import Checkbox from '../components/Checkbox'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import {EMAIL, POSTCODE, IBAN_CODE, SWIFT_CODE} from '../constants/Validation'
@@ -55,6 +56,9 @@ const validate = values => {
     } else if (!SWIFT_CODE.test(values.swiftCode)) {
         errors.swiftCode = 'Invalid swift code eg. MIDLGB22'
     }
+    if (!values.accepted) {
+        errors.accepted = 'Required'
+    }
     return errors
 }
 
@@ -81,6 +85,12 @@ class Registration extends React.Component {
 
     render () {
         const { handleSubmit, error } = this.props
+        const checkboxLabel = {
+          link: '/terms',
+          linkText: 'Terms & Conditions',
+          text: 'Accept'
+        }
+
         return (
             <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
                 <Header />
@@ -104,6 +114,7 @@ class Registration extends React.Component {
                                     <Field name="bankName" label="Bank Name" component={Input} />
                                     <Field name="ibanCode" label="Iban Code" component={Input} />
                                     <Field name="swiftCode" label="Swift Code" component={Input} />
+                                    <Field name="accepted" label={checkboxLabel} component={Checkbox}/>
                                 </div>
                             </div>
                             <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">Create Account</button>

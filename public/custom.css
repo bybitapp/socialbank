@@ -78,6 +78,16 @@
     top: 0;
 }
 
+.sb-label-checkbox {
+  color: rgba(0,0,0,.26);
+  font-size: 16px;
+}
+
+.sb-link-checkbox {
+  color: #8bc34a;
+  text-decoration: none;
+}
+
 /* OLD */
 
 .mdl-list .mdl-list__item:hover {

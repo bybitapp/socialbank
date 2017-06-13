@@ -11,7 +11,7 @@ import reducer from './reducers'
 
 // components
 import Home from './page/Home'
-import About from './page/About'
+import Terms from './page/Terms'
 import Contact from './page/Contact'
 import Help from './page/Help'
 import Login from './page/Login'
@@ -35,7 +35,7 @@ const App = () => (
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/registration" component={Registration} />
-        <Route path="/about" component={About} />
+        <Route path="/terms" component={Terms} />
         <Route path="/help" component={Help} />
         <Route path="/contact" component={Contact} />
         <Route path="/details" component={Details} />
