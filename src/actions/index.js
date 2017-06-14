@@ -162,6 +162,17 @@ export const destroyCard = (card, cb) => (dispatch, getState) => {
   })
 }
 
+export const updateCardStatus = (card, cb) => (dispatch, getState) => {
+  server.updateCardStatus(card, (ex, data) => {
+    if (!ex) {
+      dispatch({type: types.UPDATE_CARD_STATUS_SUCCESS, data: data})
+      cb(null, data)
+    } else {
+      cb(new Error('Update Card Status Failed!'))
+    }
+  })
+}
+
 export const selectCurrentProject = id => dispatch => {
   dispatch({type: types.SELECT_CURRENT_PROJECT, id})
 }
