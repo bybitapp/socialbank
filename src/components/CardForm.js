@@ -1,12 +1,9 @@
 import React from 'react'
 import Modal from 'react-modal'
-import { connect } from 'react-redux'
 import { compose } from 'recompose'
-import { reduxForm, change, Field, formValueSelector } from 'redux-form'
+import { reduxForm, change, Field } from 'redux-form'
 import { addCard } from '../actions'
-import { CARD_STATUS } from '../constants/Option'
 import Input from './Input'
-import Select from './Select'
 import { SubmissionError } from 'redux-form'
 
 const customStyles = {
@@ -32,15 +29,7 @@ const validate = values => {
     return errors
 }
 
-const selector = formValueSelector('cardForm')
-
-function mapStateToProps(state) {
-  const hasCardId = selector(state, 'cid')
-  return { hasCardId }
-}
-
 const enhance = compose(
-  connect(mapStateToProps),
   reduxForm({
     form: 'cardForm',
     validate,
@@ -84,7 +73,7 @@ class CardForm extends React.Component {
 
     render() {
         const styleCenter = {textAlign: 'center'}
-        const { handleClose, open, handleSubmit, error, hasCardId } = this.props
+        const { handleClose, open, handleSubmit, error } = this.props
 
         return (
             <Modal
@@ -107,7 +96,6 @@ class CardForm extends React.Component {
                       <Field name="pid" type="hidden" component="input" />
                       <Field name="cid" type="hidden" component="input" />
                       <Field name="name" label="Name On Card" component={Input} />
-                      {hasCardId && <Field name="status" label="Status" component={Select} items={CARD_STATUS}/>}
                     </div>
                   </main>
                   <footer className="sb-footer">

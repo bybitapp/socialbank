@@ -7,6 +7,8 @@ import { CARD_STATUS } from '../constants/Option'
 import CardForm from '../components/CardForm'
 import CardDestroyForm from '../components/CardDestroyForm'
 import CardTransferForm from '../components/CardTransferForm'
+import CardBlockForm from '../components/CardBlockForm'
+import CardUnblockForm from '../components/CardUnblockForm'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
@@ -57,7 +59,13 @@ const CardItem = ({card, actions}) => {
       <td>{ cardStatusName }</td>
       <td>{ card.balances.actual }</td>
       <td className="sb-menu-table">
-      { actions.map((action)=>ActionButton(card.id, action)) }
+      { actions.map((action)=>{
+          if(!action.hasOwnProperty('show') || action.show(card)) {
+            return ActionButton(card.id, action)
+          }
+          return null
+        })
+      }
       </td>
       </tr>)
 }
@@ -92,6 +100,8 @@ class Cards extends React.Component {
     this.onEdit = this.onEdit.bind(this)
     this.onDestroy = this.onDestroy.bind(this)
     this.onTransfer = this.onTransfer.bind(this)
+    this.onBlock = this.onBlock.bind(this)
+    this.onUnblock = this.onUnblock.bind(this)
   }
 
   componentDidMount() {
@@ -113,7 +123,6 @@ class Cards extends React.Component {
     if (card) {
       dispatch(change('cardForm', 'cid', card.id));
       dispatch(change('cardForm', 'name', card.name));
-      dispatch(change('cardForm', 'status', card.status));
       setModal('cardModal')
     }
   }
@@ -140,6 +149,24 @@ class Cards extends React.Component {
     }
   }
 
+  onBlock (cid, event) {
+    const { cards, setModal, dispatch } = this.props
+    const card = cards.find((card)=>{return card.id === cid})
+    if (card) {
+      dispatch(change('cardBlockForm', 'cid', card.id));
+      setModal('cardBlockModal')
+    }
+  }
+
+  onUnblock (cid, event) {
+    const { cards, setModal, dispatch } = this.props
+    const card = cards.find((card)=>{return card.id === cid})
+    if (card) {
+      dispatch(change('cardUnblockForm', 'cid', card.id));
+      setModal('cardUnblockModal')
+    }
+  }
+
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
     const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0, overflow:"auto"}
@@ -158,6 +185,8 @@ class Cards extends React.Component {
     const actions = [
       {icon: 'attach_money', onclick: this.onTransfer},
       {icon: 'mode_edit', onclick: this.onEdit},
+      {icon: 'lock_open', onclick: this.onBlock, show: (item)=>item.status === 'active'},
+      {icon: 'lock', onclick: this.onUnblock, show: (item)=>item.status === 'inactive'},
       {icon: 'delete', onclick: this.onDestroy}
     ]
 
@@ -167,6 +196,8 @@ class Cards extends React.Component {
           <CardForm open={(modal === 'cardModal')} handleClose={() => setModal(null)} projectId={selectedProject}/>
           <CardDestroyForm open={(modal === 'cardDestroyModal')} handleClose={() => setModal(null)}/>
           <CardTransferForm open={(modal === 'cardTransferModal')} handleClose={() => setModal(null)} />
+          <CardBlockForm open={(modal === 'cardBlockModal')} handleClose={() => setModal(null)} />
+          <CardUnblockForm open={(modal === 'cardUnblockModal')} handleClose={() => setModal(null)} />
           <main className="mdl-layout__content">
             <div className="page-content">
                 <div className="mdl-grid">
