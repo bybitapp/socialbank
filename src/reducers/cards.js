@@ -1,5 +1,5 @@
 import { RECEIVE_CARDS, ADD_CARD_SUCCESS, UPDATE_CARD_SUCCESS, DESTROY_CARD_SUCCESS } from '../constants/ActionTypes'
-import { TRANSFER_CARD_SUCCESS } from '../constants/ActionTypes'
+import { TRANSFER_CARD_SUCCESS, UPDATE_CARD_STATUS_SUCCESS } from '../constants/ActionTypes'
 
 export const cards = (state = [], action) => {
   switch (action.type) {
@@ -11,11 +11,18 @@ export const cards = (state = [], action) => {
       const updateResult = state.map(item => {
         if (item.id === action.data.id) {
           item.name = action.data.name
-          item.status = action.data.status
         }
         return item
       })
       return updateResult
+    case UPDATE_CARD_STATUS_SUCCESS:
+      const updateStatusResult = state.map(item => {
+        if (item.id === action.data.id) {
+          item.status = action.data.status
+        }
+        return item
+      })
+      return updateStatusResult
     case DESTROY_CARD_SUCCESS:
       const deleteResult = state.filter(item => {
         return item.id !== action.data.id
