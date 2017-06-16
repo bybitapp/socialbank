@@ -88,7 +88,9 @@ class Home extends React.Component {
               <div className="android-customized-section-text">
                 <div className="mdl-typography--font-light mdl-typography--display-1-color-contrast">Join us!</div>
                 <p className="mdl-typography--font-light">
+                  <a href="http://www.pinuk.online/en/pin-uk-c-i-c/">
                   <img src="images/pin-ik-logo.jpeg" style={styleClients}></img>
+                  </a>
                   <br/><br/><br/><br/>
                 </p>
               </div>
