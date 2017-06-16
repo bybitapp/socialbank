@@ -375,9 +375,10 @@ class About extends React.Component {
                 <ul>
                 <li>via the website;</li>
 
-                <li>by email to: <a href="&#x6d;&#x61;&#105;&#x6c;&#x74;o:&#x70;&#114;&#x69;&#x76;a&#x63;&#x79;&#64;p&#x65;&#97;&#x72;&#x6c;&#115;&#104;&#x61;&#114;e&#46;c&#x6f;&#x6d;">&#x70;&#114;&#x69;&#x76;a&#x63;&#x79;&#64;p&#x65;&#97;&#x72;&#x6c;&#115;&#104;&#x61;&#114;e&#46;c&#x6f;&#x6d;</a>.</li>
+                
+                <li>by email to: <a href="contact@socialbank.co"></a></li>
                 </ul>
-                </div>
+                </div>                                                                                                                                   
             </div>
             <Footer />
           </main>
