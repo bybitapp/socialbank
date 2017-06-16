@@ -6,6 +6,7 @@ import { registerAccount } from '../actions'
 import Input from '../components/Input'
 import Checkbox from '../components/Checkbox'
 import Header from '../components/Header'
+import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import {EMAIL, POSTCODE, IBAN_CODE, SWIFT_CODE} from '../constants/Validation'
 
@@ -94,6 +95,7 @@ class Registration extends React.Component {
         return (
             <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
                 <Header />
+                <MobileNavigation />
                 <main className="mdl-layout__content">
                     <div className="page-content">
                         <div className="sb-form-content">

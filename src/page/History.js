@@ -6,6 +6,7 @@ import { getHistory } from '../actions'
 import { dateFormat } from '../util/date'
 import { isEmpty } from 'ramda'
 import Header from '../components/Header'
+import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 import Select from '../components/Select'
@@ -100,6 +101,7 @@ class History extends React.Component {
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
           <Header />
+          <MobileNavigation />
           <main className="mdl-layout__content">
             <div className="page-content">
                 <div className="mdl-grid">

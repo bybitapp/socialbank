@@ -28,24 +28,25 @@ const store = createStore(reducer, composeEnhancers(
 ))
 
 const App = () => (
-  <Provider store={store}>
-    <Router>
-      <Switch>
-        <Route path="/login" component={Login} />
-        <Route path="/logout" component={Logout} />
-        <Route path="/registration" component={Registration} />
-        <Route path="/terms" component={Terms} />
-        <Route path="/help" component={Help} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/details" component={Details} />
-        <Route path="/history" component={History} />
-        <Route path="/projects" component={Projects} />
-        <Route path="/cards" component={Cards} />
-        <Route path="/public/o/:id" component={Public} />
-        <Route path="/" component={Home} />
-      </Switch>
-    </Router>
-  </Provider>)
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/logout" component={Logout} />
+          <Route path="/registration" component={Registration} />
+          <Route path="/terms" component={Terms} />
+          <Route path="/help" component={Help} />
+          <Route path="/contact" component={Contact} />
+          <Route path="/details" component={Details} />
+          <Route path="/history" component={History} />
+          <Route path="/projects" component={Projects} />
+          <Route path="/cards" component={Cards} />
+          <Route path="/public/o/:id" component={Public} />
+          <Route path="/" component={Home} />
+        </Switch>
+      </Router>
+    </Provider>
+  )
 
 ReactDOM.render(
   <App />,

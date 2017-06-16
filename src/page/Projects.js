@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { change } from 'redux-form'
 import { dateFormat } from '../util/date'
 import Header from '../components/Header'
+import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 import ProjectForm from '../components/ProjectForm'
@@ -122,6 +123,7 @@ class Projects extends React.Component {
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
           <Header />
+          <MobileNavigation />
           <ProjectForm open={(modal === 'projectModal')} handleClose={() => setModal(null)} account={account}/>
           <ProjectCloseForm open={(modal === 'projectCloseModal')} handleClose={() => setModal(null)} />
           <ProjectDepositForm open={(modal === 'projectDepositModal')} handleClose={() => setModal(null)} />
