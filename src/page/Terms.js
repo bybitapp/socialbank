@@ -15,13 +15,13 @@ class About extends React.Component {
           <main className="mdl-layout__content">
             <div className="page-content">
                 <div className="sb-form-content sb-page" style={styleText}>
-                <h1 id="socialbanktermsofserviceprivacypolicy">socialbank Terms of Service &amp; Privacy Policy</h1>
+                <h1 id="socialbanktermsofserviceprivacypolicy">SocialBank Terms of Service &amp; Privacy Policy</h1>
 
                 <h2 id="termsofservice">Terms of Service</h2>
 
                 <h3 id="introduction">Introduction</h3>
 
-                <p>The services to which these terms of service relate are provided by socialbank Limited (we, us or our).</p>
+                <p>The services to which these terms of service relate are provided by SocialBank (we, us or our).</p>
 
                 <p>These terms govern your access to and use of the services. If you want to download or use our applications (Apps), website <a href="www.socialbank.co">www.socialbank.co</a> or other services as operated and made available by us from time to time (Services) you have to agree to these terms and you acknowledge that these terms form a legally-binding contract between us and you. If you do not want to be bound by these terms, then you should not download or use the Apps, website or other services.</p>
 
@@ -225,40 +225,6 @@ class About extends React.Component {
                 <li>via the website; or</li>
 
                 <li>by email to: contact@socialbank.co.</li>
-                </ul>
-
-                <h3 id="additionaltermsfromthirdpartyserviceproviders">Additional terms from third party service providers</h3>
-
-                <h4 id="apple">Apple</h4>
-
-                <p>If the App that you download, access and/or use runs on Apple’s iOS operating system:</p>
-
-                <ul>
-                <li>that App may only be accessed and used on a device owned or controlled by you and using Apple’s iOS operating system, and only in accordance with Apple’s usage rules published in its App Store terms of service;</li>
-
-                <li>you acknowledge and agree that:
-
-
-                <ul>
-                <li>Apple has no obligation at all to provide any support or maintenance services in relation to that App. If you have any maintenance or support questions in relation to that App, please contact us, not Apple, using the Contacting us details in these terms;</li>
-
-                <li>except as otherwise expressly set out in these terms, any claims relating to the possession or use of that App are between you and us (and not between you, or anyone else, and Apple);</li>
-
-                <li>in the event of any claim by a third party that your possession or use (in accordance with these terms) of that App infringes any intellectual property rights, Apple will not be responsible or liable to you in relation to that claim; and</li></ul>
-                </li>
-
-                <li>although these terms are entered into between you and us (and not Apple), Apple, as a third party beneficiary under these terms, will have the right to enforce these terms against you;</li>
-
-                <li>you represent and warrant that:
-
-
-                <ul>
-                <li>you are not, and will not be, located in any country that is the subject of a United States Government embargo or that has been designated by the United States Government as a "terrorist supporting" country; and</li>
-
-                <li>you are not listed on any United States Government list of prohibited or restricted parties; and</li></ul>
-                </li>
-
-                <li>if the App does not conform to any warranty applying to it, you may notify Apple, which will then refund the purchase price of the App (if any) to you. Subject to that, and to the maximum extent permitted by law, Apple does not give or enter into any warranty, condition or other term in relation to that App and will not be liable to you for any claims, losses, costs or expenses of whatever nature in relation to that App or as a result of you or anyone else using that App or relying on any of its content.</li>
                 </ul>
 
                 <hr />
