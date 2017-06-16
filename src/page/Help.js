@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Header from '../components/Header'
+import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 
 class Help extends React.Component {
@@ -10,6 +11,7 @@ class Help extends React.Component {
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
           <Header />
+          <MobileNavigation />
           <main className="mdl-layout__content">
             <div className="page-content">
                 <div className="sb-form-content sb-page" style={styleText}>

@@ -88,6 +88,14 @@
   text-decoration: none;
 }
 
+.android-drawer .sb-layout-title {
+    position: relative;
+    background: #6ab344;
+    color: white;
+    line-height: 64px;
+    padding-left: 40px;
+}
+
 /* OLD */
 
 .mdl-list .mdl-list__item:hover {

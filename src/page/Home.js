@@ -3,6 +3,7 @@ import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import Map from '../components/Map'
 import Header from '../components/Header'
+import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import ContactForm from '../components/ContactForm'
 import SubjectBox from '../components/SubjectBox'
@@ -37,6 +38,7 @@ class Home extends React.Component {
     return (
       <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
           <Header />
+          <MobileNavigation />
           <div className="android-content mdl-layout__content">
             <div className="android-be-together-section mdl-typography--text-center" style={styleHeight}>
               <div className="logo-font android-slogan">Only together we can change poverty!</div>

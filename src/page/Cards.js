@@ -10,6 +10,7 @@ import CardTransferForm from '../components/CardTransferForm'
 import CardBlockForm from '../components/CardBlockForm'
 import CardUnblockForm from '../components/CardUnblockForm'
 import Header from '../components/Header'
+import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 import Select from '../components/Select'
@@ -193,6 +194,7 @@ class Cards extends React.Component {
     return (
         <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
           <Header />
+          <MobileNavigation />
           <CardForm open={(modal === 'cardModal')} handleClose={() => setModal(null)} projectId={selectedProject}/>
           <CardDestroyForm open={(modal === 'cardDestroyModal')} handleClose={() => setModal(null)}/>
           <CardTransferForm open={(modal === 'cardTransferModal')} handleClose={() => setModal(null)} />
