@@ -27,7 +27,7 @@ class About extends React.Component {
 
                 <p>We may change these terms from time to time by updating the Apps and by updating the copy of the terms that is on our <a href="/">website</a>.</p>
 
-                <p>These terms were last updated on 2nd August 2016.</p>
+                <p>These terms were last updated on 2nd June 2017.</p>
 
                 <h3 id="whatwedo">What we do</h3>
 
@@ -273,7 +273,7 @@ class About extends React.Component {
 
                 <p>By using the Site, Apps or other services as operated and made available by us from time to time ("<strong>Services</strong>"), you consent to the collection and use of information in accordance with this privacy policy.</p>
 
-                <p>We reserve the right to change this privacy policy from time to time by changing it on the Site or updating the Apps. This privacy policy was last updated on 2nd August 2016.</p>
+                <p>We reserve the right to change this privacy policy from time to time by changing it on the Site or updating the Apps. This privacy policy was last updated on 2nd June 2017.</p>
 
                 <h3 id="informationwemaycollectfromyou">Information we may collect from you</h3>
 
