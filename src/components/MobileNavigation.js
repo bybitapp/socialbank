@@ -11,18 +11,20 @@ class MobileNavigation extends React.Component {
           Menu
         </span>
         <nav className="mdl-navigation">
-          {Auth.isUserAuthenticated() ? (
-            <Link className="mdl-navigation__link mdl-typography--text-uppercase" to={'/logout'}>Logout</Link>
-          ) : (
+          {!Auth.isUserAuthenticated() ? (
             <div>
               <Link className="mdl-navigation__link" to={'/login'}>Login</Link>
               <Link className="mdl-navigation__link" to={'/registration'}>Register</Link>
+              <Link className="mdl-navigation__link" to={'/contact'}>Contact</Link>
+            </div>
+          ) : (
+            <div>
+              <Link className="mdl-navigation__link" to={'/contact'}>Contact</Link>
+              <Link className="mdl-navigation__link mdl-typography--text-uppercase" to={'/logout'}>Logout</Link>
             </div>
           )}
-          <Link className="mdl-navigation__link" to={'/contact'}>Contact</Link>
         </nav>
       </div>
-
     )
   }
 }
