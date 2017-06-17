@@ -1,15 +1,36 @@
 import React from 'react'
+import { compose } from 'recompose'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import Auth from '../modules/Auth'
 import MDLite from 'material-design-lite'
 
-class Header extends React.Component {
+import Auth from '../modules/Auth'
+import { sessionSetTemp } from '../actions'
 
+function mapStateToProps (state) {
+  const { account, projects } = state
+  return {
+    account,
+    projects
+  }
+}
+
+const enhance = compose(
+  connect(mapStateToProps)
+)
+class Header extends React.Component {
   componentDidMount () {
     // TODO workaround to reload MDL
     if (MDLite) {
       // render material-design-lite
       global.componentHandler.upgradeDom()
+    }
+
+    const { dispatch } = this.props
+    const user = Auth.getUser()
+    if (user) {
+      this.setState({ account: user.account })
+      dispatch(sessionSetTemp(user))
     }
   }
 
@@ -51,4 +72,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header
+export default enhance(Header)

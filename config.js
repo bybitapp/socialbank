@@ -2,7 +2,7 @@ var config = {
   app: {
     port: process.env.PORT || 3001,
     name: process.env.APP_NAME || 'socialbank',
-    url: process.env.APP_URL || 'http://www.socialbank.co',
+    url: process.env.APP_URL || 'http://www.socialbank.co'
   },
   ensureHttps: process.env.ENSURE_HTTPS || false,
   mongoUrl: process.env.MONGODB_URI || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/socialbank-dev',
@@ -20,13 +20,13 @@ var config = {
     country: 'GB',
     issueProvider: 'Card Issuing Provider',
     profile: {
-    corporateIdentity: '97593089101268736',
-    managedCard: '97593089101269248',
-    managedAccount: '97593089101268992',
-    externalAccount: '97593089101269504',
-    withdraw: '97593089101271040',
-    deposit: '97593089101270016',
-    transfer: '97593089101269760'
+      corporateIdentity: '97593089101268736',
+      managedCard: '97593089101269248',
+      managedAccount: '97593089101268992',
+      externalAccount: '97593089101269504',
+      withdraw: '97593089101271040',
+      deposit: '97593089101270016',
+      transfer: '97593089101269760'
     }
   },
   google: {
@@ -41,6 +41,6 @@ var config = {
       pass: 'SOcialBank123456!'
     }
   }
-};
+}
 
-module.exports = config;
+module.exports = config

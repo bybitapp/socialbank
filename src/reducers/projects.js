@@ -1,7 +1,7 @@
 import {
   RECEIVE_PROJECTS, ADD_PROJECT_SUCCESS, SELECT_CURRENT_PROJECT,
   CLOSE_PROJECT_SUCCESS, UPDATE_PROJECT_SUCCESS, DEPOSIT_PROJECT_SUCCESS,
-  LOGIN_SUCCESS, LOGOUT_SUCCESS
+  LOGIN_SUCCESS, LOGOUT_SUCCESS, LOGIN_SESSION_TEMP
 } from '../constants/ActionTypes'
 
 export const projects = (state = [], action) => {
@@ -10,6 +10,8 @@ export const projects = (state = [], action) => {
       return (action.data.projects) ? action.data.projects : state
     case LOGOUT_SUCCESS:
       return state
+    case LOGIN_SESSION_TEMP:
+      return (action.data.projects) ? action.data.projects : state
     case RECEIVE_PROJECTS:
       return (action.projects) ? action.projects : state
     case ADD_PROJECT_SUCCESS:
