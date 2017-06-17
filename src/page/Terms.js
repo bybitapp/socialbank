@@ -73,7 +73,7 @@ class About extends React.Component {
                 <li>otherwise do anything that it is not expressly permitted by these terms.</li>
               </ul>
 
-              <p>In order to do anything with the Apps, website or Services which is not expressly permitted by these terms, you will need a separate licence from us. Please contact us, using the <a href="#contacting-us">contacting us</a> details at the end of these terms.</p>
+              <p>In order to do anything with the Apps, website or Services which is not expressly permitted by these terms, you will need a separate licence from us. Please contact us, using the <a href="/contact">contacting us</a> details at the end of these terms.</p>
 
               <h3 id="userguidelines">User guidelines</h3>
 
@@ -290,7 +290,7 @@ class About extends React.Component {
                 <li>send you information we think you may find useful or which you have requested from us, including receipt of marketing communications such as exclusive offers and loyalty rewards, provided you have indicated that you are happy to be contacted for these purposes by post, email, mobile messaging, telephone communications and/or through any other electronic or digital means including social network platforms.</li>
               </ul>
 
-              <p>You can tell us not to contact you with information regarding our products and services either at the point such information is collected on the Apps (by checking or unchecking (as directed) the relevant box) or, where you do not wish us to continue to use your information in this way, by following the unsubscribe instructions on any communications sent to you. You can also exercise this right at any time by contacting us using the <a href="#contacting-us">contacting us</a> details at the end of this privacy policy.</p>
+              <p>You can tell us not to contact you with information regarding our products and services either at the point such information is collected on the Apps (by checking or unchecking (as directed) the relevant box) or, where you do not wish us to continue to use your information in this way, by following the unsubscribe instructions on any communications sent to you. You can also exercise this right at any time by contacting us <a href="/contact">here</a>.</p>
 
               <h3 id="privacysettings">Privacy settings</h3>
 
@@ -373,7 +373,7 @@ class About extends React.Component {
               <p>Please submit any questions, concerns or comments you have about this privacy policy or any requests concerning your personal data by any of the following means:</p>
 
               <ul>
-                <li>via the website;</li>
+                <li>via the <a href="/contact">website</a>;</li>
                 <li>by email to: <a href="contact@socialbank.co">contact@socialbank.co</a></li>
               </ul>
             </div>
