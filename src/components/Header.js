@@ -23,14 +23,20 @@ class Header extends React.Component {
           <div className="android-header-spacer mdl-layout-spacer"></div>
           <div className="android-navigation-container">
             <nav className="android-navigation mdl-navigation">
-              <Link className="mdl-navigation__link mdl-typography--text-uppercase" to={'/contact'}>Contact</Link>
               {Auth.isUserAuthenticated() ? (
-                <Link className="mdl-navigation__link mdl-typography--text-uppercase" to={'/logout'}>Logout</Link>
+                <div className="top-bar-right">
+                  <Link className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" to={'/me'}>
+                    Account
+                  </Link>
+                  <Link className="mdl-navigation__link mdl-typography--text-uppercase" to={'/contact'}>Contact</Link>
+                  <Link className="mdl-navigation__link mdl-typography--text-uppercase" to={'/logout'}>Logout</Link>
+                </div>
               ) : (
                 <div className="top-bar-right">
+                  <Link className="mdl-navigation__link mdl-typography--text-uppercase" to={'/contact'}>Contact</Link>
                   <Link className="mdl-navigation__link mdl-typography--text-uppercase" to={'/login'}>Login</Link>
                   <Link className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" to={'/registration'}>
-                      Register
+                    Register
                   </Link>
                 </div>
               )}
