@@ -28,6 +28,7 @@ class Header extends React.Component {
                   <Link className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" to={'/me'}>
                     Account
                   </Link>
+                  <Link className="mdl-navigation__link mdl-typography--text-uppercase" to={'/contact'}>Contact</Link>
                   <Link className="mdl-navigation__link mdl-typography--text-uppercase" to={'/logout'}>Logout</Link>
                 </div>
               ) : (

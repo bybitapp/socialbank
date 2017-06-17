@@ -20,6 +20,7 @@ class MobileNavigation extends React.Component {
           ) : (
             <div>
               <Link className="mdl-navigation__link" to={'/contact'}>Contact</Link>
+              <Link className="mdl-navigation__link" to={'/me'}>Account</Link>
               <Link className="mdl-navigation__link mdl-typography--text-uppercase" to={'/logout'}>Logout</Link>
             </div>
           )}
