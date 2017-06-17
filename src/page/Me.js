@@ -9,8 +9,7 @@ import UpdateBank from '../components/UpdateBank'
 import UpdatePassword from '../components/UpdatePassword'
 import GeneralData from '../components/GeneralData'
 
-class Details extends React.Component {
-
+class Me extends React.Component {
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
     const stylePadding = {padding: '15px'}
@@ -43,4 +42,4 @@ class Details extends React.Component {
 
 }
 
-export default Details
+export default Me
