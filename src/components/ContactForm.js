@@ -46,7 +46,6 @@ class ContactForm extends React.Component {
     const styleText = {textAlign: 'justify', padding: '0 50px'}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
     const styleError = {textAlign: 'center', width: '100%'}
-    const styleH5 = {padding: 0}
     const styleColor = {backgroundColor: 'white'}
     const { handleSubmit, error } = this.props
 
