@@ -17,6 +17,8 @@ const validate = values => {
         errors.name = 'Required'
     } else if (isNaN(Number(values.amount))) {
         errors.amount = 'Must be a number'
+    } else if(values.amount < 0) {
+        errors.amount = 'Must be greater than zero'
     }
     return errors
 }
