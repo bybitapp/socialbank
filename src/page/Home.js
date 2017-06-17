@@ -32,6 +32,7 @@ class Home extends React.Component {
 
     const styleHeight = {height: 'inherit'}
     const styleButtonBottom= {marginBottom: '40px'}
+    const styleClients =  {height: '150px'}
 
     const { organizations } = this.props
 
@@ -55,19 +56,19 @@ class Home extends React.Component {
                 <SubjectBox
                   title="Building Trust"
                   description="SocialBank gives donors complete transparency and information regarding finance distribution in charitable and community projects."
-                  image="more-from-1.png" />
+                  image="building_trust8.jpeg" />
                 <SubjectBox
                   title="Activating communities"
                   description="Helping local leaders to engage volunteers and fund projects."
-                  image="more-from-4.png" />
+                  image="activating_community5.jpeg" />
                 <SubjectBox
                   title="Financial Control"
                   description="Simple system supporting processing financial activities in organisations of any size."
-                  image="more-from-2.png" />
+                  image="financial_control.jpeg" />
                 <SubjectBox
                   title="Fundraising Support"
                   description="Platform for social and charitable organisations to support their fundraising activities."
-                  image="more-from-3.png" />
+                  image="fundraising.jpeg" />
               </div>
             </div>
             <div className="sb-map-section">
@@ -82,6 +83,17 @@ class Home extends React.Component {
                 </p>
               </div>
               <div className="android-customized-section-image"></div>
+            </div>
+            <div className="android-customized-section">
+              <div className="android-customized-section-text">
+                <div className="mdl-typography--font-light mdl-typography--display-1-color-contrast">Join us!</div>
+                <p className="mdl-typography--font-light">
+                  <a href="http://www.pinuk.online/en/pin-uk-c-i-c/">
+                  <img src="images/pin-ik-logo.jpeg" alt="{title}" style={styleClients}></img>
+                  </a>
+                  <br/><br/><br/><br/>
+                </p>
+              </div>
             </div>
             <ContactForm />
             <Footer />
