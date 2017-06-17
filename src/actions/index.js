@@ -189,3 +189,7 @@ export const sendMessage = (contact, cb) => (dispatch, getState) => {
     }
   })
 }
+
+export const sessionSetTemp = (data, cb) => (dispatch, getState) => {
+  dispatch({type: types.LOGIN_SESSION_TEMP, data})
+}

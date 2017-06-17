@@ -50,7 +50,6 @@ const enhance = compose(
 )
 
 class CardTransferForm extends React.Component {
-
   onCancel() {
     const { handleClose, dispatch } = this.props
     dispatch(this.props.reset('cardTransferForm'))

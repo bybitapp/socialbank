@@ -5,7 +5,7 @@ class Auth {
    * @param {string} token
    */
   static authenticateUser (user) {
-    localStorage.setItem('user', user)
+    localStorage.setItem('user', JSON.stringify(user))
   }
 
   /**
@@ -32,7 +32,8 @@ class Auth {
    */
 
   static getUser () {
-    return localStorage.getItem('user')
+    const user = localStorage.getItem('user')
+    return JSON.parse(user)
   }
 }
 
