@@ -1,4 +1,4 @@
 export const CARD_STATUS = [
-  {name: 'Active', id: 'active'},
-  {name: 'Inactive', id: 'inactive'}
+  {name: 'ACTIVE', id: 'active'},
+  {name: 'BLOCKED', id: 'inactive'}
 ]

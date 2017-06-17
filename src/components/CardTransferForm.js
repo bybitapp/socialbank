@@ -40,6 +40,7 @@ const enhance = compose(
             ownProps.handleClose()
             resolve()
           } else {
+            console.log(_error);
             reject(new SubmissionError({_error}))
           }
         }))
