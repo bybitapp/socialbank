@@ -36,14 +36,3 @@ Full names and descriptions should be stored in our internal database
 * External Accounts   - SOCIALBANK.uuid()
 * Managed Accounts    - SOCIALBANK.uuid()
 * Virtual Cards       - SOCIALBANK.uuid()
-
-## TODO
-
-* React authorization and permissions (authorization session)
-* login to app (authorization session)
-* transfer from project to virtual cards
-* destroy card
-* edit with option inactive/active card
-* Landing page with proper content
-
-Please feel free to add more task if you thinking that has to be done
