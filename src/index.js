@@ -16,7 +16,7 @@ import Help from './page/Help'
 import Login from './page/Login'
 import Logout from './page/Logout'
 import Registration from './page/Registration'
-import Details from './page/Details'
+import Me from './page/Me'
 import History from './page/History'
 import Public from './page/Public'
 import Projects from './page/Projects'
@@ -28,25 +28,25 @@ const store = createStore(reducer, composeEnhancers(
 ))
 
 const App = () => (
-    <Provider store={store}>
-      <Router>
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/logout" component={Logout} />
-          <Route path="/registration" component={Registration} />
-          <Route path="/terms" component={Terms} />
-          <Route path="/help" component={Help} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/details" component={Details} />
-          <Route path="/history" component={History} />
-          <Route path="/projects" component={Projects} />
-          <Route path="/cards" component={Cards} />
-          <Route path="/public/o/:id" component={Public} />
-          <Route path="/" component={Home} />
-        </Switch>
-      </Router>
-    </Provider>
-  )
+  <Provider store={store}>
+    <Router>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/logout" component={Logout} />
+        <Route path="/registration" component={Registration} />
+        <Route path="/terms" component={Terms} />
+        <Route path="/help" component={Help} />
+        <Route path="/contact" component={Contact} />
+        <Route path="/me" component={Me} />
+        <Route path="/history" component={History} />
+        <Route path="/projects" component={Projects} />
+        <Route path="/cards" component={Cards} />
+        <Route path="/public/o/:id" component={Public} />
+        <Route path="/" component={Home} />
+      </Switch>
+    </Router>
+  </Provider>
+)
 
 ReactDOM.render(
   <App />,
