@@ -40,7 +40,7 @@ export const registerAccount = (account, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // return dispatch({ type: types.REGISTER_ACCOUNT_FAILURE, account })
-      cb(new Error('You account can not be created, please contact with us!'))
+      cb('You account can not be created, please contact with us!')
     }
   })
 }
@@ -54,7 +54,7 @@ export const login = (account, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // return dispatch({ type: types.LOGIN_FAILURE, account })
-      cb(new Error('Login Failed!'))
+      cb('Login Failed!')
     }
   })
 }
@@ -79,14 +79,14 @@ export const addProject = (project, cb) => (dispatch, getState) => {
         dispatch({type: types.UPDATE_PROJECT_SUCCESS, data})
         cb(null, data)
       } else {
-        cb(new Error('Update Failed!'))
+        cb('Update Failed!')
       }
     } else {
       if (!ex) {
         dispatch({type: types.ADD_PROJECT_SUCCESS, data})
         cb(null, data)
       } else {
-        cb(new Error('Add Failed!'))
+        cb('Add Failed!')
       }
     }
   })
@@ -100,7 +100,7 @@ export const closeProject = (project, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
-      cb(new Error('Close Failed!'))
+      cb('Close Failed!')
     }
   })
 }
@@ -113,7 +113,7 @@ export const depositProject = (project, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
-      cb(new Error('Deposit Failed!'))
+      cb('Deposit Failed!')
     }
   })
 }
@@ -125,14 +125,14 @@ export const addCard = (card, cb) => (dispatch, getState) => {
         dispatch({type: types.UPDATE_CARD_SUCCESS, data})
         cb(null, data)
       } else {
-        cb(new Error('Update Failed!'))
+        cb('Update Failed!')
       }
     } else {
       if (!ex) {
         dispatch({type: types.ADD_CARD_SUCCESS, data})
         cb(null, data)
       } else {
-        cb(new Error('Add Failed!'))
+        cb('Add Failed!')
       }
     }
   })
@@ -146,7 +146,7 @@ export const transferCard = (project, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
-      cb(new Error('Transfer Failed!'))
+      cb('Transfer Failed!')
     }
   })
 }
@@ -157,7 +157,7 @@ export const destroyCard = (card, cb) => (dispatch, getState) => {
       dispatch({type: types.DESTROY_CARD_SUCCESS, data: data})
       cb(null, data)
     } else {
-      cb(new Error('Destroy Failed!'))
+      cb('Destroy Failed!')
     }
   })
 }
@@ -168,7 +168,7 @@ export const updateCardStatus = (card, cb) => (dispatch, getState) => {
       dispatch({type: types.UPDATE_CARD_STATUS_SUCCESS, data: data})
       cb(null, data)
     } else {
-      cb(new Error('Update Card Status Failed!'))
+      cb('Update Card Status Failed!')
     }
   })
 }
@@ -185,7 +185,7 @@ export const sendMessage = (contact, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // dispatch({ type: types.SEND_MESSAGE_FAILURE, projects })
-      cb(new Error('Send Message Failed!'))
+      cb('Send Message Failed!')
     }
   })
 }
