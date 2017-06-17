@@ -15,11 +15,11 @@ class About extends React.Component {
         <main className="mdl-layout__content">
           <div className="page-content">
             <div className="sb-form-content sb-page" style={styleText}>
-              <h1 id="socialbanktermsofserviceprivacypolicy">SocialBank Terms of Service &amp; Privacy Policy</h1>
+              <h2 id="socialbanktermsofserviceprivacypolicy">SocialBank Terms of Service &amp; Privacy Policy</h2>
 
-              <h2 id="termsofservice">Terms of Service</h2>
+              <h4 id="termsofservice">Terms of Service</h4>
 
-              <h3 id="introduction">Introduction</h3>
+              <h4 id="introduction">Introduction</h4>
 
               <p>The services to which these terms of service relate are provided by SocialBank (we, us or our).</p>
 
@@ -29,7 +29,7 @@ class About extends React.Component {
 
               <p>These terms were last updated on 2nd June 2017.</p>
 
-              <h3 id="whatwedo">What we do</h3>
+              <h4 id="whatwedo">What we do</h4>
 
               <p>Our Apps have been designed to allow you to store and share your own recommendations or 'pearls of wisdom' (“Pearls”) and groups of Pearls ("Guides") either with other users of the Service and/or friends and to enable you to find and locate new Pearls and Guides both in your local area and worldwide.</p>
 
@@ -37,7 +37,7 @@ class About extends React.Component {
 
               <p>You can decide whether to make Pearls or Guides available to your friends who use the Service and also to the wider public. Any factual information (such as phone numbers, addresses, website URLs, photos and other similar information) relating to Pearls which you upload to the Service will automatically be publically available to other users of the Service. You can choose to make other elements of each Pearl public or private (such as comments or private notes) by setting your privacy settings for each Pearl or Guide before that Pearl or Guide is posted to the Service.</p>
 
-              <h3 id="accesstotheapps">Access to the Apps</h3>
+              <h4 id="accesstotheapps">Access to the Apps</h4>
 
               <p>The Apps may only be downloaded, accessed and used on a device owned or controlled by you, running the relevant operating system for which the Apps were designed. Please ensure you have a compatible device which meets all the necessary technical specifications to enable you to download, access and use the Apps.</p>
 
@@ -49,13 +49,13 @@ class About extends React.Component {
 
               <p>We reserve the right to withdraw or suspend the operation of our Apps, or cease to provide and/or update content to our Apps, with or without notice to you, if we need to do so, including, without limitation, for security, legal or business reasons.</p>
 
-              <h3 id="whatyouareallowedtodo">What you are allowed to do</h3>
+              <h4 id="whatyouareallowedtodo">What you are allowed to do</h4>
 
               <p>You may only use the Apps for your non-commercial, personal use and only in accordance with these terms, for lawful purposes (complying with all applicable laws and regulations), and in a responsible manner.</p>
 
               <p>Subject to the following sections, you may retrieve and display content from the Apps on a computer or mobile device and store the Apps in electronic form incidentally in the normal course of use of your browser or mobile device. Additional terms may also apply to certain features, parts or content of the Apps and, where such terms apply, will be displayed before you access the relevant features, parts or content.</p>
 
-              <h3 id="whatyouarenotallowedtodo">What you are not allowed to do</h3>
+              <h4 id="whatyouarenotallowedtodo">What you are not allowed to do</h4>
 
               <p>Except to the extent expressly set out in these terms, you are not allowed to:</p>
 
@@ -75,7 +75,7 @@ class About extends React.Component {
 
               <p>In order to do anything with the Apps, website or Services which is not expressly permitted by these terms, you will need a separate licence from us. Please contact us, using the <a href="/contact">contacting us</a> details at the end of these terms.</p>
 
-              <h3 id="userguidelines">User guidelines</h3>
+              <h4 id="userguidelines">User guidelines</h4>
 
               <p>We want you to enjoy using our website, Apps and Services, but please do so responsibly and with regard to others (including us, and other users). Please follow the rules set out below.</p>
 
@@ -99,11 +99,11 @@ class About extends React.Component {
                 <li>Do not impersonate anyone else.</li>
               </ul>
 
-              <h3 id="thirdpartyserviceprovidersandapplicationstores">Third party service providers and application stores</h3>
+              <h4 id="thirdpartyserviceprovidersandapplicationstores">Third party service providers and application stores</h4>
 
               <p>Certain third party service providers with whose devices and/or operating systems our Apps have been designed to be compatible with require us to include some additional provisions in these terms. These are set out at the end of these terms under <a href="#additional-terms-from-third-party-service-providers">Additional third party terms</a>.</p>
 
-              <h3 id="useofthewebsiteandorapps">Use of the website and/or Apps</h3>
+              <h4 id="useofthewebsiteandorapps">Use of the website and/or Apps</h4>
 
               <p>We do not guarantee the continuous, uninterrupted or error-free operation of the website or Apps, or that the website or Apps will perform at a certain speed (since this depends on a number of factors outside our control such as failures of internet access) and, in particular, the website and/or Apps may be unavailable from time to time due to scheduled maintenance or upgrades.</p>
 
@@ -133,7 +133,7 @@ class About extends React.Component {
 
               <p>We do not guarantee that any particular content will be made available via the website or Apps. We do not (and have no obligation to) monitor the use of the website, Apps or any content uploaded to it by users. We will not be liable for any errors or omissions in any content provided by users (for example, any inaccurate or incomplete user postings).</p>
 
-              <h3 id="intellectualpropertyrightsanduseofcontent">Intellectual property rights and use of content</h3>
+              <h4 id="intellectualpropertyrightsanduseofcontent">Intellectual property rights and use of content</h4>
 
               <p>All intellectual property rights in the website, Apps and in any content of the website or Apps (including text, graphics, software, photographs and other images, videos, sound, trade marks and logos) are owned by us or by our licensors (who may be other users). Except as expressly set out in the terms, nothing in these terms gives you any rights in respect of any intellectual property owned by us or our licensors and you acknowledge that you do not acquire any ownership rights by using the website, Apps or any content therein.</p>
 
@@ -163,7 +163,7 @@ class About extends React.Component {
 
               <p>If you do not want any content submitted by you to be subject to these licence terms, then you should not submit it.</p>
 
-              <h3 id="functionalityandcontent">Functionality and content</h3>
+              <h4 id="functionalityandcontent">Functionality and content</h4>
 
               <p>We may change the design, features and/or functionality of the website or Apps from time to time. The content of the website or Apps may be updated at any time.</p>
 
@@ -177,15 +177,15 @@ class About extends React.Component {
 
               <p>We cannot and do not guarantee that the website, Apps and its content will be free from viruses and/or other code that may have contaminating or destructive elements. It is your responsibility to implement appropriate security safeguards (including anti-virus and other security checks) to satisfy your particular requirements as to the safety and reliability of the website, Apps and its content.</p>
 
-              <h3 id="yourpersonalinformation">Your personal information</h3>
+              <h4 id="yourpersonalinformation">Your personal information</h4>
 
               <p>Use of your personal information submitted to us (whether via the Apps or the website) is governed by our <a href="#privacy-policy">Privacy Policy</a>.</p>
 
-              <h3 id="externallinks">External links</h3>
+              <h4 id="externallinks">External links</h4>
 
               <p>The Apps and/or website may, from time to time, include links to external sites, which may include links to third party offers and promotions. We include these to provide you with access to information, products or services that you may find useful or interesting. We are not responsible for the content of these sites or for anything provided by them and do not guarantee that they will be continuously available. The fact that we include links to such external sites does not imply any endorsement of, or association with, their operators or promoters.</p>
 
-              <h3 id="ourliability">Our liability</h3>
+              <h4 id="ourliability">Our liability</h4>
 
               <p>Nothing in these terms shall limit or exclude our liability to you for:</p>
 
@@ -201,7 +201,7 @@ class About extends React.Component {
 
               <p>We will not be liable or responsible for any failure to perform, or delay in performance of, any of our obligations that is caused by events outside our reasonable control.</p>
 
-              <h3 id="general">General</h3>
+              <h4 id="general">General</h4>
 
               <p>You may not transfer or assign any or all of your rights or obligations under these terms.</p>
 
@@ -217,7 +217,7 @@ class About extends React.Component {
 
               <p>These terms shall be governed by English law, and you agree that any dispute between you and us regarding them, the Apps or the website will only be dealt with by the English courts, provided that, if you live in a part of the United Kingdom other than England, the applicable law of that part of the United Kingdom will govern and any dispute will only be dealt with by the courts there. Nothing shall prevent us from bringing proceedings to protect our intellectual property rights before any competent court.</p>
 
-              <h3 id="contactingus">Contacting us</h3>
+              <h4 id="contactingus">Contacting us</h4>
 
               <p>Please submit any questions you have about these terms or any problems concerning the Apps, website or Service to us by the following means:</p>
 
@@ -229,9 +229,9 @@ class About extends React.Component {
 
               <hr />
 
-              <h2 id="privacypolicy">Privacy Policy</h2>
+              <h4 id="privacypolicy">Privacy Policy</h4>
 
-              <h3 id="introduction-1">Introduction</h3>
+              <h4 id="introduction-1">Introduction</h4>
 
               <p>This is the privacy and cookies policy for <a href="www.socialbank.co">www.socialbank.co</a>.</p>
 
@@ -241,7 +241,7 @@ class About extends React.Component {
 
               <p>We reserve the right to change this privacy policy from time to time by changing it on the Site or updating the Apps. This privacy policy was last updated on 2nd June 2017.</p>
 
-              <h3 id="informationwemaycollectfromyou">Information we may collect from you</h3>
+              <h4 id="informationwemaycollectfromyou">Information we may collect from you</h4>
 
               <p>We may collect and process the following personal information about you:</p>
 
@@ -263,7 +263,7 @@ class About extends React.Component {
 
               <p>You are under no obligation to provide any such information. However, if you should choose to withhold requested information, we may not be able to provide you with certain services.</p>
 
-              <h3 id="usesofyourinformation">Uses of your information</h3>
+              <h4 id="usesofyourinformation">Uses of your information</h4>
 
               <p>We will use the personal information you provide to:</p>
 
@@ -292,7 +292,7 @@ class About extends React.Component {
 
               <p>You can tell us not to contact you with information regarding our products and services either at the point such information is collected on the Apps (by checking or unchecking (as directed) the relevant box) or, where you do not wish us to continue to use your information in this way, by following the unsubscribe instructions on any communications sent to you. You can also exercise this right at any time by contacting us <a href="/contact">here</a>.</p>
 
-              <h3 id="privacysettings">Privacy settings</h3>
+              <h4 id="privacysettings">Privacy settings</h4>
 
               <p>All factual information (such as phone numbers, addresses, website URLs, photos and other similar information) relating to Pearls or Guides which you upload to the Service will be publically available to other users of the Service. You can choose to make other elements of each Pearl or Guide (such as comments and private notes) available to you only or publically available to other users by setting your privacy settings for each Pearl or Guide before each Pearl or Guide is posted to the Service.</p>
 
@@ -302,11 +302,11 @@ class About extends React.Component {
 
               <p>If you choose to share Pearls or Guides with friends or other members of the public who are not users of the Service, only public content will be available for viewing by those people. If you choose to share or forward a Pearl or Guide with a friend who is an existing user of the Service (irrespective of whether the Pearl or Guide you are sharing is your own Pearl or Guide or that of another user with whom you are connected), only public content will be available for viewing by those friends you choose to share the Pearl or Guide with.</p>
 
-              <h3 id="additionalinformation">Additional information</h3>
+              <h4 id="additionalinformation">Additional information</h4>
 
               <p>When you access or use the Site or Apps, we may automatically collect additional information about you, such as the type of internet browser or mobile device you use, any website from which you have come to the Apps and your IP address (the unique address which identifies your device on the internet) and your operating system, which are automatically recognised by our web server. You cannot be identified from this information and it is only used to assist us in providing an effective service on the relevant Apps and to collect broad demographic information for aggregate use.</p>
 
-              <h3 id="cookieandsimilartechnology">Cookie and similar technology</h3>
+              <h4 id="cookieandsimilartechnology">Cookie and similar technology</h4>
 
               <p>The Site and Apps uses cookies or similar technology to collect information about your access to the Site or access and use of the Apps.</p>
 
@@ -332,7 +332,7 @@ class About extends React.Component {
 
               <p>Most computer and some mobile web browsers automatically accept cookies but, if you prefer, you can change your browser to prevent that or to notify you each time a cookie is set. You can also learn more about cookies by visiting <a href="http://www.allaboutcookies.org">www.allaboutcookies.org</a> which includes additional useful information on cookies and how to block cookies using different types of browser. Please note however, that by blocking or deleting cookies you may not be able to take full advantage of the Site or Apps (as the case may be).</p>
 
-              <h3 id="informationsharing">Information sharing</h3>
+              <h4 id="informationsharing">Information sharing</h4>
 
               <p>We may disclose aggregate statistics about visitors to, and users of, the Site and the Apps in order to describe our services to prospective partners, advertisers, sponsors and other reputable third parties and for other lawful purposes, but these statistics will include no personally identifiable information.</p>
 
@@ -342,33 +342,33 @@ class About extends React.Component {
 
               <p>We may disclose your personal information if required to do so by law or if we believe that such action is necessary to prevent fraud or cybercrime or to protect the Site, Apps or the rights, property or personal safety of any person.</p>
 
-              <h3 id="publicforums">Public forums</h3>
+              <h4 id="publicforums">Public forums</h4>
 
               <p>The Site and/or Apps may, from time to time, make comment facilities, message boards and/or other public forums available to its users. Any information that is disclosed in these areas becomes public information and you should exercise caution when using these and never disclose your personal information.</p>
 
-              <h3 id="childsafety">Child safety</h3>
+              <h4 id="childsafety">Child safety</h4>
 
               <p>Our Services are designed for use by those aged 13 years or over. If you are less than 13 years old, we are afraid that you cannot use the Services. If you are 13 years old or older, but under the age of 18, please go through these terms with your parent or guardian and make sure that both of you are happy with them and agree with them before signing up to use the Services.</p>
 
-              <h3 id="externallinks-1">External links</h3>
+              <h4 id="externallinks-1">External links</h4>
 
               <p>The Site and Apps may, from time to time, contain links to external sites. We are not responsible for the privacy policies or the content of such sites.</p>
 
-              <h3 id="security">Security</h3>
+              <h4 id="security">Security</h4>
 
               <p>We place great importance on the security of all personally identifiable information associated with our users. We have security measures in place to attempt to protect against the loss, misuse and alteration of personal information under our control. For example, our security and privacy policies are periodically reviewed and enhanced as necessary and only authorised personnel have access to personal information. Whilst we cannot ensure or guarantee that loss, misuse or alteration of information will never occur, we use all reasonable efforts to prevent it.</p>
 
-              <h3 id="datastorageandinternationaltransfers">Data storage and international transfers</h3>
+              <h4 id="datastorageandinternationaltransfers">Data storage and international transfers</h4>
 
               <p>Information that you submit via the Site or Apps is sent to and stored on secure servers located in the European Economic Area (“<strong>EEA</strong>”). If you make contact with any business featured on the Site your details may be transferred outside the EEA. If we transfer your information outside the EEA in this way, we will take steps to ensure that your privacy rights continue to be protected. By submitting information via the Site or Apps, you agree to this storing, processing and/or transfer.</p>
 
               <p>If you use our services while you are outside the EEA, your information may be transferred outside the EEA in order to provide you with those services.</p>
 
-              <h3 id="yourrights">Your rights</h3>
+              <h4 id="yourrights">Your rights</h4>
 
               <p>You have a legal right under the Data Protection Act 1998 to a copy of all the personal information about you held by us. On request, we will provide you with a copy of this information subject to a fee not exceeding the prescribed fee permitted by law. You also have a right to correct any errors in that information. As mentioned above, you have a right to prevent the use of your personal information for direct marketing purposes.</p>
 
-              <h3 id="contactingus-1">Contacting us</h3>
+              <h4 id="contactingus-1">Contacting us</h4>
 
               <p>Please submit any questions, concerns or comments you have about this privacy policy or any requests concerning your personal data by any of the following means:</p>
 
