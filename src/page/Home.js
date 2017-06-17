@@ -7,6 +7,7 @@ import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import ContactForm from '../components/ContactForm'
 import SubjectBox from '../components/SubjectBox'
+import CookieBanner from '../components/CookieBanner'
 import { Link } from 'react-router-dom'
 import { getOrganizations } from '../actions'
 
@@ -38,6 +39,7 @@ class Home extends React.Component {
 
     return (
       <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+          <CookieBanner />
           <Header />
           <MobileNavigation />
           <div className="android-content mdl-layout__content">
