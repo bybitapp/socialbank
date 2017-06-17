@@ -33,7 +33,7 @@ var config = {
     mapKey: 'AIzaSyCkwfHICB6QowBNjiGBZc12MH2HbdZnHbM'
   },
   smtp: {
-    host: 'smtp.zoho.com',
+    host: 'smtp.zoho.eu',
     port: 465,
     secure: true,
     auth: {
