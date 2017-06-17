@@ -43,11 +43,11 @@ class Home extends React.Component {
         <MobileNavigation />
         <div className="android-content mdl-layout__content">
           <div className="android-be-together-section mdl-typography--text-center" style={styleHeight}>
-            <div className="logo-font android-slogan">Only together we can change poverty!</div>
-            <div className="logo-font android-sub-slogan">welcome to socialbank... be yourself. do your thing. see whats going on.</div>
+            <div className="logo-font android-slogan">Join the Global Social Network!</div>
+            <div className="logo-font android-sub-slogan">Simple financial management system with instant, certain, low-cost payments.</div>
             <div className="logo-font android-create-character">
               <Link style={styleButtonBottom} className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" to={'/registration'}>
-                  Create your bank account
+                  Create your social account
               </Link>
             </div>
           </div>
@@ -77,9 +77,9 @@ class Home extends React.Component {
           </div>
           <div className="android-customized-section">
             <div className="android-customized-section-text">
-              <div className="mdl-typography--font-light mdl-typography--display-1-color-contrast">Help Charity and Social Organizations</div>
+              <div className="mdl-typography--font-light mdl-typography--display-1-color-contrast">Build your Social Value and Trust</div>
               <p className="mdl-typography--font-light">
-                Put the stuff that you care about right on your home screen: the latest news, the weather or a stream of your recent photos.
+                SocialBank financial technology enables banks to send real-time payments across networks and operate within micropayments.
                 <br/><br/><br/><br/>
               </p>
             </div>
