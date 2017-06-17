@@ -29,7 +29,7 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(login(values, (_error, data) => {
           if (!_error) {
-            ownProps.history.push('/details')
+            ownProps.history.push('/me')
             resolve()
           } else {
             reject(new SubmissionError({_error}))

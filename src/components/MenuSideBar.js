@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const menuItems = [
-    {label: 'Account Details', path: '/details', icon: 'settings'},
+    {label: 'Account Details', path: '/me', icon: 'settings'},
     {label: 'Projects', path: '/projects', icon: 'account_balance'},
     {label: 'Virtual Cards', path: '/cards', icon: 'credit_card'},
     {label: 'Transaction History', path: '/history', icon: 'history'}
