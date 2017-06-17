@@ -186,8 +186,8 @@ class Cards extends React.Component {
     const actions = [
       {icon: 'attach_money', onclick: this.onTransfer},
       {icon: 'mode_edit', onclick: this.onEdit},
-      {icon: 'lock_open', onclick: this.onBlock, show: (item)=>item.status === 'active'},
-      {icon: 'lock', onclick: this.onUnblock, show: (item)=>item.status === 'inactive'},
+      {icon: 'lock', onclick: this.onBlock, show: (item)=>item.status === 'active'},
+      {icon: 'lock_open', onclick: this.onUnblock, show: (item)=>item.status === 'inactive'},
       {icon: 'delete', onclick: this.onDestroy}
     ]
 
