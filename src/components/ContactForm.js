@@ -48,7 +48,7 @@ class ContactForm extends React.Component {
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
     const styleError = {textAlign: 'center', width: '100%'}
     const styleColor = {backgroundColor: 'white'}
-    const anchorText = {'text-decoration': 'none', color: '#8bc34a'}
+    const anchorText = {textDecoration: 'none', color: '#8bc34a'}
     const { handleSubmit, error } = this.props
 
     return (
