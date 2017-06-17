@@ -8,6 +8,7 @@ import SubjectBox from '../components/SubjectBox'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Map from '../components/Map'
+import CookieBanner from '../components/CookieBanner'
 import { Link } from 'react-router-dom'
 import { getOrganizations } from '../actions'
 
@@ -37,6 +38,7 @@ class Home extends React.Component {
 
     return (
       <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <CookieBanner />
         <Header />
         <MobileNavigation />
         <div className="android-content mdl-layout__content">
