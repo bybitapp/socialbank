@@ -58,7 +58,7 @@ class ContactForm extends React.Component {
         <form onSubmit={handleSubmit}>
           <div className="mdl-grid">
           <div className="mdl-cell mdl-cell--4-col">
-              <h5 style={styleH5}>Connect with us</h5>
+              <div className="mdl-typography--font-light mdl-typography--display-1-color-contrast">Connect with us</div>
               <br/>
               Email: <a href="mailto:contact@socialbank.co">contact@socialbank.co</a>
               <br/>
