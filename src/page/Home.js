@@ -32,9 +32,11 @@ class Home extends React.Component {
   render () {
     const styleHeight = { height: '450px', backgroundImage: 'url(images/background[edited].png)', backgroundRepeat: 'no-repeat'}
     const styleButtonBottom = { marginTop: '70px', marginBottom: '40px' }
-    const styleSlogan = {textShadow: '5px 5px 12px black'}
-    const styleSubSlogan = {textShadow: '5px 5px 9px black'}
+    const styleSlogan = {textShadow: '5px 5px 12px black', paddingTop: '130px'}
+    const styleSubSlogan = {textShadow: '5px 5px 9px black', paddingTop: 0}
     const styleClients = { height: '150px' }
+    const styleH1 = {backgroundColor: 'rgba(0, 0, 0, .8)', fontWeight: 'bold', marginBottom: 0}
+    const styleH2 = {backgroundColor: 'rgba(0, 0, 0, .8)', paddingTop: 0, fontSize: '21px', marginTop: 0}
 
     const { organizations } = this.props
 
@@ -46,9 +48,11 @@ class Home extends React.Component {
         <div className="android-content mdl-layout__content">
           <div className="mdl-typography--text-center" style={styleHeight}>
             <div className="logo-font android-slogan mdl-color-text--lime-A700" style={styleSlogan}>
-            Join the Global Social Network!
+            <h1 style={styleH1}>Join the Global Social Network!</h1>
             </div>
-            <div className="logo-font android-sub-slogan mdl-color-text--white" style={styleSubSlogan}>Simple financial management system with instant, certain, low-cost payments.</div>
+            <div className="logo-font android-sub-slogan mdl-color-text--white" style={styleSubSlogan}>
+              <h2 style={styleH2}>Simple financial management system with instant, certain, low-cost payments.</h2>
+            </div>
             <div className="logo-font">
               <Link style={styleButtonBottom} className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" to={'/registration'}>
                   Create your social account
