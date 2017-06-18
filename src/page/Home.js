@@ -30,8 +30,10 @@ class Home extends React.Component {
   }
 
   render () {
-    const styleHeight = { height: 'inherit' }
-    const styleButtonBottom = { marginBottom: '40px' }
+    const styleHeight = { height: '450px', backgroundImage: 'url(images/background[edited].png)', backgroundRepeat: 'no-repeat'}
+    const styleButtonBottom = { marginTop: '70px', marginBottom: '40px' }
+    const styleSlogan = {textShadow: '5px 5px 12px black'}
+    const styleSubSlogan = {textShadow: '5px 5px 9px black'}
     const styleClients = { height: '150px' }
 
     const { organizations } = this.props
@@ -42,10 +44,12 @@ class Home extends React.Component {
         <Header />
         <MobileNavigation />
         <div className="android-content mdl-layout__content">
-          <div className="android-be-together-section mdl-typography--text-center" style={styleHeight}>
-            <div className="logo-font android-slogan">Join the Global Social Network!</div>
-            <div className="logo-font android-sub-slogan">Simple financial management system with instant, certain, low-cost payments.</div>
-            <div className="logo-font android-create-character">
+          <div className="mdl-typography--text-center" style={styleHeight}>
+            <div className="logo-font android-slogan mdl-color-text--white" style={styleSlogan}>
+            Join the Global Social Network!
+            </div>
+            <div className="logo-font android-sub-slogan mdl-color-text--white" style={styleSubSlogan}>Simple financial management system with instant, certain, low-cost payments.</div>
+            <div className="logo-font">
               <Link style={styleButtonBottom} className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" to={'/registration'}>
                   Create your social account
               </Link>
@@ -61,7 +65,7 @@ class Home extends React.Component {
               <SubjectBox
                 title="Activating communities"
                 description="Helping local leaders to engage volunteers and fund projects."
-                image="activating_community5.jpeg" />
+                image="activating_community7.jpeg" />
               <SubjectBox
                 title="Financial Control"
                 description="Simple system supporting processing financial activities in organisations of any size."
