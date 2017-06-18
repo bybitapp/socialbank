@@ -30,7 +30,7 @@ class Home extends React.Component {
   }
 
   render () {
-    const styleHeight = { height: '450px', backgroundImage: 'url(images/background[edited].png)', backgroundRepeat: 'no-repeat'}
+    const styleHeight = {height: '450px', backgroundImage: 'url(images/plexus3-1280x720.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}
     const styleButtonBottom = { marginTop: '70px', marginBottom: '40px' }
     const styleSubSlogan = {textShadow: '5px 5px 9px black', paddingTop: 0}
     const styleClients = { height: '150px' }
