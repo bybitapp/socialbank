@@ -45,7 +45,7 @@ class Home extends React.Component {
         <MobileNavigation />
         <div className="android-content mdl-layout__content">
           <div className="mdl-typography--text-center" style={styleHeight}>
-            <div className="logo-font android-slogan mdl-color-text--white" style={styleSlogan}>
+            <div className="logo-font android-slogan mdl-color-text--lime-A700" style={styleSlogan}>
             Join the Global Social Network!
             </div>
             <div className="logo-font android-sub-slogan mdl-color-text--white" style={styleSubSlogan}>Simple financial management system with instant, certain, low-cost payments.</div>
