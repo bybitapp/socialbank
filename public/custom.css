@@ -100,13 +100,19 @@
     background-color: rgba(0, 0, 0, .8);
     font-weight: bold;
     margin-bottom: 0;
+    color: #8bc34a;
+}
+
+.android-slogan {
+  padding-top: 130px;
+  text-shadow: 5px 5px 12px black;
 }
 
 .android-sub-slogan h2 {
   background-color: rgba(0, 0, 0, .8);
   padding-top: 0;
   font-size: 21px;
-  margin-top: 0
+  margin-top: 0;
 }
 
 /**** Mobile layout ****/
@@ -118,6 +124,12 @@
     font-size: 26px;
     margin: 0 16px;
     padding-top: 24px;
+    color: #8bc34a;
+  }
+
+  .android-slogan {
+    padding-top: 100px;
+    text-shadow: 5px 5px 12px black;
   }
 
   .android-sub-slogan h2 {
@@ -125,7 +137,7 @@
     font-size: 16px;
     margin: 0 16px;
     padding: 15px;
-    line-height: 24px
+    line-height: 24px;
   }
 
 }

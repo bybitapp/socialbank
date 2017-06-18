@@ -32,7 +32,6 @@ class Home extends React.Component {
   render () {
     const styleHeight = { height: '450px', backgroundImage: 'url(images/background[edited].png)', backgroundRepeat: 'no-repeat'}
     const styleButtonBottom = { marginTop: '70px', marginBottom: '40px' }
-    const styleSlogan = {textShadow: '5px 5px 12px black', paddingTop: '130px'}
     const styleSubSlogan = {textShadow: '5px 5px 9px black', paddingTop: 0}
     const styleClients = { height: '150px' }
 
@@ -45,7 +44,7 @@ class Home extends React.Component {
         <MobileNavigation />
         <div className="android-content mdl-layout__content">
           <div className="mdl-typography--text-center" style={styleHeight}>
-            <div className="logo-font android-slogan mdl-color-text--lime-A700" style={styleSlogan}>
+            <div className="logo-font android-slogan">
             <h1>Join the Global Social Network!</h1>
             </div>
             <div className="logo-font android-sub-slogan mdl-color-text--white" style={styleSubSlogan}>
