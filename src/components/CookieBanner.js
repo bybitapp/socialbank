@@ -13,15 +13,25 @@ class CookieBanner extends React.Component {
   }
 
   render () {
-    const styleBanner = {zIndex: '30', width: '100%', backgroundColor: '#3f51b5', textAlign: 'center'}
-    const styleMessage = {margin: '2px', color: 'whitesmoke'}
-    const styleClose = {marginLeft: '50px', outline: 'none', textDecoration: 'none', color: 'white', fontSize: '16px'}
+    const styleBanner = {zIndex: '30', width: '100%', backgroundColor: 'rgba(0, 0, 0, 0.7)', textAlign: 'left'}
+    const styleMessage = {margin: '2px', color: '#dadada'}
+    const styleClose = {outline: 'none', textDecoration: 'none', color: '#ffffff', fontSize: '16px'}
+    const styleCloseWrapper = {textAlign:'center'}
     return (
       <div style={styleBanner}>
-        {!this.state.acceptedCookie && <p style={styleMessage}>
-          SocialBank uses cookies or similar technology to collect information about your access to the Site or access and use of the Apps. <a href='/terms'>Learn more</a>
-          <a style={styleClose} onClick={this.acceptCookie}>&times;</a>
-        </p>}
+        {!this.state.acceptedCookie &&
+          <div className='content-grid mdl-grid'>
+            <div className='mdl-cell mdl-cell--11-col mdl-cell--7-col-tablet mdl-cell--3-col-phone'>
+              <p style={styleMessage}>
+                SocialBank uses cookies or similar technology to collect information about your access to our website. <a href='/terms'>Learn more</a>
+              </p>
+            </div>
+            <div className='mdl-layout-spacer'></div>
+            <div className='mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone' style={styleCloseWrapper}>
+              <a style={styleClose} onClick={this.acceptCookie}>&times;</a>
+            </div>
+          </div>
+          }
       </div>
     )
   }
