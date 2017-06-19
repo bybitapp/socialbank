@@ -62,11 +62,11 @@ class Home extends React.Component {
               <SubjectBox
                 title="Building Trust"
                 description="SocialBank gives donors complete transparency and information regarding finance distribution in charitable and community projects."
-                image="building_trust8.jpeg" />
+                image="building_trust.png" />
               <SubjectBox
                 title="Activating communities"
                 description="Helping local leaders to engage volunteers and fund projects."
-                image="activating_community7.jpeg" />
+                image="activating_community.jpeg" />
               <SubjectBox
                 title="Financial Control"
                 description="Simple system supporting processing financial activities in organisations of any size."
