@@ -71,7 +71,7 @@ const enhance = compose(
           return new Promise((resolve, reject) => {
               dispatch(registerAccount(values, (_error) => {
                 if (!_error){
-                  alert('success')
+                  ownProps.history.push('/login')
                   resolve()
                 } else {
                   reject(new SubmissionError({_error}))
