@@ -7,7 +7,7 @@ export const account = (state = [], action) => {
     case LOGIN_SUCCESS:
       return (action.data.account) ? action.data.account : state
     case LOGOUT_SUCCESS:
-      return state
+      return {}
     case LOGIN_SESSION_TEMP:
       return action.data.account
     default:
