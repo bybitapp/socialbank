@@ -4,6 +4,8 @@ import {
   LOGIN_SUCCESS, LOGOUT_SUCCESS, LOGIN_SESSION_TEMP
 } from '../constants/ActionTypes'
 
+import Auth from '../modules/Auth'
+
 export const projects = (state = [], action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
@@ -15,9 +17,16 @@ export const projects = (state = [], action) => {
     case RECEIVE_PROJECTS:
       return (action.projects) ? action.projects : state
     case ADD_PROJECT_SUCCESS:
-      return state.concat(action.data)
+      const added = state.concat(action.data)
+
+      // TODO temporary fix
+      let user1 = Auth.getUser()
+      user1.projects = added
+      Auth.authenticateUser(user1)
+
+      return added
     case UPDATE_PROJECT_SUCCESS:
-      const newProjects = state.map(item => {
+      const updated = state.map(item => {
         if (item.id === action.data.id) {
           item.name = action.data.name
           item.description = action.data.description
@@ -25,9 +34,22 @@ export const projects = (state = [], action) => {
         }
         return item
       })
-      return newProjects
+
+      // TODO temporary fix
+      let user2 = Auth.getUser()
+      user2.projects = updated
+      Auth.authenticateUser(user2)
+
+      return updated
     case CLOSE_PROJECT_SUCCESS:
-      return state.filter(item => item.id !== action.projectId)
+      const deleted = state.filter(item => item.id !== action.projectId)
+
+      // TODO temporary fix
+      let user3 = Auth.getUser()
+      user3.projects = deleted
+      Auth.authenticateUser(user3)
+
+      return deleted
     case DEPOSIT_PROJECT_SUCCESS:
       return state.map(item => {
         if (item.id === action.data.projectId) {
