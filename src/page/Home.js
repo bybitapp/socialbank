@@ -45,7 +45,7 @@ class Home extends React.Component {
         <div className="android-content mdl-layout__content">
           <div className="mdl-typography--text-center" style={styleHeight}>
             <div className="logo-font android-slogan">
-            <h1>Join the Global Social Network!</h1>
+            <h1>Join the Global Financial Network!</h1>
             </div>
             <div className="logo-font android-sub-slogan mdl-color-text--white" style={styleSubSlogan}>
               <h2>Simple financial management system with instant, certain, low-cost payments.</h2>
@@ -84,7 +84,7 @@ class Home extends React.Component {
             <div className="android-customized-section-text">
               <div className="mdl-typography--font-light mdl-typography--display-1-color-contrast">Build your Social Value and Trust</div>
               <p className="mdl-typography--font-light">
-                We enable organizations to send real-time payments across networks and operate within micropayments. SocialBank works on the Open Bank technologies to improve transfer money around the social organizations. Our vision is to build the Social Network around the world and move value the way it moves information today.
+                We enable organizations to send real-time payments across networks and operate within micropayments. SocialBank works on the Open Bank technologies to improve transfer money around the social organizations. Our vision is to build the Global Financial Network around the world and move value the way it moves information today.
                 <br/><br/><br/><br/>
               </p>
             </div>
