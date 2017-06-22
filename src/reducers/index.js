@@ -5,6 +5,7 @@ import { account } from './account'
 import { cards } from './cards'
 import { organizations } from './organizations'
 import { history } from './history'
+import {reducer as toastr} from 'react-redux-toastr'
 
 export default combineReducers({
   projects,
@@ -12,5 +13,6 @@ export default combineReducers({
   cards,
   organizations,
   history,
-  form
+  form,
+  toastr
 })

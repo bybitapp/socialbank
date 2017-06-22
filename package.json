@@ -44,6 +44,7 @@
     "react-dom": "^15.6.1",
     "react-modal": "^2.0.2",
     "react-redux": "^5.0.5",
+    "react-redux-toastr": "6.2.7",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "react-scripts": "^1.0.7",
