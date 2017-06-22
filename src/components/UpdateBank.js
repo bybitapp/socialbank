@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { reduxForm, Field, change } from 'redux-form'
 import Input from './Input'
 import {IBAN_CODE, SWIFT_CODE} from '../constants/Validation'
+import Auth from '../modules/Auth'
 
 const validate = values => {
     const errors = {}
@@ -56,9 +57,10 @@ const updateData = (organization, dispatch) => {
 class UpdateBank extends React.Component {
 
   componentDidMount() {
-    const { account, dispatch } = this.props
-    if (account && account.organization) {
-      updateData(account.organization, dispatch)
+    const { dispatch } = this.props
+    const user = Auth.getUser()
+    if (user && user.account && user.account.organization) {
+      updateData(user.account.organization, dispatch)
     }
   }
 

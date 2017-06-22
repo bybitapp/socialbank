@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { reduxForm, Field, change } from 'redux-form'
 import Input from './Input'
 import {POSTCODE} from '../constants/Validation'
+import Auth from '../modules/Auth'
 
 const validate = values => {
     const errors = {}
@@ -51,8 +52,11 @@ const updateData = (account, dispatch) => {
 class UpdateAddress extends React.Component {
 
   componentDidMount() {
-    const { account, dispatch } = this.props
-    updateData(account, dispatch)
+    const { dispatch } = this.props
+    const user = Auth.getUser()
+    if (user) {
+      updateData(user.account, dispatch)
+    }
   }
 
   componentDidUpdate(prevProps) {

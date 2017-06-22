@@ -15,6 +15,7 @@ A full set of guidance documents including snippets of example code can be found
 * React (https://facebook.github.io/react/)
 * Redux
 * Open Payments Cloud (https://github.com/ixaris/ope-applicationclients/tree/master/js-client)
+* MongoDB (https://www.mongodb.com/)
 
 ## How to run
 
