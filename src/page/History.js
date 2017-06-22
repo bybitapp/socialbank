@@ -2,7 +2,7 @@ import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
-import { getHistory } from '../actions'
+import { getHistory, getProjectsWithHistory } from '../actions'
 import { dateFormat } from '../util/date'
 import { isEmpty } from 'ramda'
 import Header from '../components/Header'
@@ -10,17 +10,13 @@ import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 import Select from '../components/Select'
+import Auth from '../modules/Auth'
 
 const selector = formValueSelector('history')
 
 function mapStateToProps(state) {
   const { projects, history } = state
   let selectedProject = selector(state, 'project')
-  if (!selectedProject) {
-    if (projects && projects.length) {
-      selectedProject = projects[0].id
-    }
-  }
   return {
     projects,
     history,
@@ -71,9 +67,11 @@ const HistoryTable = ({transactions = [], styleTable}) => (
 class History extends React.Component {
 
   componentDidMount() {
-    const { dispatch, selectedProject } = this.props
-    if (selectedProject) {
-      dispatch(getHistory(selectedProject))
+    const { dispatch } = this.props
+    const user = Auth.getUser()
+    if (user) {
+      const { organization } = user.account
+      dispatch(getProjectsWithHistory(organization.id))
     }
   }
 

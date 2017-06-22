@@ -3,6 +3,7 @@ import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, Field, change } from 'redux-form'
 import Input from './Input'
+import Auth from '../modules/Auth'
 
 function mapStateToProps(state) {
   const { account } = state
@@ -30,8 +31,11 @@ const updateData = (account, dispatch) => {
 class GeneralInformation extends React.Component {
 
   componentDidMount() {
-    const { account, dispatch } = this.props
-    updateData(account, dispatch)
+    const { dispatch } = this.props
+    const user = Auth.getUser()
+    if (user) {
+      updateData(user.account, dispatch)
+    }
   }
 
   componentDidUpdate(prevProps) {
