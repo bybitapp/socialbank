@@ -23,7 +23,7 @@ class About extends React.Component {
               <ol>
                 <li>These Terms
                   <ul>
-                    <li>These terms and conditions (“Terms”) govern your use of this website (“Site”) and your relationship with Political And Credit Risks, trading as SocialBank (“we”, “us” or “SocialBank”).</li>
+                    <li>These terms and conditions (“Terms”) govern your use of this website (“Site”), trading as SocialBank (“we”, “us” or “SocialBank”).</li>
                     <li>Please read these Terms carefully as they affect your rights and liabilities under the law. If you do not agree to these Terms, please do not use this Site.</li>
                     <li>These Terms apply to your use of the Site and relationship with SocialBank generally, whether you engage for the provision of other services or not. If you purchase services from us then separate terms and conditions of service will apply.</li>
                     <li>Please also see our Privacy and Data Protection Policy for information about how we collect and use your personal data.</li>
@@ -124,7 +124,7 @@ class About extends React.Component {
               <h3>Privacy and Data Protection Policy</h3>
               <p></p>
               <p>1. General</p>
-              <p>1.1 Political And Credit Risks Ltd trading as SocialBank (“we” or “us”) take the privacy of your information very seriously. Our privacy and data protection policy (“Privacy Policy”) is designed to tell you about our practices regarding the collection,
+              <p>1.1 SocialBank (“we” or “us”) take the privacy of your information very seriously. Our privacy and data protection policy (“Privacy Policy”) is designed to tell you about our practices regarding the collection,
                   use and disclosure of information that you may provide to us.
               </p>
               <p>1.2 By using any services we offer, you are consenting to the collection, use, and disclosure of that information about you in accordance with, and are agreeing to be bound by, this Privacy Policy.</p>
