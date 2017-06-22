@@ -31,8 +31,8 @@ export default {
     .then((res) => cb(null, res.data))
     .catch((e) => cb(e))
   },
-  getProjects: (cb) => {
-    axios.get('/api/projects/list')
+  getProjectsByOrgId: (oid, cb) => {
+    axios.get(`/api/projects/list/o/${oid}`)
     .then((res) => cb(null, res.data))
     .catch((e) => cb(e))
   },

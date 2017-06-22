@@ -14,9 +14,37 @@ export const getOrganizationById = (oid) => dispatch => {
   })
 }
 
-export const getProjects = () => dispatch => {
-  server.getProjects((ex, projects) => {
-    dispatch({type: types.RECEIVE_PROJECTS, projects})
+export const getProjectsByOrgId = (pid) => dispatch => {
+  server.getProjectsByOrgId(pid, (ex, data) => {
+    dispatch({type: types.RECEIVE_PROJECTS, data})
+  })
+}
+
+export const getProjectsWithCards = (pid) => dispatch => {
+  server.getProjectsByOrgId(pid, (ex, data) => {
+    dispatch({type: types.RECEIVE_PROJECTS, data})
+    if (data.projects && data.projects.length) {
+      server.getCards(data.projects[0].id, (ex, data) => {
+        dispatch({type: types.RECEIVE_CARDS, data})
+      })
+    } else {
+      let data = {projects: []}
+      dispatch({type: types.RECEIVE_CARDS, data})
+    }
+  })
+}
+
+export const getProjectsWithHistory = (pid) => dispatch => {
+  server.getProjectsByOrgId(pid, (ex, data) => {
+    dispatch({type: types.RECEIVE_PROJECTS, data})
+    if (data.projects && data.projects.length) {
+      server.getHistory(data.projects[0].id, (ex, data) => {
+        dispatch({type: types.RECEIVE_HISTORY, data})
+      })
+    } else {
+      let data = []
+      dispatch({type: types.RECEIVE_HISTORY, data})
+    }
   })
 }
 

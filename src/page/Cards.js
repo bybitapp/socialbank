@@ -2,7 +2,7 @@ import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, change, Field, formValueSelector } from 'redux-form'
-import { getCards } from '../actions'
+import { getCards, getProjectsWithCards } from '../actions'
 import { CARD_STATUS } from '../constants/Option'
 import CardForm from '../components/CardForm'
 import CardDestroyForm from '../components/CardDestroyForm'
@@ -14,17 +14,13 @@ import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 import Select from '../components/Select'
+import Auth from '../modules/Auth'
 
 const selector = formValueSelector('cards')
 
 function mapStateToProps(state) {
   const { cards, projects, modal } = state
   let selectedProject = selector(state, 'project')
-  if (!selectedProject) {
-    if (projects && projects.length) {
-      selectedProject = projects[0].id
-    }
-  }
   return {
     cards,
     projects,
@@ -97,7 +93,6 @@ class Cards extends React.Component {
 
   constructor(props) {
     super(props);
-    this.onChangeProject = this.onChangeProject.bind(this)
     this.onEdit = this.onEdit.bind(this)
     this.onDestroy = this.onDestroy.bind(this)
     this.onTransfer = this.onTransfer.bind(this)
@@ -106,16 +101,19 @@ class Cards extends React.Component {
   }
 
   componentDidMount() {
-    const { dispatch, selectedProject } = this.props
-    if (selectedProject) {
-      dispatch(getCards(selectedProject))
+    const { dispatch } = this.props
+    const user = Auth.getUser()
+    if (user) {
+      const { organization } = user.account
+      dispatch(getProjectsWithCards(organization.id))
     }
   }
 
-  onChangeProject(e) {
-    const { value } = e.target
-    const { dispatch } = this.props
-    dispatch(getCards(value))
+  componentDidUpdate(prevProps) {
+    const { selectedProject, dispatch } = this.props
+    if (selectedProject && selectedProject !== prevProps.selectedProject) {
+      dispatch(getCards(selectedProject))
+    }
   }
 
   onEdit (cid, event) {
@@ -210,8 +208,7 @@ class Cards extends React.Component {
                         <div style={stylePadding}>
                           <div className="mdl-grid">
                             <div className="mdl-cell mdl-cell--7-col">
-                              <Field name="project" label="Project Name" component={Select} items={projectList}
-                                onChange={this.onChangeProject} />
+                              <Field name="project" label="Project Name" component={Select} items={projectList} />
                             </div>
                             <div className="mdl-cell mdl-cell--5-col" style={styleButton}>
                                 <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
