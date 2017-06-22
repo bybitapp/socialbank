@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import { compose } from 'recompose'
 import thunk from 'redux-thunk'
+import ReduxToastr from 'react-redux-toastr'
 
 import reducer from './reducers'
 
@@ -29,6 +30,7 @@ const store = createStore(reducer, composeEnhancers(
 
 const App = () => (
   <Provider store={store}>
+    <div>
     <Router>
       <Switch>
         <Route path="/login" component={Login} />
@@ -45,6 +47,15 @@ const App = () => (
         <Route path="/" component={Home} />
       </Switch>
     </Router>
+    <ReduxToastr
+      timeOut={4000}
+      newestOnTop={false}
+      preventDuplicates
+      position="top-left"
+      transitionIn="fadeIn"
+      transitionOut="fadeOut"
+      progressBar/>
+    </div>
   </Provider>
 )
 
