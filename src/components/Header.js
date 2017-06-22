@@ -3,9 +3,7 @@ import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import MDLite from 'material-design-lite'
-
 import Auth from '../modules/Auth'
-import { sessionSetTemp } from '../actions'
 
 function mapStateToProps (state) {
   const { account, projects } = state
@@ -24,13 +22,6 @@ class Header extends React.Component {
     if (MDLite) {
       // render material-design-lite
       global.componentHandler.upgradeDom()
-    }
-
-    const { dispatch } = this.props
-    const user = Auth.getUser()
-    if (user) {
-      this.setState({ account: user.account })
-      dispatch(sessionSetTemp(user))
     }
   }
 
