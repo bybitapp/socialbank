@@ -7,6 +7,7 @@ import Header from '../components/Header'
 import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import {EMAIL} from '../constants/Validation'
+import {toastr} from 'react-redux-toastr'
 
 const validate = values => {
   const errors = {}
@@ -29,6 +30,7 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(login(values, (_error, data) => {
           if (!_error) {
+            toastr.success('Logged in!', 'Hello! Welcome to SocialBank :)');
             ownProps.history.push('/me')
             resolve()
           } else {
