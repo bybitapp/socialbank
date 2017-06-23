@@ -23,7 +23,7 @@ class CookieBanner extends React.Component {
           <div className='content-grid mdl-grid'>
             <div className='mdl-cell mdl-cell--11-col mdl-cell--7-col-tablet mdl-cell--3-col-phone'>
               <p style={styleMessage}>
-                SocialBank uses cookies or similar technology to collect information about your access to our website. <a href='/terms'>Learn more</a>
+                SoTec uses cookies or similar technology to collect information about your access to our website. <a href='/terms'>Learn more</a>
               </p>
             </div>
             <div className='mdl-layout-spacer'></div>

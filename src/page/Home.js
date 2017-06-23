@@ -57,11 +57,11 @@ class Home extends React.Component {
             </div>
           </div>
           <div className="android-more-section">
-            <div className="android-section-title mdl-typography--display-1-color-contrast">More from SocialBank</div>
+            <div className="android-section-title mdl-typography--display-1-color-contrast">More from SoTec</div>
             <div className="android-card-container mdl-grid">
               <SubjectBox
                 title="Building Trust"
-                description="SocialBank gives donors complete transparency and information regarding finance distribution in charitable and community projects."
+                description="SoTec gives donors complete transparency and information regarding finance distribution in charitable and community projects."
                 image="building_trust.png" />
               <SubjectBox
                 title="Activating communities"
@@ -84,7 +84,7 @@ class Home extends React.Component {
             <div className="android-customized-section-text">
               <div className="mdl-typography--font-light mdl-typography--display-1-color-contrast">Build your Social Value and Trust</div>
               <p className="mdl-typography--font-light">
-                We enable organizations to send real-time payments across networks and operate within micropayments. SocialBank works on the Open Bank technologies to improve transfer money around the social organizations. Our vision is to build the Global Financial Network around the world and move value the way it moves information today.
+                We enable organizations to send real-time payments across networks and operate within micropayments. SoTec works on the Open Bank technologies to improve transfer money around the social organizations. Our vision is to build the Global Financial Network around the world and move value the way it moves information today.
                 <br/><br/><br/><br/>
               </p>
             </div>

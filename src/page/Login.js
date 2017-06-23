@@ -31,7 +31,7 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(login(values, (_error, data) => {
           if (!_error) {
-            toastr.success('Logged in!', 'Hello! Welcome to SocialBank.')
+            toastr.success('Logged in!', 'Hello! Welcome to SoTec.')
             ownProps.history.push('/me')
             resolve()
           } else {

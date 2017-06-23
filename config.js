@@ -1,11 +1,11 @@
 var config = {
   app: {
     port: process.env.PORT || 3001,
-    name: process.env.APP_NAME || 'socialbank',
-    url: process.env.APP_URL || 'http://www.socialbank.co'
+    name: process.env.APP_NAME || 'sotec',
+    url: process.env.APP_URL || 'http://www.sotec.io'
   },
   ensureHttps: process.env.ENSURE_HTTPS || false,
-  mongoUrl: process.env.MONGODB_URI || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/socialbank-dev',
+  mongoUrl: process.env.MONGODB_URI || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/sotec-dev',
   session: {
     secret: process.env.SESSION_SECRET || 'dummySecret'
   },
@@ -37,8 +37,8 @@ var config = {
     port: 465,
     secure: true,
     auth: {
-      user: 'contact@socialbank.co',
-      pass: 'SOcialBank123456!'
+      user: 'contact@sotec.io',
+      pass: 'sotec123456!'
     }
   }
 }
