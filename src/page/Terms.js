@@ -16,16 +16,16 @@ class About extends React.Component {
           <div className="page-content" class="container">
             <div className="sb-form-content sb-page" style={styleText}>
               <p class="text-center"></p>
-              <h3>SocialBank Terms of Service & Privacy Policy</h3>
+              <h3>SoTec Terms of Service & Privacy Policy</h3>
               <p></p>
               <p>&nbsp;</p>
               <h3>Terms of Service</h3>
               <ol>
                 <li>These Terms
                   <ul>
-                    <li>These terms and conditions (“Terms”) govern your use of this website (“Site”), trading as SocialBank (“we”, “us” or “SocialBank”).</li>
+                    <li>These terms and conditions (“Terms”) govern your use of this website (“Site”), trading as SoTec (“we”, “us” or “SoTec”).</li>
                     <li>Please read these Terms carefully as they affect your rights and liabilities under the law. If you do not agree to these Terms, please do not use this Site.</li>
-                    <li>These Terms apply to your use of the Site and relationship with SocialBank generally, whether you engage for the provision of other services or not. If you purchase services from us then separate terms and conditions of service will apply.</li>
+                    <li>These Terms apply to your use of the Site and relationship with SoTec generally, whether you engage for the provision of other services or not. If you purchase services from us then separate terms and conditions of service will apply.</li>
                     <li>Please also see our Privacy and Data Protection Policy for information about how we collect and use your personal data.</li>
                     <li>We may update these Terms from time to time for legal or regulatory reasons or to allow the proper operation of this Site.</li>
                     <li>The changes will apply to the use of this Site after we have given notice. If you do not wish to accept the new Terms you should not continue to use this Site and its associated services. If you continue to use this Site after the date
@@ -115,7 +115,7 @@ class About extends React.Component {
                   </ul>
                 </li>
               </ol>
-              <p>If you have any queries please contact us at contact (at) socialbank (dot) co</p>
+              <p>If you have any queries please contact us at contact (at) sotec (dot) io</p>
             </div>
           </div>
           <div className="page-content" class="container">
@@ -124,7 +124,7 @@ class About extends React.Component {
               <h3>Privacy and Data Protection Policy</h3>
               <p></p>
               <p>1. General</p>
-              <p>1.1 SocialBank (“we” or “us”) take the privacy of your information very seriously. Our privacy and data protection policy (“Privacy Policy”) is designed to tell you about our practices regarding the collection,
+              <p>1.1 SoTec (“we” or “us”) take the privacy of your information very seriously. Our privacy and data protection policy (“Privacy Policy”) is designed to tell you about our practices regarding the collection,
                   use and disclosure of information that you may provide to us.
               </p>
               <p>1.2 By using any services we offer, you are consenting to the collection, use, and disclosure of that information about you in accordance with, and are agreeing to be bound by, this Privacy Policy.</p>
