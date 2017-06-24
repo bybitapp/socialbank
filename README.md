@@ -2,7 +2,7 @@
 
 # SoTec
 
-This application allows creating bank account by one click. Each account can be shared with donors to build transparency and accountability.
+This application allows creating bank account by one click. Each account can be shared with donors to build transparency and accountability. 
 
 ## The Open Payments Cloud
 
