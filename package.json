@@ -1,9 +1,9 @@
 {
-  "name": "socialbank",
+  "name": "sotec",
   "version": "1.0.0",
   "main": "server.js",
   "license": "UNLICENSED",
-  "homepage": "http://socialbank.co",
+  "homepage": "http://sotec.io",
   "engines": {
     "node": ">=8.1.2"
   },

@@ -30,7 +30,7 @@ class Header extends React.Component {
       <header className="android-header mdl-layout__header mdl-layout__header--waterfall">
         <div className="mdl-layout__header-row">
           <span className="android-title mdl-layout-title">
-            <Link to={'/'}>SocialBank</Link>
+            <Link to={'/'}>SoTec</Link>
           </span>
           <div className="android-header-spacer mdl-layout-spacer"></div>
           <div className="android-navigation-container">
@@ -55,7 +55,7 @@ class Header extends React.Component {
             </nav>
           </div>
           <span className="android-mobile-title mdl-layout-title">
-            SocialBank
+            SoTec
           </span>
         </div>
       </header>
