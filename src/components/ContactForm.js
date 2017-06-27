@@ -63,7 +63,7 @@ class ContactForm extends React.Component {
                   <br/>
                   Email: <a style={anchorText} href="mailto:contact@sotec.io">contact@sotec.io</a>
                   <br/>
-                  Twitter: <a style={anchorText} href="https://twitter.com/socialbankco">@socialbankco</a>
+                  Twitter: <a style={anchorText} href="https://twitter.com/SoTec_UK">@SoTec_UK</a>
                 </div>
                 <div className="mdl-cell mdl-cell--8-col">
                   <br/>
