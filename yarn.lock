@@ -4338,7 +4338,7 @@ macaddress@^0.2.8:
 
 "mailchimp-client@https://github.com/pearlshare/mailchimp-client":
   version "0.0.9"
-  resolved "https://github.com/pearlshare/mailchimp-client#ad5447ecce7ba947817e663bfb5d821fe5fa1c4c"
+  resolved "https://github.com/pearlshare/mailchimp-client#31edbb5e1fd3061be4804ed1f4f1853be53fd4cc"
   dependencies:
     got "^6.3.0"
 
