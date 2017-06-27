@@ -23,67 +23,67 @@ export default {
   },
   getOrganizations: (cb) => {
     axios.get('/api/organizations/list')
-    .then((res) => cb(null, res.data))
-    .catch((e) => cb(e))
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
   },
   getOrganizationById: (oid, cb) => {
     axios.get(`/api/organizations/o/${oid}`)
-    .then((res) => cb(null, res.data))
-    .catch((e) => cb(e))
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
   },
   getProjectsByOrgId: (oid, cb) => {
     axios.get(`/api/projects/list/o/${oid}`)
-    .then((res) => cb(null, res.data))
-    .catch((e) => cb(e))
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
   },
   addProject: (values, cb) => {
     axios.post('/api/projects/add', values)
-    .then((res) => cb(null, res.data))
-    .catch((e) => cb(e))
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
   },
   closeProject: (values, cb) => {
     axios.post('/api/projects/delete', values)
-    .then((res) => cb(null, res.data))
-    .catch((e) => cb(e))
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
   },
   depositProject: (values, cb) => {
     axios.post('/api/projects/deposit', values)
-    .then((res) => cb(null, res.data))
-    .catch((e) => cb(e))
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
   },
   addCard: (values, cb) => {
     axios.post('/api/cards/add', values)
-    .then((res) => cb(null, res.data))
-    .catch((e) => cb(e))
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
   },
   destroyCard: (values, cb) => {
-      axios.post('/api/cards/delete', values)
+    axios.post('/api/cards/delete', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
   transferCard: (values, cb) => {
     axios.post('/api/cards/transfer', values)
-    .then((res) => cb(null, res.data))
-    .catch((e) => cb(e))
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
   },
   getCards: (projId, cb) => {
     axios.get(`/api/cards/list/p/${projId}`)
-    .then((res) => cb(null, res.data))
-    .catch((e) => cb(e))
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
   },
   updateCardStatus: (values, cb) => {
     axios.post('/api/cards/status', values)
-    .then((res) => cb(null, res.data))
-    .catch((e) => cb(e))
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
   },
   getHistory: (projId, cb) => {
     axios.get(`/api/history/list/p/${projId}`)
-    .then((res) => cb(null, res.data))
-    .catch((e) => cb(e))
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
   },
   sendMessage: (values, cb) => {
     axios.post('/api/contacts/send', values)
-    .then((res) => cb(null, res.data))
-    .catch((e) => cb(e))
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
   }
 }

@@ -14,7 +14,7 @@ import Auth from '../modules/Auth'
 
 const selector = formValueSelector('history')
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   const { projects, history } = state
   let selectedProject = selector(state, 'project')
   return {
@@ -24,7 +24,6 @@ function mapStateToProps(state) {
   }
 }
 
-
 const enhance = compose(
   connect(mapStateToProps),
   reduxForm({
@@ -33,40 +32,39 @@ const enhance = compose(
 )
 
 const HistoryItem = ({transaction}) => (
-    <tr>
-      <td className="mdl-data-table__cell--non-numeric">{ dateFormat(transaction.datetime) }</td>
-      <td>{ transaction.type }</td>
-      <td>{ transaction.name }</td>
-      <td>{ transaction.currency }</td>
-      <td>{ transaction.amount }</td>
-      <td>{ transaction.status }</td>
-      <td>{ transaction.transaction }</td>
-    </tr>)
+  <tr>
+    <td className="mdl-data-table__cell--non-numeric">{ dateFormat(transaction.datetime) }</td>
+    <td>{ transaction.type }</td>
+    <td>{ transaction.name }</td>
+    <td>{ transaction.currency }</td>
+    <td>{ transaction.amount }</td>
+    <td>{ transaction.status }</td>
+    <td>{ transaction.transaction }</td>
+  </tr>)
 
 const HistoryTable = ({transactions = [], styleTable}) => (
-    <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
-      <thead>
-        <tr>
-          <th className="mdl-data-table__cell--non-numeric">Date</th>
-          <th>Type</th>
-          <th>Name</th>
-          <th>Currency</th>
-          <th>Amount</th>
-          <th>Status</th>
-          <th>Transaction</th>
-        </tr>
-      </thead>
-      <tbody>
+  <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
+    <thead>
+      <tr>
+        <th className="mdl-data-table__cell--non-numeric">Date</th>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Currency</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Transaction</th>
+      </tr>
+    </thead>
+    <tbody>
       { Object.keys(transactions).map((key, index) => {
         const transaction = transactions[key]
         return (<HistoryItem key={key} transaction={transaction} />)
       })}
-      </tbody>
-    </table>)
+    </tbody>
+  </table>)
 
 class History extends React.Component {
-
-  componentDidMount() {
+  componentDidMount () {
     const { dispatch } = this.props
     const user = Auth.getUser()
     if (user) {
@@ -75,7 +73,7 @@ class History extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate (prevProps) {
     const { selectedProject, dispatch } = this.props
     if (selectedProject !== prevProps.selectedProject) {
       dispatch(getHistory(selectedProject))
@@ -97,42 +95,41 @@ class History extends React.Component {
     })
 
     return (
-        <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-          <Header />
-          <MobileNavigation />
-          <main className="mdl-layout__content">
-            <div className="page-content">
-                <div className="mdl-grid">
-                    <div className="mdl-cell mdl-cell--3-col">
-                        <MenuSideBar />
-                    </div>
-                    <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
-                        <div style={stylePadding}>
-                        { isEmpty(projects) ?
-                          <p className="sb-no-project">No available projects</p> :
-                          (
-                            <div>
-                              <div className="mdl-grid">
-                                  <div className="mdl-cell mdl-cell--9-col">
-                                    <Field name="project" label="Project Name" component={Select} items={projectList} />
-                                  </div>
-                                  <div className="mdl-cell mdl-cell--3-col">
-                                  </div>
-                              </div>
-                              <HistoryTable transactions={history} styleTable={styleTable} />
-                            </div>
-                          )
-                        }
+      <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <Header />
+        <MobileNavigation />
+        <main className="mdl-layout__content">
+          <div className="page-content">
+            <div className="mdl-grid">
+              <div className="mdl-cell mdl-cell--3-col">
+                <MenuSideBar />
+              </div>
+              <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
+                <div style={stylePadding}>
+                  { isEmpty(projects)
+                    ? <p className="sb-no-project">No available projects</p>
+                    : (
+                      <div>
+                        <div className="mdl-grid">
+                          <div className="mdl-cell mdl-cell--9-col">
+                            <Field name="project" label="Project Name" component={Select} items={projectList} />
+                          </div>
+                          <div className="mdl-cell mdl-cell--3-col">
+                          </div>
                         </div>
-                    </div>
+                        <HistoryTable transactions={history} styleTable={styleTable} />
+                      </div>
+                    )
+                  }
                 </div>
+              </div>
             </div>
-            <Footer />
-          </main>
-        </div>
+          </div>
+          <Footer />
+        </main>
+      </div>
     )
   }
-
 }
 
 export default enhance(History)
