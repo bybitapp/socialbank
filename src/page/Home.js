@@ -45,7 +45,7 @@ class Home extends React.Component {
         <div className="android-content mdl-layout__content">
           <div className="mdl-typography--text-center" style={styleHeight}>
             <div className="logo-font android-slogan">
-            <h1>Join the Global Financial Network!</h1>
+              <h1>Join the Global Financial Network!</h1>
             </div>
             <div className="logo-font android-sub-slogan mdl-color-text--white" style={styleSubSlogan}>
               <h2>Simple financial management system with instant, certain, low-cost payments.</h2>
