@@ -32,6 +32,10 @@ var config = {
   google: {
     mapKey: 'AIzaSyCkwfHICB6QowBNjiGBZc12MH2HbdZnHbM'
   },
+  mailchimp: {
+    apiKey: 'c131f7446208bc5bc5a01d6375b5b76d-us16',
+    mailingListId: 9873
+  },
   smtp: {
     host: 'smtp.zoho.eu',
     port: 465,
