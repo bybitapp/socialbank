@@ -34,7 +34,7 @@ var config = {
   },
   mailchimp: {
     apiKey: 'c131f7446208bc5bc5a01d6375b5b76d-us16',
-    mailingListId: 9873
+    mailingListId: '858c427a82'
   },
   smtp: {
     host: 'smtp.zoho.eu',
