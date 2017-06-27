@@ -18,7 +18,7 @@ import Auth from '../modules/Auth'
 
 const selector = formValueSelector('cards')
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   const { cards, projects, modal } = state
   let selectedProject = selector(state, 'project')
   return {
@@ -38,16 +38,16 @@ const enhance = compose(
 )
 
 const ActionButton = (cid, action) => (
-  <a key={action.icon} className="mdl-list__item-primary-content" onClick={(event)=>action.onclick(cid, event)}>
+  <a key={action.icon} className="mdl-list__item-primary-content" onClick={(event) => action.onclick(cid, event)}>
     <i className="material-icons mdl-list__item-avatar sb-icon-list_item">{action.icon}</i>
   </a>
 )
 
 const CardItem = ({card, actions}) => {
   const cardStatus = CARD_STATUS.find((status) => (status.id === card.status))
-  const cardStatusName = cardStatus ? cardStatus.name : "Unknown"
+  const cardStatusName = cardStatus ? cardStatus.name : 'Unknown'
   return (
-      <tr>
+    <tr>
       <td className="mdl-data-table__cell--non-numeric">{ card.name }</td>
       <td>{ card.cardNumber }</td>
       <td>{ card.cardBrand }</td>
@@ -56,43 +56,42 @@ const CardItem = ({card, actions}) => {
       <td>{ cardStatusName }</td>
       <td>{ card.balances.actual }</td>
       <td className="sb-menu-table">
-      { actions.map((action)=>{
-          if(!action.hasOwnProperty('show') || action.show(card)) {
+        { actions.map((action) => {
+          if (!action.hasOwnProperty('show') || action.show(card)) {
             return ActionButton(card.id, action)
           }
           return null
         })
-      }
+        }
       </td>
-      </tr>)
+    </tr>)
 }
 
 const CardTable = ({cards = [], styleTable, actions}) => (
-    <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
-      <thead>
-        <tr>
-          <th className="mdl-data-table__cell--non-numeric">Name</th>
-          <th>Card Number</th>
-          <th>Brand</th>
-          <th>Start</th>
-          <th>End</th>
-          <th>Status</th>
-          <th>Balance</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
+  <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
+    <thead>
+      <tr>
+        <th className="mdl-data-table__cell--non-numeric">Name</th>
+        <th>Card Number</th>
+        <th>Brand</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Status</th>
+        <th>Balance</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
       { Object.keys(cards).map((key, index) => {
         const c = cards[key]
         return (<CardItem key={key} card={c} actions={actions}/>)
       })}
-      </tbody>
-    </table>)
+    </tbody>
+  </table>)
 
 class Cards extends React.Component {
-
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.onEdit = this.onEdit.bind(this)
     this.onDestroy = this.onDestroy.bind(this)
     this.onTransfer = this.onTransfer.bind(this)
@@ -100,7 +99,7 @@ class Cards extends React.Component {
     this.onUnblock = this.onUnblock.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount () {
     const { dispatch } = this.props
     const user = Auth.getUser()
     if (user) {
@@ -109,7 +108,7 @@ class Cards extends React.Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate (prevProps) {
     const { selectedProject, dispatch } = this.props
     if (selectedProject && selectedProject !== prevProps.selectedProject) {
       dispatch(getCards(selectedProject))
@@ -118,57 +117,57 @@ class Cards extends React.Component {
 
   onEdit (cid, event) {
     const { cards, setModal, dispatch } = this.props
-    const card = cards.find((card)=>{return card.id === cid})
+    const card = cards.find((card) => { return card.id === cid })
     if (card) {
-      dispatch(change('cardForm', 'cid', card.id));
-      dispatch(change('cardForm', 'name', card.name));
+      dispatch(change('cardForm', 'cid', card.id))
+      dispatch(change('cardForm', 'name', card.name))
       setModal('cardModal')
     }
   }
 
   onDestroy (cid, event) {
     const { cards, setModal, dispatch } = this.props
-    const card = cards.find((card)=>{return card.id === cid})
+    const card = cards.find((card) => { return card.id === cid })
     if (card) {
-      dispatch(change('cardDestroyForm', 'cid', card.id));
+      dispatch(change('cardDestroyForm', 'cid', card.id))
       setModal('cardDestroyModal')
     }
   }
 
   onTransfer (cid, event) {
     const { projects, cards, setModal, dispatch, selectedProject } = this.props
-    const card = cards.find((c)=> c.id === cid)
-    const project = projects.find((p)=> p.id === selectedProject)
+    const card = cards.find((c) => c.id === cid)
+    const project = projects.find((p) => p.id === selectedProject)
     if (card && project) {
-      dispatch(change('cardTransferForm', 'pid', project.id));
-      dispatch(change('cardTransferForm', 'cid', card.id));
-      dispatch(change('cardTransferForm', 'projectName', project.name));
-      dispatch(change('cardTransferForm', 'cardName', card.name));
+      dispatch(change('cardTransferForm', 'pid', project.id))
+      dispatch(change('cardTransferForm', 'cid', card.id))
+      dispatch(change('cardTransferForm', 'projectName', project.name))
+      dispatch(change('cardTransferForm', 'cardName', card.name))
       setModal('cardTransferModal')
     }
   }
 
   onBlock (cid, event) {
     const { cards, setModal, dispatch } = this.props
-    const card = cards.find((card)=>{return card.id === cid})
+    const card = cards.find((card) => { return card.id === cid })
     if (card) {
-      dispatch(change('cardBlockForm', 'cid', card.id));
+      dispatch(change('cardBlockForm', 'cid', card.id))
       setModal('cardBlockModal')
     }
   }
 
   onUnblock (cid, event) {
     const { cards, setModal, dispatch } = this.props
-    const card = cards.find((card)=>{return card.id === cid})
+    const card = cards.find((card) => { return card.id === cid })
     if (card) {
-      dispatch(change('cardUnblockForm', 'cid', card.id));
+      dispatch(change('cardUnblockForm', 'cid', card.id))
       setModal('cardUnblockModal')
     }
   }
 
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
-    const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0, overflow:"auto"}
+    const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0, overflow: 'auto'}
     const stylePadding = {padding: '15px'}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
@@ -184,50 +183,49 @@ class Cards extends React.Component {
     const actions = [
       {icon: 'attach_money', onclick: this.onTransfer},
       {icon: 'mode_edit', onclick: this.onEdit},
-      {icon: 'lock', onclick: this.onBlock, show: (item)=>item.status === 'active'},
-      {icon: 'lock_open', onclick: this.onUnblock, show: (item)=>item.status === 'inactive'},
+      {icon: 'lock', onclick: this.onBlock, show: (item) => item.status === 'active'},
+      {icon: 'lock_open', onclick: this.onUnblock, show: (item) => item.status === 'inactive'},
       {icon: 'delete', onclick: this.onDestroy}
     ]
 
     return (
-        <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-          <Header />
-          <MobileNavigation />
-          <CardForm open={(modal === 'cardModal')} handleClose={() => setModal(null)} projectId={selectedProject}/>
-          <CardDestroyForm open={(modal === 'cardDestroyModal')} handleClose={() => setModal(null)}/>
-          <CardTransferForm open={(modal === 'cardTransferModal')} handleClose={() => setModal(null)} />
-          <CardBlockForm open={(modal === 'cardBlockModal')} handleClose={() => setModal(null)} />
-          <CardUnblockForm open={(modal === 'cardUnblockModal')} handleClose={() => setModal(null)} />
-          <main className="mdl-layout__content">
-            <div className="page-content">
-                <div className="mdl-grid">
-                    <div className="mdl-cell mdl-cell--3-col">
-                        <MenuSideBar />
+      <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <Header />
+        <MobileNavigation />
+        <CardForm open={(modal === 'cardModal')} handleClose={() => setModal(null)} projectId={selectedProject}/>
+        <CardDestroyForm open={(modal === 'cardDestroyModal')} handleClose={() => setModal(null)}/>
+        <CardTransferForm open={(modal === 'cardTransferModal')} handleClose={() => setModal(null)} />
+        <CardBlockForm open={(modal === 'cardBlockModal')} handleClose={() => setModal(null)} />
+        <CardUnblockForm open={(modal === 'cardUnblockModal')} handleClose={() => setModal(null)} />
+        <main className="mdl-layout__content">
+          <div className="page-content">
+            <div className="mdl-grid">
+              <div className="mdl-cell mdl-cell--3-col">
+                <MenuSideBar />
+              </div>
+              <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
+                <div style={stylePadding}>
+                  <div className="mdl-grid">
+                    <div className="mdl-cell mdl-cell--7-col">
+                      <Field name="project" label="Project Name" component={Select} items={projectList} />
                     </div>
-                    <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
-                        <div style={stylePadding}>
-                          <div className="mdl-grid">
-                            <div className="mdl-cell mdl-cell--7-col">
-                              <Field name="project" label="Project Name" component={Select} items={projectList} />
-                            </div>
-                            <div className="mdl-cell mdl-cell--5-col" style={styleButton}>
-                                <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
-                                  disabled={!selectedProject} onClick={() => setModal('cardModal')}>
-                                    Add Card
-                                </button>
-                            </div>
-                          </div>
-                          <CardTable cards={cards} styleTable={styleTable} actions={actions} />
-                        </div>
+                    <div className="mdl-cell mdl-cell--5-col" style={styleButton}>
+                      <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"
+                        disabled={!selectedProject} onClick={() => setModal('cardModal')}>
+                          Add Card
+                      </button>
                     </div>
+                  </div>
+                  <CardTable cards={cards} styleTable={styleTable} actions={actions} />
                 </div>
+              </div>
             </div>
-            <Footer />
-          </main>
-        </div>
+          </div>
+          <Footer />
+        </main>
+      </div>
     )
   }
-
 }
 
 export default enhance(Cards)
