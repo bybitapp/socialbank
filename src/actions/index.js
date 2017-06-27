@@ -231,7 +231,7 @@ export const sessionSetTemp = (data, cb) => (dispatch, getState) => {
 }
 
 export const subscribeNewsletter = (data, cb) => (dispatch, getState) => {
-  server.destroyCard(data, (ex, data) => {
+  server.subscribeNewsletter(data, (ex, data) => {
     if (!ex) {
       // dispatch({type: types.SUBSCRIBE_SUCCESS, data: data})
       cb(null, data)
