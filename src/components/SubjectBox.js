@@ -7,7 +7,7 @@ export default ({title, description, image}) => {
         <img src={'images/' + image} alt="{title}" />
       </div>
       <div className="mdl-card__title">
-         <h4 className="mdl-card__title-text">{title}</h4>
+        <h4 className="mdl-card__title-text">{title}</h4>
       </div>
       <div className="mdl-card__supporting-text">
         <span className="mdl-typography--font-light mdl-typography--subhead">
