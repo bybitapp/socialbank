@@ -229,3 +229,14 @@ export const sendMessage = (contact, cb) => (dispatch, getState) => {
 export const sessionSetTemp = (data, cb) => (dispatch, getState) => {
   dispatch({type: types.LOGIN_SESSION_TEMP, data})
 }
+
+export const subscribeNewsletter = (data, cb) => (dispatch, getState) => {
+  server.subscribeNewsletter(data, (ex, data) => {
+    if (!ex) {
+      // dispatch({type: types.SUBSCRIBE_SUCCESS, data: data})
+      cb(null, data)
+    } else {
+      cb('Subscribe Failed!')
+    }
+  })
+}

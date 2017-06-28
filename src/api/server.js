@@ -85,5 +85,10 @@ export default {
     axios.post('/api/contacts/send', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
+  },
+  subscribeNewsletter: (values, cb) => {
+    axios.post('/api/newsletter', values)
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
   }
 }
