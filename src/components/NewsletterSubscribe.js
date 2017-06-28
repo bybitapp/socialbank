@@ -80,13 +80,13 @@ class NewsletterSubscribe extends React.Component {
                 <img src='images/newsletter_icon100x100.png' alt="{title}" style={iconStyle}/>
               </div>
               <div className="mdl-layout__header-row">
-                <h3 className="logo-font" style={titleStyle}>Stay with us</h3>
+                <h3 className="logo-font" style={titleStyle}>Be the first to know</h3>
               </div>
             </header>
             <main className="mdl-layout__content">
               <div className="page-content">
                 <div className="mdl-dialog__content" style={contentStyle}>
-                  {`We'll be happy to update you with our latest news. Sign up and stay connected with us!`}
+                  {`We'll be happy to update you with our latest releases!`}
                 </div>
                 {error && <span className="sb-error">{error}</span>}
                 <Field name="email" label="Email" component={Input} />
