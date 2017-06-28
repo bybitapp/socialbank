@@ -60,8 +60,8 @@ class NewsletterSubscribe extends React.Component {
   }
 
   render () {
-    const iconWrapperStyle = {height: '150px'}
-    const titleStyle = {textAlign: 'center', /* color: 'rgb(139, 195, 74)', */ width: '100%'}
+    const iconWrapperStyle = {height: '80px', backgroundColor: '#009688', marginBottom: '40px', paddingTop: '40px'}
+    const titleStyle = {textAlign: 'center', width: '100%'}
     const iconStyle = {display: 'block', margin: '0 auto'}
     const contentStyle = {color: 'darkgray', margin: '10px'}
     const { handleClose, open, handleSubmit, error } = this.props
