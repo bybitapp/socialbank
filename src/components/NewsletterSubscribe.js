@@ -60,7 +60,10 @@ class NewsletterSubscribe extends React.Component {
   }
 
   render () {
-    const styleCenter = {textAlign: 'center'}
+    const iconWrapperStyle = {height: '150px'}
+    const titleStyle = {textAlign: 'center', /* color: 'rgb(139, 195, 74)', */ width: '100%'}
+    const iconStyle = {display: 'block', margin: '0 auto'}
+    const contentStyle = {color: 'darkgray', margin: '10px'}
     const { handleClose, open, handleSubmit, error } = this.props
 
     return (
@@ -72,14 +75,19 @@ class NewsletterSubscribe extends React.Component {
       >
         <form onSubmit={handleSubmit}>
           <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header sb-modal-form">
-            <header className="mdl-layout__header">
+            <header>
+              <div className="mdl-layout__header-row" style={iconWrapperStyle}>
+                <img src='images/newsletter_icon100x100.png' alt="{title}" style={iconStyle}/>
+              </div>
               <div className="mdl-layout__header-row">
-                <span className="mdl-layout-title">Newsletter Subscribe</span>
-                <div className="mdl-layout-spacer"></div>
+                <h3 className="logo-font" style={titleStyle}>Stay with us</h3>
               </div>
             </header>
             <main className="mdl-layout__content">
-              <div className="page-content" style={styleCenter}>
+              <div className="page-content">
+                <div className="mdl-dialog__content" style={contentStyle}>
+                  {`We'll be happy to update you with our latest news. Sign up and stay connected with us!`}
+                </div>
                 {error && <span className="sb-error">{error}</span>}
                 <Field name="email" label="Email" component={Input} />
               </div>
@@ -87,8 +95,8 @@ class NewsletterSubscribe extends React.Component {
             <footer className="sb-footer">
               <div className="mdl-mega-footer__bottom-section">
                 <ul className="mdl-mega-footer__link-list">
-                  <li><button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={this.onCancel.bind(this)}>Cancel</button></li>
-                  <li><button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">Ok</button></li>
+                  <li><button className="mdl-button mdl-js-button mdl-button--colored" onClick={this.onCancel.bind(this)}>Cancel</button></li>
+                  <li><button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">Submit</button></li>
                 </ul>
               </div>
             </footer>
