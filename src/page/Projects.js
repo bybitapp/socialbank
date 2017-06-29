@@ -3,7 +3,7 @@ import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { change } from 'redux-form'
 import { dateFormat } from '../util/date'
-import { getProjectsByOrgId } from '../actions'
+import { getProjects } from '../actions'
 import Header from '../components/Header'
 import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
@@ -73,10 +73,8 @@ class Projects extends React.Component {
 
   componentDidMount() {
     const { dispatch } = this.props
-    const user = Auth.getUser()
-    if (user) {
-      const { organization } = user.account
-      dispatch(getProjectsByOrgId(organization.id))
+    if (Auth.getUser()) {
+      dispatch(getProjects())
     }
   }
 

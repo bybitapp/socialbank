@@ -4,7 +4,7 @@ import Header from '../components/Header'
 import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
-import UpdateOrganization from '../components/UpdateOrganization'
+import OrganizationForm from '../components/OrganizationForm'
 
 class Organization extends React.Component {
   render () {
@@ -23,7 +23,7 @@ class Organization extends React.Component {
               </div>
               <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
                 <div style={stylePadding}>
-                  <UpdateOrganization />
+                  <OrganizationForm />
                 </div>
               </div>
             </div>
