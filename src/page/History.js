@@ -10,7 +10,6 @@ import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 import Select from '../components/Select'
-import Auth from '../modules/Auth'
 
 const selector = formValueSelector('history')
 
@@ -66,11 +65,7 @@ const HistoryTable = ({transactions = [], styleTable}) => (
 class History extends React.Component {
   componentDidMount () {
     const { dispatch } = this.props
-    const user = Auth.getUser()
-    if (user) {
-      const { organization } = user.account
-      dispatch(getProjectsWithHistory(organization.id))
-    }
+    dispatch(getProjectsWithHistory())
   }
 
   componentDidUpdate (prevProps) {

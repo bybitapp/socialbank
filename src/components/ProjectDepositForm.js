@@ -1,8 +1,9 @@
 import React from 'react'
 import Modal from 'react-modal'
 import { compose } from 'recompose'
-import { reduxForm, Field } from 'redux-form'
-import { depositProject } from '../actions'
+import { connect } from 'react-redux'
+import { reduxForm, Field, change } from 'redux-form'
+import { depositProject, getBankAccount } from '../actions'
 import Input from './Input'
 import { SubmissionError } from 'redux-form'
 
@@ -21,7 +22,15 @@ const validate = values => {
     return errors
 }
 
+function mapStateToProps(state) {
+  const { banks } = state
+  return {
+    banks
+  }
+}
+
 const enhance = compose(
+  connect(mapStateToProps),
   reduxForm({
     form: 'projectDepositForm',
     validate,
@@ -29,8 +38,7 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         const params = {
           amount: values.amount,
-          pid: values.pid,
-          oid: values.oid
+          pid: values.pid
         }
         dispatch(depositProject(params, (_error) => {
           if(!_error) {
@@ -46,7 +54,24 @@ const enhance = compose(
   })
 )
 
+const updateData = (bank, dispatch) => {
+  if (bank) {
+    dispatch(change('projectDepositForm', 'bank', bank.bankName));
+    dispatch(change('projectDepositForm', 'iban', bank.ibanCode));
+  }
+}
+
 class ProjectDepositForm extends React.Component {
+
+  componentDidMount() {
+    const { dispatch } = this.props
+    dispatch(getBankAccount())
+  }
+
+  componentDidUpdate(prevProps) {
+    const { banks, dispatch } = this.props
+    updateData(banks, dispatch)
+  }
 
   onCancel() {
     const { handleClose, dispatch } = this.props
@@ -77,7 +102,6 @@ class ProjectDepositForm extends React.Component {
                 <div className="page-content" style={styleCenter}>
                   {error && <span className="sb-error">{error}</span>}
                   <Field name="pid" type="hidden" component="input" />
-                  <Field name="oid" type="hidden" component="input" />
                   <h5>External account</h5>
                   <Field name="bank" label="Bank Name" component={Input} disabled={true} />
                   <Field name="iban" label="Iban Code" component={Input} disabled={true} />

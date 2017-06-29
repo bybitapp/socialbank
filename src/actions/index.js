@@ -2,48 +2,104 @@ import server from '../api/server'
 import Auth from '../modules/Auth'
 import * as types from '../constants/ActionTypes'
 
+export const addOrganization = (org, cb) => (dispatch, getState) => {
+  server.addOrganization(org, (ex, data) => {
+    if (!ex) {
+      dispatch({type: types.RECEIVE_ORGANIZATION, data})
+      cb(null, data)
+    } else {
+      if (org.id) {
+        cb('Update Failed!')
+      } else {
+        cb('Add Failed!')
+      }
+    }
+  })
+}
+
 export const getOrganizations = () => dispatch => {
   server.getOrganizations((ex, organizations) => {
-    dispatch({type: types.RECEIVE_ORGANIZATIONS, organizations})
+    if (!ex) {
+      dispatch({type: types.RECEIVE_ORGANIZATIONS, organizations})
+    }
+  })
+}
+
+export const getOrganization = () => dispatch => {
+  server.getOrganization((ex, data) => {
+    if (!ex) {
+      dispatch({type: types.RECEIVE_ORGANIZATION, data})
+    }
   })
 }
 
 export const getOrganizationById = (oid) => dispatch => {
   server.getOrganizationById(oid, (ex, data) => {
-    dispatch({type: types.RECEIVE_ORGANIZATION, data})
-  })
-}
-
-export const getProjectsByOrgId = (pid) => dispatch => {
-  server.getProjectsByOrgId(pid, (ex, data) => {
-    dispatch({type: types.RECEIVE_PROJECTS, data})
-  })
-}
-
-export const getProjectsWithCards = (pid) => dispatch => {
-  server.getProjectsByOrgId(pid, (ex, data) => {
-    dispatch({type: types.RECEIVE_PROJECTS, data})
-    if (data.projects && data.projects.length) {
-      server.getCards(data.projects[0].id, (ex, data) => {
-        dispatch({type: types.RECEIVE_CARDS, data})
-      })
-    } else {
-      let data = {projects: []}
-      dispatch({type: types.RECEIVE_CARDS, data})
+    if (!ex) {
+      dispatch({type: types.RECEIVE_ORGANIZATION, data})
     }
   })
 }
 
-export const getProjectsWithHistory = (pid) => dispatch => {
-  server.getProjectsByOrgId(pid, (ex, data) => {
-    dispatch({type: types.RECEIVE_PROJECTS, data})
-    if (data.projects && data.projects.length) {
-      server.getHistory(data.projects[0].id, (ex, data) => {
-        dispatch({type: types.RECEIVE_HISTORY, data})
-      })
+export const addBankAccount = (bank, cb) => (dispatch, getState) => {
+  server.addBankAccount(bank, (ex, data) => {
+    if (!ex) {
+      dispatch({type: types.RECEIVE_BANKACCOUNT, data})
+      cb(null, data)
     } else {
-      let data = []
-      dispatch({type: types.RECEIVE_HISTORY, data})
+      if (bank.id) {
+        cb('Update Failed!')
+      } else {
+        cb('Add Failed!')
+      }
+    }
+  })
+}
+
+export const getBankAccount = () => dispatch => {
+  server.getBankAccount((ex, data) => {
+    if (!ex) {
+      dispatch({type: types.RECEIVE_BANKACCOUNT, data})
+    }
+  })
+}
+
+export const getProjects = () => dispatch => {
+  server.getProjects((ex, data) => {
+    if (!ex) {
+      dispatch({type: types.RECEIVE_PROJECTS, data})
+    }
+  })
+}
+
+export const getProjectsWithCards = () => dispatch => {
+  server.getProjects((ex, data) => {
+    if (!ex) {
+      dispatch({type: types.RECEIVE_PROJECTS, data})
+      if (data.projects && data.projects.length) {
+        server.getCards(data.projects[0].id, (ex, data) => {
+          dispatch({type: types.RECEIVE_CARDS, data})
+        })
+      } else {
+        let data = {projects: []}
+        dispatch({type: types.RECEIVE_CARDS, data})
+      }
+    }
+  })
+}
+
+export const getProjectsWithHistory = () => dispatch => {
+  server.getProjects((ex, data) => {
+    if (!ex) {
+      dispatch({type: types.RECEIVE_PROJECTS, data})
+      if (data.projects && data.projects.length) {
+        server.getHistory(data.projects[0].id, (ex, data) => {
+          dispatch({type: types.RECEIVE_HISTORY, data})
+        })
+      } else {
+        let data = []
+        dispatch({type: types.RECEIVE_HISTORY, data})
+      }
     }
   })
 }
@@ -56,15 +112,17 @@ export const getCards = (projId) => dispatch => {
 
 export const getHistory = (projId) => dispatch => {
   server.getHistory(projId, (ex, data) => {
-    dispatch({type: types.RECEIVE_HISTORY, data})
+    if (!ex) {
+      dispatch({type: types.RECEIVE_HISTORY, data})
+    }
   })
 }
 
 export const registerAccount = (account, cb) => (dispatch, getState) => {
-  return server.registerAccount(account, (ex, account) => {
+  return server.registerAccount(account, (ex, data) => {
     if (!ex) {
-      dispatch({type: types.REGISTER_ACCOUNT_SUCCESS, account})
-      cb(null, account)
+      dispatch({type: types.REGISTER_ACCOUNT_SUCCESS, data})
+      cb(null, data)
     } else {
       // Replace the line above with line below to rollback on failure:
       // return dispatch({ type: types.REGISTER_ACCOUNT_FAILURE, account })
@@ -224,10 +282,6 @@ export const sendMessage = (contact, cb) => (dispatch, getState) => {
       cb('Send Message Failed!')
     }
   })
-}
-
-export const sessionSetTemp = (data, cb) => (dispatch, getState) => {
-  dispatch({type: types.LOGIN_SESSION_TEMP, data})
 }
 
 export const subscribeNewsletter = (data, cb) => (dispatch, getState) => {
