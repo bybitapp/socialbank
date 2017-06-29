@@ -99,18 +99,11 @@ class Projects extends React.Component {
   onDeposit (pid, event) {
     const { projects, setModal, dispatch } = this.props
     const project = projects.find((project)=>{return project.id === pid})
-    // TODO has to be implemented differently
-    // const user = Auth.getUser()
-    // if (user && project) {
-      // if (user.account.organization) {
-        // const { bankAccount } = user.account.organization
-        // dispatch(change('projectDepositForm', 'pid', project.id));
-        // dispatch(change('projectDepositForm', 'bank', bankAccount.bankName));
-        // dispatch(change('projectDepositForm', 'iban', bankAccount.ibanCode));
-        // dispatch(change('projectDepositForm', 'name', project.name));
-        setModal('projectDepositModal')
-      // }
-    // }
+    if (project) {
+      dispatch(change('projectDepositForm', 'pid', project.id))
+      dispatch(change('projectDepositForm', 'name', project.name))
+      setModal('projectDepositModal')
+    }
   }
 
   render () {
