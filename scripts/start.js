@@ -24,7 +24,7 @@ const {
   choosePort,
   createCompiler,
   prepareProxy,
-  prepareUrls,
+  prepareUrls
 } = require('react-dev-utils/WebpackDevServerUtils')
 const openBrowser = require('react-dev-utils/openBrowser')
 const paths = require('../lib/config/paths')
@@ -77,8 +77,9 @@ choosePort(HOST, DEFAULT_PORT)
       openBrowser(urls.localUrlForBrowser)
     })
 
-    ['SIGINT', 'SIGTERM'].forEach(function(sig) {
-      process.on(sig, function() {
+    const exitSignals = ['SIGINT', 'SIGTERM']
+    exitSignals.forEach(function (sig) {
+      process.on(sig, function () {
         devServer.close()
         process.exit()
       })

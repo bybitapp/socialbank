@@ -4,27 +4,34 @@
     "node": true,
     "browser": true
   },
-  "extends": "standard",
+  "extends": ["standard", "standard-react"],
   "plugins": [
     "mocha",
     "react"
   ],
   "rules": {
-    "mocha/no-exclusive-tests": "error"
+    "mocha/no-exclusive-tests": "error",
+    "react/prop-types": 0,
+    "jsx-quotes": 0,
+    "react/jsx-tag-spacing": 0,
+    "react/jsx-indent": 0,
+    "react/self-closing-comp": 0,
+    "react/no-unkown-property": 0,
+    "space-before-function-paren": 0,
+    "arrow-spacing": 0,
+    "block-spacing": 0,
+    "padded-blocks": 0
   },
   "globals": {
-    "context": true,
     "describe": false,
-    "it": false,
-    "beforeEach": false,
-    "afterEach": false,
     "before": false,
-    "after": false,
-    "expect": true,
-    "fail": true,
-    "src": true,
-    "sync": true,
-    "test": true,
-    "root": true
+    "beforeEach": false,
+    "it": false,
+    "after": true,
+    "window": true,
+    "location": true,
+    "document": true,
+    "map": true,
+    "navigator": true
   }
 }
