@@ -11,8 +11,8 @@
   ],
   "rules": {
     "mocha/no-exclusive-tests": "error",
+    "standard/no-callback-literal": 0
     "react/prop-types": 0,
-    "jsx-quotes": 0,
     "react/jsx-tag-spacing": 0,
     "react/jsx-indent": 0,
     "react/self-closing-comp": 0,
@@ -21,6 +21,7 @@
     "arrow-spacing": 0,
     "block-spacing": 0,
     "padded-blocks": 0
+    "jsx-quotes": 0,
   },
   "globals": {
     "describe": false,
