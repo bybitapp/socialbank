@@ -14,7 +14,6 @@ import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 import Select from '../components/Select'
-import Auth from '../modules/Auth'
 
 const selector = formValueSelector('cards')
 
@@ -101,11 +100,7 @@ class Cards extends React.Component {
 
   componentDidMount () {
     const { dispatch } = this.props
-    const user = Auth.getUser()
-    if (user) {
-      const { organization } = user.account
-      dispatch(getProjectsWithCards(organization.id))
-    }
+    dispatch(getProjectsWithCards())
   }
 
   componentDidUpdate (prevProps) {

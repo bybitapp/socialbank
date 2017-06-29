@@ -29,8 +29,8 @@ class GeneralInformation extends React.Component {
   componentDidMount() {
     const { dispatch } = this.props
     const user = Auth.getUser()
-    if (user && user.account) {
-      updateData(user.account, dispatch)
+    if (user) {
+      updateData(user, dispatch)
     }
   }
 

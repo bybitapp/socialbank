@@ -29,8 +29,7 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         const params = {
           amount: values.amount,
-          pid: values.pid,
-          oid: values.oid
+          pid: values.pid
         }
         dispatch(depositProject(params, (_error) => {
           if(!_error) {
@@ -77,7 +76,6 @@ class ProjectDepositForm extends React.Component {
                 <div className="page-content" style={styleCenter}>
                   {error && <span className="sb-error">{error}</span>}
                   <Field name="pid" type="hidden" component="input" />
-                  <Field name="oid" type="hidden" component="input" />
                   <h5>External account</h5>
                   <Field name="bank" label="Bank Name" component={Input} disabled={true} />
                   <Field name="iban" label="Iban Code" component={Input} disabled={true} />
