@@ -22,6 +22,8 @@ import History from './page/History'
 import Public from './page/Public'
 import Projects from './page/Projects'
 import Cards from './page/Cards'
+import Organization from './page/Organization'
+import Banks from './page/Banks'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducer, composeEnhancers(
@@ -43,6 +45,8 @@ const App = () => (
         <Route path="/history" component={History} />
         <Route path="/projects" component={Projects} />
         <Route path="/cards" component={Cards} />
+        <Route path="/organization" component={Organization} />
+        <Route path="/banks" component={Banks} />
         <Route path="/public/o/:id" component={Public} />
         <Route path="/" component={Home} />
       </Switch>

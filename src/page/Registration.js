@@ -3,7 +3,7 @@ import { compose } from 'recompose'
 import { reduxForm, Field, SubmissionError } from 'redux-form'
 import {toastr} from 'react-redux-toastr'
 
-import {EMAIL, POSTCODE, IBAN_CODE, SWIFT_CODE} from '../constants/Validation'
+import {EMAIL} from '../constants/Validation'
 import MobileNavigation from '../components/MobileNavigation'
 import Checkbox from '../components/Checkbox'
 import Input from '../components/Input'
@@ -18,45 +18,10 @@ const validate = values => {
   } else if (!EMAIL.test(values.email)) {
     errors.email = 'Invalid email address'
   }
-  if (!values.charityName) {
-    errors.charityName = 'Required'
-  } else if (values.charityName.length > 255) {
-    errors.charityName = 'Must be 255 characters or less'
-  }
-  if (!values.address) {
-    errors.address = 'Required'
-  }
-  if (!values.postcode) {
-    errors.postcode = 'Required'
-  } else if (!POSTCODE.test(values.postcode)) {
-    errors.postcode = 'Invalid postcode eg. EC1A 2BP'
-  }
-  if (!values.city) {
-    errors.city = 'Required'
-  }
-  if (!values.password) {
-    errors.password = 'Required'
-  }
-  if (!values.accountOwner) {
-    errors.accountOwner = 'Required'
-  }
-  if (!values.charityNumber) {
-    errors.charityNumber = 'Required'
-  } else if (isNaN(Number(values.charityNumber))) {
-    errors.charityNumber = 'Must be a number'
-  }
-  if (!values.bankName) {
-    errors.bankName = 'Required'
-  }
-  if (!values.ibanCode) {
-    errors.ibanCode = 'Required'
-  } else if (!IBAN_CODE.test(values.ibanCode)) {
-    errors.ibanCode = 'Invalid iban code eg. GB15MIDL40051512345678'
-  }
-  if (!values.swiftCode) {
-    errors.swiftCode = 'Required'
-  } else if (!SWIFT_CODE.test(values.swiftCode)) {
-    errors.swiftCode = 'Invalid swift code eg. MIDLGB22'
+  if (!values.phone) {
+    errors.phone = 'Required'
+  } else if (isNaN(Number(values.phone))) {
+    errors.phone = 'Must be a number'
   }
   if (!values.accepted) {
     errors.accepted = 'Required'
@@ -105,18 +70,10 @@ class Registration extends React.Component {
                 <div className="mdl-grid">
                   <div className="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
                     <Field name="email" label="Email" component={Input} />
-                    <Field name="charityName" label="Charity Name" component={Input} />
-                    <Field name="charityNumber" label="Charity No" component={Input} />
-                    <Field name="address" label="Address" component={Input} />
-                    <Field name="postcode" label="Postcode" component={Input} />
-                    <Field name="city" label="City" component={Input} />
+                    <Field name="phone" label="Phone number" component={Input} />
                   </div>
                   <div className="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
                     <Field name="password" label="Password" component={Input} type="password" />
-                    <Field name="accountOwner" label="Account Owner" component={Input} />
-                    <Field name="bankName" label="Bank Name" component={Input} />
-                    <Field name="ibanCode" label="Iban Code" component={Input} />
-                    <Field name="swiftCode" label="Swift Code" component={Input} />
                     <Field name="accepted" label={checkboxLabel} component={Checkbox}/>
                   </div>
                 </div>
