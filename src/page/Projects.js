@@ -11,7 +11,6 @@ import MenuSideBar from '../components/MenuSideBar'
 import ProjectForm from '../components/ProjectForm'
 import ProjectCloseForm from '../components/ProjectCloseForm'
 import ProjectDepositForm from '../components/ProjectDepositForm'
-import Auth from '../modules/Auth'
 
 function mapStateToProps(state) {
   const { projects, account } = state
@@ -73,9 +72,7 @@ class Projects extends React.Component {
 
   componentDidMount() {
     const { dispatch } = this.props
-    if (Auth.getUser()) {
-      dispatch(getProjects())
-    }
+    dispatch(getProjects())
   }
 
   onEdit (pid, event) {
@@ -102,17 +99,18 @@ class Projects extends React.Component {
   onDeposit (pid, event) {
     const { projects, setModal, dispatch } = this.props
     const project = projects.find((project)=>{return project.id === pid})
-    const user = Auth.getUser()
-    if (user && project && user.account) {
-      if (user.account.organization) {
-        const { bankAccount } = user.account.organization
-        dispatch(change('projectDepositForm', 'pid', project.id));
-        dispatch(change('projectDepositForm', 'bank', bankAccount.bankName));
-        dispatch(change('projectDepositForm', 'iban', bankAccount.ibanCode));
-        dispatch(change('projectDepositForm', 'name', project.name));
+    // TODO has to be implemented differently
+    // const user = Auth.getUser()
+    // if (user && project) {
+      // if (user.account.organization) {
+        // const { bankAccount } = user.account.organization
+        // dispatch(change('projectDepositForm', 'pid', project.id));
+        // dispatch(change('projectDepositForm', 'bank', bankAccount.bankName));
+        // dispatch(change('projectDepositForm', 'iban', bankAccount.ibanCode));
+        // dispatch(change('projectDepositForm', 'name', project.name));
         setModal('projectDepositModal')
-      }
-    }
+      // }
+    // }
   }
 
   render () {
