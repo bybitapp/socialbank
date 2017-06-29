@@ -4,8 +4,6 @@ import Header from '../components/Header'
 import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
-import UpdateAddress from '../components/UpdateAddress'
-import UpdateBank from '../components/UpdateBank'
 import UpdatePassword from '../components/UpdatePassword'
 import GeneralData from '../components/GeneralData'
 
@@ -27,8 +25,6 @@ class Me extends React.Component {
               <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
                 <div style={stylePadding}>
                   <GeneralData />
-                  <UpdateAddress />
-                  <UpdateBank />
                   <UpdatePassword />
                 </div>
               </div>

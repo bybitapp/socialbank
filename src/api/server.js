@@ -21,6 +21,11 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
+  addOrganization: (values, cb) => {
+    axios.post('/api/organizations/add', values)
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
   getOrganizations: (cb) => {
     axios.get('/api/organizations/list')
       .then((res) => cb(null, res.data))
@@ -31,8 +36,23 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
-  getProjectsByOrgId: (oid, cb) => {
-    axios.get(`/api/projects/list/o/${oid}`)
+  getOrganization: (cb) => {
+    axios.get('/api/organizations/get')
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
+  addBankAccount: (values, cb) => {
+    axios.post('/api/banks/add', values)
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
+  getBankAccount: (cb) => {
+    axios.get('/api/banks/get')
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
+  getProjects: (cb) => {
+    axios.get('/api/projects/list')
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },

@@ -3,7 +3,7 @@ import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { change } from 'redux-form'
 import { dateFormat } from '../util/date'
-import { getProjectsByOrgId } from '../actions'
+import { getProjects } from '../actions'
 import Header from '../components/Header'
 import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
@@ -11,7 +11,6 @@ import MenuSideBar from '../components/MenuSideBar'
 import ProjectForm from '../components/ProjectForm'
 import ProjectCloseForm from '../components/ProjectCloseForm'
 import ProjectDepositForm from '../components/ProjectDepositForm'
-import Auth from '../modules/Auth'
 
 function mapStateToProps(state) {
   const { projects, account } = state
@@ -73,11 +72,7 @@ class Projects extends React.Component {
 
   componentDidMount() {
     const { dispatch } = this.props
-    const user = Auth.getUser()
-    if (user) {
-      const { organization } = user.account
-      dispatch(getProjectsByOrgId(organization.id))
-    }
+    dispatch(getProjects())
   }
 
   onEdit (pid, event) {
@@ -104,17 +99,10 @@ class Projects extends React.Component {
   onDeposit (pid, event) {
     const { projects, setModal, dispatch } = this.props
     const project = projects.find((project)=>{return project.id === pid})
-    const user = Auth.getUser()
-    if (user && project && user.account) {
-      if (user.account.organization) {
-        const { bankAccount } = user.account.organization
-        dispatch(change('projectDepositForm', 'pid', project.id));
-        dispatch(change('projectDepositForm', 'oid', user.account.organization.id));
-        dispatch(change('projectDepositForm', 'bank', bankAccount.bankName));
-        dispatch(change('projectDepositForm', 'iban', bankAccount.ibanCode));
-        dispatch(change('projectDepositForm', 'name', project.name));
-        setModal('projectDepositModal')
-      }
+    if (project) {
+      dispatch(change('projectDepositForm', 'pid', project.id))
+      dispatch(change('projectDepositForm', 'name', project.name))
+      setModal('projectDepositModal')
     }
   }
 

@@ -1,12 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { compose, withState } from 'recompose'
-import { connect } from 'react-redux'
 import NewsletterSubscribe from '../components/NewsletterSubscribe'
 import Auth from '../modules/Auth'
 
 const enhance = compose(
-  connect((state) => {}),
   withState('modal', 'setModal')
 )
 

@@ -20,12 +20,8 @@ const enhance = compose(
 )
 
 const updateData = (account, dispatch) => {
-  const { organization } = account
-  if (account && organization) {
-    dispatch(change('generalInformation', 'email', account.email));
-    dispatch(change('generalInformation', 'charityName', account.organization.name));
-    dispatch(change('generalInformation', 'charityNumber', account.organization.number));
-  }
+  dispatch(change('generalInformation', 'email', account.email))
+  dispatch(change('generalInformation', 'phone', account.phone))
 }
 
 class GeneralInformation extends React.Component {
@@ -34,7 +30,7 @@ class GeneralInformation extends React.Component {
     const { dispatch } = this.props
     const user = Auth.getUser()
     if (user) {
-      updateData(user.account, dispatch)
+      updateData(user, dispatch)
     }
   }
 
@@ -51,11 +47,10 @@ class GeneralInformation extends React.Component {
             <h5>General Information</h5>
             <div className="mdl-grid">
                 <div className="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
-                    <Field name="charityName" label="Charity Name" component={Input} disabled={true} />
-                    <Field name="charityNumber" label="Charity No" component={Input} disabled={true} />
+                  <Field name="email" label="Email" component={Input} disabled={true} />
                 </div>
                 <div className="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
-                    <Field name="email" label="Email" component={Input} disabled={true} />
+                  <Field name="phone" label="Phone Number" component={Input} disabled={true} />
                 </div>
             </div>
         </div>);
