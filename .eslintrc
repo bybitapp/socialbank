@@ -13,12 +13,6 @@
     "mocha/no-exclusive-tests": "error",
     "standard/no-callback-literal": 0,
     "react/prop-types": 0,
-    "react/jsx-tag-spacing": 0,
-    "react/jsx-indent": 0,
-    "react/self-closing-comp": 0,
-    "react/no-unkown-property": 0,
-    "react/jsx-curly-spacing": 0,
-    "react/jsx-boolean-value": 0,
     "react/jsx-no-bind": 0
   },
   "globals": {
