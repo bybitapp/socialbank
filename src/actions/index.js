@@ -19,19 +19,25 @@ export const addOrganization = (org, cb) => (dispatch, getState) => {
 
 export const getOrganizations = () => dispatch => {
   server.getOrganizations((ex, organizations) => {
-    dispatch({type: types.RECEIVE_ORGANIZATIONS, organizations})
+    if (!ex) {
+      dispatch({type: types.RECEIVE_ORGANIZATIONS, organizations})
+    }
   })
 }
 
 export const getOrganization = () => dispatch => {
   server.getOrganization((ex, data) => {
-    dispatch({type: types.RECEIVE_ORGANIZATION, data})
+    if (!ex) {
+      dispatch({type: types.RECEIVE_ORGANIZATION, data})
+    }
   })
 }
 
 export const getOrganizationById = (oid) => dispatch => {
   server.getOrganizationById(oid, (ex, data) => {
-    dispatch({type: types.RECEIVE_ORGANIZATION, data})
+    if (!ex) {
+      dispatch({type: types.RECEIVE_ORGANIZATION, data})
+    }
   })
 }
 
@@ -52,40 +58,48 @@ export const addBankAccount = (bank, cb) => (dispatch, getState) => {
 
 export const getBankAccount = () => dispatch => {
   server.getBankAccount((ex, data) => {
-    dispatch({type: types.RECEIVE_BANKACCOUNT, data})
+    if (!ex) {
+      dispatch({type: types.RECEIVE_BANKACCOUNT, data})
+    }
   })
 }
 
 export const getProjects = () => dispatch => {
   server.getProjects((ex, data) => {
-    dispatch({type: types.RECEIVE_PROJECTS, data})
+    if (!ex) {
+      dispatch({type: types.RECEIVE_PROJECTS, data})
+    }
   })
 }
 
 export const getProjectsWithCards = () => dispatch => {
   server.getProjects((ex, data) => {
-    dispatch({type: types.RECEIVE_PROJECTS, data})
-    if (data.projects && data.projects.length) {
-      server.getCards(data.projects[0].id, (ex, data) => {
+    if (!ex) {
+      dispatch({type: types.RECEIVE_PROJECTS, data})
+      if (data.projects && data.projects.length) {
+        server.getCards(data.projects[0].id, (ex, data) => {
+          dispatch({type: types.RECEIVE_CARDS, data})
+        })
+      } else {
+        let data = {projects: []}
         dispatch({type: types.RECEIVE_CARDS, data})
-      })
-    } else {
-      let data = {projects: []}
-      dispatch({type: types.RECEIVE_CARDS, data})
+      }
     }
   })
 }
 
 export const getProjectsWithHistory = () => dispatch => {
   server.getProjects((ex, data) => {
-    dispatch({type: types.RECEIVE_PROJECTS, data})
-    if (data.projects && data.projects.length) {
-      server.getHistory(data.projects[0].id, (ex, data) => {
+    if (!ex) {
+      dispatch({type: types.RECEIVE_PROJECTS, data})
+      if (data.projects && data.projects.length) {
+        server.getHistory(data.projects[0].id, (ex, data) => {
+          dispatch({type: types.RECEIVE_HISTORY, data})
+        })
+      } else {
+        let data = []
         dispatch({type: types.RECEIVE_HISTORY, data})
-      })
-    } else {
-      let data = []
-      dispatch({type: types.RECEIVE_HISTORY, data})
+      }
     }
   })
 }
@@ -98,7 +112,9 @@ export const getCards = (projId) => dispatch => {
 
 export const getHistory = (projId) => dispatch => {
   server.getHistory(projId, (ex, data) => {
-    dispatch({type: types.RECEIVE_HISTORY, data})
+    if (!ex) {
+      dispatch({type: types.RECEIVE_HISTORY, data})
+    }
   })
 }
 
