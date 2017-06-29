@@ -2,9 +2,30 @@ import server from '../api/server'
 import Auth from '../modules/Auth'
 import * as types from '../constants/ActionTypes'
 
+export const addOrganization = (org, cb) => (dispatch, getState) => {
+  server.addOrganization(org, (ex, data) => {
+    if (!ex) {
+      dispatch({type: types.RECEIVE_ORGANIZATION, data})
+      cb(null, data)
+    } else {
+      if (org.id) {
+        cb('Update Failed!')
+      } else {
+        cb('Add Failed!')
+      }
+    }
+  })
+}
+
 export const getOrganizations = () => dispatch => {
   server.getOrganizations((ex, organizations) => {
     dispatch({type: types.RECEIVE_ORGANIZATIONS, organizations})
+  })
+}
+
+export const getOrganization = () => dispatch => {
+  server.getOrganization((ex, data) => {
+    dispatch({type: types.RECEIVE_ORGANIZATION, data})
   })
 }
 
@@ -14,8 +35,8 @@ export const getOrganizationById = (oid) => dispatch => {
   })
 }
 
-export const getProjectsByOrgId = (pid) => dispatch => {
-  server.getProjectsByOrgId(pid, (ex, data) => {
+export const getProjects = () => dispatch => {
+  server.getProjects((ex, data) => {
     dispatch({type: types.RECEIVE_PROJECTS, data})
   })
 }
