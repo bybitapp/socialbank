@@ -4,7 +4,7 @@ import Header from '../components/Header'
 import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
-import UpdateBank from '../components/UpdateBank'
+import BankForm from '../components/BankForm'
 
 class Banks extends React.Component {
   render () {
@@ -23,7 +23,7 @@ class Banks extends React.Component {
               </div>
               <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
                 <div style={stylePadding}>
-                  <UpdateBank />
+                  <BankForm />
                 </div>
               </div>
             </div>

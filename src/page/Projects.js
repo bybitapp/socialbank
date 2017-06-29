@@ -107,7 +107,6 @@ class Projects extends React.Component {
       if (user.account.organization) {
         const { bankAccount } = user.account.organization
         dispatch(change('projectDepositForm', 'pid', project.id));
-        dispatch(change('projectDepositForm', 'oid', user.account.organization.id));
         dispatch(change('projectDepositForm', 'bank', bankAccount.bankName));
         dispatch(change('projectDepositForm', 'iban', bankAccount.ibanCode));
         dispatch(change('projectDepositForm', 'name', project.name));

@@ -3,8 +3,9 @@ import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, Field, change } from 'redux-form'
 import { addOrganization, getOrganization } from '../actions'
+import { toastr } from 'react-redux-toastr'
 import Input from './Input'
-import {POSTCODE} from '../constants/Validation'
+import { POSTCODE } from '../constants/Validation'
 import { SubmissionError } from 'redux-form'
 
 const validate = values => {
@@ -49,6 +50,11 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(addOrganization(values, (_error) => {
           if(!_error) {
+            if (values.id) {
+              toastr.success('Organization Updated.')
+            } else {
+              toastr.success('Organization Added.')
+            }
             resolve()
           } else {
             reject(new SubmissionError({_error}))
@@ -61,8 +67,9 @@ const enhance = compose(
 
 const updateData = (organization, dispatch) => {
   if (organization && organization.location) {
-    const {name, number} = organization
+    const {name, number, id} = organization
     const {address, city, postcode} = organization.location
+    dispatch(change('organizationForm', 'id', id));
     dispatch(change('organizationForm', 'name', name));
     dispatch(change('organizationForm', 'number', number));
     dispatch(change('organizationForm', 'address', address));
@@ -93,6 +100,7 @@ class OrganizationForm extends React.Component {
           <form onSubmit={handleSubmit}>
           <div className="mdl-grid">
               <div className="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
+                <Field name="id" type="hidden" component="input" />
                 <Field name="name" label="Name" component={Input} />
                 <Field name="number" label="Number" component={Input} />
                 <Field name="address" label="Address" component={Input} />

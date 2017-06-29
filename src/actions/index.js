@@ -35,14 +35,35 @@ export const getOrganizationById = (oid) => dispatch => {
   })
 }
 
+export const addBankAccount = (bank, cb) => (dispatch, getState) => {
+  server.addBankAccount(bank, (ex, data) => {
+    if (!ex) {
+      dispatch({type: types.RECEIVE_BANKACCOUNT, data})
+      cb(null, data)
+    } else {
+      if (bank.id) {
+        cb('Update Failed!')
+      } else {
+        cb('Add Failed!')
+      }
+    }
+  })
+}
+
+export const getBankAccount = () => dispatch => {
+  server.getBankAccount((ex, data) => {
+    dispatch({type: types.RECEIVE_BANKACCOUNT, data})
+  })
+}
+
 export const getProjects = () => dispatch => {
   server.getProjects((ex, data) => {
     dispatch({type: types.RECEIVE_PROJECTS, data})
   })
 }
 
-export const getProjectsWithCards = (pid) => dispatch => {
-  server.getProjectsByOrgId(pid, (ex, data) => {
+export const getProjectsWithCards = () => dispatch => {
+  server.getProjects((ex, data) => {
     dispatch({type: types.RECEIVE_PROJECTS, data})
     if (data.projects && data.projects.length) {
       server.getCards(data.projects[0].id, (ex, data) => {
@@ -55,8 +76,8 @@ export const getProjectsWithCards = (pid) => dispatch => {
   })
 }
 
-export const getProjectsWithHistory = (pid) => dispatch => {
-  server.getProjectsByOrgId(pid, (ex, data) => {
+export const getProjectsWithHistory = () => dispatch => {
+  server.getProjects((ex, data) => {
     dispatch({type: types.RECEIVE_PROJECTS, data})
     if (data.projects && data.projects.length) {
       server.getHistory(data.projects[0].id, (ex, data) => {
@@ -82,10 +103,10 @@ export const getHistory = (projId) => dispatch => {
 }
 
 export const registerAccount = (account, cb) => (dispatch, getState) => {
-  return server.registerAccount(account, (ex, account) => {
+  return server.registerAccount(account, (ex, data) => {
     if (!ex) {
-      dispatch({type: types.REGISTER_ACCOUNT_SUCCESS, account})
-      cb(null, account)
+      dispatch({type: types.REGISTER_ACCOUNT_SUCCESS, data})
+      cb(null, data)
     } else {
       // Replace the line above with line below to rollback on failure:
       // return dispatch({ type: types.REGISTER_ACCOUNT_FAILURE, account })
@@ -245,10 +266,6 @@ export const sendMessage = (contact, cb) => (dispatch, getState) => {
       cb('Send Message Failed!')
     }
   })
-}
-
-export const sessionSetTemp = (data, cb) => (dispatch, getState) => {
-  dispatch({type: types.LOGIN_SESSION_TEMP, data})
 }
 
 export const subscribeNewsletter = (data, cb) => (dispatch, getState) => {
