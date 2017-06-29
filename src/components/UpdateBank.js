@@ -28,9 +28,10 @@ const validate = values => {
 }
 
 function mapStateToProps(state) {
-  const { account } = state
+  const { account, banks } = state
   return {
-    account
+    account,
+    banks
   }
 }
 
@@ -74,7 +75,8 @@ class UpdateBank extends React.Component {
   }
 
   render() {
-      const { handleSubmit } = this.props;
+      const { handleSubmit, banks } = this.props
+      const button =  (banks) ? 'Update Bank Account' : 'Add Bank Account'
       return (
           <div>
               <h5>External Account</h5>
@@ -87,6 +89,9 @@ class UpdateBank extends React.Component {
                   <div className="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
                       <Field name="ibanCode" label="Iban Code" component={Input} disabled={true} />
                       <Field name="swiftCode" label="Swift Code" component={Input} disabled={true} />
+                      <div className="sb-details-button">
+                        <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">{button}</button>
+                      </div>
                   </div>
               </div>
               </form>
