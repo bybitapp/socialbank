@@ -32,7 +32,7 @@ const enhance = compose(
 
 const HistoryItem = ({transaction}) => (
   <tr>
-    <td className="mdl-data-table__cell--non-numeric">{ dateFormat(transaction.datetime) }</td>
+    <td className='mdl-data-table__cell--non-numeric'>{ dateFormat(transaction.datetime) }</td>
     <td>{ transaction.type }</td>
     <td>{ transaction.name }</td>
     <td>{ transaction.currency }</td>
@@ -42,10 +42,10 @@ const HistoryItem = ({transaction}) => (
   </tr>)
 
 const HistoryTable = ({transactions = [], styleTable}) => (
-  <table className="mdl-data-table mdl-data-table--selectable" style={styleTable}>
+  <table className='mdl-data-table mdl-data-table--selectable' style={styleTable}>
     <thead>
       <tr>
-        <th className="mdl-data-table__cell--non-numeric">Date</th>
+        <th className='mdl-data-table__cell--non-numeric'>Date</th>
         <th>Type</th>
         <th>Name</th>
         <th>Currency</th>
@@ -90,27 +90,26 @@ class History extends React.Component {
     })
 
     return (
-      <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
         <Header />
         <MobileNavigation />
-        <main className="mdl-layout__content">
-          <div className="page-content">
-            <div className="mdl-grid">
-              <div className="mdl-cell mdl-cell--3-col">
+        <main className='mdl-layout__content'>
+          <div className='page-content'>
+            <div className='mdl-grid'>
+              <div className='mdl-cell mdl-cell--3-col'>
                 <MenuSideBar />
               </div>
-              <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
+              <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
                 <div style={stylePadding}>
                   { isEmpty(projects)
-                    ? <p className="sb-no-project">No available projects</p>
+                    ? <p className='sb-no-project'>No available projects</p>
                     : (
                       <div>
-                        <div className="mdl-grid">
-                          <div className="mdl-cell mdl-cell--9-col">
-                            <Field name="project" label="Project Name" component={Select} items={projectList} />
+                        <div className='mdl-grid'>
+                          <div className='mdl-cell mdl-cell--9-col'>
+                            <Field name='project' label='Project Name' component={Select} items={projectList} />
                           </div>
-                          <div className="mdl-cell mdl-cell--3-col">
-                          </div>
+                          <div className='mdl-cell mdl-cell--3-col' />
                         </div>
                         <HistoryTable transactions={history} styleTable={styleTable} />
                       </div>

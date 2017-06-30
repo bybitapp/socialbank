@@ -79,29 +79,29 @@ class CardForm extends React.Component {
         isOpen={open}
         onRequestClose={handleClose}
         style={customStyles}
-        contentLabel="Card Form"
+        contentLabel='Card Form'
       >
         <form onSubmit={handleSubmit}>
-          <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header sb-modal-form">
-            <header className="mdl-layout__header">
-              <div className="mdl-layout__header-row">
-                <span className="mdl-layout-title">Card Form</span>
-                <div className="mdl-layout-spacer"></div>
+          <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header sb-modal-form'>
+            <header className='mdl-layout__header'>
+              <div className='mdl-layout__header-row'>
+                <span className='mdl-layout-title'>Card Form</span>
+                <div className='mdl-layout-spacer' />
               </div>
             </header>
-            <main className="mdl-layout__content">
-              <div className="page-content" style={styleCenter}>
-                {error && <span className="sb-error">{error}</span>}
-                <Field name="pid" type="hidden" component="input" />
-                <Field name="cid" type="hidden" component="input" />
-                <Field name="name" label="Name On Card" component={Input} />
+            <main className='mdl-layout__content'>
+              <div className='page-content' style={styleCenter}>
+                {error && <span className='sb-error'>{error}</span>}
+                <Field name='pid' type='hidden' component='input' />
+                <Field name='cid' type='hidden' component='input' />
+                <Field name='name' label='Name On Card' component={Input} />
               </div>
             </main>
-            <footer className="sb-footer">
-              <div className="mdl-mega-footer__bottom-section">
-                <ul className="mdl-mega-footer__link-list">
-                  <li><button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" onClick={this.onCancel.bind(this)}>Cancel</button></li>
-                  <li><button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">Ok</button></li>
+            <footer className='sb-footer'>
+              <div className='mdl-mega-footer__bottom-section'>
+                <ul className='mdl-mega-footer__link-list'>
+                  <li><button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' onClick={this.onCancel.bind(this)}>Cancel</button></li>
+                  <li><button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' type='submit'>Ok</button></li>
                 </ul>
               </div>
             </footer>

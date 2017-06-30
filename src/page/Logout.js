@@ -14,4 +14,4 @@ class Logout extends Component {
   }
 }
 
-export default connect()(Logout);
+export default connect()(Logout)
