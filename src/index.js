@@ -57,8 +57,7 @@ const App = () => (
         preventDuplicates
         position='top-left'
         transitionIn='fadeIn'
-        transitionOut='fadeOut'
-        progressBar />
+        transitionOut='fadeOut' />
     </div>
   </Provider>
 )
