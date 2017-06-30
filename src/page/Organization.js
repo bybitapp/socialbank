@@ -12,16 +12,16 @@ class Organization extends React.Component {
     const stylePadding = {padding: '15px'}
 
     return (
-      <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
         <Header />
         <MobileNavigation />
-        <main className="mdl-layout__content">
-          <div className="page-content">
-            <div className="mdl-grid">
-              <div className="mdl-cell mdl-cell--3-col">
+        <main className='mdl-layout__content'>
+          <div className='page-content'>
+            <div className='mdl-grid'>
+              <div className='mdl-cell mdl-cell--3-col'>
                 <MenuSideBar />
               </div>
-              <div className="mdl-cell mdl-cell--9-col" style={styleBorderLeft}>
+              <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
                 <div style={stylePadding}>
                   <OrganizationForm />
                 </div>

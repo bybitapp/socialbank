@@ -1,5 +1,7 @@
-import { RECEIVE_CARDS, ADD_CARD_SUCCESS, UPDATE_CARD_SUCCESS, DESTROY_CARD_SUCCESS } from '../constants/ActionTypes'
-import { TRANSFER_CARD_SUCCESS, UPDATE_CARD_STATUS_SUCCESS } from '../constants/ActionTypes'
+import {
+  RECEIVE_CARDS, ADD_CARD_SUCCESS, UPDATE_CARD_SUCCESS, DESTROY_CARD_SUCCESS,
+  TRANSFER_CARD_SUCCESS, UPDATE_CARD_STATUS_SUCCESS
+} from '../constants/ActionTypes'
 
 export const cards = (state = [], action) => {
   switch (action.type) {
@@ -26,7 +28,6 @@ export const cards = (state = [], action) => {
     case DESTROY_CARD_SUCCESS:
       const deleteResult = state.filter(item => {
         return item.id !== action.data.id
-
       })
       return deleteResult
     case TRANSFER_CARD_SUCCESS:

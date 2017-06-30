@@ -18,21 +18,21 @@ class Map extends React.Component {
 
     return (
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyCkwfHICB6QowBNjiGBZc12MH2HbdZnHbM" }}
+        bootstrapURLKeys={{ key: 'AIzaSyCkwfHICB6QowBNjiGBZc12MH2HbdZnHbM' }}
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
         onChildClick={this.onChildClick}
         options={this.props.options}
       >
-      { Object.keys(organizations).map((key, index) => {
+        { Object.keys(organizations).map((key, index) => {
           const o = organizations[key]
           return (
-              <Marker
-                key={key}
-                text={o.name}
-                {...o}/>
+            <Marker
+              key={key}
+              text={o.name}
+              {...o} />
           )
-      })}
+        })}
       </GoogleMapReact>
     )
   }

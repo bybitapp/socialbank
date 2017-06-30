@@ -9,15 +9,15 @@ class About extends React.Component {
     const styleText = {textAlign: 'justify'}
 
     return (
-      <div className="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
         <Header />
         <MobileNavigation />
-        <main className="mdl-layout__content">
-          <div className="page-content" class="container">
-            <div className="sb-form-content sb-page" style={styleText}>
-              <p class="text-center"></p>
+        <main className='mdl-layout__content'>
+          <div className='page-content container'>
+            <div className='sb-form-content sb-page' style={styleText}>
+              <p className='text-center' />
               <h3>SoTec Terms of Service & Privacy Policy</h3>
-              <p></p>
+              <p />
               <p>&nbsp;</p>
               <h3>Terms of Service</h3>
               <ol>
@@ -89,12 +89,12 @@ class About extends React.Component {
                 <li>Third Party Sites</li>
               </ol>
               <p>As a convenience to you, this Site includes links to other web sites or material which are beyond its control. We are not responsible for content on any site outside this Site.</p>
-              <ol start="9">
+              <ol start='9'>
                 <li>Advertising and Sponsorship</li>
               </ol>
               <p>Part of this Site may contain advertising and sponsorship. Advertisers and sponsors are responsible for ensuring that material submitted for inclusion on this Site complies with relevant laws and codes. We will not be responsible to you for any error
                 or inaccuracy in advertising and sponsorship material.</p>
-              <ol start="10">
+              <ol start='10'>
                 <li>International Use
                   <ul>
                     <li>We make no promise that materials on this Site are appropriate or available for use in locations outside the United Kingdom, and accessing this Site from territories where its contents are illegal or unlawful is prohibited. If you choose
@@ -118,11 +118,11 @@ class About extends React.Component {
               <p>If you have any queries please contact us at contact (at) sotec (dot) io</p>
             </div>
           </div>
-          <div className="page-content" class="container">
-            <div className="sb-form-content sb-page" style={styleText}>
-              <p class="text-center"></p>
+          <div className='page-content container'>
+            <div className='sb-form-content sb-page' style={styleText}>
+              <p className='text-center' />
               <h3>Privacy and Data Protection Policy</h3>
-              <p></p>
+              <p />
               <p>1. General</p>
               <p>1.1 SoTec (“we” or “us”) take the privacy of your information very seriously. Our privacy and data protection policy (“Privacy Policy”) is designed to tell you about our practices regarding the collection,
                   use and disclosure of information that you may provide to us.

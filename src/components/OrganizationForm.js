@@ -1,12 +1,11 @@
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
-import { reduxForm, Field, change } from 'redux-form'
+import { reduxForm, Field, change, SubmissionError } from 'redux-form'
 import { addOrganization, getOrganization } from '../actions'
 import { toastr } from 'react-redux-toastr'
 import Input from './Input'
 import { POSTCODE } from '../constants/Validation'
-import { SubmissionError } from 'redux-form'
 
 const validate = values => {
   const errors = {}
@@ -34,7 +33,7 @@ const validate = values => {
   return errors
 }
 
-function mapStateToProps(state) {
+function mapStateToProps (state) {
   const { organizations } = state
   return {
     organizations
@@ -49,7 +48,7 @@ const enhance = compose(
     onSubmit: (values, dispatch, ownProps) => {
       return new Promise((resolve, reject) => {
         dispatch(addOrganization(values, (_error) => {
-          if(!_error) {
+          if (!_error) {
             if (values.id) {
               toastr.success('Organization Updated.')
             } else {
@@ -69,54 +68,52 @@ const updateData = (organization, dispatch) => {
   if (organization && organization.location) {
     const {name, number, id} = organization
     const {address, city, postcode} = organization.location
-    dispatch(change('organizationForm', 'id', id));
-    dispatch(change('organizationForm', 'name', name));
-    dispatch(change('organizationForm', 'number', number));
-    dispatch(change('organizationForm', 'address', address));
-    dispatch(change('organizationForm', 'city', city));
-    dispatch(change('organizationForm', 'postcode', postcode));
+    dispatch(change('organizationForm', 'id', id))
+    dispatch(change('organizationForm', 'name', name))
+    dispatch(change('organizationForm', 'number', number))
+    dispatch(change('organizationForm', 'address', address))
+    dispatch(change('organizationForm', 'city', city))
+    dispatch(change('organizationForm', 'postcode', postcode))
   }
 }
 
 class OrganizationForm extends React.Component {
-
-  componentDidMount() {
+  componentDidMount () {
     const { dispatch } = this.props
     dispatch(getOrganization())
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate (prevProps) {
     const { organizations, dispatch } = this.props
     updateData(organizations, dispatch)
   }
 
-  render() {
-      const { handleSubmit, organizations, error } = this.props
-      const button =  (organizations) ? 'Update Organization' : 'Add Organization'
-      return (
-        <div>
-          {error && <span className="sb-error">{error}</span>}
-          <h5>Organization</h5>
-          <form onSubmit={handleSubmit}>
-          <div className="mdl-grid">
-              <div className="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
-                <Field name="id" type="hidden" component="input" />
-                <Field name="name" label="Name" component={Input} />
-                <Field name="number" label="Number" component={Input} />
-                <Field name="address" label="Address" component={Input} />
+  render () {
+    const { handleSubmit, organizations, error } = this.props
+    const button = (organizations) ? 'Update Organization' : 'Add Organization'
+    return (
+      <div>
+        {error && <span className='sb-error'>{error}</span>}
+        <h5>Organization</h5>
+        <form onSubmit={handleSubmit}>
+          <div className='mdl-grid'>
+            <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet'>
+              <Field name='id' type='hidden' component='input' />
+              <Field name='name' label='Name' component={Input} />
+              <Field name='number' label='Number' component={Input} />
+              <Field name='address' label='Address' component={Input} />
+            </div>
+            <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet'>
+              <Field name='city' label='City' component={Input} />
+              <Field name='postcode' label='Postcode' component={Input} />
+              <div className='sb-details-button'>
+                <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' type='submit'>{button}</button>
               </div>
-              <div className="mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet">
-                <Field name="city" label="City" component={Input} />
-                <Field name="postcode" label="Postcode" component={Input} />
-                <div className="sb-details-button">
-                  <button className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">{button}</button>
-                </div>
-              </div>
+            </div>
           </div>
-          </form>
-        </div>);
+        </form>
+      </div>)
   }
-
 }
 
 export default enhance(OrganizationForm)
