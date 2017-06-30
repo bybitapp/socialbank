@@ -40,14 +40,12 @@
     "open_payments_cloud_application_api": "^0.9.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "path": "^0.12.7",
     "ramda": "^0.24.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-modal": "^2.2.0",
     "react-redux": "^5.0.5",
     "react-redux-toastr": "7.0.0",
-    "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
     "react-scripts": "^1.0.10",
     "recompose": "^0.23.5",
@@ -55,7 +53,6 @@
     "redux-form": "^6.8.0",
     "redux-thunk": "^2.2.0",
     "require-directory": "^2.1.1",
-    "reselect": "^3.0.1",
     "uuid": "^3.1.0"
   },
   "devDependencies": {
