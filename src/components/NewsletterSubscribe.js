@@ -8,15 +8,6 @@ import { subscribeNewsletter } from '../actions'
 import Input from './Input'
 
 const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    padding: '5px',
-    transform: 'translate(-50%, -50%)'
-  },
   overlay: {
     zIndex: 4
   }
@@ -63,7 +54,8 @@ class NewsletterSubscribe extends React.Component {
     const iconWrapperStyle = {height: '80px', backgroundColor: '#009688', marginBottom: '40px', paddingTop: '40px'}
     const titleStyle = {textAlign: 'center', width: '100%'}
     const iconStyle = {display: 'block', margin: '0 auto'}
-    const contentStyle = {color: 'darkgray', margin: '10px'}
+    const textStyle = {color: 'darkgray', margin: '10px 0'}
+    const contentStyle = {padding: '15px'}
     const { handleClose, open, handleSubmit, error } = this.props
 
     return (
@@ -71,7 +63,8 @@ class NewsletterSubscribe extends React.Component {
         isOpen={open}
         onRequestClose={handleClose}
         style={customStyles}
-        contentLabel='Newsletter Subscribe'
+        className='android-modal'
+        contentLabel="Newsletter Subscribe"
       >
         <form onSubmit={handleSubmit}>
           <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header sb-modal-form'>
@@ -84,8 +77,8 @@ class NewsletterSubscribe extends React.Component {
               </div>
             </header>
             <main className='mdl-layout__content'>
-              <div className='page-content'>
-                <div className='mdl-dialog__content' style={contentStyle}>
+              <div style={contentStyle}>
+                <div className='mdl-dialog__content' style={textStyle}>
                   {`We'll be happy to update you with our latest releases!`}
                 </div>
                 {error && <span className='sb-error'>{error}</span>}
