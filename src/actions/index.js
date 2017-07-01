@@ -64,6 +64,14 @@ export const getBankAccount = () => dispatch => {
   })
 }
 
+export const getUsers = () => dispatch => {
+  server.getUsers((ex, data) => {
+    if (!ex) {
+      dispatch({type: types.RECEIVE_USERS, data})
+    }
+  })
+}
+
 export const getProjects = () => dispatch => {
   server.getProjects((ex, data) => {
     if (!ex) {
