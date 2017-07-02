@@ -11,6 +11,7 @@ const lusca = require('lusca')
 
 const middleware = require('lib/middleware')
 const routes = require('lib/routes')
+const router = require('lib/router')
 const config = require('./config')
 require('lib/db')
 
@@ -34,6 +35,7 @@ server.use(session({
   resave: true,
   saveUninitialized: true,
   secret: config.session.secret,
+  cookie: {httpOnly: true, secure: true},
   store: new MongoStore({
     url: config.mongoUrl,
     autoReconnect: true
@@ -50,6 +52,9 @@ server.use(lusca({
 }))
 
 server.use(routes)
+
+server.use('/api/banks', router(require('lib/routes/api/banks')))
+
 server.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, './build', 'index.html'))
 })
