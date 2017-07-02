@@ -112,8 +112,14 @@ export const getProjectsWithHistory = () => dispatch => {
   })
 }
 
-export const getCards = (projId) => dispatch => {
-  server.getCards(projId, (ex, data) => {
+export const getCardsByProjectId = (projId) => dispatch => {
+  server.getCardsByProjectId(projId, (ex, data) => {
+    dispatch({type: types.RECEIVE_CARDS, data})
+  })
+}
+
+export const getCards = () => dispatch => {
+  server.getCards((ex, data) => {
     dispatch({type: types.RECEIVE_CARDS, data})
   })
 }

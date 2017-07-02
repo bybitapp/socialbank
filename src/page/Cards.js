@@ -1,8 +1,8 @@
 import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
-import { reduxForm, change, Field, formValueSelector } from 'redux-form'
-import { getCards, getProjectsWithCards } from '../actions'
+import { reduxForm, change } from 'redux-form'
+import { getCards } from '../actions'
 import { CARD_STATUS } from '../constants/Option'
 import CardForm from '../components/CardForm'
 import CardDestroyForm from '../components/CardDestroyForm'
@@ -13,17 +13,12 @@ import Header from '../components/Header'
 import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
-import Select from '../components/Select'
-
-const selector = formValueSelector('cards')
 
 function mapStateToProps (state) {
   const { cards, projects, modal } = state
-  let selectedProject = selector(state, 'project')
   return {
     cards,
     projects,
-    selectedProject,
     modal
   }
 }
@@ -100,14 +95,7 @@ class Cards extends React.Component {
 
   componentDidMount () {
     const { dispatch } = this.props
-    dispatch(getProjectsWithCards())
-  }
-
-  componentDidUpdate (prevProps) {
-    const { selectedProject, dispatch } = this.props
-    if (selectedProject && selectedProject !== prevProps.selectedProject) {
-      dispatch(getCards(selectedProject))
-    }
+    dispatch(getCards())
   }
 
   onEdit (cid, event) {
@@ -130,9 +118,9 @@ class Cards extends React.Component {
   }
 
   onTransfer (cid, event) {
-    const { projects, cards, setModal, dispatch, selectedProject } = this.props
+    const { projects, cards, setModal, dispatch } = this.props
     const card = cards.find((c) => c.id === cid)
-    const project = projects.find((p) => p.id === selectedProject)
+    const project = projects.find((p) => p.id === card.project)
     if (card && project) {
       dispatch(change('cardTransferForm', 'pid', project.id))
       dispatch(change('cardTransferForm', 'cid', card.id))
@@ -166,14 +154,7 @@ class Cards extends React.Component {
     const stylePadding = {padding: '15px'}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
-    const { cards, projects, modal, setModal, selectedProject } = this.props
-
-    const projectList = projects.map((item, index) => {
-      return {
-        id: item.id,
-        name: item.name
-      }
-    })
+    const { cards, modal, setModal } = this.props
 
     const actions = [
       {icon: 'attach_money', onclick: this.onTransfer},
@@ -187,7 +168,7 @@ class Cards extends React.Component {
       <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
         <Header />
         <MobileNavigation />
-        <CardForm open={(modal === 'cardModal')} handleClose={() => setModal(null)} projectId={selectedProject} />
+        <CardForm open={(modal === 'cardModal')} handleClose={() => setModal(null)} />
         <CardDestroyForm open={(modal === 'cardDestroyModal')} handleClose={() => setModal(null)} />
         <CardTransferForm open={(modal === 'cardTransferModal')} handleClose={() => setModal(null)} />
         <CardBlockForm open={(modal === 'cardBlockModal')} handleClose={() => setModal(null)} />
@@ -201,12 +182,9 @@ class Cards extends React.Component {
               <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
                 <div style={stylePadding}>
                   <div className='mdl-grid'>
-                    <div className='mdl-cell mdl-cell--7-col'>
-                      <Field name='project' label='Project Name' component={Select} items={projectList} />
-                    </div>
                     <div className='mdl-cell mdl-cell--5-col' style={styleButton}>
                       <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
-                        disabled={!selectedProject} onClick={() => setModal('cardModal')}>
+                        onClick={() => setModal('cardModal')}>
                           Add Card
                       </button>
                     </div>
