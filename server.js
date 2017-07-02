@@ -50,24 +50,11 @@ server.use(lusca({
 }))
 
 server.use(routes)
-
-// TEMPORARY START
-// Handle errors coming from the routes
-// This works fine for managed errors such as 'next(err)',
-// but does not work for 'throw new Error()'
-server.use((err, req, res, next) => {
-  console.log('Called error handler!')
-  if (res.headersSent) {
-    return next(err)
-  }
-  console.log('Send 500 with error' + err)
-  res.status(500).send(err)
-})
-// TEMPORARY END
-
 server.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, './build', 'index.html'))
 })
+
+server.use(middleware.errorDispatcher())
 
 server.listen(config.app.port, (err) => {
   if (err) throw err
