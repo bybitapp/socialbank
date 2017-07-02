@@ -1,10 +1,12 @@
 import React from 'react'
 import Modal from 'react-modal'
 import { compose } from 'recompose'
-import { reduxForm, change, Field, SubmissionError } from 'redux-form'
+import { connect } from 'react-redux'
+import { reduxForm, Field, SubmissionError } from 'redux-form'
 
-import { addCard } from '../actions'
+import { addCard, getProjects } from '../actions'
 import Input from './Input'
+import Select from './Select'
 
 const customStyles = {
   content: {
@@ -29,7 +31,15 @@ const validate = values => {
   return errors
 }
 
+function mapStateToProps (state) {
+  const { projects } = state
+  return {
+    projects
+  }
+}
+
 const enhance = compose(
+  connect(mapStateToProps),
   reduxForm({
     form: 'cardForm',
     validate,
@@ -57,22 +67,19 @@ class CardForm extends React.Component {
   }
 
   componentDidMount () {
-    const { projectId, dispatch } = this.props
-    if (projectId) {
-      dispatch(change('cardForm', 'pid', projectId))
-    }
-  }
-
-  componentDidUpdate (prevProps) {
-    const { projectId, dispatch } = this.props
-    if (projectId) {
-      dispatch(change('cardForm', 'pid', projectId))
-    }
+    const { dispatch } = this.props
+    dispatch(getProjects())
   }
 
   render () {
     const styleCenter = {textAlign: 'center'}
-    const { handleClose, open, handleSubmit, error } = this.props
+    const { handleClose, open, handleSubmit, projects, error } = this.props
+    const projectList = projects.map((item, index) => {
+      return {
+        id: item.id,
+        name: item.name
+      }
+    })
 
     return (
       <Modal
@@ -92,8 +99,8 @@ class CardForm extends React.Component {
             <main className='mdl-layout__content'>
               <div className='page-content' style={styleCenter}>
                 {error && <span className='sb-error'>{error}</span>}
-                <Field name='pid' type='hidden' component='input' />
                 <Field name='cid' type='hidden' component='input' />
+                <Field name='pid' label='Project Name' component={Select} items={projectList} />
                 <Field name='name' label='Name On Card' component={Input} />
               </div>
             </main>
