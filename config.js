@@ -1,10 +1,13 @@
-var config = {
+const truthy = require('lib/util/truthy')
+
+const config = {
   app: {
     port: process.env.PORT || 3001,
     name: process.env.APP_NAME || 'sotec',
     url: process.env.APP_URL || 'http://www.sotec.io'
   },
-  ensureHttps: process.env.ENSURE_HTTPS || false,
+  returnStackTrace: truthy(process.env.RETURN_STACK_TRACE, false),
+  ensureHttps: truthy(process.env.ENSURE_HTTPS, false),
   mongoUrl: process.env.MONGODB_URI || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/sotec-dev',
   session: {
     secret: process.env.SESSION_SECRET || 'dummySecret'
