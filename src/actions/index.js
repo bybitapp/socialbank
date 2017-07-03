@@ -72,6 +72,14 @@ export const getUsers = () => dispatch => {
   })
 }
 
+export const removeUser = (uid) => dispatch => {
+  server.removeUser(uid, (ex, data) => {
+    if (!ex) {
+      dispatch({type: types.REMOVE_USER, data})
+    }
+  })
+}
+
 export const getProjects = () => dispatch => {
   server.getProjects((ex, data) => {
     if (!ex) {

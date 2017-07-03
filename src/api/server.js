@@ -56,6 +56,11 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
+  removeUser: (values, cb) => {
+    axios.post('/api/users/remove', values)
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
   getProjects: (cb) => {
     axios.get('/api/projects/list')
       .then((res) => cb(null, res.data))
