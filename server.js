@@ -16,13 +16,9 @@ require('lib/db')
 
 const server = express()
 
-// TEMPORARY START
-// This event are called when an unhandled rejection throw exception
-// But couldn't figure out how to send back an 500 response to client
 process.on('unhandledRejection', error => {
   console.log('unhandledRejection', error)
 })
-// TEMPORARY END
 
 server.enable('trust proxy')
 
