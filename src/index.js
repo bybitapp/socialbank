@@ -54,7 +54,7 @@ const App = () => (
         </Switch>
       </Router>
       <ReduxToastr
-        timeOut={4000}
+        timeOut={1000}
         newestOnTop={false}
         preventDuplicates
         position='top-left'
