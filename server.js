@@ -50,7 +50,7 @@ server.use(lusca({
   nosniff: true
 }))
 
-require('lib/passport_config')
+require('lib/passport')
 server.use('/api/accounts', router(require('lib/routes/api/accounts')))
 server.use('/api/banks', router(require('lib/routes/api/banks')))
 server.use('/api/cards', router(require('lib/routes/api/cards')))
