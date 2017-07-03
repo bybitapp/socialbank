@@ -2,13 +2,13 @@ import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { change } from 'redux-form'
-import { dateFormat } from '../util/date'
 import { getUsers } from '../actions'
 import Header from '../components/Header'
 import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 import ProjectForm from '../components/ProjectForm'
+import UserRemoveForm from '../components/UserRemoveForm'
 
 function mapStateToProps (state) {
   const { users } = state
@@ -31,9 +31,9 @@ const ActionButton = (pid, action) => (
 const UserItem = ({user, actions}) => (
   <tr>
     <td className='mdl-data-table__cell--non-numeric'>{ user.name }</td>
-    <td>{ dateFormat(user.created) }</td>
-    <td>{ (user.balances) ? user.balances.actual : 0 }</td>
-    <td>{ user.access }</td>
+    <td>{ user.email }</td>
+    <td>{ user.phone }</td>
+    <td>{ user.type }</td>
     <td className='sb-menu-table'>
       { actions.map((action) => ActionButton(user.id, action)) }
     </td>
@@ -44,8 +44,8 @@ const UserTable = ({users = [], styleTable, actions}) => (
     <thead>
       <tr>
         <th className='mdl-data-table__cell--non-numeric'>Name</th>
-        <th>Date Created</th>
-        <th>Balance</th>
+        <th>Email</th>
+        <th>Phone</th>
         <th>Access</th>
         <th>Actions</th>
       </tr>
@@ -62,6 +62,7 @@ class Users extends React.Component {
   constructor (props) {
     super(props)
     this.onEdit = this.onEdit.bind(this)
+    this.onRemove = this.onRemove.bind(this)
   }
 
   componentDidMount () {
@@ -81,17 +82,26 @@ class Users extends React.Component {
     }
   }
 
+  onRemove (uid, event) {
+    const { users, setModal, dispatch } = this.props
+    const user = users.find((u) => { return u.id === uid })
+    if (user) {
+      dispatch(change('userRemoveForm', 'uid', user.id))
+      setModal('userRemoveModal')
+    }
+  }
+
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
     const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0}
     const stylePadding = {padding: '15px'}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
-    const { projects, modal, setModal, account } = this.props
+    const { users, modal, setModal, account } = this.props
 
     const actions = [
       {icon: 'mode_edit', onclick: this.onEdit},
-      {icon: 'archive', onclick: () => {}}
+      {icon: 'delete', onclick: this.onRemove}
     ]
 
     return (
@@ -99,6 +109,7 @@ class Users extends React.Component {
         <Header />
         <MobileNavigation />
         <ProjectForm open={(modal === 'projectModal')} handleClose={() => setModal(null)} account={account} />
+        <UserRemoveForm open={(modal === 'userRemoveModal')} handleClose={() => setModal(null)} />
         <main className='mdl-layout__content'>
           <div className='page-content'>
             <div className='mdl-grid'>
@@ -115,7 +126,7 @@ class Users extends React.Component {
                       </button>
                     </div>
                   </div>
-                  <UserTable projects={projects} styleTable={styleTable} actions={actions} />
+                  <UserTable users={users} styleTable={styleTable} actions={actions} />
                 </div>
               </div>
             </div>
