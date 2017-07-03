@@ -10,7 +10,6 @@ const cors = require('cors')
 const lusca = require('lusca')
 
 const middleware = require('lib/middleware')
-const routes = require('lib/routes')
 const router = require('lib/router')
 const config = require('./config')
 require('lib/db')
@@ -51,8 +50,8 @@ server.use(lusca({
   nosniff: true
 }))
 
-server.use(routes)
-
+require('lib/passport_config')
+server.use('/api/accounts', router(require('lib/routes/api/accounts')))
 server.use('/api/banks', router(require('lib/routes/api/banks')))
 server.use('/api/cards', router(require('lib/routes/api/cards')))
 server.use('/api/organizations', router(require('lib/routes/api/organizations')))
