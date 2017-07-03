@@ -16,11 +16,6 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
-  isLoggedIn: (cb) => {
-    axios.get('/api/accounts/login')
-      .then((res) => cb(null, res.data))
-      .catch((e) => cb(e))
-  },
   addOrganization: (values, cb) => {
     axios.post('/api/organizations/add', values)
       .then((res) => cb(null, res.data))
