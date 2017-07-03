@@ -168,12 +168,6 @@ export const logout = (cb) => (dispatch, getState) => {
   })
 }
 
-export const isLoggedIn = (cb) => (dispatch, getState) => {
-  return server.isLoggedIn((err, data) => {
-    cb(err, data)
-  })
-}
-
 export const addProject = (project, cb) => (dispatch, getState) => {
   server.addProject(project, (ex, data) => {
     if (project.pid) {
