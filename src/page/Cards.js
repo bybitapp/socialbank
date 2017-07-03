@@ -182,7 +182,7 @@ class Cards extends React.Component {
               <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
                 <div style={stylePadding}>
                   <div className='mdl-grid'>
-                    <div className='mdl-cell mdl-cell--5-col' style={styleButton}>
+                    <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
                       <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
                         onClick={() => setModal('cardModal')}>
                           Add Card
