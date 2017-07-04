@@ -72,6 +72,39 @@ export const getUsers = () => dispatch => {
   })
 }
 
+export const addUser = (values, cb) => dispatch => {
+  if (values.uid) {
+    server.addUser(values, (ex, data) => {
+      if (!ex) {
+        dispatch({type: types.UPDATE_USER, data})
+        cb(null, data)
+      } else {
+        cb('You cannot update this user to your organization!')
+      }
+    })
+  } else {
+    server.addUser(values, (ex, data) => {
+      if (!ex) {
+        dispatch({type: types.ADD_USER, data})
+        cb(null, data)
+      } else {
+        cb('You cannot add this user to your organization!')
+      }
+    })
+  }
+}
+
+export const removeUser = (uid, cb) => dispatch => {
+  server.removeUser(uid, (ex, data) => {
+    if (!ex) {
+      dispatch({type: types.REMOVE_USER, data})
+      cb(null, data)
+    } else {
+      cb('You cannot remove this user from organization!')
+    }
+  })
+}
+
 export const getProjects = () => dispatch => {
   server.getProjects((ex, data) => {
     if (!ex) {

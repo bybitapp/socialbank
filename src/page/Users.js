@@ -2,13 +2,13 @@ import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { change } from 'redux-form'
-import { dateFormat } from '../util/date'
 import { getUsers } from '../actions'
 import Header from '../components/Header'
 import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
-import ProjectForm from '../components/ProjectForm'
+import UserForm from '../components/UserForm'
+import UserRemoveForm from '../components/UserRemoveForm'
 
 function mapStateToProps (state) {
   const { users } = state
@@ -30,9 +30,9 @@ const ActionButton = (pid, action) => (
 
 const UserItem = ({user, actions}) => (
   <tr>
-    <td className='mdl-data-table__cell--non-numeric'>{ user.name }</td>
-    <td>{ dateFormat(user.created) }</td>
-    <td>{ (user.balances) ? user.balances.actual : 0 }</td>
+    <td className='mdl-data-table__cell--non-numeric'>{ user.profile.name }</td>
+    <td>{ user.email }</td>
+    <td>{ user.phone }</td>
     <td>{ user.access }</td>
     <td className='sb-menu-table'>
       { actions.map((action) => ActionButton(user.id, action)) }
@@ -44,8 +44,8 @@ const UserTable = ({users = [], styleTable, actions}) => (
     <thead>
       <tr>
         <th className='mdl-data-table__cell--non-numeric'>Name</th>
-        <th>Date Created</th>
-        <th>Balance</th>
+        <th>Email</th>
+        <th>Phone</th>
         <th>Access</th>
         <th>Actions</th>
       </tr>
@@ -62,6 +62,7 @@ class Users extends React.Component {
   constructor (props) {
     super(props)
     this.onEdit = this.onEdit.bind(this)
+    this.onRemove = this.onRemove.bind(this)
   }
 
   componentDidMount () {
@@ -69,15 +70,23 @@ class Users extends React.Component {
     dispatch(getUsers())
   }
 
-  onEdit (pid, event) {
-    const { projects, setModal, dispatch } = this.props
-    const project = projects.find((project) => { return project.id === pid })
-    if (project) {
-      dispatch(change('projectForm', 'pid', project.id))
-      dispatch(change('projectForm', 'name', project.name))
-      dispatch(change('projectForm', 'description', project.description))
-      dispatch(change('projectForm', 'access', project.access))
-      setModal('projectModal')
+  onEdit (uid, event) {
+    const { users, setModal, dispatch } = this.props
+    const user = users.find((u) => { return u.id === uid })
+    if (user) {
+      dispatch(change('userForm', 'uid', user.id))
+      dispatch(change('userForm', 'email', user.email))
+      dispatch(change('userForm', 'access', user.access))
+      setModal('userModal')
+    }
+  }
+
+  onRemove (uid, event) {
+    const { users, setModal, dispatch } = this.props
+    const user = users.find((u) => { return u.id === uid })
+    if (user) {
+      dispatch(change('userRemoveForm', 'uid', user.id))
+      setModal('userRemoveModal')
     }
   }
 
@@ -87,18 +96,19 @@ class Users extends React.Component {
     const stylePadding = {padding: '15px'}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
-    const { projects, modal, setModal, account } = this.props
+    const { users, modal, setModal } = this.props
 
     const actions = [
       {icon: 'mode_edit', onclick: this.onEdit},
-      {icon: 'archive', onclick: () => {}}
+      {icon: 'delete', onclick: this.onRemove}
     ]
 
     return (
       <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
         <Header />
         <MobileNavigation />
-        <ProjectForm open={(modal === 'projectModal')} handleClose={() => setModal(null)} account={account} />
+        <UserForm open={(modal === 'userModal')} handleClose={() => setModal(null)} />
+        <UserRemoveForm open={(modal === 'userRemoveModal')} handleClose={() => setModal(null)} />
         <main className='mdl-layout__content'>
           <div className='page-content'>
             <div className='mdl-grid'>
@@ -110,12 +120,12 @@ class Users extends React.Component {
                   <div className='mdl-grid'>
                     <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
                       <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
-                        onClick={() => setModal('projectModal')}>
+                        onClick={() => setModal('userModal')}>
                           Add User
                       </button>
                     </div>
                   </div>
-                  <UserTable projects={projects} styleTable={styleTable} actions={actions} />
+                  <UserTable users={users} styleTable={styleTable} actions={actions} />
                 </div>
               </div>
             </div>
