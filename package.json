@@ -11,7 +11,9 @@
     "dev": "concurrently 'PORT=8088 NODE_PATH=. nodemon --watch lib server.js' 'react-scripts start'",
     "start": "NODE_PATH=. node server.js",
     "build": "react-scripts build",
-    "test": "NODE_PATH=. react-scripts test --env=jsdom",
+    "test:client": "NODE_PATH=. react-scripts test --env=jsdom",
+    "test:server": "NODE_PATH=. mocha './{,!(node_modules)/**/}*.test.js'",
+    "test": "yarn run test:client && yarn run test:server",
     "eject": "react-scripts eject",
     "postinstall": "yarn run build"
   },
@@ -68,6 +70,7 @@
     "eslint-plugin-react": "^7.1.0",
     "eslint-plugin-standard": "^3.0.1",
     "mocha": "^3.4.2",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "should": "^11.2.1"
   }
 }
