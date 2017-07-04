@@ -7,7 +7,7 @@ import Header from '../components/Header'
 import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
-import ProjectForm from '../components/ProjectForm'
+import UserForm from '../components/UserForm'
 import UserRemoveForm from '../components/UserRemoveForm'
 
 function mapStateToProps (state) {
@@ -30,10 +30,10 @@ const ActionButton = (pid, action) => (
 
 const UserItem = ({user, actions}) => (
   <tr>
-    <td className='mdl-data-table__cell--non-numeric'>{ user.name }</td>
+    <td className='mdl-data-table__cell--non-numeric'>{ user.profile.name }</td>
     <td>{ user.email }</td>
     <td>{ user.phone }</td>
-    <td>{ user.type }</td>
+    <td>{ user.access }</td>
     <td className='sb-menu-table'>
       { actions.map((action) => ActionButton(user.id, action)) }
     </td>
@@ -70,15 +70,14 @@ class Users extends React.Component {
     dispatch(getUsers())
   }
 
-  onEdit (pid, event) {
-    const { projects, setModal, dispatch } = this.props
-    const project = projects.find((project) => { return project.id === pid })
-    if (project) {
-      dispatch(change('projectForm', 'pid', project.id))
-      dispatch(change('projectForm', 'name', project.name))
-      dispatch(change('projectForm', 'description', project.description))
-      dispatch(change('projectForm', 'access', project.access))
-      setModal('projectModal')
+  onEdit (uid, event) {
+    const { users, setModal, dispatch } = this.props
+    const user = users.find((u) => { return u.id === uid })
+    if (user) {
+      dispatch(change('userForm', 'uid', user.id))
+      dispatch(change('userForm', 'email', user.email))
+      dispatch(change('userForm', 'access', user.access))
+      setModal('userModal')
     }
   }
 
@@ -97,7 +96,7 @@ class Users extends React.Component {
     const stylePadding = {padding: '15px'}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
-    const { users, modal, setModal, account } = this.props
+    const { users, modal, setModal } = this.props
 
     const actions = [
       {icon: 'mode_edit', onclick: this.onEdit},
@@ -108,7 +107,7 @@ class Users extends React.Component {
       <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
         <Header />
         <MobileNavigation />
-        <ProjectForm open={(modal === 'projectModal')} handleClose={() => setModal(null)} account={account} />
+        <UserForm open={(modal === 'userModal')} handleClose={() => setModal(null)} />
         <UserRemoveForm open={(modal === 'userRemoveModal')} handleClose={() => setModal(null)} />
         <main className='mdl-layout__content'>
           <div className='page-content'>
@@ -121,7 +120,7 @@ class Users extends React.Component {
                   <div className='mdl-grid'>
                     <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
                       <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
-                        onClick={() => setModal('projectModal')}>
+                        onClick={() => setModal('userModal')}>
                           Add User
                       </button>
                     </div>
