@@ -10,7 +10,10 @@ const config = {
   ensureHttps: truthy(process.env.ENSURE_HTTPS, false),
   mongoUrl: process.env.MONGODB_URI || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/sotec-dev',
   session: {
-    secret: process.env.SESSION_SECRET || 'dummySecret'
+    secret: process.env.SESSION_SECRET || 'dummySecret',
+    cookie: {
+      secure: truthy(process.env.COOKIE_SECURE, false)
+    }
   },
   opc: {
     urlApi: 'https://app-gateway.openpayments.cloud/api',
