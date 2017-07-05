@@ -82,7 +82,7 @@ export default {
       .catch((e) => cb(e))
   },
   addCard: (values, cb) => {
-    axios.post('/api/cards/add', values)
+    axios.post('/api/cards', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
@@ -102,7 +102,7 @@ export default {
       .catch((e) => cb(e))
   },
   getCards: (cb) => {
-    axios.get(`/api/cards/list/`)
+    axios.get('/api/cards')
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
