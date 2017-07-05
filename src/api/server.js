@@ -16,11 +16,6 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
-  isLoggedIn: (cb) => {
-    axios.get('/api/accounts/login')
-      .then((res) => cb(null, res.data))
-      .catch((e) => cb(e))
-  },
   addOrganization: (values, cb) => {
     axios.post('/api/organizations/add', values)
       .then((res) => cb(null, res.data))
@@ -53,6 +48,16 @@ export default {
   },
   getUsers: (cb) => {
     axios.get('/api/users/list')
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
+  addUser: (values, cb) => {
+    axios.post('/api/users/add', values)
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
+  removeUser: (values, cb) => {
+    axios.post('/api/users/remove', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
