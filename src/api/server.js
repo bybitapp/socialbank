@@ -37,12 +37,12 @@ export default {
       .catch((e) => cb(e))
   },
   addBankAccount: (values, cb) => {
-    axios.post('/api/banks/add', values)
+    axios.post('/api/banks/', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
   getBankAccount: (cb) => {
-    axios.get('/api/banks/get')
+    axios.get('/api/banks/')
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
