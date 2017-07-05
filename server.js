@@ -13,6 +13,7 @@ const middleware = require('lib/middleware')
 const router = require('lib/router')
 const config = require('./config')
 require('lib/db')
+require('lib/passport')
 
 const server = express()
 
@@ -30,7 +31,10 @@ server.use(session({
   resave: true,
   saveUninitialized: true,
   secret: config.session.secret,
-  cookie: {httpOnly: true, secure: true},
+  cookie: {
+    httpOnly: true,
+    secure: config.session.cookie.secure
+  },
   store: new MongoStore({
     url: config.mongoUrl,
     autoReconnect: true
@@ -46,7 +50,6 @@ server.use(lusca({
   nosniff: true
 }))
 
-require('lib/passport')
 server.use('/api/accounts', router(require('lib/routes/api/accounts')))
 server.use('/api/banks', router(require('lib/routes/api/banks')))
 server.use('/api/cards', router(require('lib/routes/api/cards')))
