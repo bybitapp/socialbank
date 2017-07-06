@@ -10,26 +10,29 @@ const config = {
   ensureHttps: truthy(process.env.ENSURE_HTTPS, false),
   mongoUrl: process.env.MONGODB_URI || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/sotec-dev',
   session: {
-    secret: process.env.SESSION_SECRET || 'dummySecret'
+    secret: process.env.SESSION_SECRET || 'dummySecret',
+    cookie: {
+      secure: truthy(process.env.COOKIE_SECURE, false)
+    }
   },
   opc: {
     urlApi: 'https://app-gateway.openpayments.cloud/api',
-    programmeKey: 'team-01|957296499696862',
-    programmeId: '957296499696862',
-    username: 'team-01',
+    programmeKey: '98246298932019200|98250555867660288',
+    programmeId: '98250555867660288',
+    username: 'sotec',
     password: '8Lx3WSn^',
-    ownerId: '87593085012710413',
+    ownerId: '98254531595468800',
     currency: 'GBP',
     country: 'GB',
     issueProvider: 'Card Issuing Provider',
     profile: {
-      corporateIdentity: '97593089101268736',
-      managedCard: '97593089101269248',
-      managedAccount: '97593089101268992',
-      externalAccount: '97593089101269504',
-      withdraw: '97593089101271040',
-      deposit: '97593089101270016',
-      transfer: '97593089101269760'
+      corporateIdentity: '98250602558455808',
+      managedCard: '98250598277840896',
+      managedAccount: '98250559850283008',
+      externalAccount: '98250601775235072',
+      withdraw: '98250600938602496',
+      deposit: '98250600097579008',
+      transfer: '98250557307617280'
     }
   },
   google: {
