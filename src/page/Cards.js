@@ -42,9 +42,7 @@ const CardItem = ({card, actions, projects = [], users = []}) => {
   const cardStatus = CARD_STATUS.find((status) => (status.id === card.status))
   const cardStatusName = cardStatus ? cardStatus.name : 'unknown'
   const project = projects.find(p => p.id === card.projectId)
-  console.log(users);
   const user = users.find(u => u.id === card.userId)
-  console.log(user);
   const projectName = project.name || 'unknown'
   const userName = user.name || 'unknown'
   const userEmail = user.email || 'unknown'
@@ -119,14 +117,15 @@ class Cards extends React.Component {
   }
 
   onTransfer (cid, event) {
-    const { projects, cards, setModal, dispatch } = this.props
+    const { projects, cards, users, setModal, dispatch } = this.props
     const card = cards.find((c) => c.id === cid)
-    const project = projects.find((p) => p.id === card.project)
-    if (card && project) {
+    const project = projects.find((p) => p.id === card.projectId)
+    const user = users.find((u) => u.id === card.userId)
+    if (card && project && user) {
       dispatch(change('cardTransferForm', 'pid', project.id))
       dispatch(change('cardTransferForm', 'cid', card.id))
       dispatch(change('cardTransferForm', 'projectName', project.name))
-      dispatch(change('cardTransferForm', 'cardName', card.name))
+      dispatch(change('cardTransferForm', 'userEmail', user.email))
       setModal('cardTransferModal')
     }
   }
