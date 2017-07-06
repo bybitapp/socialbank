@@ -1,8 +1,8 @@
 import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
-import { reduxForm, change, Field, formValueSelector } from 'redux-form'
-import { getCards, getProjectsWithCards } from '../actions'
+import { reduxForm, change } from 'redux-form'
+import { getOrganizationCards, getProjects, getUsers } from '../actions'
 import { CARD_STATUS } from '../constants/Option'
 import CardForm from '../components/CardForm'
 import CardDestroyForm from '../components/CardDestroyForm'
@@ -13,17 +13,13 @@ import Header from '../components/Header'
 import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
-import Select from '../components/Select'
-
-const selector = formValueSelector('cards')
 
 function mapStateToProps (state) {
-  const { cards, projects, modal } = state
-  let selectedProject = selector(state, 'project')
+  const { cards, projects, users, modal } = state
   return {
     cards,
     projects,
-    selectedProject,
+    users,
     modal
   }
 }
@@ -42,15 +38,20 @@ const ActionButton = (cid, action) => (
   </a>
 )
 
-const CardItem = ({card, actions}) => {
+const CardItem = ({card, actions, projects = [], users = []}) => {
   const cardStatus = CARD_STATUS.find((status) => (status.id === card.status))
-  const cardStatusName = cardStatus ? cardStatus.name : 'Unknown'
+  const cardStatusName = cardStatus ? cardStatus.name : 'unknown'
+  const project = projects.find(p => p.id === card.projectId)
+  const user = users.find(u => u.id === card.userId)
+  const projectName = project.name || 'unknown'
+  const userName = user.name || 'unknown'
+  const userEmail = user.email || 'unknown'
   return (
     <tr>
-      <td className='mdl-data-table__cell--non-numeric'>{ card.name }</td>
+      <td className='mdl-data-table__cell--non-numeric'>{ projectName }</td>
+      <td>{ userName }</td>
+      <td>{ userEmail }</td>
       <td>{ card.cardNumber }</td>
-      <td>{ card.cardBrand }</td>
-      <td>{ card.startDate }</td>
       <td>{ card.endDate }</td>
       <td>{ cardStatusName }</td>
       <td>{ card.balances.actual }</td>
@@ -66,14 +67,15 @@ const CardItem = ({card, actions}) => {
     </tr>)
 }
 
-const CardTable = ({cards = [], styleTable, actions}) => (
+// TODO: Update card table content
+const CardTable = ({cards = [], projects = [], users = [], styleTable, actions}) => (
   <table className='mdl-data-table mdl-data-table--selectable' style={styleTable}>
     <thead>
       <tr>
-        <th className='mdl-data-table__cell--non-numeric'>Name</th>
+        <th className='mdl-data-table__cell--non-numeric'>Project</th>
+        <th>Name</th>
+        <th>Email</th>
         <th>Card Number</th>
-        <th>Brand</th>
-        <th>Start</th>
         <th>End</th>
         <th>Status</th>
         <th>Balance</th>
@@ -83,7 +85,8 @@ const CardTable = ({cards = [], styleTable, actions}) => (
     <tbody>
       { Object.keys(cards).map((key, index) => {
         const c = cards[key]
-        return (<CardItem key={key} card={c} actions={actions} />)
+        return (<CardItem key={key} card={c} actions={actions}
+          projects={projects} users={users} />)
       })}
     </tbody>
   </table>)
@@ -91,7 +94,6 @@ const CardTable = ({cards = [], styleTable, actions}) => (
 class Cards extends React.Component {
   constructor (props) {
     super(props)
-    this.onEdit = this.onEdit.bind(this)
     this.onDestroy = this.onDestroy.bind(this)
     this.onTransfer = this.onTransfer.bind(this)
     this.onBlock = this.onBlock.bind(this)
@@ -100,24 +102,9 @@ class Cards extends React.Component {
 
   componentDidMount () {
     const { dispatch } = this.props
-    dispatch(getProjectsWithCards())
-  }
-
-  componentDidUpdate (prevProps) {
-    const { selectedProject, dispatch } = this.props
-    if (selectedProject && selectedProject !== prevProps.selectedProject) {
-      dispatch(getCards(selectedProject))
-    }
-  }
-
-  onEdit (cid, event) {
-    const { cards, setModal, dispatch } = this.props
-    const card = cards.find((card) => { return card.id === cid })
-    if (card) {
-      dispatch(change('cardForm', 'cid', card.id))
-      dispatch(change('cardForm', 'name', card.name))
-      setModal('cardModal')
-    }
+    dispatch(getProjects())
+    dispatch(getUsers())
+    dispatch(getOrganizationCards())
   }
 
   onDestroy (cid, event) {
@@ -130,14 +117,15 @@ class Cards extends React.Component {
   }
 
   onTransfer (cid, event) {
-    const { projects, cards, setModal, dispatch, selectedProject } = this.props
+    const { projects, cards, users, setModal, dispatch } = this.props
     const card = cards.find((c) => c.id === cid)
-    const project = projects.find((p) => p.id === selectedProject)
-    if (card && project) {
+    const project = projects.find((p) => p.id === card.projectId)
+    const user = users.find((u) => u.id === card.userId)
+    if (card && project && user) {
       dispatch(change('cardTransferForm', 'pid', project.id))
       dispatch(change('cardTransferForm', 'cid', card.id))
       dispatch(change('cardTransferForm', 'projectName', project.name))
-      dispatch(change('cardTransferForm', 'cardName', card.name))
+      dispatch(change('cardTransferForm', 'userEmail', user.email))
       setModal('cardTransferModal')
     }
   }
@@ -166,18 +154,10 @@ class Cards extends React.Component {
     const stylePadding = {padding: '15px'}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
-    const { cards, projects, modal, setModal, selectedProject } = this.props
-
-    const projectList = projects.map((item, index) => {
-      return {
-        id: item.id,
-        name: item.name
-      }
-    })
+    const { cards, projects, users, modal, setModal } = this.props
 
     const actions = [
       {icon: 'attach_money', onclick: this.onTransfer},
-      {icon: 'mode_edit', onclick: this.onEdit},
       {icon: 'lock', onclick: this.onBlock, show: (item) => item.status === 'active'},
       {icon: 'lock_open', onclick: this.onUnblock, show: (item) => item.status === 'inactive'},
       {icon: 'delete', onclick: this.onDestroy}
@@ -187,7 +167,7 @@ class Cards extends React.Component {
       <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
         <Header />
         <MobileNavigation />
-        <CardForm open={(modal === 'cardModal')} handleClose={() => setModal(null)} projectId={selectedProject} />
+        <CardForm open={(modal === 'cardModal')} handleClose={() => setModal(null)} />
         <CardDestroyForm open={(modal === 'cardDestroyModal')} handleClose={() => setModal(null)} />
         <CardTransferForm open={(modal === 'cardTransferModal')} handleClose={() => setModal(null)} />
         <CardBlockForm open={(modal === 'cardBlockModal')} handleClose={() => setModal(null)} />
@@ -201,17 +181,15 @@ class Cards extends React.Component {
               <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
                 <div style={stylePadding}>
                   <div className='mdl-grid'>
-                    <div className='mdl-cell mdl-cell--7-col'>
-                      <Field name='project' label='Project Name' component={Select} items={projectList} />
-                    </div>
-                    <div className='mdl-cell mdl-cell--5-col' style={styleButton}>
+                    <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
                       <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
-                        disabled={!selectedProject} onClick={() => setModal('cardModal')}>
+                        onClick={() => setModal('cardModal')}>
                           Add Card
                       </button>
                     </div>
                   </div>
-                  <CardTable cards={cards} styleTable={styleTable} actions={actions} />
+                  <CardTable cards={cards} styleTable={styleTable} actions={actions}
+                    projects={projects} users={users} />
                 </div>
               </div>
             </div>
