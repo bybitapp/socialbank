@@ -15,10 +15,11 @@ import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 
 function mapStateToProps (state) {
-  const { cards, projects, modal } = state
+  const { cards, projects, users, modal } = state
   return {
     cards,
     projects,
+    users,
     modal
   }
 }
@@ -37,15 +38,22 @@ const ActionButton = (cid, action) => (
   </a>
 )
 
-const CardItem = ({card, actions}) => {
+const CardItem = ({card, actions, projects = [], users = []}) => {
   const cardStatus = CARD_STATUS.find((status) => (status.id === card.status))
-  const cardStatusName = cardStatus ? cardStatus.name : 'Unknown'
+  const cardStatusName = cardStatus ? cardStatus.name : 'unknown'
+  const project = projects.find(p => p.id === card.projectId)
+  console.log(users);
+  const user = users.find(u => u.id === card.userId)
+  console.log(user);
+  const projectName = project.name || 'unknown'
+  const userName = user.name || 'unknown'
+  const userEmail = user.email || 'unknown'
   return (
     <tr>
-      <td className='mdl-data-table__cell--non-numeric'>{ card.name }</td>
+      <td className='mdl-data-table__cell--non-numeric'>{ projectName }</td>
+      <td>{ userName }</td>
+      <td>{ userEmail }</td>
       <td>{ card.cardNumber }</td>
-      <td>{ card.cardBrand }</td>
-      <td>{ card.startDate }</td>
       <td>{ card.endDate }</td>
       <td>{ cardStatusName }</td>
       <td>{ card.balances.actual }</td>
@@ -62,14 +70,14 @@ const CardItem = ({card, actions}) => {
 }
 
 // TODO: Update card table content
-const CardTable = ({cards = [], styleTable, actions}) => (
+const CardTable = ({cards = [], projects = [], users = [], styleTable, actions}) => (
   <table className='mdl-data-table mdl-data-table--selectable' style={styleTable}>
     <thead>
       <tr>
-        <th className='mdl-data-table__cell--non-numeric'>Name</th>
+        <th className='mdl-data-table__cell--non-numeric'>Project</th>
+        <th>Name</th>
+        <th>Email</th>
         <th>Card Number</th>
-        <th>Brand</th>
-        <th>Start</th>
         <th>End</th>
         <th>Status</th>
         <th>Balance</th>
@@ -79,7 +87,8 @@ const CardTable = ({cards = [], styleTable, actions}) => (
     <tbody>
       { Object.keys(cards).map((key, index) => {
         const c = cards[key]
-        return (<CardItem key={key} card={c} actions={actions} />)
+        return (<CardItem key={key} card={c} actions={actions}
+          projects={projects} users={users} />)
       })}
     </tbody>
   </table>)
@@ -146,7 +155,7 @@ class Cards extends React.Component {
     const stylePadding = {padding: '15px'}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
-    const { cards, modal, setModal } = this.props
+    const { cards, projects, users, modal, setModal } = this.props
 
     const actions = [
       {icon: 'attach_money', onclick: this.onTransfer},
@@ -180,7 +189,8 @@ class Cards extends React.Component {
                       </button>
                     </div>
                   </div>
-                  <CardTable cards={cards} styleTable={styleTable} actions={actions} />
+                  <CardTable cards={cards} styleTable={styleTable} actions={actions}
+                    projects={projects} users={users} />
                 </div>
               </div>
             </div>
