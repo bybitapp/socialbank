@@ -2,7 +2,7 @@ import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, change } from 'redux-form'
-import { getCards } from '../actions'
+import { getProjectsWithCards } from '../actions'
 import { CARD_STATUS } from '../constants/Option'
 import CardForm from '../components/CardForm'
 import CardDestroyForm from '../components/CardDestroyForm'
@@ -96,7 +96,8 @@ class Cards extends React.Component {
 
   componentDidMount () {
     const { dispatch } = this.props
-    dispatch(getCards())
+    console.log('hihihih');
+    dispatch(getProjectsWithCards())
   }
 
   onEdit (cid, event) {

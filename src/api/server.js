@@ -37,12 +37,12 @@ export default {
       .catch((e) => cb(e))
   },
   addBankAccount: (values, cb) => {
-    axios.post('/api/banks/', values)
+    axios.post('/api/banks/add', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
   getBankAccount: (cb) => {
-    axios.get('/api/banks/')
+    axios.get('/api/banks/get')
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
@@ -96,13 +96,8 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
-  getCardsByProjectId: (projId, cb) => {
-    axios.get(`/api/cards/list/p/${projId}`)
-      .then((res) => cb(null, res.data))
-      .catch((e) => cb(e))
-  },
-  getCards: (cb) => {
-    axios.get('/api/cards')
+  getUserCards: (cb) => {
+    axios.get('/api/cards/list')
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
