@@ -82,7 +82,7 @@ class CardTransferForm extends React.Component {
                 <h5>Project</h5>
                 <Field name='projectName' label='Project Name' component={Input} disabled />
                 <h5>Card</h5>
-                <Field name='cardName' label='Card Name' component={Input} disabled />
+                <Field name='userEmail' label='User Email' component={Input} disabled />
                 <Field name='amount' label='Amount' component={Input} />
               </div>
             </main>
