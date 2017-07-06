@@ -2,7 +2,7 @@ import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, change } from 'redux-form'
-import { getProjectsWithCards } from '../actions'
+import { getUserCards, getProjects, getUsers } from '../actions'
 import { CARD_STATUS } from '../constants/Option'
 import CardForm from '../components/CardForm'
 import CardDestroyForm from '../components/CardDestroyForm'
@@ -87,7 +87,6 @@ const CardTable = ({cards = [], styleTable, actions}) => (
 class Cards extends React.Component {
   constructor (props) {
     super(props)
-    this.onEdit = this.onEdit.bind(this)
     this.onDestroy = this.onDestroy.bind(this)
     this.onTransfer = this.onTransfer.bind(this)
     this.onBlock = this.onBlock.bind(this)
@@ -96,18 +95,9 @@ class Cards extends React.Component {
 
   componentDidMount () {
     const { dispatch } = this.props
-    console.log('hihihih');
-    dispatch(getProjectsWithCards())
-  }
-
-  onEdit (cid, event) {
-    const { cards, setModal, dispatch } = this.props
-    const card = cards.find((card) => { return card.id === cid })
-    if (card) {
-      dispatch(change('cardForm', 'cid', card.id))
-      dispatch(change('cardForm', 'name', card.name))
-      setModal('cardModal')
-    }
+    dispatch(getProjects())
+    dispatch(getUsers())
+    dispatch(getUserCards())
   }
 
   onDestroy (cid, event) {
@@ -160,7 +150,6 @@ class Cards extends React.Component {
 
     const actions = [
       {icon: 'attach_money', onclick: this.onTransfer},
-      {icon: 'mode_edit', onclick: this.onEdit},
       {icon: 'lock', onclick: this.onBlock, show: (item) => item.status === 'active'},
       {icon: 'lock_open', onclick: this.onUnblock, show: (item) => item.status === 'inactive'},
       {icon: 'delete', onclick: this.onDestroy}

@@ -2,11 +2,12 @@ import React from 'react'
 import Modal from 'react-modal'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
-import { reduxForm, Field, SubmissionError } from 'redux-form'
+import { reduxForm, Field, SubmissionError, formValueSelector, change } from 'redux-form'
 
-import { addCard, getProjects } from '../actions'
-import Input from './Input'
+import { addCard } from '../actions'
 import Select from './Select'
+
+const selector = formValueSelector('cardForm')
 
 const customStyles = {
   content: {
@@ -32,9 +33,14 @@ const validate = values => {
 }
 
 function mapStateToProps (state) {
-  const { projects } = state
+  const pid = selector(state, 'pid')
+  const uid = selector(state, 'uid')
+  const { projects, users } = state
   return {
-    projects
+    projects,
+    users,
+    pid,
+    uid
   }
 }
 
@@ -67,17 +73,31 @@ class CardForm extends React.Component {
   }
 
   componentDidMount () {
-    const { dispatch } = this.props
-    dispatch(getProjects())
+  }
+
+  componentDidUpdate (prevProps) {
+    const { dispatch, projects, users, pid, uid } = this.props
+    if (projects && !pid) {
+      dispatch(change('cardForm', 'pid', projects[0].id))
+    }
+    if (projects && !uid) {
+      dispatch(change('cardForm', 'uid', users[0].id))
+    }
   }
 
   render () {
     const styleCenter = {textAlign: 'center'}
-    const { handleClose, open, handleSubmit, projects, error } = this.props
+    const { handleClose, open, handleSubmit, projects, users, error } = this.props
     const projectList = projects.map((item, index) => {
       return {
         id: item.id,
         name: item.name
+      }
+    })
+    const userList = users.map((item, index) => {
+      return {
+        id: item.id,
+        name: item.name + ' - ' + item.email
       }
     })
 
@@ -99,9 +119,8 @@ class CardForm extends React.Component {
             <main className='mdl-layout__content'>
               <div className='page-content' style={styleCenter}>
                 {error && <span className='sb-error'>{error}</span>}
-                <Field name='cid' type='hidden' component='input' />
                 <Field name='pid' label='Project Name' component={Select} items={projectList} />
-                <Field name='name' label='Name On Card' component={Input} />
+                <Field name='uid' label='User' component={Select} items={userList} />
               </div>
             </main>
             <footer className='sb-footer'>
