@@ -2,7 +2,7 @@ import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, change } from 'redux-form'
-import { getUserCards, getProjects, getUsers } from '../actions'
+import { getOrganizationCards, getProjects, getUsers } from '../actions'
 import { CARD_STATUS } from '../constants/Option'
 import CardForm from '../components/CardForm'
 import CardDestroyForm from '../components/CardDestroyForm'
@@ -104,7 +104,7 @@ class Cards extends React.Component {
     const { dispatch } = this.props
     dispatch(getProjects())
     dispatch(getUsers())
-    dispatch(getUserCards())
+    dispatch(getOrganizationCards())
   }
 
   onDestroy (cid, event) {
