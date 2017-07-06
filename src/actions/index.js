@@ -113,12 +113,7 @@ export const getProjects = () => dispatch => {
   })
 }
 
-export const getProjectsWithCards = () => dispatch => {
-  server.getProjects((ex, data) => {
-    if (!ex) {
-      dispatch({type: types.RECEIVE_PROJECTS, data})
-    }
-  })
+export const getUserCards = () => dispatch => {
   server.getUserCards((ex, data) => {
     if (!ex) {
       dispatch({type: types.RECEIVE_CARDS, data})
