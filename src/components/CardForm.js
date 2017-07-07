@@ -80,7 +80,7 @@ class CardForm extends React.Component {
     if (projects && !pid) {
       dispatch(change('cardForm', 'pid', projects[0].id))
     }
-    if (projects && !uid) {
+    if (users && !uid) {
       dispatch(change('cardForm', 'uid', users[0].id))
     }
   }
