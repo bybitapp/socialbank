@@ -43,9 +43,9 @@ const CardItem = ({card, actions, projects = [], users = []}) => {
   const cardStatusName = cardStatus ? cardStatus.name : 'unknown'
   const project = projects.find(p => p.id === card.projectId)
   const user = users.find(u => u.id === card.userId)
-  const projectName = project.name || 'unknown'
-  const userName = user.name || 'unknown'
-  const userEmail = user.email || 'unknown'
+  const projectName = (project && project.name) || 'unknown'
+  const userName = (user && user.name) || 'unknown'
+  const userEmail = (user && user.email) || 'unknown'
   return (
     <tr>
       <td className='mdl-data-table__cell--non-numeric'>{ projectName }</td>
