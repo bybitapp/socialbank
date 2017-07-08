@@ -51,6 +51,11 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
+  getBankAccounts: (cb) => {
+    axios.get('/api/banks/list')
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
   getUsers: (cb) => {
     axios.get('/api/users/list')
       .then((res) => cb(null, res.data))
