@@ -35,6 +35,23 @@ class Auth {
     const user = localStorage.getItem('user')
     return JSON.parse(user)
   }
+
+  /**
+   * Update session user.
+   *
+   * @returns {string}
+   */
+
+  static updateUser (updatedUser) {
+    const sessionUser = localStorage.getItem('user')
+
+    var user = JSON.parse(sessionUser)
+    if (user) {
+      user = Object.assign({}, user, updatedUser)
+    }
+
+    localStorage.setItem('user', JSON.stringify(user))
+  }
 }
 
 export default Auth
