@@ -30,7 +30,9 @@ class Home extends React.Component {
   }
 
   render () {
-    const styleHeight = {height: '450px', backgroundImage: 'url(images/plexus3-1280x720.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}
+    const styleSubtitle = { margin: 0 }
+    const iconStyle = {display: 'block', margin: '0 auto'}
+    const styleHeight = { height: '450px', backgroundImage: 'url(images/plexus3-1280x720.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }
     const styleButtonBottom = { marginTop: '70px', marginBottom: '40px' }
     const styleSubSlogan = {textShadow: '5px 5px 9px black', paddingTop: 0}
     const styleClients = { maxHeight: '150px', maxWidth: '210px' }
@@ -91,8 +93,33 @@ class Home extends React.Component {
             <div className='android-customized-section-image' />
           </div>
           <div className='android-customized-section'>
+            <div className='android-customized-section-text'>
+              <div className='mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone'>
+                <img src='images/awards_icon100x100.png' alt='{title}' style={iconStyle} />
+                <div className='android-section-title mdl-typography--display-1-color-contrast'>Awards</div>
+                <div>
+                  <br />
+                  <p className='mdl-typography--font-light' style={styleSubtitle}> Winner at</p>
+                  <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>Open Payment Hackathon 2017</div>
+                  <br />
+                  <br />
+                  <blockquote dataLang='en'>
+                    <p lang='en' dir='ltr' className='mdl-typography--font-light'>
+                      Love the idea behind SoTec and ready to roll up sleeves to get this little beauty to market <a href='https://t.co/xiwAsjBdRq'>Team @SoTec_UK Wins OPCLive!</a>
+                    </p>
+                    <cite>
+                      Alex Mifsud, CEO of Ixaris (@alexmifsud) <a href='https://twitter.com/alexmifsud/status/879970746616995840'>June 28, 2017</a>
+                    </cite>
+                  </blockquote>
+                  <br />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='android-customized-section'>
             <div className='android-card-container mdl-grid'>
-              <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet mdl-cell--12-col-phone'>
+              <div className='mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet' />
+              <div className='mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--12-col-phone'>
                 <div className='android-customized-section-text'>
                   <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>Our Partners</div>
                   <p className='mdl-typography--font-light'>
@@ -102,7 +129,7 @@ class Home extends React.Component {
                   </p>
                 </div>
               </div>
-              <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet mdl-cell--12-col-phone'>
+              <div className='mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--12-col-phone'>
                 <div className='android-customized-section-text'>
                   <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>Sponsors</div>
                   <p className='mdl-typography--font-light'>
