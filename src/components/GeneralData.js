@@ -12,7 +12,10 @@ const validate = values => {
 
   if (!values.phone) {
     errors.phone = 'Required'
+  } else if (values.phone.length < 6) {
+    errors.phone = 'Must be 6 numbers or more'
   }
+
   if (!values.name) {
     errors.name = 'Required'
   } else if (values.name.length < 3) {
@@ -74,11 +77,12 @@ class GeneralInformation extends React.Component {
   }
 
   render () {
-    const { handleSubmit } = this.props
+    const { handleSubmit, error } = this.props
     return (
       <div>
         <h5>General Information</h5>
         <form onSubmit={handleSubmit} >
+          {error && <span className='sb-error'>{error}</span>}
           <div className='mdl-grid'>
             <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet'>
               <Field name='name' label='Name' component={Input} />
