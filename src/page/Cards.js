@@ -44,7 +44,7 @@ const CardItem = ({card, actions, projects = [], users = []}) => {
   const project = projects.find(p => p.id === card.projectId)
   const user = users.find(u => u.id === card.userId)
   const projectName = (project && project.name) || 'unknown'
-  const userName = (user && user.name) || 'unknown'
+  const userName = (user && user.profile && user.profile.name) || 'unknown'
   const userEmail = (user && user.email) || 'unknown'
   return (
     <tr>
