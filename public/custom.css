@@ -88,6 +88,41 @@
   text-decoration: none;
 }
 
+blockquote {
+  font-size: 18px;
+  font-style: italic;
+  margin: 0 auto;
+  padding: 0.25em 40px;
+  line-height: 1.45;
+  max-width: 450px;
+  color: #383838;
+}
+
+blockquote:before {
+  display: block;
+  content: "\201C";
+  font-size: 80px;
+  position: absolute;
+  left: -20px;
+  top: -20px;
+  color: #7a7a7a;
+}
+
+blockquote:after {
+  display: none;
+}
+
+blockquote cite {
+  color: #999999;
+  font-size: 14px;
+  display: block;
+  margin-top: 5px;
+}
+
+blockquote cite:before {
+  content: "\2014 \2009";
+}
+
 .android-drawer .sb-layout-title {
     position: relative;
     background: #6ab344;
