@@ -33,7 +33,7 @@ class Home extends React.Component {
     const styleHeight = {height: '450px', backgroundImage: 'url(images/plexus3-1280x720.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}
     const styleButtonBottom = { marginTop: '70px', marginBottom: '40px' }
     const styleSubSlogan = {textShadow: '5px 5px 9px black', paddingTop: 0}
-    const styleClients = { height: '150px' }
+    const styleClients = { maxHeight: '150px', maxWidth: '210px' }
 
     const { organizations } = this.props
 
@@ -91,15 +91,29 @@ class Home extends React.Component {
             <div className='android-customized-section-image' />
           </div>
           <div className='android-customized-section'>
-            <div className='android-customized-section-text'>
-              <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>Our Partners</div>
-              <p className='mdl-typography--font-light'>
-                <a href='http://www.pinuk.online/en/pin-uk-c-i-c/'>
-                  <img src='images/pin-ik-logo.jpeg' alt='{title}' style={styleClients} />
-                </a>
-                <br /><br /><br /><br />
-              </p>
+            <div className='android-card-container mdl-grid'>
+              <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet mdl-cell--12-col-phone'>
+                <div className='android-customized-section-text'>
+                  <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>Our Partners</div>
+                  <p className='mdl-typography--font-light'>
+                    <a href='http://www.pinuk.online/en/pin-uk-c-i-c/'>
+                      <img src='images/pin-ik-logo.jpeg' alt='{title}' style={styleClients} />
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet mdl-cell--12-col-phone'>
+                <div className='android-customized-section-text'>
+                  <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>Sponsors</div>
+                  <p className='mdl-typography--font-light'>
+                    <a href='https://www.ixaris.com/'>
+                      <img src='images/ixaris_logo.png' alt='{title}' style={styleClients} />
+                    </a>
+                  </p>
+                </div>
+              </div>
             </div>
+            <br /><br /><br /><br />
           </div>
           <ContactForm />
           <Footer />
