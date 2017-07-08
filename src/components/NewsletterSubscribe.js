@@ -64,7 +64,7 @@ class NewsletterSubscribe extends React.Component {
         onRequestClose={handleClose}
         style={customStyles}
         className='android-modal'
-        contentLabel="Newsletter Subscribe"
+        contentLabel='Newsletter Subscribe'
       >
         <form onSubmit={handleSubmit}>
           <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header sb-modal-form'>
