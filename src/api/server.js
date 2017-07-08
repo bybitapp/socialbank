@@ -6,6 +6,11 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
+  updateAccount: (values, cb) => {
+    axios.post('/api/accounts/update', values)
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
   login: (values, cb) => {
     axios.post('/api/accounts/login', values)
       .then((res) => cb(null, res.data))

@@ -153,7 +153,21 @@ export const registerAccount = (account, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // return dispatch({ type: types.REGISTER_ACCOUNT_FAILURE, account })
-      cb('You account can not be created, please contact with us!')
+      cb('Your account can not be created, please contact with us!')
+    }
+  })
+}
+
+export const updateAccount = (account, cb) => (dispatch, getState) => {
+  return server.updateAccount(account, (ex, data) => {
+    if (!ex) {
+      Auth.updateUser(data)
+      dispatch({type: types.UPDATE_ACCOUNT_SUCCESS, data})
+      cb(null, data)
+    } else {
+      // Replace the line above with line below to rollback on failure:
+      // return dispatch({ type: types.UPDATE_ACCOUNT_FAILURE, account })
+      cb('Your account can not be updated, please contact with us!')
     }
   })
 }
