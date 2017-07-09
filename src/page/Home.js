@@ -30,7 +30,6 @@ class Home extends React.Component {
   }
 
   render () {
-    const styleSubtitle = { margin: 0 }
     const iconStyle = {display: 'block', margin: '0 auto'}
     const styleHeight = { height: '450px', backgroundImage: 'url(images/plexus3-1280x720.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }
     const styleButtonBottom = { marginTop: '70px', marginBottom: '40px' }
@@ -99,13 +98,12 @@ class Home extends React.Component {
                 <div className='android-section-title mdl-typography--display-1-color-contrast'>Awards</div>
                 <div>
                   <br />
-                  <p className='mdl-typography--font-light' style={styleSubtitle}> Winner at</p>
-                  <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>Open Payment Hackathon 2017</div>
+                  <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>OPC Live! Innovation Challenge 2017</div>
                   <br />
                   <br />
                   <blockquote dataLang='en'>
                     <p lang='en' dir='ltr' className='mdl-typography--font-light'>
-                      Love the idea behind SoTec and ready to roll up sleeves to get this little beauty to market <a href='https://t.co/xiwAsjBdRq'>Team @SoTec_UK Wins OPCLive!</a>
+                      Love the idea behind SoTec and ready to roll up sleeves to get this little beauty to market <a href='https://www.ixaris.com/sotec-wins-ixaris-b2b-innovation-challenge/'>Team @SoTec_UK Wins OPCLive!</a>
                     </p>
                     <cite>
                       Alex Mifsud, CEO of Ixaris (@alexmifsud) <a href='https://twitter.com/alexmifsud/status/879970746616995840'>June 28, 2017</a>
