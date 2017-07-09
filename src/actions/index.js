@@ -68,8 +68,8 @@ export const getBankAccounts = () => dispatch => {
   })
 }
 
-export const removeBankAccount = (bank, cb) => (dispatch, getState) => {
-  server.addBankAccount(bank, (ex, data) => {
+export const removeBankAccount = (bid, cb) => (dispatch, getState) => {
+  server.removeBankAccount(bid, (ex, data) => {
     if (!ex) {
       dispatch({type: types.REMOVE_BANKACCOUNT_SUCCESS, data})
       cb(null, data)

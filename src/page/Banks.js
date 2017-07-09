@@ -1,11 +1,14 @@
 import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
+import { change } from 'redux-form'
 import Header from '../components/Header'
 import MobileNavigation from '../components/MobileNavigation'
 import Footer from '../components/Footer'
 import MenuSideBar from '../components/MenuSideBar'
 import BankForm from '../components/BankForm'
+import BankRemoveForm from '../components/BankRemoveForm'
+import { getBankAccounts } from '../actions'
 
 function mapStateToProps (state) {
   const { banks } = state
@@ -55,6 +58,25 @@ const BankTable = ({banks = [], styleTable, actions}) => (
   </table>)
 
 class Banks extends React.Component {
+  constructor (props) {
+    super(props)
+    this.onRemove = this.onRemove.bind(this)
+  }
+
+  componentDidMount () {
+    const { dispatch } = this.props
+    dispatch(getBankAccounts())
+  }
+
+  onRemove (bid, event) {
+    const { banks, setModal, dispatch } = this.props
+    const bank = banks.find((bank) => { return bank.id === bid })
+    if (bank) {
+      dispatch(change('bankRemoveForm', 'bid', bank.id))
+      setModal('bankRemoveModal')
+    }
+  }
+
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
     const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0}
@@ -62,7 +84,6 @@ class Banks extends React.Component {
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
     const { banks, setModal, modal } = this.props
-
     const actions = [
       {icon: 'mode_edit', onclick: this.onEdit},
       {icon: 'delete', onclick: this.onRemove}
@@ -73,6 +94,7 @@ class Banks extends React.Component {
         <Header />
         <MobileNavigation />
         <BankForm open={(modal === 'bankModal')} handleClose={() => setModal(null)} />
+        <BankRemoveForm open={(modal === 'bankRemoveModal')} handleClose={() => setModal(null)} />
         <main className='mdl-layout__content'>
           <div className='page-content'>
             <div className='mdl-grid'>
