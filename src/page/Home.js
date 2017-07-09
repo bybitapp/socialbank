@@ -101,7 +101,7 @@ class Home extends React.Component {
                   <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>OPC Live! Innovation Challenge 2017</div>
                   <br />
                   <br />
-                  <blockquote dataLang='en'>
+                  <blockquote>
                     <p lang='en' dir='ltr' className='mdl-typography--font-light'>
                       Love the idea behind SoTec and ready to roll up sleeves to get this little beauty to market <a href='https://www.ixaris.com/sotec-wins-ixaris-b2b-innovation-challenge/'>Team @SoTec_UK Wins OPCLive!</a>
                     </p>
