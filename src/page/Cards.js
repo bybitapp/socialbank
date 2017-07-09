@@ -67,7 +67,6 @@ const CardItem = ({card, actions, projects = [], users = []}) => {
     </tr>)
 }
 
-// TODO: Update card table content
 const CardTable = ({cards = [], projects = [], users = [], styleTable, actions}) => (
   <table className='mdl-data-table mdl-data-table--selectable' style={styleTable}>
     <thead>
