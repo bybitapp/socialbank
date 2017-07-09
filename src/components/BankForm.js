@@ -46,11 +46,8 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(addBankAccount(values, (_error) => {
           if (!_error) {
-            if (values.id) {
-              toastr.success('Bank Account Updated.')
-            } else {
-              toastr.success('Bank Account Added.')
-            }
+            toastr.success('Bank Account Added.')
+            ownProps.handleClose()
             resolve()
           } else {
             reject(new SubmissionError({_error}))

@@ -8,7 +8,7 @@ export const banks = (state = [], action) => {
       return state.concat(action.data)
     case REMOVE_BANKACCOUNT_SUCCESS:
       return state.filter(item => {
-        return item.id !== action.data.id
+        return item.id !== action.data.bankId
       })
     default:
       return state
