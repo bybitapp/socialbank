@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from 'react-modal'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
-import { reduxForm, Field, change, SubmissionError } from 'redux-form'
+import { reduxForm, Field, SubmissionError } from 'redux-form'
 
 import { depositProject, getBankAccounts } from '../actions'
 import Input from './Input'
