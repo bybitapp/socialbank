@@ -2,10 +2,11 @@ import React from 'react'
 import Modal from 'react-modal'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
-import { reduxForm, Field, change, SubmissionError } from 'redux-form'
+import { reduxForm, Field, SubmissionError } from 'redux-form'
 
-import { depositProject, getBankAccount } from '../actions'
+import { depositProject, getBankAccounts } from '../actions'
 import Input from './Input'
+import Select from './Select'
 
 const customStyles = {
   content: {top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', padding: '5px', transform: 'translate(-50%, -50%)'},
@@ -24,8 +25,9 @@ const validate = values => {
 
 function mapStateToProps (state) {
   const { banks } = state
+  const bankOptions = banks.map((bank) => { return { name: bank.bankName, id: bank.id } })
   return {
-    banks
+    bankOptions
   }
 }
 
@@ -38,7 +40,8 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         const params = {
           amount: values.amount,
-          pid: values.pid
+          pid: values.pid,
+          bid: values.bid
         }
         dispatch(depositProject(params, (_error) => {
           if (!_error) {
@@ -54,22 +57,10 @@ const enhance = compose(
   })
 )
 
-const updateData = (bank, dispatch) => {
-  if (bank) {
-    dispatch(change('projectDepositForm', 'bank', bank.bankName))
-    dispatch(change('projectDepositForm', 'iban', bank.ibanCode))
-  }
-}
-
 class ProjectDepositForm extends React.Component {
   componentDidMount () {
     const { dispatch } = this.props
-    dispatch(getBankAccount())
-  }
-
-  componentDidUpdate (prevProps) {
-    const { banks, dispatch } = this.props
-    updateData(banks, dispatch)
+    dispatch(getBankAccounts())
   }
 
   onCancel () {
@@ -80,8 +71,7 @@ class ProjectDepositForm extends React.Component {
 
   render () {
     const styleCenter = {textAlign: 'center'}
-    const { handleClose, open, handleSubmit, error } = this.props
-
+    const { handleClose, open, handleSubmit, error, bankOptions } = this.props
     return (
       <Modal
         isOpen={open}
@@ -102,8 +92,7 @@ class ProjectDepositForm extends React.Component {
                 {error && <span className='sb-error'>{error}</span>}
                 <Field name='pid' type='hidden' component='input' />
                 <h5>External account</h5>
-                <Field name='bank' label='Bank Name' component={Input} disabled />
-                <Field name='iban' label='Iban Code' component={Input} disabled />
+                <Field name='bid' label='Bank' component={Select} items={bankOptions} />
                 <h5>Project</h5>
                 <Field name='name' label='Project Name' component={Input} disabled />
                 <Field name='amount' label='Amount' component={Input} />

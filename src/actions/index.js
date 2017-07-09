@@ -44,14 +44,10 @@ export const getOrganizationById = (oid) => dispatch => {
 export const addBankAccount = (bank, cb) => (dispatch, getState) => {
   server.addBankAccount(bank, (ex, data) => {
     if (!ex) {
-      dispatch({type: types.RECEIVE_BANKACCOUNT, data})
+      dispatch({type: types.ADD_BANKACCOUNT_SUCCESS, data})
       cb(null, data)
     } else {
-      if (bank.id) {
-        cb('Update Failed!')
-      } else {
-        cb('Add Failed!')
-      }
+      cb('Add Failed!')
     }
   })
 }
@@ -60,6 +56,25 @@ export const getBankAccount = () => dispatch => {
   server.getBankAccount((ex, data) => {
     if (!ex) {
       dispatch({type: types.RECEIVE_BANKACCOUNT, data})
+    }
+  })
+}
+
+export const getBankAccounts = () => dispatch => {
+  server.getBankAccounts((ex, data) => {
+    if (!ex) {
+      dispatch({type: types.RECEIVE_BANKACCOUNTS, data})
+    }
+  })
+}
+
+export const removeBankAccount = (bid, cb) => (dispatch, getState) => {
+  server.removeBankAccount(bid, (ex, data) => {
+    if (!ex) {
+      dispatch({type: types.REMOVE_BANKACCOUNT_SUCCESS, data})
+      cb(null, data)
+    } else {
+      cb('Remove Failed!')
     }
   })
 }

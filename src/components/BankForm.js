@@ -1,6 +1,7 @@
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
+import Modal from 'react-modal'
 import { reduxForm, Field, change, SubmissionError } from 'redux-form'
 import { toastr } from 'react-redux-toastr'
 
@@ -45,11 +46,8 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(addBankAccount(values, (_error) => {
           if (!_error) {
-            if (values.id) {
-              toastr.success('Bank Account Updated.')
-            } else {
-              toastr.success('Bank Account Added.')
-            }
+            toastr.success('Bank Account Added.')
+            ownProps.handleClose()
             resolve()
           } else {
             reject(new SubmissionError({_error}))
@@ -59,6 +57,21 @@ const enhance = compose(
     }
   })
 )
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    padding: '5px',
+    transform: 'translate(-50%, -50%)'
+  },
+  overlay: {
+    zIndex: 4
+  }
+}
 
 const updateData = (bank, dispatch) => {
   if (bank) {
@@ -70,6 +83,12 @@ const updateData = (bank, dispatch) => {
 }
 
 class BankForm extends React.Component {
+  onCancel () {
+    const { handleClose, dispatch } = this.props
+    dispatch(this.props.reset('bankForm'))
+    handleClose()
+  }
+
   componentDidMount () {
     const { dispatch } = this.props
     dispatch(getBankAccount())
@@ -81,31 +100,47 @@ class BankForm extends React.Component {
   }
 
   render () {
-    const { handleSubmit, banks, error } = this.props
+    const styleCenter = {textAlign: 'center'}
+    const { open, handleClose, handleSubmit, banks, error } = this.props
     const { owner } = banks
     const button = (owner) ? 'Update Bank Account' : 'Add Bank Account'
     // TODO temporary, wee need this feature in OPC
     const buttonDisabled = !!(owner)
     return (
-      <div>
-        {error && <span className='sb-error'>{error}</span>}
-        <h5>External Account</h5>
+      <Modal
+        isOpen={open}
+        onRequestClose={handleClose}
+        style={customStyles}
+        contentLabel='Bank Form'
+      >
         <form onSubmit={handleSubmit}>
-          <div className='mdl-grid'>
-            <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet'>
-              <Field name='owner' label='Account Owner' component={Input} disabled={buttonDisabled} />
-              <Field name='bankName' label='Bank Name' component={Input} disabled={buttonDisabled} />
-            </div>
-            <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet'>
-              <Field name='ibanCode' label='Iban Code' component={Input} disabled={buttonDisabled} />
-              <Field name='swiftCode' label='Swift Code' component={Input} disabled={buttonDisabled} />
-              <div className='sb-details-button'>
-                <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' type='submit' disabled={buttonDisabled}>{button}</button>
+          <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header sb-modal-form'>
+            <header className='mdl-layout__header'>
+              <div className='mdl-layout__header-row'>
+                <span className='mdl-layout-title'>Bank Form</span>
+                <div className='mdl-layout-spacer' />
               </div>
-            </div>
+            </header>
+            <main className='mdl-layout__content'>
+              <div className='page-content' style={styleCenter}>
+                {error && <span className='sb-error'>{error}</span>}
+                <Field name='owner' label='Account Owner' component={Input} disabled={buttonDisabled} />
+                <Field name='bankName' label='Bank Name' component={Input} disabled={buttonDisabled} />
+                <Field name='ibanCode' label='Iban Code' component={Input} disabled={buttonDisabled} />
+                <Field name='swiftCode' label='Swift Code' component={Input} disabled={buttonDisabled} />
+              </div>
+            </main>
+            <footer className='sb-footer'>
+              <div className='mdl-mega-footer__bottom-section'>
+                <ul className='mdl-mega-footer__link-list'>
+                  <li><button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' onClick={this.onCancel.bind(this)}>Cancel</button></li>
+                  <li><button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' type='submit'>Ok</button></li>
+                </ul>
+              </div>
+            </footer>
           </div>
         </form>
-      </div>)
+      </Modal>)
   }
 }
 
