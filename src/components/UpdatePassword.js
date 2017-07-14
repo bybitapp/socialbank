@@ -1,7 +1,9 @@
 import React from 'react'
 import { compose } from 'recompose'
 // import { connect } from 'react-redux'
-import { reduxForm, Field } from 'redux-form'
+import { updatePassword } from '../actions'
+import { reduxForm, Field, SubmissionError } from 'redux-form'
+import {toastr} from 'react-redux-toastr'
 import Input from './Input'
 
 const validate = values => {
@@ -19,34 +21,32 @@ const validate = values => {
 }
 
 const enhance = compose(
-  // connect((state, props) => ({ project: state.projects.find((v) => v.id === props.match.params.id ) }) ),
   reduxForm({
     form: 'updatePassword',
     validate,
     onSubmit: (values, dispatch, ownProps) => {
-      //   return new Promise((resolve, reject) => {
-      //       axios.post('/api/account', values)
-      //           .then(() => {
-      //               alert('success')
-      //               resolve()
-      //           }).catch((e) => {
-      //               console.log(e)
-      //               reject(new SubmissionError({
-      //                   _error: 'You account can not be created, please contact with us!'
-      //               }))
-      //           })
-      //   })
-      alert('update password')
+      return new Promise((resolve, reject) => {
+        dispatch(updatePassword(values, (_error) => {
+          if (!_error) {
+            toastr.success('Updated!', 'Your password was updated.')
+            dispatch(ownProps.reset('updatePassword'))
+            resolve()
+          } else {
+            reject(new SubmissionError({_error}))
+          }
+        }))
+      })
     }
   })
 )
 
 class UpdatePassword extends React.Component {
   render () {
-    const { handleSubmit } = this.props
+    const { handleSubmit, error } = this.props
     return (
       <div>
         <h5>Password Change</h5>
+        {error && <span className='sb-error'>{error}</span>}
         <form onSubmit={handleSubmit}>
           <div className='mdl-grid'>
             <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet'>

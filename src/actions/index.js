@@ -187,6 +187,19 @@ export const updateAccount = (account, cb) => (dispatch, getState) => {
   })
 }
 
+export const updatePassword = (data, cb) => (dispatch, getState) => {
+  return server.updatePassword(data, (ex, data) => {
+    if (!ex) {
+      dispatch({type: types.UPDATE_PASSWORD_SUCCESS, data})
+      cb(null, data)
+    } else {
+      // Replace the line above with line below to rollback on failure:
+      // return dispatch({ type: types.UPDATE_ACCOUNT_FAILURE, account })
+      cb('Your password can not be updated, please contact with us!')
+    }
+  })
+}
+
 export const login = (account, cb) => (dispatch, getState) => {
   return server.login(account, (ex, data) => {
     if (!ex) {
