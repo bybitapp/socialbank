@@ -64,7 +64,12 @@ const App = () => (
   </Provider>
 )
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-)
+/* eslint-disable */
+$(document).ready(function () {
+  ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+  )
+  loadUI()
+})
+/* eslint-enable */
