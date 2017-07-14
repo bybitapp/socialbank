@@ -2,14 +2,14 @@ import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 
-import MobileNavigation from '../components/MobileNavigation'
-import ContactForm from '../components/ContactForm'
-import SubjectBox from '../components/SubjectBox'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import Map from '../components/Map'
-import CookieBanner from '../components/CookieBanner'
-import { Link } from 'react-router-dom'
+// import MobileNavigation from '../components/MobileNavigation'
+// import ContactForm from '../components/ContactForm'
+// import SubjectBox from '../components/SubjectBox'
+// import Header from '../components/Header'
+// import Footer from '../components/Footer'
+// import Map from '../components/Map'
+// import CookieBanner from '../components/CookieBanner'
+// import { Link } from 'react-router-dom'
 import { getOrganizations } from '../actions'
 
 function mapStateToProps (state) {
@@ -25,124 +25,125 @@ const enhance = compose(
 
 class Home extends React.Component {
   componentDidMount () {
-    const { dispatch } = this.props
-    dispatch(getOrganizations())
+    //const { dispatch } = this.props
+    //dispatch(getOrganizations())
   }
 
   render () {
-    const iconStyle = {display: 'block', margin: '0 auto'}
-    const styleHeight = { height: '450px', backgroundImage: 'url(images/plexus3-1280x720.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }
-    const styleButtonBottom = { marginTop: '70px', marginBottom: '40px' }
-    const styleSubSlogan = {textShadow: '5px 5px 9px black', paddingTop: 0}
-    const styleClients = { maxHeight: '150px', maxWidth: '210px', display: 'block', margin: '20px auto 0px auto' }
+    // const iconStyle = {display: 'block', margin: '0 auto'}
+    // const styleHeight = { height: '450px', backgroundImage: 'url(images/plexus3-1280x720.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }
+    // const styleButtonBottom = { marginTop: '70px', marginBottom: '40px' }
+    // const styleSubSlogan = {textShadow: '5px 5px 9px black', paddingTop: 0}
+    // const styleClients = { maxHeight: '150px', maxWidth: '210px', display: 'block', margin: '20px auto 0px auto' }
 
-    const { organizations } = this.props
+    // const { organizations } = this.props
 
     return (
-      <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
-        <CookieBanner />
-        <Header />
-        <MobileNavigation />
-        <div className='android-content mdl-layout__content'>
-          <div className='mdl-typography--text-center' style={styleHeight}>
-            <div className='logo-font android-slogan'>
-              <h1>Join the Global Financial Network!</h1>
-            </div>
-            <div className='logo-font android-sub-slogan mdl-color-text--white' style={styleSubSlogan}>
-              <h2>Simple financial management system with instant, certain, low-cost payments.</h2>
-            </div>
-            <div className='logo-font'>
-              <Link style={styleButtonBottom} className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' to={'/registration'}>
-                  Create your social account
-              </Link>
-            </div>
-          </div>
-          <div className='android-more-section'>
-            <div className='android-section-title mdl-typography--display-1-color-contrast'>More from SoTec</div>
-            <div className='android-card-container mdl-grid'>
-              <SubjectBox
-                title='Building Trust'
-                description='SoTec gives donors complete transparency and information regarding finance distribution in charitable and community projects.'
-                image='building_trust.png' />
-              <SubjectBox
-                title='Activating communities'
-                description='Helping local leaders to engage volunteers and fund projects.'
-                image='activating_community.jpeg' />
-              <SubjectBox
-                title='Financial Control'
-                description='Simple system supporting processing financial activities in organisations of any size.'
-                image='financial_control.jpeg' />
-              <SubjectBox
-                title='Fundraising Support'
-                description='Platform for social and charitable organisations to support their fundraising activities.'
-                image='fundraising.jpeg' />
-            </div>
-          </div>
-          <div className='sb-map-section'>
-            <Map organizations={organizations} />
-          </div>
-          <div className='android-customized-section'>
-            <div className='android-customized-section-text'>
-              <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>Build your Social Value and Trust</div>
-              <p className='mdl-typography--font-light'>
-                We enable organizations to send real-time payments across networks and operate within micropayments. SoTec works on the Open Bank technologies to improve transfer money around the social organizations. Our vision is to build the Global Financial Network around the world and move value the way it moves information today.
-                <br /><br /><br /><br />
-              </p>
-            </div>
-            <div className='android-customized-section-image' />
-          </div>
-          <div className='android-customized-section'>
-            <div className='android-customized-section-text'>
-              <div className='mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone'>
-                <img src='images/awards_icon100x100.png' alt='{title}' style={iconStyle} />
-                <div className='android-section-title mdl-typography--display-1-color-contrast'>Awards</div>
-                <div>
-                  <br />
-                  <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>OPC Live! Innovation Challenge 2017</div>
-                  <br />
-                  <br />
-                  <blockquote>
-                    <p lang='en' dir='ltr' className='mdl-typography--font-light'>
-                      Love the idea behind SoTec and ready to roll up sleeves to get this little beauty to market <a href='https://www.ixaris.com/sotec-wins-ixaris-b2b-innovation-challenge/'>Team @SoTec_UK Wins OPCLive!</a>
-                    </p>
-                    <cite>
-                      Alex Mifsud, CEO of Ixaris (@alexmifsud) <a href='https://twitter.com/alexmifsud/status/879970746616995840'>June 28, 2017</a>
-                    </cite>
-                  </blockquote>
-                  <br />
-                </div>
+      <div id='wrapper' className='clearfix'>
+        <header id='header' className='full-header'>
+          <div id='header-wrap'>
+            <div className='container clearfix'>
+              <div id='primary-menu-trigger'><i className='icon-reorder' /></div>
+              <div id='logo'>
+                <a href='index.html' className='standard-logo' data-dark-logo='images/logo-dark.png'><img src='images/logo.png' alt='Canvas Logo' /></a>
+                <a href='index.html' className='retina-logo' data-dark-logo='images/logo-dark@2x.png'><img src='images/logo@2x.png' alt='Canvas Logo' /></a>
               </div>
+              <nav id='primary-menu' >
+                <ul>
+                  <li className='current'><a href='index.html'><div>About us</div></a></li>
+                  <li><a href='#'><div>Contact</div></a></li>
+                  <li><a href='#'><div>Login</div></a></li>
+                </ul>
+              </nav>
             </div>
           </div>
-          <div className='android-customized-section'>
-            <div className='android-card-container mdl-grid'>
-              <div className='mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet' />
-              <div className='mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--12-col-phone'>
-                <div className='android-customized-section-text'>
-                  <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>Our Partners</div>
-                  <div className='mdl-typography--font-light'>
-                    <a href='http://www.pinuk.online/en/pin-uk-c-i-c/'>
-                      <img src='images/pin-ik-logo.jpeg' alt='{title}' style={styleClients} />
-                    </a>
+        </header>
+        <section id='slider' className='slider-parallax full-screen'>
+          <div className='full-screen' style={{backgroundSize: 'cover'}}>
+            <div className='container clearfix'>
+              <img src='images/new/slider-iphone.png' alt='' className='hidden-sm hidden-xs' data-style-lg='position: absolute; left: 0; bottom: 0; height: auto;' data-style-md='position: absolute; left: 0; bottom: 0; height: 450px;' />
+              <div className='vertical-middle no-fade'>
+                <div className='col-md-6 fright nobottommargin' data-animate='fadeIn'>
+                  <div className='emphasis-title'>
+                    <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'>Transparency by design. Revolutionize the way every <strong>charity</strong> manages its expenses.</h1>
                   </div>
-                </div>
-              </div>
-              <div className='mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--12-col-phone'>
-                <div className='android-customized-section-text'>
-                  <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>Sponsors</div>
-                  <div className='mdl-typography--font-light'>
-                    <a href='https://www.ixaris.com/'>
-                      <img src='images/ixaris_logo.png' alt='{title}' style={styleClients} />
-                    </a>
+                  <div className='hidden-xs'>
+                    <a href='#' className='button button-desc button-border button-light button-rounded nomargin'><i className='icon-apple'></i><div>Start your Free Trial<span>30-Days &amp; No Credit card Required</span></div></a>
+                  </div>
+                  <div className='visible-xs'>
+                    <a href='#' className='button button-light button-xlarge button-rounded nomargin'><i className='icon-apple'></i>Start Free Trial</a>
                   </div>
                 </div>
               </div>
             </div>
-            <br /><br /><br /><br />
           </div>
-          <ContactForm />
-          <Footer />
-        </div>
+        </section>
+        <section id='content'>
+          <div className='content-wrap'>
+            <div className='container clearfix'>
+              <div className='col_one_third nobottommargin center'>
+                <a href='#'><img src='images/appshowcase/s1.png' alt='Image' className='bottommargin-sm' /></a>
+                <h4>Responsive Layout</h4>
+                <p>Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view.</p>
+              </div>
+              <div className='col_one_third nobottommargin center'>
+                <a href='#'><img src='images/appshowcase/s4.png' alt='Image' className='bottommargin-sm' /></a>
+                <h4>Retina Ready Graphics</h4>
+                <p>Looks beautiful &amp; ultra-sharp on Retina Screen Displays. Retina Icons, Fonts &amp; all others graphics are optimized.</p>
+              </div>
+              <div className='col_one_third nobottommargin center col_last'>
+                <a href='#'><img src='images/appshowcase/s5.png' alt='Image' className='bottommargin-sm' /></a>
+                <h4>Powerful Performance</h4>
+                <p>Canvas includes tons of optimized code that are completely customizable and deliver unmatched fast performance.</p>
+              </div>
+
+              <div className='clear' />
+              <div className='divider divider-short divider-vshort divider-line divider-center'>&nbsp;</div>
+              <div className='heading-block center'>
+                <h3>Subscribe for more <span>Updates</span>.</h3>
+              </div>
+              <div id='widget-subscribe-form2-result' data-notify-type='success' data-notify-msg='' />
+              <form id='widget-subscribe-form2' action='include/subscribe.php' role='form' method='post' className='nobottommargin'>
+                <div className='input-group input-group-lg divcenter' style={{ maxWidth: '600px' }}>
+                  <span className='input-group-addon'><i className='icon-email2' /></span>
+                  <input type='email' name='widget-subscribe-form-email' className='form-control required email' placeholder='Enter your Email' />
+                  <span className='input-group-btn'>
+                    <button className='btn btn-default' type='submit'>Subscribe Now</button>
+                  </span>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </section>
+        <footer id='footer' className='dark'>
+          <div id='copyrights'>
+            <div className='container clearfix'>
+              <div className='col_half'>
+                Copyrights &copy; 2014 All Rights Reserved by Canvas Inc.<br />
+                <div className='copyright-links'><a href='#'>Terms of Use</a> / <a href='#'>Privacy Policy</a></div>
+              </div>
+              <div className='col_half col_last tright'>
+                <div className='fright clearfix'>
+                  <a href='#' className='social-icon si-small si-borderless si-facebook'>
+                    <i className='icon-facebook' />
+                    <i className='icon-facebook' />
+                  </a>
+                  <a href='#' className='social-icon si-small si-borderless si-twitter'>
+                    <i className='icon-twitter' />
+                    <i className='icon-twitter' />
+                  </a>
+                  <a href='#' className='social-icon si-small si-borderless si-gplus'>
+                    <i className='icon-gplus' />
+                    <i className='icon-gplus' />
+                  </a>
+                </div>
+                <div className='clear' />
+                <i className='icon-envelope2' /> info@canvas.com <span className='middot'>&middot;</span> <i className='icon-headphones' /> +91-11-6541-6369 <span className='middot'>&middot;</span> <i className='icon-skype2' /> CanvasOnSkype
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
     )
   }
