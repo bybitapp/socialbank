@@ -96,7 +96,27 @@ class Home extends React.Component {
                 <h4>Powerful Performance</h4>
                 <p>Canvas includes tons of optimized code that are completely customizable and deliver unmatched fast performance.</p>
               </div>
-
+            </div>
+            <div className='container clearfix'>
+              <div className='heading-block center'>
+                <h3>Available on all Major Platforms.</h3>
+                <span>We have made our App available on all Major Platforms</span>
+              </div>
+              <p className='divcenter center' style={{ maxWidth: '800px' }}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo animi ab dolorem deleniti, incidunt, recusandae tenetur eius aut similique delectus nisi labore odit temporibus reprehenderit eum iure natus voluptatem commodi? Quam ea, placeat quia et dignissimos laboriosam unde earum repudiandae?</p>
+              <div className='col_full center topmargin nobottommargin'>
+                <a href='#' className='social-icon si-appstore si-large si-rounded si-colored inline-block' title='iOS App Store'>
+                  <i className='icon-appstore' />
+                  <i className='icon-appstore' />
+                </a>
+                <a href='#' className='social-icon si-android si-large si-rounded si-colored inline-block' title='Android Store'>
+                  <i className='icon-android' />
+                  <i className='icon-android' />
+                </a>
+                <a href='#' className='social-icon si-gplus si-large si-rounded si-colored inline-block' title='Windows Store'>
+                  <i className='icon-windows3' />
+                  <i className='icon-windows3' />
+                </a>
+              </div>
               <div className='clear' />
               <div className='divider divider-short divider-vshort divider-line divider-center'>&nbsp;</div>
               <div className='heading-block center'>
@@ -112,7 +132,6 @@ class Home extends React.Component {
                   </span>
                 </div>
               </form>
-
             </div>
           </div>
         </section>
