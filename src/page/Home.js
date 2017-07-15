@@ -10,7 +10,6 @@ import { connect } from 'react-redux'
 // import Map from '../components/Map'
 // import CookieBanner from '../components/CookieBanner'
 // import { Link } from 'react-router-dom'
-import { getOrganizations } from '../actions'
 
 function mapStateToProps (state) {
   const { organizations } = state
@@ -25,8 +24,8 @@ const enhance = compose(
 
 class Home extends React.Component {
   componentDidMount () {
-    //const { dispatch } = this.props
-    //dispatch(getOrganizations())
+    // const { dispatch } = this.props
+    // dispatch(getOrganizations())
   }
 
   render () {
@@ -51,8 +50,8 @@ class Home extends React.Component {
               <nav id='primary-menu' >
                 <ul>
                   <li className='current'><a href='index.html'><div>About us</div></a></li>
-                  <li><a href='#'><div>Contact</div></a></li>
-                  <li><a href='#'><div>Login</div></a></li>
+                  <li><a><div>Contact</div></a></li>
+                  <li><a><div>Login</div></a></li>
                 </ul>
               </nav>
             </div>
@@ -68,10 +67,12 @@ class Home extends React.Component {
                     <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'>Transparency by design. Revolutionize the way every <strong>charity</strong> manages its expenses.</h1>
                   </div>
                   <div className='hidden-xs'>
-                    <a href='#' className='button button-desc button-border button-light button-rounded nomargin'><i className='icon-apple'></i><div>Start your Free Trial<span>30-Days &amp; No Credit card Required</span></div></a>
+                    <a className='button button-desc button-border button-light button-rounded nomargin'>
+                      <i className='icon-apple' /><div>Start your Free Trial<span>30-Days &amp; No Credit card Required</span></div>
+                    </a>
                   </div>
                   <div className='visible-xs'>
-                    <a href='#' className='button button-light button-xlarge button-rounded nomargin'><i className='icon-apple'></i>Start Free Trial</a>
+                    <a className='button button-light button-xlarge button-rounded nomargin'><i className='icon-apple' />Start Free Trial</a>
                   </div>
                 </div>
               </div>
@@ -82,17 +83,17 @@ class Home extends React.Component {
           <div className='content-wrap'>
             <div className='container clearfix'>
               <div className='col_one_third nobottommargin center'>
-                <a href='#'><img src='images/new/s1.png' alt='Image' className='bottommargin-sm' /></a>
+                <a><img src='images/new/s1.png' alt='' className='bottommargin-sm' /></a>
                 <h4>Responsive Layout</h4>
                 <p>Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view.</p>
               </div>
               <div className='col_one_third nobottommargin center'>
-                <a href='#'><img src='images/new/s4.png' alt='Image' className='bottommargin-sm' /></a>
+                <a><img src='images/new/s4.png' alt='' className='bottommargin-sm' /></a>
                 <h4>Retina Ready Graphics</h4>
                 <p>Looks beautiful &amp; ultra-sharp on Retina Screen Displays. Retina Icons, Fonts &amp; all others graphics are optimized.</p>
               </div>
               <div className='col_one_third nobottommargin center col_last'>
-                <a href='#'><img src='images/new/s5.png' alt='Image' className='bottommargin-sm' /></a>
+                <a><img src='images/new/s5.png' alt='' className='bottommargin-sm' /></a>
                 <h4>Powerful Performance</h4>
                 <p>Canvas includes tons of optimized code that are completely customizable and deliver unmatched fast performance.</p>
               </div>
@@ -107,14 +108,14 @@ class Home extends React.Component {
                   </div>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem maiores pariatur voluptatem placeat laborum iste accusamus nam unde, iure id.</p>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet cumque, perferendis accusamus porro illo exercitationem molestias, inventore obcaecati ut omnis voluptatibus ratione odio amet magnam quidem tempore necessitatibus quaerat, voluptates excepturi voluptatem, veritatis qui temporibus.</p>
-                  <a href='#' className='button button-border button-rounded button-large button-dark noleftmargin'>Start Trial</a>
+                  <a className='button button-border button-rounded button-large button-dark noleftmargin'>Start Trial</a>
                 </div>
               </div>
             </div>
             <div className='section notopmargin nobottommargin'>
               <div className='container clearfix'>
                 <div className='col_half nobottommargin topmargin-lg'>
-                  <img src='images/new/iphone-solid.png' alt='Image' className='center-block' />
+                  <img src='images/new/iphone-solid.png' alt='' className='center-block' />
                 </div>
                 <div className='col_half nobottommargin topmargin-lg col_last'>
                   <div className='heading-block topmargin-lg'>
@@ -122,7 +123,7 @@ class Home extends React.Component {
                     <span>Our App scales beautifully to different Devices.</span>
                   </div>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet cumque, perferendis accusamus porro illo exercitationem molestias, inventore obcaecati ut omnis voluptatibus ratione odio amet magnam quidem tempore necessitatibus quaerat, voluptates excepturi voluptatem, veritatis qui temporibus.</p>
-                  <a href='#' className='button button-border button-rounded button-large button-dark noleftmargin'>View Gallery</a>
+                  <a className='button button-border button-rounded button-large button-dark noleftmargin'>View Gallery</a>
                 </div>
               </div>
             </div>
@@ -131,7 +132,7 @@ class Home extends React.Component {
                 <div className='col_one_third'>
                   <div className='feature-box fbox-plain'>
                     <div className='fbox-icon'>
-                      <a href='#'><i className='icon-screen' /></a>
+                      <a><i className='icon-screen' /></a>
                     </div>
                     <h3>Responsive Layout</h3>
                     <p>Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view.</p>
@@ -140,7 +141,7 @@ class Home extends React.Component {
                 <div className='col_one_third'>
                   <div className='feature-box fbox-plain'>
                     <div className='fbox-icon'>
-                      <a href='#'><i className='icon-eye' /></a>
+                      <a><i className='icon-eye' /></a>
                     </div>
                     <h3>Retina Ready Graphics</h3>
                     <p>Looks beautiful &amp; ultra-sharp on Retina Screen Displays. Retina Icons, Fonts &amp; all others graphics are optimized.</p>
@@ -149,7 +150,7 @@ class Home extends React.Component {
                 <div className='col_one_third col_last'>
                   <div className='feature-box fbox-plain'>
                     <div className='fbox-icon'>
-                      <a href='#'><i className='icon-beaker' /></a>
+                      <a><i className='icon-beaker' /></a>
                     </div>
                     <h3>Powerful Performance</h3>
                     <p>Canvas includes tons of optimized code that are completely customizable and deliver unmatched fast performance.</p>
@@ -159,7 +160,7 @@ class Home extends React.Component {
                 <div className='col_one_third nobottommargin'>
                   <div className='feature-box fbox-plain'>
                     <div className='fbox-icon'>
-                      <a href='#'><i className='icon-ok' /></a>
+                      <a><i className='icon-ok' /></a>
                     </div>
                     <h3>12+ Header Designs</h3>
                     <p>We have included 12+ Header + Menu Designs for your convenience so that you can match your style.</p>
@@ -168,7 +169,7 @@ class Home extends React.Component {
                 <div className='col_one_third nobottommargin'>
                   <div className='feature-box fbox-plain'>
                     <div className='fbox-icon'>
-                      <a href='#'><i className='icon-thumbs-up' /></a>
+                      <a><i className='icon-thumbs-up' /></a>
                     </div>
                     <h3>Awesome Mega menu</h3>
                     <p>Completely Customizable 2 Columns, 3 Columns, 4 Columns &amp; 5 Columns Mega Menus are available with Canvas.</p>
@@ -177,7 +178,7 @@ class Home extends React.Component {
                 <div className='col_one_third nobottommargin col_last'>
                   <div className='feature-box fbox-plain'>
                     <div className='fbox-icon'>
-                      <a href='#'><i className='icon-magnet' /></a>
+                      <a><i className='icon-magnet' /></a>
                     </div>
                     <h3>Attractive Sticky Menu</h3>
                     <p>Smooth &amp; Stylish Sticky Menu is what will make your Website differentiate with others.</p>
@@ -200,15 +201,15 @@ class Home extends React.Component {
               </div>
               <p className='divcenter center' style={{ maxWidth: '800px' }}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo animi ab dolorem deleniti, incidunt, recusandae tenetur eius aut similique delectus nisi labore odit temporibus reprehenderit eum iure natus voluptatem commodi? Quam ea, placeat quia et dignissimos laboriosam unde earum repudiandae?</p>
               <div className='col_full center topmargin nobottommargin'>
-                <a href='#' className='social-icon si-appstore si-large si-rounded si-colored inline-block' title='iOS App Store'>
+                <a className='social-icon si-appstore si-large si-rounded si-colored inline-block' title='iOS App Store'>
                   <i className='icon-appstore' />
                   <i className='icon-appstore' />
                 </a>
-                <a href='#' className='social-icon si-android si-large si-rounded si-colored inline-block' title='Android Store'>
+                <a className='social-icon si-android si-large si-rounded si-colored inline-block' title='Android Store'>
                   <i className='icon-android' />
                   <i className='icon-android' />
                 </a>
-                <a href='#' className='social-icon si-gplus si-large si-rounded si-colored inline-block' title='Windows Store'>
+                <a className='social-icon si-gplus si-large si-rounded si-colored inline-block' title='Windows Store'>
                   <i className='icon-windows3' />
                   <i className='icon-windows3' />
                 </a>
@@ -219,7 +220,7 @@ class Home extends React.Component {
                 <h3>Subscribe for more <span>Updates</span>.</h3>
               </div>
               <div id='widget-subscribe-form2-result' data-notify-type='success' data-notify-msg='' />
-              <form id='widget-subscribe-form2' action='include/subscribe.php' role='form' method='post' className='nobottommargin'>
+              <form id='widget-subscribe-form2' action='include/subscribe.php' method='post' className='nobottommargin'>
                 <div className='input-group input-group-lg divcenter' style={{ maxWidth: '600px' }}>
                   <span className='input-group-addon'><i className='icon-email2' /></span>
                   <input type='email' name='widget-subscribe-form-email' className='form-control required email' placeholder='Enter your Email' />
@@ -236,19 +237,19 @@ class Home extends React.Component {
             <div className='container clearfix'>
               <div className='col_half'>
                 Copyrights &copy; 2014 All Rights Reserved by Canvas Inc.<br />
-                <div className='copyright-links'><a href='#'>Terms of Use</a> / <a href='#'>Privacy Policy</a></div>
+                <div className='copyright-links'><a>Terms of Use</a> / <a>Privacy Policy</a></div>
               </div>
               <div className='col_half col_last tright'>
                 <div className='fright clearfix'>
-                  <a href='#' className='social-icon si-small si-borderless si-facebook'>
+                  <a className='social-icon si-small si-borderless si-facebook'>
                     <i className='icon-facebook' />
                     <i className='icon-facebook' />
                   </a>
-                  <a href='#' className='social-icon si-small si-borderless si-twitter'>
+                  <a className='social-icon si-small si-borderless si-twitter'>
                     <i className='icon-twitter' />
                     <i className='icon-twitter' />
                   </a>
-                  <a href='#' className='social-icon si-small si-borderless si-gplus'>
+                  <a className='social-icon si-small si-borderless si-gplus'>
                     <i className='icon-gplus' />
                     <i className='icon-gplus' />
                   </a>
