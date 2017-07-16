@@ -83,11 +83,9 @@ class Home extends React.Component {
               <div className='container clearfix' style={{ zIndex: 1 }}>
                 <div className='col-md-6 nobottommargin'>
                   <div className='heading-block topmargin-sm'>
-                    <h2>Awesome Scalable Apps</h2>
-                    <span>Our Template acts &amp; behaves truly as a Canvas.</span>
+                    <h2>Real-time spending overview</h2>
+                    <span>See all company spending in one place as it happens and sync it to your accounting system.</span>
                   </div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem maiores pariatur voluptatem placeat laborum iste accusamus nam unde, iure id.</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet cumque, perferendis accusamus porro illo exercitationem molestias, inventore obcaecati ut omnis voluptatibus ratione odio amet magnam quidem tempore necessitatibus quaerat, voluptates excepturi voluptatem, veritatis qui temporibus.</p>
                   <a className='button button-border button-rounded button-large button-dark noleftmargin'>Start Trial</a>
                 </div>
               </div>
@@ -95,15 +93,13 @@ class Home extends React.Component {
             <div className='section notopmargin nobottommargin'>
               <div className='container clearfix'>
                 <div className='col_half nobottommargin topmargin-lg'>
-                  <img src='images/new/iphone-solid.png' alt='' className='center-block' />
+                  <img src='images/card_v2.png' alt='' className='center-block' />
                 </div>
                 <div className='col_half nobottommargin topmargin-lg col_last'>
-                  <div className='heading-block topmargin-lg'>
-                    <h2>Typically Responsive</h2>
-                    <span>Our App scales beautifully to different Devices.</span>
+                  <div className='heading-block'>
+                    <h2>Payment cards for employees</h2>
+                    <span>Distribute virtual Sotec cards with custom predefined limits in just a few clicks.</span>
                   </div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet cumque, perferendis accusamus porro illo exercitationem molestias, inventore obcaecati ut omnis voluptatibus ratione odio amet magnam quidem tempore necessitatibus quaerat, voluptates excepturi voluptatem, veritatis qui temporibus.</p>
-                  <a className='button button-border button-rounded button-large button-dark noleftmargin'>View Gallery</a>
                 </div>
               </div>
             </div>
