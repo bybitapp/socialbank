@@ -1,10 +1,10 @@
 import React from 'react'
 
-import Header from '../components/Header'
-import MobileNavigation from '../components/MobileNavigation'
-import Footer from '../components/Footer'
-import MenuSideBar from '../components/MenuSideBar'
-import OrganizationForm from '../components/OrganizationForm'
+import Header from '../../components/Header'
+import MobileNavigation from '../../components/MobileNavigation'
+import Footer from '../../components/Footer'
+import MenuSideBar from '../../components/MenuSideBar'
+import OrganizationForm from '../../components/OrganizationForm'
 
 class Organization extends React.Component {
   render () {

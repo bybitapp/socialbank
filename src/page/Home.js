@@ -5,80 +5,227 @@ import { connect } from 'react-redux'
 // import MobileNavigation from '../components/MobileNavigation'
 // import ContactForm from '../components/ContactForm'
 // import SubjectBox from '../components/SubjectBox'
+
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-// import Map from '../components/Map'
-// import CookieBanner from '../components/CookieBanner'
-// import { Link } from 'react-router-dom'
+import CookieBanner from '../components/CookieBanner'
+import { Link } from 'react-router-dom'
 
 function mapStateToProps (state) {
-  const { organizations } = state
-  return {
-    organizations
-  }
+  return {}
 }
 
 const enhance = compose(
   connect(mapStateToProps)
 )
 
-class Home extends React.Component {
-  componentDidMount () {
-    // const { dispatch } = this.props
-    // dispatch(getOrganizations())
-  }
+const TopView = () => (
+  <section id='slider' className='slider-parallax full-screen'>
+    <div className='full-screen' style={{backgroundSize: 'cover'}}>
+      <div className='container clearfix'>
+        <img src='images/new/slider-iphone.png' alt='' className='hidden-sm hidden-xs' data-style-lg='position: absolute; left: 0; bottom: 0; height: auto;' data-style-md='position: absolute; left: 0; bottom: 0; height: 450px;' />
+        <div className='vertical-middle no-fade'>
+          <div className='col-md-6 fright nobottommargin' data-animate='fadeIn'>
+            <div className='emphasis-title'>
+              <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'>Transparency by design. Revolutionize the way every <strong>charity</strong> manages its expenses.</h1>
+            </div>
+            <div>
+              <Link to={'/register'} className='button button-desc button-border button-rounded nomargin'>
+                <div>Create your account</div>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+)
 
-  render () {
-    // const iconStyle = {display: 'block', margin: '0 auto'}
-    // const styleHeight = { height: '450px', backgroundImage: 'url(images/plexus3-1280x720.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }
-    // const styleButtonBottom = { marginTop: '70px', marginBottom: '40px' }
-    // const styleSubSlogan = {textShadow: '5px 5px 9px black', paddingTop: 0}
-    // const styleClients = { maxHeight: '150px', maxWidth: '210px', display: 'block', margin: '20px auto 0px auto' }
+const Description = () => (
+  <div className='container clearfix'>
+    <div className='row topmargin-lg bottommargin-sm'>
+      <div className='heading-block center'>
+        <h2>Why do you need sotec?</h2>
+        <span className='divcenter'>The system dedicated is to non-profit and charity organizations to build your transparency and trust around payments.</span>
+      </div>
+      <div className='col-md-4 col-sm-6 bottommargin'>
+        <div className='feature-box fbox-right topmargin' data-animate='fadeIn'>
+          <div className='fbox-icon'>
+            <a href=''><i className='icon-line-heart' /></a>
+          </div>
+          <h3>Boxed &amp; Wide Layouts</h3>
+          <p>Stretch your Website to the Full Width or make it boxed to surprise your visitors.</p>
+        </div>
+        <div className='feature-box fbox-right topmargin' data-animate='fadeIn' data-delay='200'>
+          <div className='fbox-icon'>
+            <a href=''><i className='icon-line-paper' /></a>
+          </div>
+          <h3>Extensive Documentation</h3>
+          <p>We have covered each &amp; everything in our Docs including Videos &amp; Screenshots.</p>
+        </div>
+        <div className='feature-box fbox-right topmargin' data-animate='fadeIn' data-delay='400'>
+          <div className='fbox-icon'>
+            <a href=''><i className='icon-line-layers' /></a>
+          </div>
+          <h3>Parallax Support</h3>
+          <p>Display your Content attractively using Parallax Sections with HTML5 Videos.</p>
+        </div>
+      </div>
+      <div className='col-md-4 hidden-sm bottommargin center'>
+        <img src='images/card_v2.png' alt='iphone 2' />
+      </div>
+      <div className='col-md-4 col-sm-6 bottommargin'>
+        <div className='feature-box topmargin' data-animate='fadeIn'>
+          <div className='fbox-icon'>
+            <a href=''><i className='icon-line-power' /></a>
+          </div>
+          <h3>HTML5 Video</h3>
+          <p>Canvas provides support for Native HTML5 Videos that can be added to a Background.</p>
+        </div>
+        <div className='feature-box topmargin' data-animate='fadeIn' data-delay='200'>
+          <div className='fbox-icon'>
+            <a href=''><i className='icon-line-check' /></a>
+          </div>
+          <h3>Endless Possibilities</h3>
+          <p>Complete control on each &amp; every element that provides endless customization.</p>
+        </div>
+        <div className='feature-box topmargin' data-animate='fadeIn' data-delay='400'>
+          <div className='fbox-icon'>
+            <a href=''><i className='icon-bulb' /></a>
+          </div>
+          <h3>Light &amp; Dark Color Schemes</h3>
+          <p>Change your Websites Primary Scheme instantly by simply adding the dark className.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+)
 
-    // const { organizations } = this.props
+const Explainer = () => (
+  <div className='row clearfix common-height'>
+    <div className='col-md-6 center col-padding' style={{ background: 'url("images/new/main-bg.jpg") center center no-repeat', backgroundSize: 'cover' }}>
+      <div>&nbsp;</div>
+    </div>
+    <div className='col-md-6 center col-padding' style={{ backgroundColor: '#F5F5F5' }}>
+      <div>
+        <div className='heading-block nobottomborder'>
+          <span className='before-heading color'>Easily Understandable &amp; Customizable.</span>
+          <h3>Walkthrough Videos &amp; Demos</h3>
+        </div>
+        <div className='center bottommargin'>
+          <a href='http://vimeo.com/101373765' data-lightbox='iframe' style={{ position: 'relative' }}>
+            <img src='images/new/video.jpg' alt='Video' />
+            <span className='i-overlay nobg'><img src='images/new/video-play.png' alt='Play' /></span>
+          </a>
+        </div>
+        <p className='lead nobottommargin'>Democracy inspire breakthroughs, Rosa Parks; inspiration raise awareness natural resources. Governance impact; transformative donation philanthropy, respect reproductive.</p>
+      </div>
+    </div>
+  </div>
+)
 
-    return (
-      <div id='wrapper' className='clearfix'>
-        <Header />
-        <section id='slider' className='slider-parallax full-screen'>
-          <div className='full-screen' style={{backgroundSize: 'cover'}}>
-            <div className='container clearfix'>
-              <img src='images/new/slider-iphone.png' alt='' className='hidden-sm hidden-xs' data-style-lg='position: absolute; left: 0; bottom: 0; height: auto;' data-style-md='position: absolute; left: 0; bottom: 0; height: 450px;' />
-              <div className='vertical-middle no-fade'>
-                <div className='col-md-6 fright nobottommargin' data-animate='fadeIn'>
-                  <div className='emphasis-title'>
-                    <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'>Transparency by design. Revolutionize the way every <strong>charity</strong> manages its expenses.</h1>
-                  </div>
-                  <div>
-                    <a href='/register' className='button button-desc button-border button-rounded nomargin'>
-                      <div>Create your account</div>
-                    </a>
-                  </div>
-                </div>
+const WhatSays = () => (
+  <div className='section parallax dark notopmargin nobottommargin' style={{ backgroundImage: 'url("images/new/home-testi-bg.jpg")', padding: '100px 0' }} data-stellar-background-ratio='0.4'>
+    <div className='heading-block center'>
+      <h3>What Says about sotec?</h3>
+    </div>
+    <div className='fslider testimonial testimonial-full' data-animation='fade' data-arrows='false'>
+      <div className='flexslider'>
+        <div className='slider-wrap'>
+          <div className='slide'>
+            <div className='testi-image'>
+              <a href=''><img src='images/new/3.jpg' alt='Customer Testimonails' /></a>
+            </div>
+            <div className='testi-content'>
+              <p style={{ fontSize: '24px' }}>Love the idea behind SoTec and ready to roll up sleeves to get this little beauty to market Team @SoTec_UK Wins OPCLive!</p>
+              <div className='testi-meta'>
+                Alex Mifsud
+                <span>CEO of Ixaris</span>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </div>
+    </div>
+  </div>
+)
+
+const HowStart = () => (
+  <div className='section dark notopmargin' style={{ paddingTop: '60px' }}>
+    <div className='container clearfix'>
+      <div className='heading-block center'>
+        <h2>Getting started with sotec</h2>
+        <span>Instruction how spending money on charity goods</span>
+      </div>
+      <div className='clear bottommargin-sm' />
+      <div className='col_one_fourth nobottommargin'>
+        <div className='feature-box fbox-center fbox-light fbox-effect nobottomborder'>
+          <div className='fbox-icon'>
+            <a href=''><i className='i-alt noborder icon-shop' /></a>
+          </div>
+          <h3>Create an account<span className='subtitle'>You can sign up and add your basic organization details</span></h3>
+        </div>
+      </div>
+      <div className='col_one_fourth nobottommargin'>
+        <div className='feature-box fbox-center fbox-light fbox-effect nobottomborder'>
+          <div className='fbox-icon'>
+            <a href=''><i className='i-alt noborder icon-wallet' /></a>
+          </div>
+          <h3>Add money to projects<span className='subtitle'>Transfer money from your bank account to your projects</span></h3>
+        </div>
+      </div>
+      <div className='col_one_fourth nobottommargin'>
+        <div className='feature-box fbox-center fbox-light fbox-effect nobottomborder'>
+          <div className='fbox-icon'>
+            <a href=''><i className='i-alt noborder icon-megaphone' /></a>
+          </div>
+          <h3>Distribute cards<span className='subtitle'>Transfer money around people involved in your projects</span></h3>
+        </div>
+      </div>
+      <div className='col_one_fourth nobottommargin col_last'>
+        <div className='feature-box fbox-center fbox-light fbox-effect nobottomborder'>
+          <div className='fbox-icon'>
+            <a href=''><i className='i-alt noborder icon-fire' /></a>
+          </div>
+          <h3>Start spending<span className='subtitle'>Use sotec card to pay anywhere on the internet and by contactless</span></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+)
+
+const Subscription = () => (
+  <div className='container clearfix'>
+    <div className='heading-block center'>
+      <h3>Subscribe for more <span>Updates</span>.</h3>
+    </div>
+    <div id='widget-subscribe-form2-result' data-notify-type='success' data-notify-msg='' />
+    <form id='widget-subscribe-form2' action='include/subscribe.php' method='post' className='nobottommargin'>
+      <div className='input-group input-group-lg divcenter' style={{ maxWidth: '600px' }}>
+        <span className='input-group-addon'><i className='icon-email2' /></span>
+        <input type='email' name='widget-subscribe-form-email' className='form-control required email' placeholder='Enter your Email' />
+        <span className='input-group-btn'>
+          <button className='btn btn-default' type='submit'>Subscribe Now</button>
+        </span>
+      </div>
+    </form>
+  </div>
+)
+
+class Home extends React.Component {
+  render () {
+    return (
+      <div id='wrapper' className='clearfix'>
+        <CookieBanner />
+        <Header />
+        <TopView />
         <section id='content'>
           <div className='content-wrap'>
-            <div className='container clearfix'>
-              <div className='col_one_third nobottommargin center'>
-                <a><img src='images/new/s1.png' alt='' className='bottommargin-sm' /></a>
-                <h4>Responsive Layout</h4>
-                <p>Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view.</p>
-              </div>
-              <div className='col_one_third nobottommargin center'>
-                <a><img src='images/new/s4.png' alt='' className='bottommargin-sm' /></a>
-                <h4>Retina Ready Graphics</h4>
-                <p>Looks beautiful &amp; ultra-sharp on Retina Screen Displays. Retina Icons, Fonts &amp; all others graphics are optimized.</p>
-              </div>
-              <div className='col_one_third nobottommargin center col_last'>
-                <a><img src='images/new/s5.png' alt='' className='bottommargin-sm' /></a>
-                <h4>Powerful Performance</h4>
-                <p>Canvas includes tons of optimized code that are completely customizable and deliver unmatched fast performance.</p>
-              </div>
-            </div>
-            <div className='section nobottommargin' style={{paddingBottom: '150px'}}>
+            <Description />
+            <Explainer />
+            <WhatSays />
+
+            <div className='section notopmargin nobottommargin' style={{paddingBottom: '150px'}}>
               <div className='hidden-sm hidden-xs' style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'transparent url("images/new/ipad-section.png") bottom right no-repeat' }} />
               <div className='container clearfix' style={{ zIndex: 1 }}>
                 <div className='col-md-6 nobottommargin'>
@@ -86,127 +233,27 @@ class Home extends React.Component {
                     <h2>Real-time spending overview</h2>
                     <span>See all company spending in one place as it happens and sync it to your accounting system.</span>
                   </div>
-                  <a className='button button-border button-rounded button-large button-dark noleftmargin'>Start Trial</a>
+                  <Link to={'/register'} className='button button-border button-rounded button-large button-dark noleftmargin'>Start Demo</Link>
                 </div>
               </div>
             </div>
-            <div className='section notopmargin nobottommargin'>
+
+            <HowStart />
+            <Subscription />
+
+            <div id='section-buy' className='section page-section footer-stick'>
               <div className='container clearfix'>
-                <div className='col_half nobottommargin topmargin-lg'>
-                  <img src='images/card_v2.png' alt='' className='center-block' />
+                <div className='heading-block title-center nobottomborder'>
+                  <h2>Enough? Start Building!</h2>
+                  <span>Now that you have read all the Tid-Bits, so start with a plan</span>
                 </div>
-                <div className='col_half nobottommargin topmargin-lg col_last'>
-                  <div className='heading-block'>
-                    <h2>Payment cards for employees</h2>
-                    <span>Distribute virtual Sotec cards with custom predefined limits in just a few clicks.</span>
-                  </div>
+                <div className='center'>
+                  <Link to={'/register'} data-animate='tada' className='button button-3d button-teal button-xlarge nobottommargin'><i className='icon-star3' />Start your FREE</Link>
                 </div>
               </div>
-            </div>
-            <div className='section dark notopmargin' style={{ paddingTop: '60px' }}>
-              <div className='container clearfix'>
-                <div className='col_one_third'>
-                  <div className='feature-box fbox-plain'>
-                    <div className='fbox-icon'>
-                      <a><i className='icon-screen' /></a>
-                    </div>
-                    <h3>Responsive Layout</h3>
-                    <p>Powerful Layout with Responsive functionality that can be adapted to any screen size. Resize browser to view.</p>
-                  </div>
-                </div>
-                <div className='col_one_third'>
-                  <div className='feature-box fbox-plain'>
-                    <div className='fbox-icon'>
-                      <a><i className='icon-eye' /></a>
-                    </div>
-                    <h3>Retina Ready Graphics</h3>
-                    <p>Looks beautiful &amp; ultra-sharp on Retina Screen Displays. Retina Icons, Fonts &amp; all others graphics are optimized.</p>
-                  </div>
-                </div>
-                <div className='col_one_third col_last'>
-                  <div className='feature-box fbox-plain'>
-                    <div className='fbox-icon'>
-                      <a><i className='icon-beaker' /></a>
-                    </div>
-                    <h3>Powerful Performance</h3>
-                    <p>Canvas includes tons of optimized code that are completely customizable and deliver unmatched fast performance.</p>
-                  </div>
-                </div>
-                <div className='clear' />
-                <div className='col_one_third nobottommargin'>
-                  <div className='feature-box fbox-plain'>
-                    <div className='fbox-icon'>
-                      <a><i className='icon-ok' /></a>
-                    </div>
-                    <h3>12+ Header Designs</h3>
-                    <p>We have included 12+ Header + Menu Designs for your convenience so that you can match your style.</p>
-                  </div>
-                </div>
-                <div className='col_one_third nobottommargin'>
-                  <div className='feature-box fbox-plain'>
-                    <div className='fbox-icon'>
-                      <a><i className='icon-thumbs-up' /></a>
-                    </div>
-                    <h3>Awesome Mega menu</h3>
-                    <p>Completely Customizable 2 Columns, 3 Columns, 4 Columns &amp; 5 Columns Mega Menus are available with Canvas.</p>
-                  </div>
-                </div>
-                <div className='col_one_third nobottommargin col_last'>
-                  <div className='feature-box fbox-plain'>
-                    <div className='fbox-icon'>
-                      <a><i className='icon-magnet' /></a>
-                    </div>
-                    <h3>Attractive Sticky Menu</h3>
-                    <p>Smooth &amp; Stylish Sticky Menu is what will make your Website differentiate with others.</p>
-                  </div>
-                </div>
-                <div className='clear' /><div className='line' />
-                <div className='heading-block center'>
-                  <h2>Looks beautiful on all displays.</h2>
-                </div>
-                <div style={{ position: 'relative', marginBottom: '-60px' }} data-height-lg='415' data-height-md='342' data-height-sm='262' data-height-xs='160' data-height-xxs='102'>
-                  <img src='images/new/chrome.png' style={{position: 'absolute', top: 0, left: 0}} data-animate='fadeInUp' alt='Chrome' />
-                  <img src='images/new/ipad3.png' style={{position: 'absolute', top: 0, left: 0}} data-animate='fadeInUp' data-delay='300' alt='iPad' />
-                </div>
-              </div>
-            </div>
-            <div className='container clearfix'>
-              <div className='heading-block center'>
-                <h3>Available on all Major Platforms.</h3>
-                <span>We have made our App available on all Major Platforms</span>
-              </div>
-              <p className='divcenter center' style={{ maxWidth: '800px' }}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo animi ab dolorem deleniti, incidunt, recusandae tenetur eius aut similique delectus nisi labore odit temporibus reprehenderit eum iure natus voluptatem commodi? Quam ea, placeat quia et dignissimos laboriosam unde earum repudiandae?</p>
-              <div className='col_full center topmargin nobottommargin'>
-                <a className='social-icon si-appstore si-large si-rounded si-colored inline-block' title='iOS App Store'>
-                  <i className='icon-appstore' />
-                  <i className='icon-appstore' />
-                </a>
-                <a className='social-icon si-android si-large si-rounded si-colored inline-block' title='Android Store'>
-                  <i className='icon-android' />
-                  <i className='icon-android' />
-                </a>
-                <a className='social-icon si-gplus si-large si-rounded si-colored inline-block' title='Windows Store'>
-                  <i className='icon-windows3' />
-                  <i className='icon-windows3' />
-                </a>
-              </div>
-              <div className='clear' />
-              <div className='divider divider-short divider-vshort divider-line divider-center'>&nbsp;</div>
-              <div className='heading-block center'>
-                <h3>Subscribe for more <span>Updates</span>.</h3>
-              </div>
-              <div id='widget-subscribe-form2-result' data-notify-type='success' data-notify-msg='' />
-              <form id='widget-subscribe-form2' action='include/subscribe.php' method='post' className='nobottommargin'>
-                <div className='input-group input-group-lg divcenter' style={{ maxWidth: '600px' }}>
-                  <span className='input-group-addon'><i className='icon-email2' /></span>
-                  <input type='email' name='widget-subscribe-form-email' className='form-control required email' placeholder='Enter your Email' />
-                  <span className='input-group-btn'>
-                    <button className='btn btn-default' type='submit'>Subscribe Now</button>
-                  </span>
-                </div>
-              </form>
             </div>
           </div>
+
         </section>
         <Footer />
       </div>
