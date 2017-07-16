@@ -39,25 +39,33 @@ class Header extends React.Component {
               <a href='/' className='retina-logo' data-dark-logo='images/logo-dark@2x.png'><img src='images/logo@2x.png' alt='Canvas Logo' /></a>
             </div>
             <nav id='primary-menu' >
-              <ul>
-                <li>
-                  <Link to={'/contact'}>Contact</Link>
-                </li>
-                {Auth.isUserAuthenticated() ? (
+              {Auth.isUserAuthenticated() ? (
+                <ul>
+                  <li>
+                    <Link to={'/me'}>
+                      Account
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to={'/contact'}>Contact</Link>
+                  </li>
                   <li>
                     <Link to={'/logout'}>Logout</Link>
                   </li>
-                ) : (
-                  <div>
-                    <li>
-                      <Link to={'/login'}>Login</Link>
-                    </li>
-                    <li>
-                      <Link to={'/register'}>Register</Link>
-                    </li>
-                  </div>
-                )}
-              </ul>
+                </ul>
+              ) : (
+                <ul>
+                  <li>
+                    <Link to={'/contact'}>Contact</Link>
+                  </li>
+                  <li>
+                    <Link to={'/login'}>Login</Link>
+                  </li>
+                  <li>
+                    <Link to={'/register'}>Register</Link>
+                  </li>
+                </ul>
+              )}
             </nav>
           </div>
         </div>
