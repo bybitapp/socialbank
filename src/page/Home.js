@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 // import MobileNavigation from '../components/MobileNavigation'
 // import ContactForm from '../components/ContactForm'
 // import SubjectBox from '../components/SubjectBox'
-// import Header from '../components/Header'
-// import Footer from '../components/Footer'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 // import Map from '../components/Map'
 // import CookieBanner from '../components/CookieBanner'
 // import { Link } from 'react-router-dom'
@@ -39,24 +39,7 @@ class Home extends React.Component {
 
     return (
       <div id='wrapper' className='clearfix'>
-        <header id='header' className='full-header'>
-          <div id='header-wrap'>
-            <div className='container clearfix'>
-              <div id='primary-menu-trigger'><i className='icon-reorder' /></div>
-              <div id='logo'>
-                <a href='/' className='standard-logo' data-dark-logo='images/logo-dark.png'><img src='images/logo.png' alt='Canvas Logo' /></a>
-                <a href='/' className='retina-logo' data-dark-logo='images/logo-dark@2x.png'><img src='images/logo@2x.png' alt='Canvas Logo' /></a>
-              </div>
-              <nav id='primary-menu' >
-                <ul>
-                  <li className='current'><a href='/'><div>About us</div></a></li>
-                  <li><a href='/contact'><div>Contact</div></a></li>
-                  <li><a href='/login'><div>Login</div></a></li>
-                </ul>
-              </nav>
-            </div>
-          </div>
-        </header>
+        <Header />
         <section id='slider' className='slider-parallax full-screen'>
           <div className='full-screen' style={{backgroundSize: 'cover'}}>
             <div className='container clearfix'>
@@ -229,36 +212,7 @@ class Home extends React.Component {
             </div>
           </div>
         </section>
-        <footer id='footer' className='dark'>
-          <div id='copyrights'>
-            <div className='container clearfix'>
-              <div className='col_half'>
-                Copyrights &copy; 2017 All Rights Reserved by SoTec.<br />
-                <div className='copyright-links'>
-                  <a href='/terms'>Terms of Use</a> / <a href='/privacy'>Privacy Policy</a>
-                </div>
-              </div>
-              <div className='col_half col_last tright'>
-                <div className='fright clearfix'>
-                  <a href='https://www.facebook.com/SoTecUK' className='social-icon si-small si-borderless si-facebook'>
-                    <i className='icon-facebook' />
-                    <i className='icon-facebook' />
-                  </a>
-                  <a href='https://twitter.com/SoTec_UK' className='social-icon si-small si-borderless si-twitter'>
-                    <i className='icon-twitter' />
-                    <i className='icon-twitter' />
-                  </a>
-                </div>
-                <div className='clear' />
-                <i className='icon-envelope2' />
-                <a href='mailto:contact@sotec.io'> contact@sotec.io</a>
-                <span className='middot'>&middot;</span>
-                <i className='icon-headphones' />
-                <a href='tel:+44 7424 760 589'> +44 7424 760 589</a>
-              </div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     )
   }

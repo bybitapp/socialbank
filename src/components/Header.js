@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import MDLite from 'material-design-lite'
 
-import NewsletterSubscribe from '../components/NewsletterSubscribe'
 import Auth from '../modules/Auth'
 
 function mapStateToProps (state) {
@@ -30,48 +29,37 @@ class Header extends React.Component {
   }
 
   render () {
-    const { modal, setModal } = this.props
-
     return (
-      <header className='android-header mdl-layout__header mdl-layout__header--waterfall'>
-        <div className='mdl-layout__header-row'>
-          <span className='android-title mdl-layout-title'>
-            <Link to={'/'}>SoTec</Link>
-          </span>
-          <div className='android-header-spacer mdl-layout-spacer' />
-          <div className='android-navigation-container'>
-            <nav className='android-navigation mdl-navigation'>
-              <NewsletterSubscribe open={(modal === 'newsletterModal')} handleClose={() => setModal(null)} />
-              {Auth.isUserAuthenticated() ? (
-                <div className='top-bar-right'>
-                  <Link className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' to={'/me'}>
-                    Account
-                  </Link>
-                  <Link className='mdl-navigation__link mdl-typography--text-uppercase' to={'/contact'}>Contact</Link>
-                  <Link className='mdl-navigation__link mdl-typography--text-uppercase' to={'/logout'}>Logout</Link>
-                  <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' onClick={() => setModal('newsletterModal')}>
-                    Subscribe for updates
-                  </button>
-                </div>
-              ) : (
-                <div className='top-bar-right'>
-                  <Link className='mdl-navigation__link mdl-typography--text-uppercase' to={'/contact'}>Contact</Link>
-                  <Link className='mdl-navigation__link mdl-typography--text-uppercase' to={'/login'}>Login</Link>
-                  {/*
-                  <Link className="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" to={'/register'}>
-                    Register
-                  </Link>
-                  */}
-                  <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' onClick={() => setModal('newsletterModal')}>
-                    Subscribe for updates
-                  </button>
-                </div>
-              )}
+      <header id='header' className='full-header'>
+        <div id='header-wrap'>
+          <div className='container clearfix'>
+            <div id='primary-menu-trigger'><i className='icon-reorder' /></div>
+            <div id='logo'>
+              <a href='/' className='standard-logo' data-dark-logo='images/logo-dark.png'><img src='images/logo.png' alt='Canvas Logo' /></a>
+              <a href='/' className='retina-logo' data-dark-logo='images/logo-dark@2x.png'><img src='images/logo@2x.png' alt='Canvas Logo' /></a>
+            </div>
+            <nav id='primary-menu' >
+              <ul>
+                <li>
+                  <Link to={'/contact'}>Contact</Link>
+                </li>
+                {Auth.isUserAuthenticated() ? (
+                  <li>
+                    <Link to={'/logout'}>Logout</Link>
+                  </li>
+                ) : (
+                  <div>
+                    <li>
+                      <Link to={'/login'}>Login</Link>
+                    </li>
+                    <li>
+                      <Link to={'/register'}>Register</Link>
+                    </li>
+                  </div>
+                )}
+              </ul>
             </nav>
           </div>
-          <span className='android-mobile-title mdl-layout-title'>
-            SoTec
-          </span>
         </div>
       </header>
     )
