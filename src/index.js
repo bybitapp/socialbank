@@ -17,7 +17,7 @@ import Contact from './page/Contact'
 import Help from './page/Help'
 import Login from './page/Login'
 import Logout from './page/Logout'
-import Registration from './page/Registration'
+import Register from './page/Register'
 import Me from './page/Me'
 import History from './page/History'
 import Public from './page/Public'
@@ -39,7 +39,7 @@ const App = () => (
         <Switch>
           <Route path='/login' component={Login} />
           <Route path='/logout' component={Logout} />
-          <Route path='/registration' component={Registration} />
+          <Route path='/register' component={Register} />
           <Route path='/terms' component={Terms} />
           <Route path='/privacy' component={Privacy} />
           <Route path='/help' component={Help} />

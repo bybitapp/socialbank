@@ -36,7 +36,7 @@ class MobileNavigation extends React.Component {
           {!Auth.isUserAuthenticated() ? (
             <div>
               <Link className='mdl-navigation__link' to={'/login'}>Login</Link>
-              <Link className='mdl-navigation__link' to={'/registration'}>Register</Link>
+              <Link className='mdl-navigation__link' to={'/register'}>Register</Link>
               <Link className='mdl-navigation__link' to={'/contact'}>Contact</Link>
               <a className='mdl-navigation__link' onClick={() => this.openNewsletterModal()}>
                 Subscribe for updates
