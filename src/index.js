@@ -12,6 +12,7 @@ import reducer from './reducers'
 // components
 import Home from './page/Home'
 import Terms from './page/Terms'
+import Privacy from './page/Privacy'
 import Contact from './page/Contact'
 import Help from './page/Help'
 import Login from './page/Login'
@@ -40,6 +41,7 @@ const App = () => (
           <Route path='/logout' component={Logout} />
           <Route path='/registration' component={Registration} />
           <Route path='/terms' component={Terms} />
+          <Route path='/privacy' component={Privacy} />
           <Route path='/help' component={Help} />
           <Route path='/contact' component={Contact} />
           <Route path='/me' component={Me} />

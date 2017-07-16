@@ -44,14 +44,14 @@ class Home extends React.Component {
             <div className='container clearfix'>
               <div id='primary-menu-trigger'><i className='icon-reorder' /></div>
               <div id='logo'>
-                <a href='index.html' className='standard-logo' data-dark-logo='images/logo-dark.png'><img src='images/logo.png' alt='Canvas Logo' /></a>
-                <a href='index.html' className='retina-logo' data-dark-logo='images/logo-dark@2x.png'><img src='images/logo@2x.png' alt='Canvas Logo' /></a>
+                <a href='/' className='standard-logo' data-dark-logo='images/logo-dark.png'><img src='images/logo.png' alt='Canvas Logo' /></a>
+                <a href='/' className='retina-logo' data-dark-logo='images/logo-dark@2x.png'><img src='images/logo@2x.png' alt='Canvas Logo' /></a>
               </div>
               <nav id='primary-menu' >
                 <ul>
-                  <li className='current'><a href='index.html'><div>About us</div></a></li>
-                  <li><a><div>Contact</div></a></li>
-                  <li><a><div>Login</div></a></li>
+                  <li className='current'><a href='/'><div>About us</div></a></li>
+                  <li><a href='/contact'><div>Contact</div></a></li>
+                  <li><a href='/login'><div>Login</div></a></li>
                 </ul>
               </nav>
             </div>
@@ -66,13 +66,10 @@ class Home extends React.Component {
                   <div className='emphasis-title'>
                     <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'>Transparency by design. Revolutionize the way every <strong>charity</strong> manages its expenses.</h1>
                   </div>
-                  <div className='hidden-xs'>
-                    <a className='button button-desc button-border button-light button-rounded nomargin'>
-                      <i className='icon-apple' /><div>Start your Free Trial<span>30-Days &amp; No Credit card Required</span></div>
+                  <div>
+                    <a href='/register' className='button button-desc button-border button-rounded nomargin'>
+                      <div>Create your account</div>
                     </a>
-                  </div>
-                  <div className='visible-xs'>
-                    <a className='button button-light button-xlarge button-rounded nomargin'><i className='icon-apple' />Start Free Trial</a>
                   </div>
                 </div>
               </div>
@@ -236,26 +233,28 @@ class Home extends React.Component {
           <div id='copyrights'>
             <div className='container clearfix'>
               <div className='col_half'>
-                Copyrights &copy; 2014 All Rights Reserved by Canvas Inc.<br />
-                <div className='copyright-links'><a>Terms of Use</a> / <a>Privacy Policy</a></div>
+                Copyrights &copy; 2017 All Rights Reserved by SoTec.<br />
+                <div className='copyright-links'>
+                  <a href='/terms'>Terms of Use</a> / <a href='/privacy'>Privacy Policy</a>
+                </div>
               </div>
               <div className='col_half col_last tright'>
                 <div className='fright clearfix'>
-                  <a className='social-icon si-small si-borderless si-facebook'>
+                  <a href='https://www.facebook.com/SoTecUK' className='social-icon si-small si-borderless si-facebook'>
                     <i className='icon-facebook' />
                     <i className='icon-facebook' />
                   </a>
-                  <a className='social-icon si-small si-borderless si-twitter'>
+                  <a href='https://twitter.com/SoTec_UK' className='social-icon si-small si-borderless si-twitter'>
                     <i className='icon-twitter' />
                     <i className='icon-twitter' />
-                  </a>
-                  <a className='social-icon si-small si-borderless si-gplus'>
-                    <i className='icon-gplus' />
-                    <i className='icon-gplus' />
                   </a>
                 </div>
                 <div className='clear' />
-                <i className='icon-envelope2' /> info@canvas.com <span className='middot'>&middot;</span> <i className='icon-headphones' /> +91-11-6541-6369 <span className='middot'>&middot;</span> <i className='icon-skype2' /> CanvasOnSkype
+                <i className='icon-envelope2' />
+                <a href='mailto:contact@sotec.io'> contact@sotec.io</a>
+                <span className='middot'>&middot;</span>
+                <i className='icon-headphones' />
+                <a href='tel:+44 7424 760 589'> +44 7424 760 589</a>
               </div>
             </div>
           </div>
