@@ -49,7 +49,7 @@ const enhance = compose(
   })
 )
 
-class Registration extends React.Component {
+class Register extends React.Component {
   render () {
     const { handleSubmit, error } = this.props
     const checkboxLabel = {
@@ -88,4 +88,4 @@ class Registration extends React.Component {
   }
 }
 
-export default enhance(Registration)
+export default enhance(Register)
