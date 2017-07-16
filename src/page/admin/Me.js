@@ -1,11 +1,11 @@
 import React from 'react'
 
-import Header from '../components/Header'
-import MobileNavigation from '../components/MobileNavigation'
-import Footer from '../components/Footer'
-import MenuSideBar from '../components/MenuSideBar'
-import UpdatePassword from '../components/UpdatePassword'
-import GeneralData from '../components/GeneralData'
+import Header from '../../components/Header'
+import MobileNavigation from '../../components/MobileNavigation'
+import Footer from '../../components/Footer'
+import MenuSideBar from '../../components/MenuSideBar'
+import UpdatePassword from '../../components/UpdatePassword'
+import GeneralData from '../../components/GeneralData'
 
 class Me extends React.Component {
   render () {
