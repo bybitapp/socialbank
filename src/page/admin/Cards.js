@@ -2,17 +2,16 @@ import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, change } from 'redux-form'
-import { getOrganizationCards, getProjects, getUsers } from '../actions'
-import { CARD_STATUS } from '../constants/Option'
-import CardForm from '../components/CardForm'
-import CardDestroyForm from '../components/CardDestroyForm'
-import CardTransferForm from '../components/CardTransferForm'
-import CardBlockForm from '../components/CardBlockForm'
-import CardUnblockForm from '../components/CardUnblockForm'
-import Header from '../components/Header'
-import MobileNavigation from '../components/MobileNavigation'
-import Footer from '../components/Footer'
-import MenuSideBar from '../components/MenuSideBar'
+import { getOrganizationCards, getProjects, getUsers } from '../../actions'
+import { CARD_STATUS } from '../../constants/Option'
+import CardForm from '../../components/CardForm'
+import CardDestroyForm from '../../components/CardDestroyForm'
+import CardTransferForm from '../../components/CardTransferForm'
+import CardBlockForm from '../../components/CardBlockForm'
+import CardUnblockForm from '../../components/CardUnblockForm'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+import MenuSideBar from '../../components/MenuSideBar'
 
 function mapStateToProps (state) {
   const { cards, projects, users, modal } = state
@@ -163,38 +162,39 @@ class Cards extends React.Component {
     ]
 
     return (
-      <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
+      <div id='wrapper' className='clearfix'>
         <Header />
-        <MobileNavigation />
         <CardForm open={(modal === 'cardModal')} handleClose={() => setModal(null)} />
         <CardDestroyForm open={(modal === 'cardDestroyModal')} handleClose={() => setModal(null)} />
         <CardTransferForm open={(modal === 'cardTransferModal')} handleClose={() => setModal(null)} />
         <CardBlockForm open={(modal === 'cardBlockModal')} handleClose={() => setModal(null)} />
         <CardUnblockForm open={(modal === 'cardUnblockModal')} handleClose={() => setModal(null)} />
-        <main className='mdl-layout__content'>
-          <div className='page-content'>
-            <div className='mdl-grid'>
-              <div className='mdl-cell mdl-cell--3-col'>
-                <MenuSideBar />
-              </div>
-              <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
-                <div style={stylePadding}>
-                  <div className='mdl-grid'>
-                    <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
-                      <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
-                        onClick={() => setModal('cardModal')}>
-                          Add Card
-                      </button>
+        <section id='content'>
+          <main className='mdl-layout__content' style={{ width: '100%' }}>
+            <div className='page-content'>
+              <div className='mdl-grid'>
+                <div className='mdl-cell mdl-cell--3-col'>
+                  <MenuSideBar />
+                </div>
+                <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
+                  <div style={stylePadding}>
+                    <div className='mdl-grid'>
+                      <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
+                        <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
+                          onClick={() => setModal('cardModal')}>
+                            Add Card
+                        </button>
+                      </div>
                     </div>
+                    <CardTable cards={cards} styleTable={styleTable} actions={actions}
+                      projects={projects} users={users} />
                   </div>
-                  <CardTable cards={cards} styleTable={styleTable} actions={actions}
-                    projects={projects} users={users} />
                 </div>
               </div>
             </div>
-          </div>
-          <Footer />
-        </main>
+          </main>
+        </section>
+        <Footer />
       </div>
     )
   }

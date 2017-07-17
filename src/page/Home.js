@@ -2,147 +2,239 @@ import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 
-import MobileNavigation from '../components/MobileNavigation'
-import ContactForm from '../components/ContactForm'
-import SubjectBox from '../components/SubjectBox'
+import NewsletterSubscribe from '../components/NewsletterSubscribe'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import Map from '../components/Map'
 import CookieBanner from '../components/CookieBanner'
 import { Link } from 'react-router-dom'
-import { getOrganizations } from '../actions'
 
 function mapStateToProps (state) {
-  const { organizations } = state
-  return {
-    organizations
-  }
+  return {}
 }
 
 const enhance = compose(
   connect(mapStateToProps)
 )
 
-class Home extends React.Component {
-  componentDidMount () {
-    const { dispatch } = this.props
-    dispatch(getOrganizations())
-  }
-
-  render () {
-    const iconStyle = {display: 'block', margin: '0 auto'}
-    const styleHeight = { height: '450px', backgroundImage: 'url(images/plexus3-1280x720.jpg)', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }
-    const styleButtonBottom = { marginTop: '70px', marginBottom: '40px' }
-    const styleSubSlogan = {textShadow: '5px 5px 9px black', paddingTop: 0}
-    const styleClients = { maxHeight: '150px', maxWidth: '210px', display: 'block', margin: '20px auto 0px auto' }
-
-    const { organizations } = this.props
-
-    return (
-      <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
-        <CookieBanner />
-        <Header />
-        <MobileNavigation />
-        <div className='android-content mdl-layout__content'>
-          <div className='mdl-typography--text-center' style={styleHeight}>
-            <div className='logo-font android-slogan'>
-              <h1>Join the Global Financial Network!</h1>
+const TopView = () => (
+  <section id='slider' className='slider-parallax full-screen'>
+    <div className='full-screen' style={{backgroundSize: 'cover'}}>
+      <div className='container clearfix'>
+        <img src='images/new/slider-iphone.png' alt='' className='hidden-sm hidden-xs' data-style-lg='position: absolute; left: 0; bottom: 0; height: auto;' data-style-md='position: absolute; left: 0; bottom: 0; height: 450px;' />
+        <div className='vertical-middle no-fade'>
+          <div className='col-md-6 fright nobottommargin' data-animate='fadeIn'>
+            <div className='emphasis-title'>
+              <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'>Revolutionize the way every <strong>charity</strong> manages its expenses.</h1>
             </div>
-            <div className='logo-font android-sub-slogan mdl-color-text--white' style={styleSubSlogan}>
-              <h2>Simple financial management system with instant, certain, low-cost payments.</h2>
-            </div>
-            <div className='logo-font'>
-              <Link style={styleButtonBottom} className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' to={'/registration'}>
-                  Create your social account
+            <div>
+              <Link to={'/register'} className='button button-desc button-border button-rounded nomargin'>
+                <div>Create your account</div>
               </Link>
             </div>
           </div>
-          <div className='android-more-section'>
-            <div className='android-section-title mdl-typography--display-1-color-contrast'>More from SoTec</div>
-            <div className='android-card-container mdl-grid'>
-              <SubjectBox
-                title='Building Trust'
-                description='SoTec gives donors complete transparency and information regarding finance distribution in charitable and community projects.'
-                image='building_trust.png' />
-              <SubjectBox
-                title='Activating communities'
-                description='Helping local leaders to engage volunteers and fund projects.'
-                image='activating_community.jpeg' />
-              <SubjectBox
-                title='Financial Control'
-                description='Simple system supporting processing financial activities in organisations of any size.'
-                image='financial_control.jpeg' />
-              <SubjectBox
-                title='Fundraising Support'
-                description='Platform for social and charitable organisations to support their fundraising activities.'
-                image='fundraising.jpeg' />
-            </div>
-          </div>
-          <div className='sb-map-section'>
-            <Map organizations={organizations} />
-          </div>
-          <div className='android-customized-section'>
-            <div className='android-customized-section-text'>
-              <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>Build your Social Value and Trust</div>
-              <p className='mdl-typography--font-light'>
-                We enable organizations to send real-time payments across networks and operate within micropayments. SoTec works on the Open Bank technologies to improve transfer money around the social organizations. Our vision is to build the Global Financial Network around the world and move value the way it moves information today.
-                <br /><br /><br /><br />
-              </p>
-            </div>
-            <div className='android-customized-section-image' />
-          </div>
-          <div className='android-customized-section'>
-            <div className='android-customized-section-text'>
-              <div className='mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-phone'>
-                <img src='images/awards_icon100x100.png' alt='{title}' style={iconStyle} />
-                <div className='android-section-title mdl-typography--display-1-color-contrast'>Awards</div>
-                <div>
-                  <br />
-                  <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>OPC Live! Innovation Challenge 2017</div>
-                  <br />
-                  <br />
-                  <blockquote>
-                    <p lang='en' dir='ltr' className='mdl-typography--font-light'>
-                      Love the idea behind SoTec and ready to roll up sleeves to get this little beauty to market <a href='https://www.ixaris.com/sotec-wins-ixaris-b2b-innovation-challenge/'>Team @SoTec_UK Wins OPCLive!</a>
-                    </p>
-                    <cite>
-                      Alex Mifsud, CEO of Ixaris (@alexmifsud) <a href='https://twitter.com/alexmifsud/status/879970746616995840'>June 28, 2017</a>
-                    </cite>
-                  </blockquote>
-                  <br />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className='android-customized-section'>
-            <div className='android-card-container mdl-grid'>
-              <div className='mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet' />
-              <div className='mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--12-col-phone'>
-                <div className='android-customized-section-text'>
-                  <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>Our Partners</div>
-                  <div className='mdl-typography--font-light'>
-                    <a href='http://www.pinuk.online/en/pin-uk-c-i-c/'>
-                      <img src='images/pin-ik-logo.jpeg' alt='{title}' style={styleClients} />
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className='mdl-cell mdl-cell--5-col mdl-cell--5-col-tablet mdl-cell--12-col-phone'>
-                <div className='android-customized-section-text'>
-                  <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>Sponsors</div>
-                  <div className='mdl-typography--font-light'>
-                    <a href='https://www.ixaris.com/'>
-                      <img src='images/ixaris_logo.png' alt='{title}' style={styleClients} />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <br /><br /><br /><br />
-          </div>
-          <ContactForm />
-          <Footer />
         </div>
+      </div>
+    </div>
+  </section>
+)
+
+const Description = () => (
+  <div className='container clearfix'>
+    <div className='row topmargin-lg bottommargin-sm'>
+      <div className='heading-block center'>
+        <h2>Why do you need sotec?</h2>
+        <span className='divcenter'>The system is dedicated to non-profit and charity organizations to build your transparency and trust around payments.</span>
+      </div>
+      <div className='col-md-4 col-sm-6 bottommargin'>
+        <div className='feature-box fbox-right topmargin' data-animate='fadeIn'>
+          <div className='fbox-icon'>
+            <a href=''><i className='icon-line-heart' /></a>
+          </div>
+          <h3>Controlled</h3>
+          <p>Freeze cards and set spend limits. Take back control of your money.</p>
+        </div>
+        <div className='feature-box fbox-right topmargin' data-animate='fadeIn' data-delay='200'>
+          <div className='fbox-icon'>
+            <a href=''><i className='icon-line-paper' /></a>
+          </div>
+          <h3>Secure</h3>
+          <p>Cards lock to merchants, making them useless to buy.</p>
+        </div>
+        <div className='feature-box fbox-right topmargin' data-animate='fadeIn' data-delay='400'>
+          <div className='fbox-icon'>
+            <a href=''><i className='icon-line-layers' /></a>
+          </div>
+          <h3>Parallax Support</h3>
+          <p>Display your Content attractively using Parallax Sections with HTML5 Videos.</p>
+        </div>
+      </div>
+      <div className='col-md-4 hidden-sm bottommargin center'>
+        <img src='images/card_v2.png' alt='iphone 2' />
+      </div>
+      <div className='col-md-4 col-sm-6 bottommargin'>
+        <div className='feature-box topmargin' data-animate='fadeIn'>
+          <div className='fbox-icon'>
+            <a href=''><i className='icon-line-power' /></a>
+          </div>
+          <h3>Private</h3>
+          <p>Share charity spends only. Keep any sensitive information safe and private</p>
+        </div>
+        <div className='feature-box topmargin' data-animate='fadeIn' data-delay='200'>
+          <div className='fbox-icon'>
+            <a href=''><i className='icon-line-check' /></a>
+          </div>
+          <h3>Disposable</h3>
+          <p>Delete cards anytime, and kiss forgotten subscriptions goodbye.</p>
+        </div>
+        <div className='feature-box topmargin' data-animate='fadeIn' data-delay='400'>
+          <div className='fbox-icon'>
+            <a href=''><i className='icon-bulb' /></a>
+          </div>
+          <h3>Light &amp; Dark Color Schemes</h3>
+          <p>Change your Websites Primary Scheme instantly by simply adding the dark className.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+)
+
+const Explainer = () => (
+  <div className='row clearfix common-height'>
+    <div className='col-md-6 center col-padding' style={{ background: 'url("images/new/main-bg.jpg") center center no-repeat', backgroundSize: 'cover' }}>
+      <div>&nbsp;</div>
+    </div>
+    <div className='col-md-6 center col-padding' style={{ backgroundColor: '#F5F5F5' }}>
+      <div>
+        <div className='heading-block nobottomborder'>
+          <span className='before-heading color'>Easily Understandable &amp; Customizable.</span>
+          <h3>Walkthrough Videos &amp; Demos</h3>
+        </div>
+        <div className='center bottommargin'>
+          <a href='http://vimeo.com/101373765' data-lightbox='iframe' style={{ position: 'relative' }}>
+            <img src='images/new/video.jpg' alt='Video' />
+            <span className='i-overlay nobg'><img src='images/new/video-play.png' alt='Play' /></span>
+          </a>
+        </div>
+        <p className='lead nobottommargin'>Democracy inspire breakthroughs, Rosa Parks; inspiration raise awareness natural resources. Governance impact; transformative donation philanthropy, respect reproductive.</p>
+      </div>
+    </div>
+  </div>
+)
+
+const WhatSays = () => (
+  <div className='section parallax dark notopmargin nobottommargin' style={{ backgroundImage: 'url("images/new/home-testi-bg.jpg")', padding: '100px 0' }} data-stellar-background-ratio='0.4'>
+    <div className='heading-block center'>
+      <h3>What Says about sotec?</h3>
+    </div>
+    <div className='fslider testimonial testimonial-full' data-animation='fade' data-arrows='false'>
+      <div className='flexslider'>
+        <div className='slider-wrap'>
+          <div className='slide'>
+            <div className='sb-testi-image'>
+              <a href='https://www.ixaris.com/sotec-wins-ixaris-b2b-innovation-challenge/' target='_blank' rel='noopener noreferrer'><img src='images/logos/ixaris.png' alt='Customer Testimonails' /></a>
+            </div>
+            <div className='testi-content'>
+              <p style={{ fontSize: '24px' }}>Love the idea behind SoTec and ready to roll up sleeves to get this little beauty to market Team @SoTec_UK Wins OPCLive!</p>
+              <div className='testi-meta'>
+                Alex Mifsud
+                <span>CEO of Ixaris</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+)
+
+const HowStart = () => (
+  <div className='section dark notopmargin' style={{ paddingTop: '60px' }}>
+    <div className='container clearfix'>
+      <div className='heading-block center'>
+        <h2>Getting started with sotec</h2>
+        <span>Instruction how spending money on charity goods</span>
+      </div>
+      <div className='clear bottommargin-sm' />
+      <div className='col_one_fourth nobottommargin'>
+        <div className='feature-box fbox-center fbox-light fbox-effect nobottomborder'>
+          <div className='fbox-icon'>
+            <a href=''><i className='i-alt noborder icon-shop' /></a>
+          </div>
+          <h3>Create an account<span className='subtitle'>You can sign up and add your basic organization details</span></h3>
+        </div>
+      </div>
+      <div className='col_one_fourth nobottommargin'>
+        <div className='feature-box fbox-center fbox-light fbox-effect nobottomborder'>
+          <div className='fbox-icon'>
+            <a href=''><i className='i-alt noborder icon-wallet' /></a>
+          </div>
+          <h3>Add money to projects<span className='subtitle'>Transfer money from your bank account to your projects</span></h3>
+        </div>
+      </div>
+      <div className='col_one_fourth nobottommargin'>
+        <div className='feature-box fbox-center fbox-light fbox-effect nobottomborder'>
+          <div className='fbox-icon'>
+            <a href=''><i className='i-alt noborder icon-megaphone' /></a>
+          </div>
+          <h3>Distribute cards<span className='subtitle'>Transfer money around people involved in your projects</span></h3>
+        </div>
+      </div>
+      <div className='col_one_fourth nobottommargin col_last'>
+        <div className='feature-box fbox-center fbox-light fbox-effect nobottomborder'>
+          <div className='fbox-icon'>
+            <a href=''><i className='i-alt noborder icon-fire' /></a>
+          </div>
+          <h3>Start spending<span className='subtitle'>Use sotec card to pay anywhere on the internet and by contactless</span></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+)
+
+class Home extends React.Component {
+  render () {
+    return (
+      <div id='wrapper' className='clearfix'>
+        <CookieBanner />
+        <Header />
+        <TopView />
+        <section id='content'>
+          <div className='content-wrap'>
+            <Description />
+            <Explainer />
+            <WhatSays />
+
+            <div className='section notopmargin nobottommargin' style={{paddingBottom: '150px'}}>
+              <div className='hidden-sm hidden-xs' style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'transparent url("images/new/ipad-section.png") bottom right no-repeat' }} />
+              <div className='container clearfix' style={{ zIndex: 1 }}>
+                <div className='col-md-6 nobottommargin'>
+                  <div className='heading-block topmargin-sm'>
+                    <h2>Real-time spending overview</h2>
+                    <span>See all company spending in one place as it happens and sync it to your accounting system.</span>
+                  </div>
+                  <Link to={'/register'} className='button button-border button-rounded button-large button-dark noleftmargin'>Start Demo</Link>
+                </div>
+              </div>
+            </div>
+
+            <HowStart />
+            <NewsletterSubscribe />
+
+            <div id='section-buy' className='section page-section footer-stick'>
+              <div className='container clearfix'>
+                <div className='heading-block title-center nobottomborder'>
+                  <h2>Enough? Start Building!</h2>
+                  <span>Now that you have read all the Tid-Bits, so start with a plan</span>
+                </div>
+                <div className='center'>
+                  <Link to={'/register'} data-animate='tada' className='button button-3d button-teal button-xlarge nobottommargin'><i className='icon-star3' />Start your FREE</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+        <Footer />
       </div>
     )
   }

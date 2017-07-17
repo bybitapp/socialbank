@@ -9,22 +9,25 @@ import ReduxToastr from 'react-redux-toastr'
 
 import reducer from './reducers'
 
-// components
+// pages
 import Home from './page/Home'
 import Terms from './page/Terms'
+import Privacy from './page/Privacy'
 import Contact from './page/Contact'
 import Help from './page/Help'
 import Login from './page/Login'
 import Logout from './page/Logout'
-import Registration from './page/Registration'
-import Me from './page/Me'
-import History from './page/History'
+import Register from './page/Register'
 import Public from './page/Public'
-import Projects from './page/Projects'
-import Cards from './page/Cards'
-import Organization from './page/Organization'
-import Banks from './page/Banks'
-import Users from './page/Users'
+
+// admin
+import Me from './page/admin/Me'
+import History from './page/admin/History'
+import Projects from './page/admin/Projects'
+import Cards from './page/admin/Cards'
+import Organization from './page/admin/Organization'
+import Banks from './page/admin/Banks'
+import Users from './page/admin/Users'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const store = createStore(reducer, composeEnhancers(
@@ -38,8 +41,9 @@ const App = () => (
         <Switch>
           <Route path='/login' component={Login} />
           <Route path='/logout' component={Logout} />
-          <Route path='/registration' component={Registration} />
+          <Route path='/register' component={Register} />
           <Route path='/terms' component={Terms} />
+          <Route path='/privacy' component={Privacy} />
           <Route path='/help' component={Help} />
           <Route path='/contact' component={Contact} />
           <Route path='/me' component={Me} />
@@ -64,7 +68,12 @@ const App = () => (
   </Provider>
 )
 
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-)
+/* eslint-disable */
+$(document).ready(function () {
+  ReactDOM.render(
+    <App />,
+    document.getElementById('root')
+  )
+  loadUI()
+})
+/* eslint-enable */

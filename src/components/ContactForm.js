@@ -44,42 +44,24 @@ const enhance = compose(
 
 class ContactForm extends React.Component {
   render () {
-    const styleText = {textAlign: 'justify', padding: '0 50px'}
-    const styleButton = {textAlign: 'right', paddingTop: '10px'}
-    const styleError = {textAlign: 'center', width: '100%'}
-    const styleColor = {backgroundColor: 'white'}
-    const anchorText = {textDecoration: 'none', color: '#8bc34a'}
     const { handleSubmit, error } = this.props
-
     return (
-      <div className='android-more-section' style={styleColor}>
-        <div className='page-content'>
-          <div style={styleText}>
-            {error && <div style={styleError}><span className='sb-error'>{error}</span></div>}
-            <form onSubmit={handleSubmit}>
-              <div className='mdl-grid'>
-                <div className='mdl-cell mdl-cell--4-col'>
-                  <div className='mdl-typography--font-light mdl-typography--display-1-color-contrast'>Connect with us</div>
-                  <br />
-                  Email: <a style={anchorText} href='mailto:contact@sotec.io'>contact@sotec.io</a>
-                  <br />
-                  Twitter: <a style={anchorText} href='https://twitter.com/SoTec_UK'>@SoTec_UK</a>
-                </div>
-                <div className='mdl-cell mdl-cell--8-col'>
-                  <br />
-                  <Field name='name' label='Name' component={Input} />
-                  <Field name='email' label='Email' component={Input} />
-                  <Field name='message' label='Message' component={TextField} />
-                  <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
-                    <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' type='submit'>
-                    Submit
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </form>
+      <div className='postcontent nobottommargin'>
+        {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
+        <h3>Send us an Email</h3>
+        <div id='contact-form-result' data-notify-type='success' data-notify-msg='<i className=icon-ok-sign></i> Message Sent Successfully!' />
+        <form className='nobottommargin' onSubmit={handleSubmit}>
+          <div className='form-process' />
+          <Field name='name' label='Name' component={Input} />
+          <Field name='email' label='Email' component={Input} />
+          <Field name='message' label='Message' component={TextField} />
+          <div className='col_full hidden'>
+            <input type='text' id='template-contactform-botcheck' name='template-contactform-botcheck' value='' className='sm-form-control' />
           </div>
-        </div>
+          <div className='col_full'>
+            <button className='button button-3d nomargin' type='submit'>Send Message</button>
+          </div>
+        </form>
       </div>
     )
   }

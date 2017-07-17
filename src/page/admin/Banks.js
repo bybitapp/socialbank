@@ -2,13 +2,12 @@ import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { change } from 'redux-form'
-import Header from '../components/Header'
-import MobileNavigation from '../components/MobileNavigation'
-import Footer from '../components/Footer'
-import MenuSideBar from '../components/MenuSideBar'
-import BankForm from '../components/BankForm'
-import BankRemoveForm from '../components/BankRemoveForm'
-import { getBankAccounts } from '../actions'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+import MenuSideBar from '../../components/MenuSideBar'
+import BankForm from '../../components/BankForm'
+import BankRemoveForm from '../../components/BankRemoveForm'
+import { getBankAccounts } from '../../actions'
 
 function mapStateToProps (state) {
   const { banks } = state
@@ -90,32 +89,33 @@ class Banks extends React.Component {
     ]
 
     return (
-      <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
+      <div id='wrapper' className='clearfix'>
         <Header />
-        <MobileNavigation />
         <BankForm open={(modal === 'bankModal')} handleClose={() => setModal(null)} />
         <BankRemoveForm open={(modal === 'bankRemoveModal')} handleClose={() => setModal(null)} />
-        <main className='mdl-layout__content'>
-          <div className='page-content'>
-            <div className='mdl-grid'>
-              <div className='mdl-cell mdl-cell--3-col'>
-                <MenuSideBar />
-              </div>
-              <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
-                <div style={stylePadding}>
-                  <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
-                    <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
-                      onClick={() => setModal('bankModal')}>
-                        Add Bank
-                    </button>
+        <section id='content'>
+          <main className='mdl-layout__content' style={{ width: '100%' }}>
+            <div className='page-content'>
+              <div className='mdl-grid'>
+                <div className='mdl-cell mdl-cell--3-col'>
+                  <MenuSideBar />
+                </div>
+                <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
+                  <div style={stylePadding}>
+                    <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
+                      <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
+                        onClick={() => setModal('bankModal')}>
+                          Add Bank
+                      </button>
+                    </div>
+                    <BankTable banks={banks} styleTable={styleTable} actions={actions} />
                   </div>
-                  <BankTable banks={banks} styleTable={styleTable} actions={actions} />
                 </div>
               </div>
             </div>
-          </div>
-          <Footer />
-        </main>
+          </main>
+        </section>
+        <Footer />
       </div>
     )
   }

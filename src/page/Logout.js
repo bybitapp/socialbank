@@ -5,8 +5,9 @@ import { logout } from '../actions'
 class Logout extends Component {
   componentWillMount () {
     const { dispatch } = this.props
-    dispatch(logout())
-    this.props.history.push('/')
+    dispatch(logout(() => {
+      window.location = '/'
+    }))
   }
 
   render () {

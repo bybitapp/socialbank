@@ -1,8 +1,8 @@
 import React from 'react'
 
-export default ({ input, label, name, type = 'text', meta: {touched, error} }) => (
-  <div className='mdl-textfield mdl-js-textfield'>
-    <textarea className='mdl-textfield__input' type='{type}' id='{name}' rows='3' {...input} />
-    <label className='mdl-textfield__label' htmlFor='{name}'>{label}</label>
-    {touched && (error && <span className='sb-textfield__error'>{error}</span>)}
+export default ({ input, label, name, className = 'col_full', type = 'text', meta: {touched, error} }) => (
+  <div className={className}>
+    <label htmlFor={name}>{label} <small>*</small></label>
+    <textarea className='required sm-form-control' id='{name}' rows='6' cols='30' {...input} />
+    {touched && (error && <span className='sb-text-error'>{error}</span>)}
   </div>)

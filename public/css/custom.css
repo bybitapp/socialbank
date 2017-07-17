@@ -1,0 +1,79 @@
+.sb-text-error {
+    color: #d50000;
+    position: absolute;
+    font-size: 12px;
+    margin-top: 3px;
+    display: block;
+}
+
+.sb-error {
+    color: #d50000;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.sb-details-button {
+    text-align: right;
+    padding-top: 35px;
+}
+
+.sb-details-button-bottom {
+    text-align: right;
+    padding: 15px;
+}
+
+.mdl-list__item .sb-icon-list_item,
+.sb-menu-table .sb-icon-list_item {
+    color: #757575;
+    background: none;
+}
+
+/* MODAL FORMS */
+.sb-modal-form .sb-footer {
+    padding: 16px 0 16px 16px;
+}
+
+.sb-modal-form .mdl-mega-footer__bottom-section,
+.sb-modal-form .mdl-mega-footer__link-list {
+    margin: 0;
+    padding: 0;
+}
+
+.sb-modal-form button {
+    min-width: 90px;
+}
+
+.sb-modal-form .mdl-layout__header-row {
+    padding: 0 20px 0;
+}
+
+.sb-modal-form .mdl-mega-footer__link-list {
+    float: right;
+}
+
+.sb-modal-form .page-content {
+    padding: 16px;
+    min-width: 400px;
+}
+
+.sb-modal-form .mdl-layout__header .mdl-layout-title {
+  color: #FFF
+}
+
+
+.sb-modal-form input:focus,
+.sb-modal-form textarea:focus  {
+    outline: none;
+    border-bottom: 1px solid rgb(0,150,136);
+}
+
+.sb-menu-table a {
+  cursor: pointer
+}
+
+.sb-testi-image {
+  max-width: 144px;
+  max-height: 72px;
+  margin: 0 auto 20px;
+}

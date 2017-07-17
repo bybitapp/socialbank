@@ -36,7 +36,6 @@ class userRemoveForm extends React.Component {
   }
 
   render () {
-    const styleCenter = {textAlign: 'center'}
     const { handleClose, open, handleSubmit, error } = this.props
 
     return (
@@ -55,7 +54,7 @@ class userRemoveForm extends React.Component {
               </div>
             </header>
             <main className='mdl-layout__content'>
-              <div className='page-content' style={styleCenter}>
+              <div className='page-content'>
                 {error && <span className='sb-error'>{error}</span>}
                 <Field name='uid' type='hidden' component='input' />
                 <h5>Do you want to remove selected user from your organization ?</h5>
