@@ -133,8 +133,8 @@ const WhatSays = () => (
       <div className='flexslider'>
         <div className='slider-wrap'>
           <div className='slide'>
-            <div className='testi-image'>
-              <a href=''><img src='images/alex_mifsud.jpg' alt='Customer Testimonails' /></a>
+            <div className='sb-testi-image'>
+              <a href=''><img src='images/ixaris_logo.png' alt='Customer Testimonails' /></a>
             </div>
             <div className='testi-content'>
               <p style={{ fontSize: '24px' }}>Love the idea behind SoTec and ready to roll up sleeves to get this little beauty to market Team @SoTec_UK Wins OPCLive!</p>
