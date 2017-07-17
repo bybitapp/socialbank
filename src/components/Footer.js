@@ -7,7 +7,7 @@ class Footer extends React.Component {
         <div id='copyrights' style={{ fontSize: '16px' }}>
           <div className='container clearfix'>
             <div className='col_half'>
-              Copyrights &copy; 2017 All Rights Reserved by SoTec.<br />
+              Copyrights &copy; 2017 All Rights Reserved by sotec.<br />
               <div className='copyright-links'>
                 <a href='/terms'>Terms of Use</a> / <a href='/privacy'>Privacy Policy</a>
               </div>
