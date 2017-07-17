@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 // import ContactForm from '../components/ContactForm'
 // import SubjectBox from '../components/SubjectBox'
 
+import NewsletterSubscribe from '../components/NewsletterSubscribe'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import CookieBanner from '../components/CookieBanner'
@@ -193,24 +194,6 @@ const HowStart = () => (
   </div>
 )
 
-const Subscription = () => (
-  <div className='container clearfix'>
-    <div className='heading-block center'>
-      <h3>Subscribe for more <span>Updates</span>.</h3>
-    </div>
-    <div id='widget-subscribe-form2-result' data-notify-type='success' data-notify-msg='' />
-    <form id='widget-subscribe-form2' action='include/subscribe.php' method='post' className='nobottommargin'>
-      <div className='input-group input-group-lg divcenter' style={{ maxWidth: '600px' }}>
-        <span className='input-group-addon'><i className='icon-email2' /></span>
-        <input type='email' name='widget-subscribe-form-email' className='form-control required email' placeholder='Enter your Email' />
-        <span className='input-group-btn'>
-          <button className='btn btn-default' type='submit'>Subscribe Now</button>
-        </span>
-      </div>
-    </form>
-  </div>
-)
-
 class Home extends React.Component {
   render () {
     return (
@@ -238,7 +221,7 @@ class Home extends React.Component {
             </div>
 
             <HowStart />
-            <Subscription />
+            <NewsletterSubscribe />
 
             <div id='section-buy' className='section page-section footer-stick'>
               <div className='container clearfix'>
