@@ -55,7 +55,7 @@ const App = () => (
           <Route path='/banks' component={Banks} />
           <Route path='/users' component={Users} />
           <Route path='/public/o/:id' component={Public} />
-          <Route path='/' component={Home} />
+          <Route path='/' exact component={Home} />
           <Route path='*' component={NotFound} />
         </Switch>
       </Router>
