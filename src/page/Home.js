@@ -133,7 +133,7 @@ const WhatSays = () => (
         <div className='slider-wrap'>
           <div className='slide'>
             <div className='sb-testi-image'>
-              <a href='https://www.ixaris.com/sotec-wins-ixaris-b2b-innovation-challenge/' target='_blank'><img src='images/logos/ixaris.png' alt='Customer Testimonails' /></a>
+              <a href='https://www.ixaris.com/sotec-wins-ixaris-b2b-innovation-challenge/' target='_blank' rel='noopener noreferrer'><img src='images/logos/ixaris.png' alt='Customer Testimonails' /></a>
             </div>
             <div className='testi-content'>
               <p style={{ fontSize: '24px' }}>Love the idea behind SoTec and ready to roll up sleeves to get this little beauty to market Team @SoTec_UK Wins OPCLive!</p>

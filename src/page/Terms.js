@@ -5,16 +5,22 @@ import Footer from '../components/Footer'
 
 class Terms extends React.Component {
   render () {
-    const styleText = {textAlign: 'justify'}
-
     return (
-      <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
+      <div id='wrapper' className='clearfix'>
         <Header />
-        <main className='mdl-layout__content'>
-          <div className='page-content container'>
-            <div className='sb-form-content sb-page' style={styleText}>
+        <section id='page-title'>
+          <div className='container clearfix'>
+            <h1>Terms and Conditions</h1>
+            <ol className='breadcrumb'>
+              <li><a href='/'>Home</a></li>
+              <li className='active'>Terms and Conditions</li>
+            </ol>
+          </div>
+        </section>
+        <section id='content'>
+          <div className='content-wrap'>
+            <div className='container clearfix'>
               <p className='text-center' />
-              <h3>Terms of Service</h3>
               <ol>
                 <li>These Terms
                   <ul>
@@ -113,8 +119,8 @@ class Terms extends React.Component {
               <p>If you have any queries please contact us at contact (at) sotec (dot) io</p>
             </div>
           </div>
-          <Footer />
-        </main>
+        </section>
+        <Footer />
       </div>
     )
   }
