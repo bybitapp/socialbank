@@ -41,29 +41,15 @@ class Header extends React.Component {
             <nav id='primary-menu' >
               {Auth.isUserAuthenticated() ? (
                 <ul>
-                  <li>
-                    <Link to={'/me'}>
-                      Account
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={'/contact'}>Contact</Link>
-                  </li>
-                  <li>
-                    <Link to={'/logout'}>Logout</Link>
-                  </li>
+                  <li><Link to={'/me'}>Account</Link></li>
+                  <li><Link to={'/contact'}>Contact</Link></li>
+                  <li><Link to={'/logout'}>Logout</Link></li>
                 </ul>
               ) : (
                 <ul>
-                  <li>
-                    <Link to={'/contact'}>Contact</Link>
-                  </li>
-                  <li>
-                    <Link to={'/login'}>Login</Link>
-                  </li>
-                  <li>
-                    <Link to={'/register'}>Register</Link>
-                  </li>
+                  <li><Link to={'/contact'}>Contact</Link></li>
+                  <li><a href='/login'>Login</a></li>
+                  <li><Link to={'/register'}>Register</Link></li>
                 </ul>
               )}
             </nav>

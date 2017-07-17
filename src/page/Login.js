@@ -3,10 +3,7 @@ import { compose } from 'recompose'
 import { reduxForm, Field, SubmissionError } from 'redux-form'
 import {toastr} from 'react-redux-toastr'
 
-import MobileNavigation from '../components/MobileNavigation'
 import {EMAIL} from '../constants/Validation'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
 import Input from '../components/Input'
 import { login } from '../actions'
 
@@ -47,22 +44,34 @@ class Login extends React.Component {
   render () {
     const { handleSubmit, error } = this.props
     return (
-      <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
-        <Header />
-        <MobileNavigation />
-        <main className='mdl-layout__content'>
-          <div className='page-content'>
-            <div className='sb-form-content sb-login'>
-              {error && <span className='sb-error'>{error}</span>}
-              <form onSubmit={handleSubmit}>
-                <Field name='email' label='Email' component={Input} />
-                <Field name='password' label='Password' component={Input} type='password' />
-                <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' type='submit'>Login</button>
-              </form>
+      <div id='wrapper' className='clearfix'>
+        <section id='content'>
+          <div className='content-wrap nopadding'>
+            <div className='section nopadding nomargin' style={{ width: '100%', height: '100%', position: 'absolute', left: 0, top: 0, background: '#444' }} />
+            <div className='section nobg full-screen nopadding nomargin'>
+              <div className='container vertical-middle divcenter clearfix'>
+                <div className='row center'>
+                  <a href='/'><img src='images/logo-dark.png' alt='Canvas Logo' /></a>
+                </div>
+                <div className='panel panel-default divcenter noradius noborder' style={{ maxWidth: '400px' }}>
+                  <div className='panel-body' style={{ padding: '40px' }}>
+                    <form className='nobottommargin' onSubmit={handleSubmit} >
+                      <h3 style={{ textAlign: 'center' }}>Login to your Account</h3>
+                      {error && <h3 className='sb-error'>{error}</h3>}
+                      <Field name='email' label='Email:' component={Input} />
+                      <Field name='password' label='Password:' component={Input} type='password' />
+                      <div className='col_full nobottommargin'>
+                        <button className='button button-3d button-black nomargin' type='submit'>Login</button>
+                        <a href='' className='fright'>Forgot Password?</a>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div className='row center dark'><small style={{ fontSize: '100%' }}>Copyrights &copy; All Rights Reserved by Canvas Inc.</small></div>
+              </div>
             </div>
           </div>
-        </main>
-        <Footer />
+        </section>
       </div>
     )
   }

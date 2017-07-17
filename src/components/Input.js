@@ -2,15 +2,15 @@ import React from 'react'
 
 class Input extends React.Component {
   render () {
-    const { input, label, name, type = 'text', disabled = false, meta: {touched, error} } = this.props
-    const styleLabel = {visibility: 'visible'}
+    const { input, label, name, type = 'text' } = this.props
+    const { disabled = false, meta: {touched, error} } = this.props
     return (
-      <div className='mdl-textfield mdl-js-textfield'>
-        {disabled && <input className='mdl-textfield__input' type={type} {...input} id={name} disabled />}
-        {!disabled && <input className='mdl-textfield__input' type={type} {...input} id={name} />}
-        <label className='mdl-textfield__label' style={styleLabel} htmlFor={name}>{label}</label>
-        {touched && (error && <span className='sb-textfield__error'>{error}</span>)}
-      </div>)
+      <div className='col_full'>
+        <label htmlFor={name}>{label}</label>
+        <input type={type} {...input} className='form-control not-dark' disabled={disabled} />
+        {touched && (error && <span className='sb-text-error'>{error}</span>)}
+      </div>
+    )
   }
 }
 

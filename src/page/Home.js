@@ -46,7 +46,7 @@ const Description = () => (
     <div className='row topmargin-lg bottommargin-sm'>
       <div className='heading-block center'>
         <h2>Why do you need sotec?</h2>
-        <span className='divcenter'>The system dedicated is to non-profit and charity organizations to build your transparency and trust around payments.</span>
+        <span className='divcenter'>The system is dedicated to non-profit and charity organizations to build your transparency and trust around payments.</span>
       </div>
       <div className='col-md-4 col-sm-6 bottommargin'>
         <div className='feature-box fbox-right topmargin' data-animate='fadeIn'>
