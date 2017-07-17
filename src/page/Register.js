@@ -40,7 +40,9 @@ const enhance = compose(
         dispatch(registerAccount(values, (_error) => {
           if (!_error) {
             toastr.success('Thank you for registering with us. Please login to proceed')
-            ownProps.history.push('/login')
+            setTimeout(() => {
+              window.location = '/login'
+            }, 3000)
             resolve()
           } else {
             reject(new SubmissionError({_error}))
