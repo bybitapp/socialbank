@@ -77,3 +77,13 @@
   max-height: 72px;
   margin: 0 auto 20px;
 }
+
+.button.button-border {
+    border: 2px solid #24AEF2;
+    color: #24AEF2;
+}
+
+.feature-box .fbox-icon i,
+.feature-box .fbox-icon img {
+    background-color: #24AEF2;
+}

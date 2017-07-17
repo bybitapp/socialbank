@@ -24,7 +24,7 @@ const TopView = () => (
         <div className='vertical-middle no-fade'>
           <div className='col-md-6 fright nobottommargin' data-animate='fadeIn'>
             <div className='emphasis-title'>
-              <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'>Revolutionize the way every <strong>charity</strong> manages its expenses.</h1>
+              <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'>Revolutionize the way every <strong style={{ color: '#00D0A7' }}>charity</strong> manages its expenses.</h1>
             </div>
             <div>
               <Link to={'/register'} className='button button-desc button-border button-rounded nomargin'>
@@ -48,14 +48,14 @@ const Description = () => (
       <div className='col-md-4 col-sm-6 bottommargin'>
         <div className='feature-box fbox-right topmargin' data-animate='fadeIn'>
           <div className='fbox-icon'>
-            <a href=''><i className='icon-line-heart' /></a>
+            <a href=''><i className='icon-home' /></a>
           </div>
           <h3>Controlled</h3>
           <p>Freeze cards and set spend limits. Take back control of your money.</p>
         </div>
         <div className='feature-box fbox-right topmargin' data-animate='fadeIn' data-delay='200'>
           <div className='fbox-icon'>
-            <a href=''><i className='icon-line-paper' /></a>
+            <a href=''><i className='icon-diamond' /></a>
           </div>
           <h3>Secure</h3>
           <p>Cards lock to merchants, making them useless to buy.</p>
@@ -74,14 +74,14 @@ const Description = () => (
       <div className='col-md-4 col-sm-6 bottommargin'>
         <div className='feature-box topmargin' data-animate='fadeIn'>
           <div className='fbox-icon'>
-            <a href=''><i className='icon-line-power' /></a>
+            <a href=''><i className='icon-wallet' /></a>
           </div>
           <h3>Private</h3>
           <p>Share charity spends only. Keep any sensitive information safe and private</p>
         </div>
         <div className='feature-box topmargin' data-animate='fadeIn' data-delay='200'>
           <div className='fbox-icon'>
-            <a href=''><i className='icon-line-check' /></a>
+            <a href=''><i className='icon-lock' /></a>
           </div>
           <h3>Disposable</h3>
           <p>Delete cards anytime, and kiss forgotten subscriptions goodbye.</p>
@@ -158,7 +158,7 @@ const HowStart = () => (
       <div className='col_one_fourth nobottommargin'>
         <div className='feature-box fbox-center fbox-light fbox-effect nobottomborder'>
           <div className='fbox-icon'>
-            <a href=''><i className='i-alt noborder icon-shop' /></a>
+            <a href=''><i className='i-alt noborder icon-wallet' /></a>
           </div>
           <h3>Create an account<span className='subtitle'>You can sign up and add your basic organization details</span></h3>
         </div>
@@ -166,7 +166,7 @@ const HowStart = () => (
       <div className='col_one_fourth nobottommargin'>
         <div className='feature-box fbox-center fbox-light fbox-effect nobottomborder'>
           <div className='fbox-icon'>
-            <a href=''><i className='i-alt noborder icon-wallet' /></a>
+            <a href=''><i className='i-alt noborder icon-money' /></a>
           </div>
           <h3>Add money to projects<span className='subtitle'>Transfer money from your bank account to your projects</span></h3>
         </div>
@@ -174,7 +174,7 @@ const HowStart = () => (
       <div className='col_one_fourth nobottommargin'>
         <div className='feature-box fbox-center fbox-light fbox-effect nobottomborder'>
           <div className='fbox-icon'>
-            <a href=''><i className='i-alt noborder icon-megaphone' /></a>
+            <a href=''><i className='i-alt noborder icon-user' /></a>
           </div>
           <h3>Distribute cards<span className='subtitle'>Transfer money around people involved in your projects</span></h3>
         </div>
@@ -182,7 +182,7 @@ const HowStart = () => (
       <div className='col_one_fourth nobottommargin col_last'>
         <div className='feature-box fbox-center fbox-light fbox-effect nobottomborder'>
           <div className='fbox-icon'>
-            <a href=''><i className='i-alt noborder icon-fire' /></a>
+            <a href=''><i className='i-alt noborder icon-shop' /></a>
           </div>
           <h3>Start spending<span className='subtitle'>Use sotec card to pay anywhere on the internet and by contactless</span></h3>
         </div>
@@ -227,7 +227,7 @@ class Home extends React.Component {
                   <span>Now that you have read all the Tid-Bits, so start with a plan</span>
                 </div>
                 <div className='center'>
-                  <Link to={'/register'} data-animate='tada' className='button button-3d button-teal button-xlarge nobottommargin'><i className='icon-star3' />Start your FREE</Link>
+                  <Link to={'/register'} data-animate='tada' className='button button-3d button-teal button-xlarge nobottommargin' style={{ backgroundColor: '#EB534D' }}><i className='icon-star3' />Start your FREE</Link>
                 </div>
               </div>
             </div>
