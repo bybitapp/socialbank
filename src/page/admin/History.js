@@ -89,36 +89,38 @@ class History extends React.Component {
     })
 
     return (
-      <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
+      <div id='wrapper' className='clearfix'>
         <Header />
-        <main className='mdl-layout__content'>
-          <div className='page-content'>
-            <div className='mdl-grid'>
-              <div className='mdl-cell mdl-cell--3-col'>
-                <MenuSideBar />
-              </div>
-              <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
-                <div style={stylePadding}>
-                  { isEmpty(projects)
-                    ? <p className='sb-no-project'>No available projects</p>
-                    : (
-                      <div>
-                        <div className='mdl-grid'>
-                          <div className='mdl-cell mdl-cell--9-col'>
-                            <Field name='project' label='Project Name' component={Select} items={projectList} />
+        <section id='content'>
+          <main className='mdl-layout__content' style={{ width: '100%' }}>
+            <div className='page-content'>
+              <div className='mdl-grid'>
+                <div className='mdl-cell mdl-cell--3-col'>
+                  <MenuSideBar />
+                </div>
+                <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
+                  <div style={stylePadding}>
+                    { isEmpty(projects)
+                      ? <p className='sb-no-project'>No available projects</p>
+                      : (
+                        <div>
+                          <div className='mdl-grid'>
+                            <div className='mdl-cell mdl-cell--9-col'>
+                              <Field name='project' label='Project Name' component={Select} items={projectList} />
+                            </div>
+                            <div className='mdl-cell mdl-cell--3-col' />
                           </div>
-                          <div className='mdl-cell mdl-cell--3-col' />
+                          <HistoryTable transactions={history} styleTable={styleTable} />
                         </div>
-                        <HistoryTable transactions={history} styleTable={styleTable} />
-                      </div>
-                    )
-                  }
+                      )
+                    }
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <Footer />
-        </main>
+          </main>
+        </section>
+        <Footer />
       </div>
     )
   }

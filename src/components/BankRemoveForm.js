@@ -37,7 +37,6 @@ class BankRemoveForm extends React.Component {
   }
 
   render () {
-    const styleCenter = {textAlign: 'center'}
     const { handleClose, open, handleSubmit, error } = this.props
 
     return (
@@ -56,8 +55,8 @@ class BankRemoveForm extends React.Component {
               </div>
             </header>
             <main className='mdl-layout__content'>
-              <div className='page-content' style={styleCenter}>
-                {error && <span className='sb-error'>{error}</span>}
+              <div className='page-content'>
+                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                 <Field name='bid' type='hidden' component='input' />
                 <h5>Do you want to remove selected bank ?</h5>
               </div>

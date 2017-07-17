@@ -205,6 +205,7 @@ export const logout = (cb) => (dispatch, getState) => {
   return server.logout((ex, data) => {
     Auth.deauthenticateUser()
     dispatch({type: types.LOGOUT_SUCCESS})
+    cb()
   })
 }
 

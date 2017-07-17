@@ -66,7 +66,6 @@ class ProjectForm extends React.Component {
   }
 
   render () {
-    const styleCenter = {textAlign: 'center'}
     const { handleClose, open, handleSubmit, error } = this.props
 
     return (
@@ -85,8 +84,8 @@ class ProjectForm extends React.Component {
               </div>
             </header>
             <main className='mdl-layout__content'>
-              <div className='page-content' style={styleCenter}>
-                {error && <span className='sb-error'>{error}</span>}
+              <div className='page-content'>
+                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                 <Field name='pid' type='hidden' component='input' />
                 <Field name='name' label='Project Name' component={Input} />
                 <Field name='access' label='Project Access' component={Select} items={projectAccess} />

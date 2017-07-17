@@ -8,13 +8,13 @@ class Select extends React.Component {
   }
 
   render () {
-    const { input, name, label, items = [] } = this.props
+    const { input, name, label, items = [], className = 'col_full' } = this.props
     return (
-      <div className='mdl-textfield mdl-js-textfield mdl-textfield--floating-label'>
-        <select {...input} className='mdl-textfield__input'>
+      <div className={className}>
+        <label htmlFor={name}>{label}</label>
+        <select {...input} className='sm-form-control'>
           {items.map(this.renderSelectOptions)}
         </select>
-        <label className='mdl-textfield__label' htmlFor={name}>{label}</label>
       </div>
     )
   }
