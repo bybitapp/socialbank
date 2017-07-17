@@ -53,15 +53,15 @@ const Description = () => (
           <div className='fbox-icon'>
             <a href=''><i className='icon-line-heart' /></a>
           </div>
-          <h3>Boxed &amp; Wide Layouts</h3>
-          <p>Stretch your Website to the Full Width or make it boxed to surprise your visitors.</p>
+          <h3>Controlled</h3>
+          <p>Freeze cards and set spend limits. Take back control of your money.</p>
         </div>
         <div className='feature-box fbox-right topmargin' data-animate='fadeIn' data-delay='200'>
           <div className='fbox-icon'>
             <a href=''><i className='icon-line-paper' /></a>
           </div>
-          <h3>Extensive Documentation</h3>
-          <p>We have covered each &amp; everything in our Docs including Videos &amp; Screenshots.</p>
+          <h3>Secure</h3>
+          <p>Cards lock to merchants, making them useless to buy.</p>
         </div>
         <div className='feature-box fbox-right topmargin' data-animate='fadeIn' data-delay='400'>
           <div className='fbox-icon'>
@@ -79,15 +79,15 @@ const Description = () => (
           <div className='fbox-icon'>
             <a href=''><i className='icon-line-power' /></a>
           </div>
-          <h3>HTML5 Video</h3>
-          <p>Canvas provides support for Native HTML5 Videos that can be added to a Background.</p>
+          <h3>Private</h3>
+          <p>Share charity spends only. Keep any sensitive information safe and private</p>
         </div>
         <div className='feature-box topmargin' data-animate='fadeIn' data-delay='200'>
           <div className='fbox-icon'>
             <a href=''><i className='icon-line-check' /></a>
           </div>
-          <h3>Endless Possibilities</h3>
-          <p>Complete control on each &amp; every element that provides endless customization.</p>
+          <h3>Disposable</h3>
+          <p>Delete cards anytime, and kiss forgotten subscriptions goodbye.</p>
         </div>
         <div className='feature-box topmargin' data-animate='fadeIn' data-delay='400'>
           <div className='fbox-icon'>
@@ -134,7 +134,7 @@ const WhatSays = () => (
         <div className='slider-wrap'>
           <div className='slide'>
             <div className='testi-image'>
-              <a href=''><img src='images/new/3.jpg' alt='Customer Testimonails' /></a>
+              <a href=''><img src='images/alex_mifsud.jpg' alt='Customer Testimonails' /></a>
             </div>
             <div className='testi-content'>
               <p style={{ fontSize: '24px' }}>Love the idea behind SoTec and ready to roll up sleeves to get this little beauty to market Team @SoTec_UK Wins OPCLive!</p>
