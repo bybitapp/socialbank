@@ -4,7 +4,7 @@ class Footer extends React.Component {
   render () {
     return (
       <footer id='footer' className='dark'>
-        <div id='copyrights'>
+        <div id='copyrights' style={{ fontSize: '16px' }}>
           <div className='container clearfix'>
             <div className='col_half'>
               Copyrights &copy; 2017 All Rights Reserved by SoTec.<br />
@@ -24,11 +24,9 @@ class Footer extends React.Component {
                 </a>
               </div>
               <div className='clear' />
-              <i className='icon-envelope2' />
-              <a href='mailto:contact@sotec.io'> contact@sotec.io</a>
+              <i className='icon-envelope2' /> contact@sotec.io
               <span className='middot'>&middot;</span>
-              <i className='icon-headphones' />
-              <a href='tel:+44 7424 760 589'> +44 7424 760 589</a>
+              <i className='icon-headphones' /> +44 7424 760 589
             </div>
           </div>
         </div>

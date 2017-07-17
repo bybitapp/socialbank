@@ -56,8 +56,8 @@ class Login extends React.Component {
                 <div className='panel panel-default divcenter noradius noborder' style={{ maxWidth: '400px' }}>
                   <div className='panel-body' style={{ padding: '40px' }}>
                     <form className='nobottommargin' onSubmit={handleSubmit} >
+                      {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                       <h3 style={{ textAlign: 'center' }}>Login to your Account</h3>
-                      {error && <h3 className='sb-error'>{error}</h3>}
                       <Field name='email' label='Email:' component={Input} />
                       <Field name='password' label='Password:' component={Input} type='password' />
                       <div className='col_full nobottommargin'>
