@@ -8,14 +8,20 @@ class About extends React.Component {
     const styleText = {textAlign: 'justify'}
 
     return (
-      <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
+      <div id='wrapper' className='clearfix'>
         <Header />
-        <main className='mdl-layout__content'>
-          <div className='page-content container'>
-            <div className='sb-form-content sb-page' style={styleText}>
-              <p className='text-center' />
-              <h3>Privacy and Data Protection Policy</h3>
-              <p />
+        <section id='page-title'>
+          <div className='container clearfix'>
+            <h1>Privacy and Data Protection Policy</h1>
+            <ol className='breadcrumb'>
+              <li><a href='/'>Home</a></li>
+              <li className='active'>Privacy</li>
+            </ol>
+          </div>
+        </section>
+        <section id='content'>
+          <div className='content-wrap'>
+            <div className='container clearfix'>
               <p>1. General</p>
               <p>1.1 SoTec (“we” or “us”) take the privacy of your information very seriously. Our privacy and data protection policy (“Privacy Policy”) is designed to tell you about our practices regarding the collection,
                   use and disclosure of information that you may provide to us.
@@ -88,8 +94,8 @@ class About extends React.Component {
               <p>If at any time you would like to contact us with your views about our privacy practices, or with any enquiry relating to your personal information, you can do so by way of our contact page.</p>
             </div>
           </div>
-          <Footer />
-        </main>
+        </section>
+        <Footer />
       </div>
     )
   }
