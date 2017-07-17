@@ -12,3 +12,9 @@
     font-weight: bold;
     text-align: center;
 }
+
+.sb-testi-image {
+  max-width: 144px;
+  max-height: 72px;
+  margin: 0 auto 20px;
+}
