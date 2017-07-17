@@ -3,10 +3,8 @@ import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
-class About extends React.Component {
+class Privacy extends React.Component {
   render () {
-    const styleText = {textAlign: 'justify'}
-
     return (
       <div id='wrapper' className='clearfix'>
         <Header />
@@ -101,4 +99,4 @@ class About extends React.Component {
   }
 }
 
-export default About
+export default Privacy
