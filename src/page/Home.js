@@ -62,10 +62,10 @@ const Description = () => (
         </div>
         <div className='feature-box fbox-right topmargin' data-animate='fadeIn' data-delay='400'>
           <div className='fbox-icon'>
-            <a href=''><i className='icon-line-layers' /></a>
+            <a href=''><i className='icon-credit-cards' /></a>
           </div>
-          <h3>Parallax Support</h3>
-          <p>Display your Content attractively using Parallax Sections with HTML5 Videos.</p>
+          <h3>Cards Management</h3>
+          <p>Multiple cards, it’s easy to keep track of all of them.</p>
         </div>
       </div>
       <div className='col-md-4 hidden-sm bottommargin center'>
@@ -88,10 +88,10 @@ const Description = () => (
         </div>
         <div className='feature-box topmargin' data-animate='fadeIn' data-delay='400'>
           <div className='fbox-icon'>
-            <a href=''><i className='icon-bulb' /></a>
+            <a href=''><i className='icon-download2' /></a>
           </div>
-          <h3>Light &amp; Dark Color Schemes</h3>
-          <p>Change your Websites Primary Scheme instantly by simply adding the dark className.</p>
+          <h3>Easy reporting</h3>
+          <p>Download transaction history to get a better understanding of your spending.</p>
         </div>
       </div>
     </div>
