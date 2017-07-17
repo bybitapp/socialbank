@@ -5,6 +5,8 @@ import {toastr} from 'react-redux-toastr'
 
 import {EMAIL} from '../constants/Validation'
 import Input from '../components/Input'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
 import { login } from '../actions'
 
 const validate = values => {
@@ -45,33 +47,38 @@ class Login extends React.Component {
     const { handleSubmit, error } = this.props
     return (
       <div id='wrapper' className='clearfix'>
+        <Header />
+        <section id='page-title'>
+          <div className='container clearfix'>
+            <h1>Login</h1>
+            <ol className='breadcrumb'>
+              <li><a href='/'>Home</a></li>
+              <li className='active'>Login</li>
+            </ol>
+          </div>
+        </section>
         <section id='content'>
-          <div className='content-wrap nopadding'>
-            <div className='section nopadding nomargin' style={{ width: '100%', height: '100%', position: 'absolute', left: 0, top: 0, background: '#444' }} />
-            <div className='section nobg full-screen nopadding nomargin'>
-              <div className='container vertical-middle divcenter clearfix'>
-                <div className='row center'>
-                  <a href='/'><img src='images/logo-dark.png' alt='Canvas Logo' /></a>
+          <div className='content-wrap'>
+            <div className='container clearfix'>
+              <div className='accordion accordion-lg divcenter nobottommargin clearfix' style={{ maxWidth: '550px' }}>
+                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
+                <div className='acctitle'><i className='acc-closed icon-user4' /><i className='acc-open icon-ok-sign' />Login to your account</div>
+                <div className='acc_content clearfix'>
+                  <form className='nobottommargin' onSubmit={handleSubmit} >
+                    {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
+                    <Field name='email' label='Email:' component={Input} />
+                    <Field name='password' label='Password:' component={Input} type='password' />
+                    <div className='col_full nobottommargin'>
+                      <button className='button button-3d button-black nomargin' type='submit'>Login</button>
+                      <a href='/forgot' className='fright'>Forgot Password?</a>
+                    </div>
+                  </form>
                 </div>
-                <div className='panel panel-default divcenter noradius noborder' style={{ maxWidth: '400px' }}>
-                  <div className='panel-body' style={{ padding: '40px' }}>
-                    <form className='nobottommargin' onSubmit={handleSubmit} >
-                      {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
-                      <h3 style={{ textAlign: 'center' }}>Login to your Account</h3>
-                      <Field name='email' label='Email:' component={Input} />
-                      <Field name='password' label='Password:' component={Input} type='password' />
-                      <div className='col_full nobottommargin'>
-                        <button className='button button-3d button-black nomargin' type='submit'>Login</button>
-                        <a href='' className='fright'>Forgot Password?</a>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-                <div className='row center dark'><small style={{ fontSize: '100%' }}>Copyrights &copy; All Rights Reserved by sotec.</small></div>
               </div>
             </div>
           </div>
         </section>
+        <Footer />
       </div>
     )
   }
