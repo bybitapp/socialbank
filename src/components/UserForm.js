@@ -81,7 +81,6 @@ class UserForm extends React.Component {
   }
 
   render () {
-    const styleCenter = {textAlign: 'center'}
     const { handleClose, open, handleSubmit, error, isEditMode } = this.props
 
     return (
@@ -100,7 +99,7 @@ class UserForm extends React.Component {
               </div>
             </header>
             <main className='mdl-layout__content'>
-              <div className='page-content' style={styleCenter}>
+              <div className='page-content'>
                 {error && <span className='sb-error'>{error}</span>}
                 <Field name='uid' type='hidden' component='input' />
                 <Field name='email' label='Email' component={Input} disabled={isEditMode} />

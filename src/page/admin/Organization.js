@@ -11,23 +11,25 @@ class Organization extends React.Component {
     const stylePadding = {padding: '15px'}
 
     return (
-      <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
+      <div id='wrapper' className='clearfix'>
         <Header />
-        <main className='mdl-layout__content'>
-          <div className='page-content'>
-            <div className='mdl-grid'>
-              <div className='mdl-cell mdl-cell--3-col'>
-                <MenuSideBar />
-              </div>
-              <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
-                <div style={stylePadding}>
-                  <OrganizationForm />
+        <section id='content'>
+          <main className='mdl-layout__content' style={{ width: '100%' }}>
+            <div className='page-content'>
+              <div className='mdl-grid'>
+                <div className='mdl-cell mdl-cell--3-col'>
+                  <MenuSideBar />
+                </div>
+                <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
+                  <div style={stylePadding}>
+                    <OrganizationForm />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <Footer />
-        </main>
+          </main>
+        </section>
+        <Footer />
       </div>
     )
   }

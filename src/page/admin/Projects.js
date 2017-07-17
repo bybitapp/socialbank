@@ -119,34 +119,36 @@ class Projects extends React.Component {
     ]
 
     return (
-      <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
+      <div id='wrapper' className='clearfix'>
         <Header />
         <ProjectForm open={(modal === 'projectModal')} handleClose={() => setModal(null)} account={account} />
         <ProjectCloseForm open={(modal === 'projectCloseModal')} handleClose={() => setModal(null)} />
         <ProjectDepositForm open={(modal === 'projectDepositModal')} handleClose={() => setModal(null)} />
-        <main className='mdl-layout__content'>
-          <div className='page-content'>
-            <div className='mdl-grid'>
-              <div className='mdl-cell mdl-cell--3-col'>
-                <MenuSideBar />
-              </div>
-              <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
-                <div style={stylePadding}>
-                  <div className='mdl-grid'>
-                    <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
-                      <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
-                        onClick={() => setModal('projectModal')}>
-                          Add Project
-                      </button>
+        <section id='content'>
+          <main className='mdl-layout__content' style={{ width: '100%' }}>
+            <div className='page-content'>
+              <div className='mdl-grid'>
+                <div className='mdl-cell mdl-cell--3-col'>
+                  <MenuSideBar />
+                </div>
+                <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
+                  <div style={stylePadding}>
+                    <div className='mdl-grid'>
+                      <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
+                        <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
+                          onClick={() => setModal('projectModal')}>
+                            Add Project
+                        </button>
+                      </div>
                     </div>
+                    <ProjectTable projects={projects} styleTable={styleTable} actions={actions} />
                   </div>
-                  <ProjectTable projects={projects} styleTable={styleTable} actions={actions} />
                 </div>
               </div>
             </div>
-          </div>
-          <Footer />
-        </main>
+          </main>
+        </section>
+        <Footer />
       </div>
     )
   }
