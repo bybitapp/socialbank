@@ -2,9 +2,6 @@ import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 
-// import ContactForm from '../components/ContactForm'
-// import SubjectBox from '../components/SubjectBox'
-
 import NewsletterSubscribe from '../components/NewsletterSubscribe'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
