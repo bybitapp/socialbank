@@ -71,3 +71,9 @@
 .sb-menu-table a {
   cursor: pointer
 }
+
+.sb-testi-image {
+  max-width: 144px;
+  max-height: 72px;
+  margin: 0 auto 20px;
+}

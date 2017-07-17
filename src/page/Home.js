@@ -27,7 +27,7 @@ const TopView = () => (
         <div className='vertical-middle no-fade'>
           <div className='col-md-6 fright nobottommargin' data-animate='fadeIn'>
             <div className='emphasis-title'>
-              <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'>Transparency by design. Revolutionize the way every <strong>charity</strong> manages its expenses.</h1>
+              <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'>Revolutionize the way every <strong>charity</strong> manages its expenses.</h1>
             </div>
             <div>
               <Link to={'/register'} className='button button-desc button-border button-rounded nomargin'>
@@ -134,7 +134,7 @@ const WhatSays = () => (
         <div className='slider-wrap'>
           <div className='slide'>
             <div className='sb-testi-image'>
-              <a href=''><img src='images/ixaris_logo.png' alt='Customer Testimonails' /></a>
+              <a href=''><img src='images/logos/ixaris.png' alt='Customer Testimonails' /></a>
             </div>
             <div className='testi-content'>
               <p style={{ fontSize: '24px' }}>Love the idea behind SoTec and ready to roll up sleeves to get this little beauty to market Team @SoTec_UK Wins OPCLive!</p>
