@@ -4,7 +4,6 @@ import { reduxForm, Field, SubmissionError } from 'redux-form'
 import {toastr} from 'react-redux-toastr'
 
 import {EMAIL} from '../constants/Validation'
-import MobileNavigation from '../components/MobileNavigation'
 import Checkbox from '../components/Checkbox'
 import Input from '../components/Input'
 import Header from '../components/Header'
@@ -22,6 +21,9 @@ const validate = values => {
     errors.phone = 'Required'
   } else if (isNaN(Number(values.phone))) {
     errors.phone = 'Must be a number'
+  }
+  if (!values.password) {
+    errors.password = 'Required'
   }
   if (!values.accepted) {
     errors.accepted = 'Required'
@@ -49,7 +51,7 @@ const enhance = compose(
   })
 )
 
-class Registration extends React.Component {
+class Register extends React.Component {
   render () {
     const { handleSubmit, error } = this.props
     const checkboxLabel = {
@@ -57,35 +59,44 @@ class Registration extends React.Component {
       linkText: 'Terms & Conditions',
       text: 'Accept'
     }
-
     return (
-      <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
+      <div id='wrapper' className='clearfix'>
         <Header />
-        <MobileNavigation />
-        <main className='mdl-layout__content'>
-          <div className='page-content'>
-            <div className='sb-form-content'>
-              {error && <span className='sb-error'>{error}</span>}
-              <form onSubmit={handleSubmit}>
-                <div className='mdl-grid'>
-                  <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet'>
-                    <Field name='email' label='Email' component={Input} />
-                    <Field name='phone' label='Phone number' component={Input} />
-                  </div>
-                  <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet'>
-                    <Field name='password' label='Password' component={Input} type='password' />
+        <section id='page-title'>
+          <div className='container clearfix'>
+            <h1>Register</h1>
+            <ol className='breadcrumb'>
+              <li><a href='/'>Home</a></li>
+              <li className='active'>Register</li>
+            </ol>
+          </div>
+        </section>
+        <section id='content'>
+          <div className='content-wrap'>
+            <div className='container clearfix'>
+              <div className='accordion accordion-lg divcenter nobottommargin clearfix' style={{ maxWidth: '550px' }}>
+                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
+                <div className='acctitle'><i className='acc-closed icon-user4' /><i className='acc-open icon-ok-sign' />New Signup? Register for an Account</div>
+                <div className='acc_content clearfix'>
+                  <form className='nobottommargin' onSubmit={handleSubmit}>
+                    <Field name='email' label='Email:' component={Input} />
+                    <Field name='phone' label='Phone number:' component={Input} />
+                    <Field name='password' label='Password:' component={Input} type='password' />
                     <Field name='accepted' label={checkboxLabel} component={Checkbox} />
-                  </div>
+                    <br />
+                    <div className='col_full nobottommargin'>
+                      <button className='button button-3d button-black nomargin' type='submit'>Register Now</button>
+                    </div>
+                  </form>
                 </div>
-                <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' type='submit'>Create Account</button>
-              </form>
+              </div>
             </div>
           </div>
-          <Footer />
-        </main>
+        </section>
+        <Footer />
       </div>
     )
   }
 }
 
-export default enhance(Registration)
+export default enhance(Register)

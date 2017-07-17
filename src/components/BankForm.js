@@ -100,7 +100,6 @@ class BankForm extends React.Component {
   }
 
   render () {
-    const styleCenter = {textAlign: 'center'}
     const { open, handleClose, handleSubmit, banks, error } = this.props
     const { owner } = banks
     const button = (owner) ? 'Update Bank Account' : 'Add Bank Account'
@@ -122,8 +121,8 @@ class BankForm extends React.Component {
               </div>
             </header>
             <main className='mdl-layout__content'>
-              <div className='page-content' style={styleCenter}>
-                {error && <span className='sb-error'>{error}</span>}
+              <div className='page-content'>
+                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                 <Field name='owner' label='Account Owner' component={Input} disabled={buttonDisabled} />
                 <Field name='bankName' label='Bank Name' component={Input} disabled={buttonDisabled} />
                 <Field name='ibanCode' label='Iban Code' component={Input} disabled={buttonDisabled} />

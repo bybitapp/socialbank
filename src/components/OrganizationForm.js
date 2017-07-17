@@ -93,7 +93,7 @@ class OrganizationForm extends React.Component {
     const button = (organizations) ? 'Update Organization' : 'Add Organization'
     return (
       <div>
-        {error && <span className='sb-error'>{error}</span>}
+        {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
         <h5>Organization</h5>
         <form onSubmit={handleSubmit}>
           <div className='mdl-grid'>

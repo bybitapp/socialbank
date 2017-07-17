@@ -2,13 +2,12 @@ import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { change } from 'redux-form'
-import { getUsers } from '../actions'
-import Header from '../components/Header'
-import MobileNavigation from '../components/MobileNavigation'
-import Footer from '../components/Footer'
-import MenuSideBar from '../components/MenuSideBar'
-import UserForm from '../components/UserForm'
-import UserRemoveForm from '../components/UserRemoveForm'
+import { getUsers } from '../../actions'
+import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+import MenuSideBar from '../../components/MenuSideBar'
+import UserForm from '../../components/UserForm'
+import UserRemoveForm from '../../components/UserRemoveForm'
 
 function mapStateToProps (state) {
   const { users } = state
@@ -104,34 +103,35 @@ class Users extends React.Component {
     ]
 
     return (
-      <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
+      <div id='wrapper' className='clearfix'>
         <Header />
-        <MobileNavigation />
         <UserForm open={(modal === 'userModal')} handleClose={() => setModal(null)} />
         <UserRemoveForm open={(modal === 'userRemoveModal')} handleClose={() => setModal(null)} />
-        <main className='mdl-layout__content'>
-          <div className='page-content'>
-            <div className='mdl-grid'>
-              <div className='mdl-cell mdl-cell--3-col'>
-                <MenuSideBar />
-              </div>
-              <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
-                <div style={stylePadding}>
-                  <div className='mdl-grid'>
-                    <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
-                      <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
-                        onClick={() => setModal('userModal')}>
-                          Add User
-                      </button>
+        <section id='content'>
+          <main className='mdl-layout__content' style={{ width: '100%' }}>
+            <div className='page-content'>
+              <div className='mdl-grid'>
+                <div className='mdl-cell mdl-cell--3-col'>
+                  <MenuSideBar />
+                </div>
+                <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
+                  <div style={stylePadding}>
+                    <div className='mdl-grid'>
+                      <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
+                        <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
+                          onClick={() => setModal('userModal')}>
+                            Add User
+                        </button>
+                      </div>
                     </div>
+                    <UserTable users={users} styleTable={styleTable} actions={actions} />
                   </div>
-                  <UserTable users={users} styleTable={styleTable} actions={actions} />
                 </div>
               </div>
             </div>
-          </div>
-          <Footer />
-        </main>
+          </main>
+        </section>
+        <Footer />
       </div>
     )
   }

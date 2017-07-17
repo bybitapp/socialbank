@@ -86,7 +86,6 @@ class CardForm extends React.Component {
   }
 
   render () {
-    const styleCenter = {textAlign: 'center'}
     const { handleClose, open, handleSubmit, projects, users, error } = this.props
     const projectList = projects.map((item, index) => {
       return {
@@ -117,8 +116,8 @@ class CardForm extends React.Component {
               </div>
             </header>
             <main className='mdl-layout__content'>
-              <div className='page-content' style={styleCenter}>
-                {error && <span className='sb-error'>{error}</span>}
+              <div className='page-content'>
+                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                 <Field name='pid' label='Project Name' component={Select} items={projectList} />
                 <Field name='uid' label='User' component={Select} items={userList} />
               </div>

@@ -38,7 +38,6 @@ class CardBlockForm extends React.Component {
   }
 
   render () {
-    const styleCenter = {textAlign: 'center'}
     const { handleClose, open, handleSubmit, error } = this.props
 
     return (
@@ -57,8 +56,8 @@ class CardBlockForm extends React.Component {
               </div>
             </header>
             <main className='mdl-layout__content'>
-              <div className='page-content' style={styleCenter}>
-                {error && <span className='sb-error'>{error}</span>}
+              <div className='page-content'>
+                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                 <Field name='cid' type='hidden' component='input' />
                 <Field name='status' type='hidden' component='input' value='inactive' readOnly />
                 <h5>Do you want to block selected card ?</h5>
