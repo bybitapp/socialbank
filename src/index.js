@@ -18,6 +18,7 @@ import Help from './page/Help'
 import Login from './page/Login'
 import Logout from './page/Logout'
 import Register from './page/Register'
+import Forgot from './page/Forgot'
 import Public from './page/Public'
 import NotFound from './page/NotFound'
 
@@ -40,13 +41,6 @@ const App = () => (
     <div>
       <Router>
         <Switch>
-          <Route path='/login' component={Login} />
-          <Route path='/logout' component={Logout} />
-          <Route path='/register' component={Register} />
-          <Route path='/terms' component={Terms} />
-          <Route path='/privacy' component={Privacy} />
-          <Route path='/help' component={Help} />
-          <Route path='/contact' component={Contact} />
           <Route path='/me' component={Me} />
           <Route path='/history' component={History} />
           <Route path='/projects' component={Projects} />
@@ -55,6 +49,14 @@ const App = () => (
           <Route path='/banks' component={Banks} />
           <Route path='/users' component={Users} />
           <Route path='/public/o/:id' component={Public} />
+          <Route path='/login' component={Login} />
+          <Route path='/logout' component={Logout} />
+          <Route path='/register' component={Register} />
+          <Route path='/forgot' component={Forgot} />
+          <Route path='/contact' component={Contact} />
+          <Route path='/terms' component={Terms} />
+          <Route path='/privacy' component={Privacy} />
+          <Route path='/help' component={Help} />
           <Route path='/' exact component={Home} />
           <Route path='*' component={NotFound} />
         </Switch>
