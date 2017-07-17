@@ -67,7 +67,7 @@ class Login extends React.Component {
                     </form>
                   </div>
                 </div>
-                <div className='row center dark'><small style={{ fontSize: '100%' }}>Copyrights &copy; All Rights Reserved by Canvas Inc.</small></div>
+                <div className='row center dark'><small style={{ fontSize: '100%' }}>Copyrights &copy; All Rights Reserved by sotec.</small></div>
               </div>
             </div>
           </div>
