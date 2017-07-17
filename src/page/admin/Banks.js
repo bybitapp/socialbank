@@ -3,7 +3,6 @@ import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { change } from 'redux-form'
 import Header from '../../components/Header'
-import MobileNavigation from '../../components/MobileNavigation'
 import Footer from '../../components/Footer'
 import MenuSideBar from '../../components/MenuSideBar'
 import BankForm from '../../components/BankForm'
@@ -92,7 +91,6 @@ class Banks extends React.Component {
     return (
       <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
         <Header />
-        <MobileNavigation />
         <BankForm open={(modal === 'bankModal')} handleClose={() => setModal(null)} />
         <BankRemoveForm open={(modal === 'bankRemoveModal')} handleClose={() => setModal(null)} />
         <main className='mdl-layout__content'>

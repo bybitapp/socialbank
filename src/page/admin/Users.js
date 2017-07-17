@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import { change } from 'redux-form'
 import { getUsers } from '../../actions'
 import Header from '../../components/Header'
-import MobileNavigation from '../../components/MobileNavigation'
 import Footer from '../../components/Footer'
 import MenuSideBar from '../../components/MenuSideBar'
 import UserForm from '../../components/UserForm'
@@ -106,7 +105,6 @@ class Users extends React.Component {
     return (
       <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
         <Header />
-        <MobileNavigation />
         <UserForm open={(modal === 'userModal')} handleClose={() => setModal(null)} />
         <UserRemoveForm open={(modal === 'userRemoveModal')} handleClose={() => setModal(null)} />
         <main className='mdl-layout__content'>
