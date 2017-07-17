@@ -60,8 +60,12 @@ server.use('/api/history', router(require('lib/routes/api/history')))
 server.use('/api/newsletter', router(require('lib/routes/api/newsletter')))
 server.use('/api/projects', router(require('lib/routes/api/projects')))
 
-server.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, './build', 'index.html'))
+server.use((req, res, next) => {
+  if (/^\/api(\/.*)?$/.test(req.path) === false) {
+    res.sendFile(path.join(__dirname, './build', 'index.html'))
+  } else {
+    next()
+  }
 })
 
 server.use(middleware.errorDispatcher())
