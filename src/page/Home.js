@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import NewsletterSubscribe from '../components/NewsletterSubscribe'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import CookieBanner from '../components/CookieBanner'
+// import CookieBanner from '../components/CookieBanner'
 import { Link } from 'react-router-dom'
 
 function mapStateToProps (state) {
@@ -124,7 +124,7 @@ const Explainer = () => (
 const WhatSays = () => (
   <div className='section parallax dark notopmargin nobottommargin' style={{ backgroundImage: 'url("images/new/home-testi-bg.jpg")', padding: '100px 0' }} data-stellar-background-ratio='0.4'>
     <div className='heading-block center'>
-      <h3>What Says about sotec?</h3>
+      <h3>What others say about sotec</h3>
     </div>
     <div className='fslider testimonial testimonial-full' data-animation='fade' data-arrows='false'>
       <div className='flexslider'>
@@ -195,7 +195,6 @@ class Home extends React.Component {
   render () {
     return (
       <div id='wrapper' className='clearfix'>
-        <CookieBanner />
         <Header />
         <TopView />
         <section id='content'>
