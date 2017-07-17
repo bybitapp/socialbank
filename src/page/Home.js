@@ -2,7 +2,6 @@ import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 
-// import MobileNavigation from '../components/MobileNavigation'
 // import ContactForm from '../components/ContactForm'
 // import SubjectBox from '../components/SubjectBox'
 
@@ -134,7 +133,7 @@ const WhatSays = () => (
         <div className='slider-wrap'>
           <div className='slide'>
             <div className='sb-testi-image'>
-              <a href=''><img src='images/logos/ixaris.png' alt='Customer Testimonails' /></a>
+              <a href='https://www.ixaris.com/sotec-wins-ixaris-b2b-innovation-challenge/' target='_blank'><img src='images/logos/ixaris.png' alt='Customer Testimonails' /></a>
             </div>
             <div className='testi-content'>
               <p style={{ fontSize: '24px' }}>Love the idea behind SoTec and ready to roll up sleeves to get this little beauty to market Team @SoTec_UK Wins OPCLive!</p>
