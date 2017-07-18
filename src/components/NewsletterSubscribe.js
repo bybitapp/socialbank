@@ -26,6 +26,7 @@ const enhance = compose(
             dispatch(ownProps.reset('newsletterSubscribeForm'))
             resolve()
           } else {
+            console.log(_error)
             reject(new SubmissionError({_error}))
           }
         }))
