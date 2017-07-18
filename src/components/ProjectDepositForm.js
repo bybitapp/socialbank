@@ -69,7 +69,7 @@ class ProjectDepositForm extends React.Component {
 
   componentDidUpdate () {
     const { dispatch, bankOptions, bid } = this.props
-    if (bankOptions && !bid) {
+    if (bankOptions && bankOptions[0] && !bid) {
       dispatch(change('projectDepositForm', 'bid', bankOptions[0].id))
     }
   }
