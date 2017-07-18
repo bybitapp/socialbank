@@ -77,10 +77,10 @@ class CardForm extends React.Component {
 
   componentDidUpdate (prevProps) {
     const { dispatch, projects, users, pid, uid } = this.props
-    if (projects && !pid) {
+    if (projects && projects[0] && !pid) {
       dispatch(change('cardForm', 'pid', projects[0].id))
     }
-    if (users && !uid) {
+    if (users && users[0] && !uid) {
       dispatch(change('cardForm', 'uid', users[0].id))
     }
   }
@@ -96,7 +96,7 @@ class CardForm extends React.Component {
     const userList = users.map((item, index) => {
       return {
         id: item.id,
-        name: item.name + ' - ' + item.email
+        name: item.profile.name + ' - ' + item.email
       }
     })
 
