@@ -100,7 +100,7 @@ const Description = () => (
 
 const Explainer = () => (
   <div className='row clearfix common-height'>
-    <div className='col-md-6 center col-padding' style={{ background: 'url("images/people.jpg") center center no-repeat', backgroundSize: 'cover' }}>
+    <div className='col-md-6 center col-padding' style={{ background: 'url("images/explainer.jpg") center center no-repeat', backgroundSize: 'cover' }}>
       <div>&nbsp;</div>
     </div>
     <div className='col-md-6 center col-padding' style={{ backgroundColor: '#F5F5F5' }}>
