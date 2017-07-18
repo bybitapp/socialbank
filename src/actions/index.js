@@ -367,7 +367,8 @@ export const subscribeNewsletter = (data, cb) => (dispatch, getState) => {
       // dispatch({type: types.SUBSCRIBE_SUCCESS, data: data})
       cb(null, data)
     } else {
-      cb('Subscribe Failed!')
+      const errMsg = ex.response.data.message ? ex.response.data.message : 'Failed to subscribe!'
+      cb(errMsg)
     }
   })
 }
