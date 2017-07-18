@@ -20,7 +20,7 @@ const TopView = () => (
   <section id='slider' className='slider-parallax full-screen'>
     <div className='full-screen' style={{backgroundSize: 'cover'}}>
       <div className='container clearfix'>
-        <img src='images/new/slider-iphone.png' alt='' className='hidden-sm hidden-xs' data-style-lg='position: absolute; left: 0; bottom: 0; height: auto;' data-style-md='position: absolute; left: 0; bottom: 0; height: 450px;' />
+        <img src='images/mobile_app.png' alt='' className='hidden-sm hidden-xs' data-style-lg='position: absolute; left: 0; bottom: 0; height: auto;' data-style-md='position: absolute; left: 0; bottom: 0; height: 450px;' />
         <div className='vertical-middle no-fade'>
           <div className='col-md-6 fright nobottommargin' data-animate='fadeIn'>
             <div className='emphasis-title'>
@@ -100,7 +100,7 @@ const Description = () => (
 
 const Explainer = () => (
   <div className='row clearfix common-height'>
-    <div className='col-md-6 center col-padding' style={{ background: 'url("images/new/main-bg.jpg") center center no-repeat', backgroundSize: 'cover' }}>
+    <div className='col-md-6 center col-padding' style={{ background: 'url("images/people.jpg") center center no-repeat', backgroundSize: 'cover' }}>
       <div>&nbsp;</div>
     </div>
     <div className='col-md-6 center col-padding' style={{ backgroundColor: '#F5F5F5' }}>
