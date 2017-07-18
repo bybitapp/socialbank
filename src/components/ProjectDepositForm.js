@@ -2,11 +2,13 @@ import React from 'react'
 import Modal from 'react-modal'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
-import { reduxForm, Field, SubmissionError } from 'redux-form'
+import { reduxForm, Field, SubmissionError, formValueSelector, change } from 'redux-form'
 
 import { depositProject, getBankAccounts } from '../actions'
 import Input from './Input'
 import Select from './Select'
+
+const selector = formValueSelector('projectDepositForm')
 
 const customStyles = {
   content: {top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', padding: '5px', transform: 'translate(-50%, -50%)'},
@@ -24,10 +26,12 @@ const validate = values => {
 }
 
 function mapStateToProps (state) {
+  const bid = selector(state, 'bid')
   const { banks } = state
   const bankOptions = banks.map((bank) => { return { name: bank.bankName, id: bank.id } })
   return {
-    bankOptions
+    bankOptions,
+    bid
   }
 }
 
@@ -61,6 +65,13 @@ class ProjectDepositForm extends React.Component {
   componentDidMount () {
     const { dispatch } = this.props
     dispatch(getBankAccounts())
+  }
+
+  componentDidUpdate () {
+    const { dispatch, bankOptions, bid } = this.props
+    if (bankOptions && bankOptions[0] && !bid) {
+      dispatch(change('projectDepositForm', 'bid', bankOptions[0].id))
+    }
   }
 
   onCancel () {
