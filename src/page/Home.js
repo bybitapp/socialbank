@@ -24,7 +24,6 @@ const TopView = () => (
         <div className='vertical-middle no-fade'>
           <div className='col-md-6 fright nobottommargin' data-animate='fadeIn'>
             <div className='emphasis-title'>
-              <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'><strong style={{ color: '#00D0A7' }}>Simplify, Save, Share</strong></h1>
               <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'>Revolutionize the way your <strong style={{ color: '#00D0A7' }}>charity</strong> manages its expenses.</h1>
             </div>
             <div>
@@ -44,7 +43,7 @@ const Description = () => (
     <div className='row topmargin-lg bottommargin-sm'>
       <div className='heading-block center'>
         <h2>Why do you need sotec?</h2>
-        <span className='divcenter'>Dedicated to non-profit and charity organizations to build your transparency and trust around payments.</span>
+        <span className='divcenter'>The system is dedicated to helping non-profit and charity organizations build transparency and trust around payments.</span>
       </div>
       <div className='col-md-4 col-sm-6 bottommargin'>
         <div className='feature-box fbox-right topmargin' data-animate='fadeIn'>
@@ -52,21 +51,21 @@ const Description = () => (
             <a href=''><i className='icon-home' /></a>
           </div>
           <h3>Controlled</h3>
-          <p>Freeze cards and set spend limits. Take back control of your money.</p>
+          <p>Freeze cards and set spending limits. Maintain control of your money.</p>
         </div>
         <div className='feature-box fbox-right topmargin' data-animate='fadeIn' data-delay='200'>
           <div className='fbox-icon'>
             <a href=''><i className='icon-diamond' /></a>
           </div>
           <h3>Secure</h3>
-          <p>Cards lock to merchants, making them useless to buy.</p>
+          <p>Lock card whenever you want, making them useless to buy.</p>
         </div>
         <div className='feature-box fbox-right topmargin' data-animate='fadeIn' data-delay='400'>
           <div className='fbox-icon'>
             <a href=''><i className='icon-credit-cards' /></a>
           </div>
           <h3>Cards Management</h3>
-          <p>Multiple cards, it’s easy to keep track of all of them.</p>
+          <p>Easily keep track of multiple cards.</p>
         </div>
       </div>
       <div className='col-md-4 hidden-sm bottommargin center'>
@@ -78,21 +77,21 @@ const Description = () => (
             <a href=''><i className='icon-wallet' /></a>
           </div>
           <h3>Private</h3>
-          <p>Share charity spends only. Keep any sensitive information safe and private</p>
+          <p>Share charity spending only. Keep sensitive information safe and private.</p>
         </div>
         <div className='feature-box topmargin' data-animate='fadeIn' data-delay='200'>
           <div className='fbox-icon'>
             <a href=''><i className='icon-lock' /></a>
           </div>
           <h3>Disposable</h3>
-          <p>Delete cards anytime, and kiss forgotten subscriptions goodbye.</p>
+          <p>Delete unneeded cards anytime and forget about unused subscriptions.</p>
         </div>
         <div className='feature-box topmargin' data-animate='fadeIn' data-delay='400'>
           <div className='fbox-icon'>
             <a href=''><i className='icon-download2' /></a>
           </div>
           <h3>Easy reporting</h3>
-          <p>Download transaction history to get a better understanding of your spending.</p>
+          <p>Download your transaction history to easily track your spending.</p>
         </div>
       </div>
     </div>
@@ -116,7 +115,7 @@ const Explainer = () => (
             <span className='i-overlay nobg'><img src='images/new/video-play.png' alt='Play' /></span>
           </a>
         </div>
-        <p className='lead nobottommargin'>Democracy inspire breakthroughs, Rosa Parks; inspiration raise awareness natural resources. Governance impact; transformative donation philanthropy, respect reproductive.</p>
+        <p className='lead nobottommargin'>Transform your donations into philanthropy by seeing their impact.</p>
       </div>
     </div>
   </div>
@@ -153,7 +152,7 @@ const HowStart = () => (
     <div className='container clearfix'>
       <div className='heading-block center'>
         <h2>Getting started with sotec</h2>
-        <span>Instruction how spending money on charity goods</span>
+        <span>Learn how to manage your charity’s spending</span>
       </div>
       <div className='clear bottommargin-sm' />
       <div className='col_one_fourth nobottommargin'>
@@ -161,7 +160,7 @@ const HowStart = () => (
           <div className='fbox-icon'>
             <a href=''><i className='i-alt noborder icon-wallet' /></a>
           </div>
-          <h3>Create an account<span className='subtitle'>You can sign up and add your basic organization details</span></h3>
+          <h3>Create an account<span className='subtitle'>Create an account and set up your organisation</span></h3>
         </div>
       </div>
       <div className='col_one_fourth nobottommargin'>
@@ -177,7 +176,7 @@ const HowStart = () => (
           <div className='fbox-icon'>
             <a href=''><i className='i-alt noborder icon-user' /></a>
           </div>
-          <h3>Distribute cards<span className='subtitle'>Transfer money around people involved in your projects</span></h3>
+          <h3>Distribute cards<span className='subtitle'>Transfer money to people involved in your projects</span></h3>
         </div>
       </div>
       <div className='col_one_fourth nobottommargin col_last'>
@@ -185,7 +184,7 @@ const HowStart = () => (
           <div className='fbox-icon'>
             <a href=''><i className='i-alt noborder icon-shop' /></a>
           </div>
-          <h3>Start spending<span className='subtitle'>Use sotec card to pay anywhere on the internet and by contactless</span></h3>
+          <h3>Start spending<span className='subtitle'>Use your SoTec card to pay anyone, anywhere (even contactless!)</span></h3>
         </div>
       </div>
     </div>
@@ -210,7 +209,7 @@ class Home extends React.Component {
                 <div className='col-md-6 nobottommargin'>
                   <div className='heading-block topmargin-sm'>
                     <h2>Real-time spending overview</h2>
-                    <span>See all company spending in one place as it happens and sync it to your accounting system.</span>
+                    <span>Monitor your charity’s spending in real-time and sync it to your accounting system.</span>
                   </div>
                   <Link to={'/register'} className='button button-border button-rounded button-large button-dark noleftmargin'>Start Demo</Link>
                 </div>
@@ -224,10 +223,10 @@ class Home extends React.Component {
               <div className='container clearfix'>
                 <div className='heading-block title-center nobottomborder'>
                   <h2>Enough? Start Building!</h2>
-                  <span>Now that you have read all the Tid-Bits, so start with a plan</span>
+                  <span>Now that you’ve read all the boring bits, let’s get started</span>
                 </div>
                 <div className='center'>
-                  <Link to={'/register'} data-animate='tada' className='button button-3d button-teal button-xlarge nobottommargin' style={{ backgroundColor: '#EB534D' }}><i className='icon-star3' />Start your FREE</Link>
+                  <Link to={'/register'} data-animate='tada' className='button button-3d button-teal button-xlarge nobottommargin' style={{ backgroundColor: '#EB534D' }}><i className='icon-star3' />Get Started</Link>
                 </div>
               </div>
             </div>
