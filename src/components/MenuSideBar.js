@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 const menuItems = [
   {label: 'Account Details', path: '/me', icon: 'settings'},
   {label: 'Organization', path: '/organization', icon: 'business'},
-  {label: 'Users', path: '/users', icon: 'face'},
   {label: 'Bank Accounts', path: '/banks', icon: 'account_balance'},
   {label: 'Projects', path: '/projects', icon: 'favorite'},
+  {label: 'Users', path: '/users', icon: 'face'},
   {label: 'Virtual Cards', path: '/cards', icon: 'credit_card'},
   {label: 'Transaction History', path: '/history', icon: 'history'}
 ]
