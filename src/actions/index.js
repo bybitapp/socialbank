@@ -317,7 +317,8 @@ export const transferCard = (project, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
-      cb('Transfer Failed!')
+      const errMsg = ex.response.data.message ? ex.response.data.message : 'Transfer Failed!'
+      cb(errMsg)
     }
   })
 }
