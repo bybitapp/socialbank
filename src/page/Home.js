@@ -24,6 +24,7 @@ const TopView = () => (
         <div className='vertical-middle no-fade'>
           <div className='col-md-6 fright nobottommargin' data-animate='fadeIn'>
             <div className='emphasis-title'>
+              <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'><strong style={{ color: '#00D0A7' }}>Simplify, Save, Share</strong></h1>
               <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'>Revolutionize the way your <strong style={{ color: '#00D0A7' }}>charity</strong> manages its expenses.</h1>
             </div>
             <div>
@@ -43,7 +44,7 @@ const Description = () => (
     <div className='row topmargin-lg bottommargin-sm'>
       <div className='heading-block center'>
         <h2>Why do you need sotec?</h2>
-        <span className='divcenter'>The system is dedicated to non-profit and charity organizations to build your transparency and trust around payments.</span>
+        <span className='divcenter'>Dedicated to non-profit and charity organizations to build your transparency and trust around payments.</span>
       </div>
       <div className='col-md-4 col-sm-6 bottommargin'>
         <div className='feature-box fbox-right topmargin' data-animate='fadeIn'>
