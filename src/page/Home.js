@@ -110,10 +110,7 @@ const Explainer = () => (
           <h3>Walkthrough Videos &amp; Demos</h3>
         </div>
         <div className='center bottommargin'>
-          <a href='http://vimeo.com/101373765' data-lightbox='iframe' style={{ position: 'relative' }}>
-            <img src='images/new/video.jpg' alt='Video' />
-            <span className='i-overlay nobg'><img src='images/new/video-play.png' alt='Play' /></span>
-          </a>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/kX2PiKgkr-Y" frameborder="0" allowfullscreen></iframe>
         </div>
         <p className='lead nobottommargin'>Transform your donations into philanthropy by seeing their impact.</p>
       </div>
