@@ -11,6 +11,7 @@ import CardBlockForm from '../../components/CardBlockForm'
 import CardUnblockForm from '../../components/CardUnblockForm'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
+import Auth from '../../modules/Auth'
 import MenuSideBar from '../../components/MenuSideBar'
 
 function mapStateToProps (state) {
@@ -154,12 +155,13 @@ class Cards extends React.Component {
 
     const { cards, projects, users, modal, setModal } = this.props
 
-    const actions = [
-      {icon: 'attach_money', onclick: this.onTransfer},
-      {icon: 'lock', onclick: this.onBlock, show: (item) => item.status === 'active'},
-      {icon: 'lock_open', onclick: this.onUnblock, show: (item) => item.status === 'inactive'},
-      {icon: 'delete', onclick: this.onDestroy}
+    let actions = [
+      {icon: 'attach_money', onclick: this.onTransfer, access: 'OWNER,ADMIN'},
+      {icon: 'lock', onclick: this.onBlock, show: (item) => item.status === 'active', access: 'OWNER,ADMIN,USER'},
+      {icon: 'lock_open', onclick: this.onUnblock, show: (item) => item.status === 'inactive', access: 'OWNER,ADMIN,USER'},
+      {icon: 'delete', onclick: this.onDestroy, access: 'OWNER,ADMIN'}
     ]
+    actions = actions.filter((i) => i.access.indexOf(Auth.getUser().access) !== -1)
 
     return (
       <div id='wrapper' className='clearfix'>
