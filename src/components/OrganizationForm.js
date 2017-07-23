@@ -1,10 +1,11 @@
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
-import { reduxForm, Field, change, SubmissionError } from 'redux-form'
+import { reduxForm, Field, change } from 'redux-form'
 import { addOrganization, getOrganization } from '../actions'
 import { toastr } from 'react-redux-toastr'
 import Input from './Input'
+import Auth from '../modules/Auth'
 import { POSTCODE } from '../constants/Validation'
 
 const validate = values => {
@@ -47,18 +48,19 @@ const enhance = compose(
     validate,
     onSubmit: (values, dispatch, ownProps) => {
       return new Promise((resolve, reject) => {
-        dispatch(addOrganization(values, (_error) => {
-          if (!_error) {
-            if (values.id) {
-              toastr.success('Organization Updated.')
+        if (Auth.getUser().access === 'OWNER') {
+          dispatch(addOrganization(values, (_error) => {
+            if (!_error) {
+              toastr.success('Organization Added.' + (values.id) ? 'Updated.' : 'Added.')
+              resolve()
             } else {
-              toastr.success('Organization Added.')
+              toastr.error(_error)
+              reject(_error)
             }
-            resolve()
-          } else {
-            reject(new SubmissionError({_error}))
-          }
-        }))
+          }))
+        } else {
+          // TODO leave organization
+        }
       })
     }
   })
@@ -89,23 +91,31 @@ class OrganizationForm extends React.Component {
   }
 
   render () {
-    const { handleSubmit, organizations, error } = this.props
-    const button = (organizations && !Array.isArray(organizations)) ? 'Update Organization' : 'Add Organization'
+    const { handleSubmit, organizations } = this.props
+    let button = 'Add Organization'
+    let disabled = false
+    if (Auth.getUser().access === 'OWNER') {
+      if (organizations) {
+        button = 'Update Organization'
+      }
+    } else {
+      button = 'Leave Organization'
+      disabled = true
+    }
     return (
       <div>
-        {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
         <h5>Organization</h5>
         <form onSubmit={handleSubmit}>
           <div className='mdl-grid'>
             <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet'>
               <Field name='id' type='hidden' component='input' />
-              <Field name='name' label='Name' component={Input} />
-              <Field name='number' label='Number' component={Input} />
-              <Field name='address' label='Address' component={Input} />
+              <Field name='name' label='Name' component={Input} disabled={disabled} />
+              <Field name='number' label='Number' component={Input} disabled={disabled} />
+              <Field name='address' label='Address' component={Input} disabled={disabled} />
             </div>
             <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet'>
-              <Field name='city' label='City' component={Input} />
-              <Field name='postcode' label='Postcode' component={Input} />
+              <Field name='city' label='City' component={Input} disabled={disabled} />
+              <Field name='postcode' label='Postcode' component={Input} disabled={disabled} />
               <div className='sb-details-button'>
                 <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' type='submit'>{button}</button>
               </div>
