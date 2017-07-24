@@ -78,6 +78,16 @@
   margin: 0 auto 20px;
 }
 
+.sb-card {
+  padding: 10px;
+  min-width: 300px;
+  min-height: 170px
+}
+
+.sb-card .sb-card-brand {
+  max-width: 64px;
+}
+
 .button.button-border {
     border: 2px solid #24AEF2;
     color: #24AEF2;

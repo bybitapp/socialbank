@@ -345,6 +345,18 @@ export const updateCardStatus = (card, cb) => (dispatch, getState) => {
   })
 }
 
+export const getCardDetail = (cid, cb) => (dispatch, getState) => {
+  server.getCardDetail(cid, (ex, data) => {
+    if (!ex) {
+      dispatch({type: types.RECEIVE_CARD_DETAIL, data: data})
+      cb(null, data)
+    } else {
+      const errMsg = ex.response.data.message ? ex.response.data.message : 'Retrieve Card Detail Failed!'
+      cb(errMsg)
+    }
+  })
+}
+
 export const selectCurrentProject = id => dispatch => {
   dispatch({type: types.SELECT_CURRENT_PROJECT, id})
 }

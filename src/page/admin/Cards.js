@@ -2,13 +2,16 @@ import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, change } from 'redux-form'
-import { getOrganizationCards, getProjects, getUsers } from '../../actions'
+import { getOrganizationCards, getProjects, getUsers, getCardDetail } from '../../actions'
+import { toastr } from 'react-redux-toastr'
 import { CARD_STATUS } from '../../constants/Option'
+import Auth from '../../modules/Auth'
 import CardForm from '../../components/CardForm'
 import CardDestroyForm from '../../components/CardDestroyForm'
 import CardTransferForm from '../../components/CardTransferForm'
 import CardBlockForm from '../../components/CardBlockForm'
 import CardUnblockForm from '../../components/CardUnblockForm'
+import CardDetailForm from '../../components/CardDetailForm'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import MenuSideBar from '../../components/MenuSideBar'
@@ -92,10 +95,13 @@ const CardTable = ({cards = [], projects = [], users = [], styleTable, actions})
 class Cards extends React.Component {
   constructor (props) {
     super(props)
+    this.state = { cardDetail: null }
     this.onDestroy = this.onDestroy.bind(this)
     this.onTransfer = this.onTransfer.bind(this)
     this.onBlock = this.onBlock.bind(this)
     this.onUnblock = this.onUnblock.bind(this)
+    this.onShowDetail = this.onShowDetail.bind(this)
+    this.onCloseDetail = this.onCloseDetail.bind(this)
   }
 
   componentDidMount () {
@@ -146,6 +152,28 @@ class Cards extends React.Component {
     }
   }
 
+  onShowDetail (cid, event) {
+    const { cards, setModal, dispatch } = this.props
+    const card = cards.find((card) => { return card.id === cid })
+    // dispatch card details
+    if (card) {
+      setModal('cardDetailModal')
+      dispatch(getCardDetail({cid}, (_error, data) => {
+        if (!_error) {
+          this.setState({ cardDetail: data })
+        } else {
+          toastr.error('Aw snap!', _error)
+        }
+      }))
+    }
+  }
+
+  onCloseDetail (event) {
+    const { setModal } = this.props
+    this.setState({ cardDetail: null })
+    setModal(null)
+  }
+
   render () {
     const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
     const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0, overflow: 'auto'}
@@ -158,7 +186,18 @@ class Cards extends React.Component {
       {icon: 'attach_money', onclick: this.onTransfer},
       {icon: 'lock', onclick: this.onBlock, show: (item) => item.status === 'active'},
       {icon: 'lock_open', onclick: this.onUnblock, show: (item) => item.status === 'inactive'},
-      {icon: 'delete', onclick: this.onDestroy}
+      {icon: 'delete', onclick: this.onDestroy},
+      {
+        icon: 'credit_card',
+        onclick: this.onShowDetail,
+        show: (item) => {
+          const user = Auth.getUser()
+          if (user.access === 'USER') {
+            return item.userId === user.id
+          }
+          return true
+        }
+      }
     ]
 
     return (
@@ -169,6 +208,7 @@ class Cards extends React.Component {
         <CardTransferForm open={(modal === 'cardTransferModal')} handleClose={() => setModal(null)} />
         <CardBlockForm open={(modal === 'cardBlockModal')} handleClose={() => setModal(null)} />
         <CardUnblockForm open={(modal === 'cardUnblockModal')} handleClose={() => setModal(null)} />
+        <CardDetailForm open={(modal === 'cardDetailModal')} handleClose={this.onCloseDetail} cardDetail={this.state.cardDetail} />
         <section id='content'>
           <main className='mdl-layout__content' style={{ width: '100%' }}>
             <div className='page-content'>

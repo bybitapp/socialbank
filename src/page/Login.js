@@ -1,7 +1,7 @@
 import React from 'react'
 import { compose } from 'recompose'
 import { reduxForm, Field, SubmissionError } from 'redux-form'
-import {toastr} from 'react-redux-toastr'
+import { toastr } from 'react-redux-toastr'
 
 import {EMAIL} from '../constants/Validation'
 import Input from '../components/Input'
@@ -61,7 +61,6 @@ class Login extends React.Component {
           <div className='content-wrap'>
             <div className='container clearfix'>
               <div className='accordion accordion-lg divcenter nobottommargin clearfix' style={{ maxWidth: '550px' }}>
-                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                 <div className='acctitle'><i className='acc-closed icon-user4' /><i className='acc-open icon-ok-sign' />Login to your account</div>
                 <div className='acc_content clearfix'>
                   <form className='nobottommargin' onSubmit={handleSubmit} >
