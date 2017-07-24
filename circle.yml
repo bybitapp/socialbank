@@ -1,6 +1,6 @@
 machine:
   node:
-    version: 8
+    version: 8.1.4
   environment:
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
     NODE_PATH: .
@@ -21,4 +21,4 @@ deployment:
   staging:
     branch: master
     heroku:
-      appname: socialbank-prod
+      appname: socialbank-stage
