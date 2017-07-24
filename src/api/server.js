@@ -126,6 +126,11 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
+  getCardDetail: (values, cb) => {
+    axios.post('/api/cards/detail', values)
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
   getHistory: (projId, cb) => {
     axios.get(`/api/history/list/p/${projId}`)
       .then((res) => cb(null, res.data))
