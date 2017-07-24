@@ -2,7 +2,7 @@ import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, Field, change } from 'redux-form'
-import { addOrganization, getOrganization } from '../actions'
+import { addOrganization, getOrganization, leaveOrganization } from '../actions'
 import { toastr } from 'react-redux-toastr'
 import Input from './Input'
 import Auth from '../modules/Auth'
@@ -59,7 +59,16 @@ const enhance = compose(
             }
           }))
         } else {
-          // TODO leave organization
+          dispatch(leaveOrganization((_error) => {
+            if (!_error) {
+              dispatch(ownProps.reset('organizationForm'))
+              toastr.success('Organization Left.')
+              resolve()
+            } else {
+              toastr.error(_error)
+              reject(_error)
+            }
+          }))
         }
       })
     }
