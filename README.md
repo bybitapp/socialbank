@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/sbidolach/socialbank/tree/master.svg?style=svg&circle-token=d1c3483a5035420a95bcf103fd40d19a53df7a78)](https://circleci.com/gh/sbidolach/socialbank/tree/master)
+[![CircleCI](https://circleci.com/gh/sotecio/socialbank.svg?style=svg&circle-token=d1c3483a5035420a95bcf103fd40d19a53df7a78)](https://circleci.com/gh/sotecio/socialbank)
 
 # SoTec
 
