@@ -33,6 +33,22 @@ export const getOrganization = () => dispatch => {
   })
 }
 
+export const leaveOrganization = (cb) => dispatch => {
+  server.leaveOrganization((ex, data) => {
+    if (!ex) {
+      // update information about user access
+      let user = Auth.getUser()
+      user.access = 'OWNER'
+      Auth.updateUser(user)
+
+      dispatch({type: types.RECEIVE_ORGANIZATION, data})
+      cb(null, data)
+    } else {
+      cb(ex)
+    }
+  })
+}
+
 export const getOrganizationById = (oid) => dispatch => {
   server.getOrganizationById(oid, (ex, data) => {
     if (!ex) {

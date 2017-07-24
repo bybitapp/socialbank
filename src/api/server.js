@@ -46,6 +46,11 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
+  leaveOrganization: (cb) => {
+    axios.post('/api/organizations/leave')
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
   addBankAccount: (values, cb) => {
     axios.post('/api/banks/add', values)
       .then((res) => cb(null, res.data))
