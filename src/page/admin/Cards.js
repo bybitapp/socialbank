@@ -11,7 +11,6 @@ import CardDestroyForm from '../../components/CardDestroyForm'
 import CardTransferForm from '../../components/CardTransferForm'
 import CardBlockForm from '../../components/CardBlockForm'
 import CardUnblockForm from '../../components/CardUnblockForm'
-import CardDetailForm from '../../components/CardDetailForm'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import MenuSideBar from '../../components/MenuSideBar'
@@ -34,11 +33,58 @@ const enhance = compose(
   })
 )
 
+const preloaderStyle = {margin: 'auto', textAlign: 'center', display: 'block'}
+const loaderStyle = {widht: '28px', height: '28px'}
+
+const formatCardNnumber = (cardNumber) => {
+  const cardNumberArray = cardNumber.match(/.{1,4}/g)
+  console.log(cardNumberArray)
+  let formattedCardNumber = ''
+  cardNumberArray.forEach((num) => {
+    formattedCardNumber += num + '\t'
+  })
+  return formattedCardNumber
+}
+
 const ActionButton = (cid, action) => (
   <a key={action.icon} className='mdl-list__item-primary-content' onClick={(event) => action.onclick(cid, event)}>
     <i className='material-icons mdl-list__item-avatar sb-icon-list_item'>{action.icon}</i>
   </a>
 )
+
+const CardDetail = ({cardDetail}) => {
+  console.log(cardDetail)
+  return (
+    <tr>
+      <td colSpan='8'>
+        { cardDetail.cardName
+          ? <div className='sb-card container clearfix'>
+            <div className='row'>
+              <div className='sb-card-name col-sm-8'>{ cardDetail.cardName }</div>
+              <div className='sb-card-brand col-sm-4'><i className='pf pf-stripe' /></div>
+            </div>
+            <div className='row bottommargin-sm'>
+              <div className='sb-card-number'>{ formatCardNnumber(cardDetail.cardNumber) }</div>
+            </div>
+            <div className='row'>
+              <div className='col-sm-8'>
+                <div className='sb-card-startdate'><label>CREATED AT</label> { cardDetail.startDate }</div>
+                <div className='sb-card-enddate'><label>VALID THRU</label> { cardDetail.endDate }</div>
+              </div>
+              <div className='sb-card-cvv col-sm-4'><label>CVV</label>{ cardDetail.cvv }</div>
+            </div>
+          </div>
+          : <div style={preloaderStyle}>
+            <div >
+              <span className='dark preloader' style={loaderStyle} />
+            </div>
+            <span>Loading...</span>
+          </div>
+        }
+      </td>
+    </tr>
+  )
+}
 
 const CardItem = ({card, actions, projects = [], users = []}) => {
   const cardStatus = CARD_STATUS.find((status) => (status.id === card.status))
@@ -66,10 +112,11 @@ const CardItem = ({card, actions, projects = [], users = []}) => {
         })
         }
       </td>
-    </tr>)
+    </tr>
+  )
 }
 
-const CardTable = ({cards = [], projects = [], users = [], styleTable, actions}) => (
+const CardTable = ({cards = [], projects = [], users = [], cardDetail, styleTable, actions}) => (
   <table className='mdl-data-table mdl-data-table--selectable' style={styleTable}>
     <thead>
       <tr>
@@ -86,8 +133,14 @@ const CardTable = ({cards = [], projects = [], users = [], styleTable, actions})
     <tbody>
       { Object.keys(cards).map((key, index) => {
         const c = cards[key]
-        return (<CardItem key={key} card={c} actions={actions}
-          projects={projects} users={users} />)
+        if (cardDetail && cardDetail.id === c.id) {
+          return ([
+            <CardItem key={key} card={c} actions={actions} projects={projects} users={users} />,
+            <CardDetail cardDetail={cardDetail} />
+          ])
+        } else {
+          return (<CardItem key={key} card={c} actions={actions} projects={projects} users={users} />)
+        }
       })}
     </tbody>
   </table>)
@@ -100,7 +153,7 @@ class Cards extends React.Component {
     this.onTransfer = this.onTransfer.bind(this)
     this.onBlock = this.onBlock.bind(this)
     this.onUnblock = this.onUnblock.bind(this)
-    this.onShowDetail = this.onShowDetail.bind(this)
+    this.onSelectDetail = this.onSelectDetail.bind(this)
     this.onCloseDetail = this.onCloseDetail.bind(this)
   }
 
@@ -152,26 +205,29 @@ class Cards extends React.Component {
     }
   }
 
-  onShowDetail (cid, event) {
-    const { cards, setModal, dispatch } = this.props
-    const card = cards.find((card) => { return card.id === cid })
-    // dispatch card details
-    if (card) {
-      setModal('cardDetailModal')
-      dispatch(getCardDetail({cid}, (_error, data) => {
-        if (!_error) {
-          this.setState({ cardDetail: data })
-        } else {
-          toastr.error('Aw snap!', _error)
-        }
-      }))
+  onSelectDetail (cid, event) {
+    if (this.state.cardDetail && cid === this.state.cardDetail.id) {
+      this.setState({ cardDetail: null })
+    } else {
+      const { cards, dispatch } = this.props
+      const card = cards.find((card) => { return card.id === cid })
+      if (card) {
+        this.setState({ cardDetail: {id: cid} })
+        dispatch(getCardDetail({cid}, (_error, data) => {
+          if (!_error) {
+            if (this.state.cardDetail.id === data.id) {
+              this.setState({ cardDetail: data })
+            }
+          } else {
+            toastr.error('Aw snap!', _error)
+          }
+        }))
+      }
     }
   }
 
   onCloseDetail (event) {
-    const { setModal } = this.props
     this.setState({ cardDetail: null })
-    setModal(null)
   }
 
   render () {
@@ -189,7 +245,7 @@ class Cards extends React.Component {
       {icon: 'delete', onclick: this.onDestroy},
       {
         icon: 'credit_card',
-        onclick: this.onShowDetail,
+        onclick: this.onSelectDetail,
         show: (item) => {
           const user = Auth.getUser()
           if (user.access === 'USER') {
@@ -208,7 +264,6 @@ class Cards extends React.Component {
         <CardTransferForm open={(modal === 'cardTransferModal')} handleClose={() => setModal(null)} />
         <CardBlockForm open={(modal === 'cardBlockModal')} handleClose={() => setModal(null)} />
         <CardUnblockForm open={(modal === 'cardUnblockModal')} handleClose={() => setModal(null)} />
-        <CardDetailForm open={(modal === 'cardDetailModal')} handleClose={this.onCloseDetail} cardDetail={this.state.cardDetail} />
         <section id='content'>
           <main className='mdl-layout__content' style={{ width: '100%' }}>
             <div className='page-content'>
@@ -227,7 +282,7 @@ class Cards extends React.Component {
                       </div>
                     </div>
                     <CardTable cards={cards} styleTable={styleTable} actions={actions}
-                      projects={projects} users={users} />
+                      projects={projects} users={users} cardDetail={this.state.cardDetail} />
                   </div>
                 </div>
               </div>
