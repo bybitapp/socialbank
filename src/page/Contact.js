@@ -23,7 +23,7 @@ class Contact extends React.Component {
             <div className='container clearfix'>
               <ContactForm />
               <div className='sidebar col_last nobottommargin'>
-                <abbr title='Phone Number'><strong>Phone:</strong></abbr> +44 7424 760 589<br />
+                <abbr title='Phone Number'><strong>Phone:</strong></abbr> +44 7437 893 938<br />
                 <abbr title='Email Address'><strong>Email:</strong></abbr> contact@sotec.io
                 <div className='widget noborder notoppadding'>
                   <a href='https://www.facebook.com/SoTecUK' className='social-icon si-small si-dark si-facebook'>
