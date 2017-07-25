@@ -16,7 +16,7 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
-  postForget: (values, cb) => {
+  postForgot: (values, cb) => {
     axios.post('/api/accounts/forgotPassword', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
