@@ -6,6 +6,10 @@ const config = {
     name: process.env.APP_NAME || 'sotec',
     url: process.env.APP_URL || 'http://www.sotec.io'
   },
+  support: {
+    email: 'contact@sotec.io',
+    name: 'SoTec Team'
+  },
   returnStackTrace: truthy(process.env.RETURN_STACK_TRACE, false),
   ensureHttps: truthy(process.env.ENSURE_HTTPS, false),
   mongoUrl: process.env.MONGODB_URI || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/sotec-dev',
