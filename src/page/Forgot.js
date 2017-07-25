@@ -7,7 +7,7 @@ import {EMAIL} from '../constants/Validation'
 import Input from '../components/Input'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { resetPassword } from '../actions'
+import { postForgot } from '../actions'
 
 const validate = values => {
   const errors = {}
@@ -28,7 +28,7 @@ const enhance = compose(
     validate,
     onSubmit: (values, dispatch, ownProps) => {
       return new Promise((resolve, reject) => {
-        dispatch(resetPassword(values, (_error, data) => {
+        dispatch(postForgot(values, (_error, data) => {
           if (!_error) {
             toastr.success('Password reset instructions sent!', 'Please check your email.')
             ownProps.history.push('/login')
