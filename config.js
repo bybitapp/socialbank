@@ -10,7 +10,7 @@ const config = {
   ensureHttps: truthy(process.env.ENSURE_HTTPS, false),
   mongoUrl: process.env.MONGODB_URI || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/sotec-dev',
   session: {
-    secret: process.env.SESSION_SECRET || 'dummySecret',
+    secret: process.env.SESSION_SECRET || 'eda4b6e5027ab1c709d2153b6c8ef347',
     cookie: {
       secure: truthy(process.env.COOKIE_SECURE, false)
     }
