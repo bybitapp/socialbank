@@ -36,14 +36,16 @@ const enhance = compose(
 const preloaderStyle = {margin: 'auto', textAlign: 'center', display: 'block'}
 const loaderStyle = {widht: '28px', height: '28px'}
 
-const formatCardNnumber = (cardNumber) => {
+const FormatCardNnumber = ({cardNumber}) => {
   const cardNumberArray = cardNumber.match(/.{1,4}/g)
-  console.log(cardNumberArray)
-  let formattedCardNumber = ''
-  cardNumberArray.forEach((num) => {
-    formattedCardNumber += num + '\t'
-  })
-  return formattedCardNumber
+  return (
+    <p>
+      {Object.keys(cardNumberArray).map((key, index) => {
+        const num = cardNumberArray[key]
+        return (<span key={key} className={'num-' + key}>{num}</span>)
+      })}
+    </p>
+  )
 }
 
 const ActionButton = (cid, action) => (
@@ -52,34 +54,76 @@ const ActionButton = (cid, action) => (
   </a>
 )
 
+const DebitCard = ({cardDetail}) => {
+  return (
+    <div>
+      <div className='card'>
+        <div className='front'>
+          <div className='top'>
+            <div className='chip' />
+            <div className='cardType'>
+              { cardDetail.cardBrand }
+            </div>
+          </div>
+          <div className='middle' style={{padding: '50px 0 30px'}}>
+            <div className='cd-number'>
+              <FormatCardNnumber cardNumber={cardDetail.cardNumber} />
+            </div>
+          </div>
+          <div className='bottom'>
+            <div className='cardholder'>
+              <p className='label'>Cardholder</p>
+              <p className='holder'>{ cardDetail.cardName }</p>
+            </div>
+            <div className='expires'>
+              <div style={{float: 'left', marginRight: '10px'}}>
+                <p className='label'>Created At</p>
+                <p><span className='month'>09</span>/<span className='year'>19</span></p>
+              </div>
+              <div style={{float: 'left'}}>
+                <p className='label'>Good Thru</p>
+                <p><span className='month'>09</span>/<span className='year'>19</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='card'>
+        <div className='back'>
+          <div className='top'>
+            <div className='magstripe' />
+          </div>
+          <div className='middle'>
+            <p className='label'>CCV</p>
+            <div className='cvc'>
+              <p>{ cardDetail.cvv }</p>
+            </div>
+          </div>
+          <div className='bottom' />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const PreLoader = () => {
+  return (
+    <div style={preloaderStyle}>
+      <div >
+        <span className='dark preloader' style={loaderStyle} />
+      </div>
+      <span>Loading...</span>
+    </div>
+  )
+}
+
 const CardDetail = ({cardDetail}) => {
-  console.log(cardDetail)
   return (
     <tr>
       <td colSpan='8'>
         { cardDetail.cardName
-          ? <div className='sb-card container clearfix'>
-            <div className='row'>
-              <div className='sb-card-name col-sm-8'>{ cardDetail.cardName }</div>
-              <div className='sb-card-brand col-sm-4'><i className='pf pf-stripe' /></div>
-            </div>
-            <div className='row bottommargin-sm'>
-              <div className='sb-card-number'>{ formatCardNnumber(cardDetail.cardNumber) }</div>
-            </div>
-            <div className='row'>
-              <div className='col-sm-8'>
-                <div className='sb-card-startdate'><label>CREATED AT</label> { cardDetail.startDate }</div>
-                <div className='sb-card-enddate'><label>VALID THRU</label> { cardDetail.endDate }</div>
-              </div>
-              <div className='sb-card-cvv col-sm-4'><label>CVV</label>{ cardDetail.cvv }</div>
-            </div>
-          </div>
-          : <div style={preloaderStyle}>
-            <div >
-              <span className='dark preloader' style={loaderStyle} />
-            </div>
-            <span>Loading...</span>
-          </div>
+          ? <DebitCard cardDetail={cardDetail} />
+          : <PreLoader />
         }
       </td>
     </tr>
