@@ -79,25 +79,45 @@
 }
 
 .sb-card {
-  padding: 10px;
-  min-width: 270px;
-  min-height: 170px;
-  border: solid 0.5px #a1e0d0;
+  max-width: 350px;
+  padding: 15px;
+  background-color: white;
   border-radius: 10px;
   color: 'darkgrey';
-  margin: 5px;
+  margin: auto;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.sb-card .sb-card-startdate {
-  font-size: 12px
+.sb-card .sb-card-startdate,
+.sb-card-startdate label {
+  text-align: left;
+  font-size: 11px;
 }
 
-.sb-card .sb-card-enddate {
-  font-size: 12px
+.sb-card .sb-card-enddate,
+ .sb-card-enddate label{
+  text-align: left;
+  font-size: 11px;
+}
+
+.sb-card .sb-card-cvv,
+ .sb-card-cvv label{
+  font-size: 11px;
 }
 
 .sb-card .sb-card-brand {
   max-width: 64px;
+}
+
+.sb-card .sb-card-number {
+  font-size: 16px;
+}
+
+.sb-card .sb-card-name {
+  text-align: left;
+  font-size: 16px;
+  margin: 10px 5px 10px 5px;
 }
 
 .button.button-border {
