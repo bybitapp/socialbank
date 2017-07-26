@@ -200,8 +200,8 @@ export const updatePassword = (data, cb) => (dispatch, getState) => {
   })
 }
 
-export const resetPassword = (data, cb) => (dispatch, getState) => {
-  return server.resetPassword(data, (ex, data) => {
+export const postForgot = (data, cb) => (dispatch, getState) => {
+  return server.postForgot(data, (ex, data) => {
     if (!ex) {
       dispatch({type: types.RESET_PASSWORD_SUCCESS, data})
       cb(null, data)
