@@ -90,7 +90,7 @@ class OrganizationForm extends React.Component {
 
   render () {
     const { handleSubmit, organizations, error } = this.props
-    const button = (organizations) ? 'Update Organization' : 'Add Organization'
+    const button = (organizations && !Array.isArray(organizations)) ? 'Update Organization' : 'Add Organization'
     return (
       <div>
         {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
