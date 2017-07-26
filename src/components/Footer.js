@@ -7,7 +7,7 @@ class Footer extends React.Component {
         <div id='copyrights' style={{ fontSize: '16px' }}>
           <div className='container clearfix'>
             <div className='col_half'>
-              Copyrights &copy; 2017 All Rights Reserved by sotec.<br />
+              Copyrights &copy; 2017 All Rights Reserved by SoTec.<br />
               <div className='copyright-links'>
                 <a href='/terms'>Terms of Use</a> / <a href='/privacy'>Privacy Policy</a>
               </div>
@@ -26,7 +26,7 @@ class Footer extends React.Component {
               <div className='clear' />
               <i className='icon-envelope2' /> contact@sotec.io
               <span className='middot'>&middot;</span>
-              <i className='icon-headphones' /> +44 7424 760 589
+              <i className='icon-headphones' /> +44 7437 893 938
             </div>
           </div>
         </div>
