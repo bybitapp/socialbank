@@ -33,6 +33,23 @@ const enhance = compose(
   })
 )
 
+const cardBrandClass = {
+  'NO_CARD_BRAND': 'pf-credit-card',
+  'AMEX': 'pf-american-express',
+  'CHINAUNIONPAY': 'pf-unionpay',
+  'DINERS': 'pf-diners',
+  'DISCOVER': 'pf-discover',
+  'JCB': 'pf-jcb',
+  'MASTERCARD': 'pf-mastercard-alt',
+  'MAESTRO': 'pf-maestro-alt',
+  'SOLO': 'pf-credit-card',
+  'VISA': 'pf-visa',
+  'VISADEBIT': 'pf-visa-debit',
+  'VISAELECTRON': 'pf-visa-electron',
+  'VISAPURCHASING': 'pf-credit-card',
+  'VERVE': 'pf-credit-card'
+}
+
 const preloaderStyle = {margin: 'auto', textAlign: 'center', display: 'block'}
 const loaderStyle = {widht: '28px', height: '28px'}
 
@@ -62,10 +79,10 @@ const DebitCard = ({cardDetail}) => {
           <div className='top'>
             <div className='chip' />
             <div className='cardType'>
-              { cardDetail.cardBrand }
+              <i style={{fontSize: '26px'}} className={`pf ${cardBrandClass[cardDetail.cardBrand]}`} />
             </div>
           </div>
-          <div className='middle' style={{padding: '50px 0 30px'}}>
+          <div className='middle' style={{padding: '40px 0 30px'}}>
             <div className='cd-number'>
               <FormatCardNnumber cardNumber={cardDetail.cardNumber} />
             </div>
@@ -78,11 +95,11 @@ const DebitCard = ({cardDetail}) => {
             <div className='expires'>
               <div style={{float: 'left', marginRight: '10px'}}>
                 <p className='label'>Created At</p>
-                <p><span className='month'>09</span>/<span className='year'>19</span></p>
+                <p><span>{ cardDetail.startDate }</span></p>
               </div>
               <div style={{float: 'left'}}>
                 <p className='label'>Good Thru</p>
-                <p><span className='month'>09</span>/<span className='year'>19</span></p>
+                <p><span>{ cardDetail.endDate }</span></p>
               </div>
             </div>
           </div>
@@ -96,7 +113,7 @@ const DebitCard = ({cardDetail}) => {
           <div className='middle'>
             <p className='label'>CCV</p>
             <div className='cvc'>
-              <p>{ cardDetail.cvv }</p>
+              <p style={{fontSize: '18px'}}>{ cardDetail.cvv }</p>
             </div>
           </div>
           <div className='bottom' />
