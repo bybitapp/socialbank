@@ -68,8 +68,8 @@ const Description = () => (
           <p>Easily keep track of multiple cards.</p>
         </div>
       </div>
-      <div className='col-md-4 hidden-sm bottommargin center'>
-        <img src='images/card_v2.png' alt='iphone 2' />
+      <div className='col-md-4 hidden-sm topmargin-lg bottommargin center'>
+        <img src='images/credit_card/card_sample.png' alt='iphone 2' />
       </div>
       <div className='col-md-4 col-sm-6 bottommargin'>
         <div className='feature-box topmargin' data-animate='fadeIn'>

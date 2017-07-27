@@ -1,6 +1,6 @@
 import {
   RECEIVE_CARDS, ADD_CARD_SUCCESS, UPDATE_CARD_SUCCESS, DESTROY_CARD_SUCCESS,
-  TRANSFER_CARD_SUCCESS, UPDATE_CARD_STATUS_SUCCESS
+  TRANSFER_CARD_SUCCESS, UPDATE_CARD_STATUS_SUCCESS, RECEIVE_CARD_DETAIL
 } from '../constants/ActionTypes'
 
 export const cards = (state = [], action) => {
@@ -37,6 +37,9 @@ export const cards = (state = [], action) => {
         }
         return item
       })
+    case RECEIVE_CARD_DETAIL:
+      // Do not store card detail data
+      return state
     default:
       return state
   }
