@@ -304,7 +304,13 @@ class Cards extends React.Component {
       {icon: 'attach_money', onclick: this.onTransfer, access: 'OWNER,ADMIN'},
       {icon: 'lock', onclick: this.onBlock, show: (item) => item.status === 'active', access: 'OWNER,ADMIN,USER'},
       {icon: 'lock_open', onclick: this.onUnblock, show: (item) => item.status === 'inactive', access: 'OWNER,ADMIN,USER'},
-      {icon: 'delete', onclick: this.onDestroy, access: 'OWNER,ADMIN'}
+      {icon: 'delete', onclick: this.onDestroy, access: 'OWNER,ADMIN'},
+      {
+        icon: 'credit_card',
+        onclick: this.onSelectDetail,
+        show: (item) => item.userId === Auth.getUser().id,
+        access: 'OWNER,ADMIN,USER'
+      }
     ]
     actions = actions.filter((i) => i.access.indexOf(Auth.getUser().access) !== -1)
 
