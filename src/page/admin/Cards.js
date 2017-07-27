@@ -307,14 +307,8 @@ class Cards extends React.Component {
       {
         icon: 'credit_card',
         onclick: this.onSelectDetail,
-        show: (item) => {
-          const user = Auth.getUser()
-          if (user.access === 'USER') {
-            return item.userId === user.id
-          }
-          return true
-        },
-	access: 'OWNER,ADMIN,USER'
+        show: (item) => item.userId === Auth.getUser().id,
+        access: 'OWNER,ADMIN,USER'
       }
     ]
     actions = actions.filter((i) => i.access.indexOf(Auth.getUser().access) !== -1)
