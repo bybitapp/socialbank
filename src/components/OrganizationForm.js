@@ -104,7 +104,7 @@ class OrganizationForm extends React.Component {
     let button = 'Add Organization'
     let disabled = false
     if (Auth.getUser().access === 'OWNER') {
-      if (organizations) {
+      if (organizations && !Array.isArray(organizations)) {
         button = 'Update Organization'
       }
     } else {

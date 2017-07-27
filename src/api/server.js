@@ -16,6 +16,11 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
+  postForgot: (values, cb) => {
+    axios.post('/api/accounts/forgotPassword', values)
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
   login: (values, cb) => {
     axios.post('/api/accounts/login', values)
       .then((res) => cb(null, res.data))
@@ -128,6 +133,11 @@ export default {
   },
   updateCardStatus: (values, cb) => {
     axios.post('/api/cards/status', values)
+      .then((res) => cb(null, res.data))
+      .catch((e) => cb(e))
+  },
+  getCardDetail: (values, cb) => {
+    axios.post('/api/cards/detail', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
