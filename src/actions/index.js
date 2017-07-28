@@ -304,22 +304,16 @@ export const addCard = (card, cb) => (dispatch, getState) => {
         dispatch({type: types.UPDATE_CARD_SUCCESS, data})
         cb(null, data)
       } else {
-        if (ex.response.data.msg) {
-          cb(ex.response.data.msg)
-        } else {
-          cb('Update Failed!')
-        }
+        const errMsg = ex.response.data.message ? ex.response.data.message : 'Update Failed!'
+        cb(errMsg)
       }
     } else {
       if (!ex) {
         dispatch({type: types.ADD_CARD_SUCCESS, data})
         cb(null, data)
       } else {
-        if (ex.response.data.msg) {
-          cb(ex.response.data.msg)
-        } else {
-          cb('Add Failed!')
-        }
+        const errMsg = ex.response.data.message ? ex.response.data.message : 'Add Failed!'
+        cb(errMsg)
       }
     }
   })
