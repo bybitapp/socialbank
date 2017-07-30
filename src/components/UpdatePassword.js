@@ -13,6 +13,18 @@ const validate = values => {
   }
   if (!values.newPassword) {
     errors.newPassword = 'Required'
+  } else {
+    if (values.newPassword.length < 8) {
+      errors.newPassword = 'Too small password! Use at least 8 characters.'
+    } else if (values.newPassword.length > 30) {
+      errors.newPassword = 'Too long password! 30 characters are enough.'
+    } else if (values.newPassword.search(/[A-Z]/) < 0) {
+      errors.newPassword = 'Use at least one capital letter for your security.'
+    } else if (values.newPassword.search(/[0-9]/) < 0) {
+      errors.newPassword = 'Use at least one digit for your security.'
+    } else if (values.newPassword.search(/[!@#$&*]/) < 0) {
+      errors.newPassword = 'Use at least one special character (!@#$&*) for your security.'
+    }
   }
   if (!values.repeatPassword) {
     errors.repeatPassword = 'Required'
