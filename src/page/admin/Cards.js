@@ -299,23 +299,19 @@ class Cards extends React.Component {
 
     const { cards, projects, users, modal, setModal } = this.props
 
-    const actions = [
-      {icon: 'attach_money', onclick: this.onTransfer},
-      {icon: 'lock', onclick: this.onBlock, show: (item) => item.status === 'active'},
-      {icon: 'lock_open', onclick: this.onUnblock, show: (item) => item.status === 'inactive'},
-      {icon: 'delete', onclick: this.onDestroy},
+    let actions = [
+      {icon: 'attach_money', onclick: this.onTransfer, access: 'OWNER,ADMIN'},
+      {icon: 'lock', onclick: this.onBlock, show: (item) => item.status === 'active', access: 'OWNER,ADMIN,USER'},
+      {icon: 'lock_open', onclick: this.onUnblock, show: (item) => item.status === 'inactive', access: 'OWNER,ADMIN,USER'},
+      {icon: 'delete', onclick: this.onDestroy, access: 'OWNER,ADMIN'},
       {
         icon: 'credit_card',
         onclick: this.onSelectDetail,
-        show: (item) => {
-          const user = Auth.getUser()
-          if (user.access === 'USER') {
-            return item.userId === user.id
-          }
-          return true
-        }
+        show: (item) => item.userId === Auth.getUser().id,
+        access: 'OWNER,ADMIN,USER'
       }
     ]
+    actions = actions.filter((i) => i.access.indexOf(Auth.getUser().access) !== -1)
 
     return (
       <div id='wrapper' className='clearfix'>
