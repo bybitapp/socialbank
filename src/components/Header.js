@@ -35,8 +35,8 @@ class Header extends React.Component {
           <div className='container clearfix' style={{ padding: 0 }}>
             <div id='primary-menu-trigger'><i className='icon-reorder' /></div>
             <div id='logo' style={{ borderRight: 0 }}>
-              <a href='/' className='standard-logo' data-dark-logo='images/logo-dark.png'><img src='images/logo.png' alt='sotec logo' /></a>
-              <a href='/' className='retina-logo' data-dark-logo='images/logo-dark@2x.png'><img src='images/logo@2x.png' alt='sotec logo' /></a>
+              <a href='/' className='standard-logo' data-dark-logo='/images/logo-dark.png'><img src='/images/logo.png' alt='sotec logo' /></a>
+              <a href='/' className='retina-logo' data-dark-logo='/images/logo-dark@2x.png'><img src='/images/logo@2x.png' alt='sotec logo' /></a>
             </div>
             <nav id='primary-menu' >
               {Auth.isUserAuthenticated() ? (
