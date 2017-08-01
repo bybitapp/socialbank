@@ -33,8 +33,10 @@ const enhance = compose(
     form: 'resetPassword',
     validate,
     onSubmit: (values, dispatch, ownProps) => {
+      const token = ownProps.match.params.token
+
       return new Promise((resolve, reject) => {
-        dispatch(postReset(values, (_error, data) => {
+        dispatch(postReset(token, (_error, data) => {
           if (!_error) {
             toastr.success('Successfully reset password.')
             ownProps.history.push('/login')
@@ -74,7 +76,7 @@ class Login extends React.Component {
                     {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                     <Field name='password' label='Password:' component={Input} type='password' />
                     <div className='col_full nobottommargin'>
-                      <button className='button button-3d button-black nomargin' type='submit'>Password reset</button>
+                      <button className='button button-3d button-black nomargin' type='submit'>Submit</button>
                       <a href='/login' className='fright'>Cancel</a>
                     </div>
                   </form>
