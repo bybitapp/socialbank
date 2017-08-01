@@ -1,10 +1,11 @@
 const truthy = require('lib/util/truthy')
 
+const port = process.env.PORT || 3001
 const config = {
   app: {
-    port: process.env.PORT || 3001,
+    port,
     name: process.env.APP_NAME || 'sotec',
-    url: process.env.APP_URL || 'http://www.sotec.io'
+    url: process.env.APP_URL || `http://localhost:${port}`
   },
   support: {
     email: 'contact@sotec.io',
@@ -49,15 +50,6 @@ const config = {
   mailgun: {
     apiKey: 'key-1b7814c2dcd4f31c4c5302368bde1a67',
     domain: 'mg.sotec.io'
-  },
-  smtp: {
-    host: 'smtp.zoho.eu',
-    port: 465,
-    secure: true,
-    auth: {
-      user: 'contact@sotec.io',
-      pass: 'sotec123456!'
-    }
   }
 }
 

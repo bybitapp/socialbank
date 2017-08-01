@@ -221,7 +221,7 @@ export const updatePassword = (data, cb) => (dispatch, getState) => {
 export const postForgot = (data, cb) => (dispatch, getState) => {
   return server.postForgot(data, (ex, data) => {
     if (!ex) {
-      dispatch({type: types.RESET_PASSWORD_SUCCESS, data})
+      dispatch({type: types.FORGOT_PASSWORD_SUCCESS, data})
       cb(null, data)
     } else {
       // Replace the line above with line below to rollback on failure:
@@ -231,8 +231,8 @@ export const postForgot = (data, cb) => (dispatch, getState) => {
   })
 }
 
-export const postReset = (data, cb) => (dispatch, getState) => {
-  return server.postReset(data, (ex, data) => {
+export const postReset = (token, cb) => (dispatch, getState) => {
+  return server.postReset(token, (ex, data) => {
     if (!ex) {
       dispatch({type: types.RESET_PASSWORD_SUCCESS, data})
       cb(null, data)
