@@ -231,6 +231,19 @@ export const postForgot = (data, cb) => (dispatch, getState) => {
   })
 }
 
+export const postReset = (data, cb) => (dispatch, getState) => {
+  return server.postReset(data, (ex, data) => {
+    if (!ex) {
+      dispatch({type: types.RESET_PASSWORD_SUCCESS, data})
+      cb(null, data)
+    } else {
+      // Replace the line above with line below to rollback on failure:
+      // return dispatch({ type: types.UPDATE_ACCOUNT_FAILURE, account })
+      cb('')
+    }
+  })
+}
+
 export const login = (account, cb) => (dispatch, getState) => {
   return server.login(account, (ex, data) => {
     if (!ex) {
