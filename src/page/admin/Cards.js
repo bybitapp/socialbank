@@ -151,7 +151,7 @@ const CardItem = ({card, actions, projects = [], users = []}) => {
   const cardStatus = CARD_STATUS.find((status) => (status.id === card.status))
   const cardStatusName = cardStatus ? cardStatus.name : 'unknown'
   const project = projects.find(p => p.id === card.projectId)
-  const user = users.find(u => u.id === card.userId)
+  const user = Auth.getUser().id === card.userId ? Auth.getUser() : users.find(u => u.id === card.userId)
   const projectName = (project && project.name) || 'unknown'
   const userName = (user && user.profile && user.profile.name) || 'unknown'
   const userEmail = (user && user.email) || 'unknown'

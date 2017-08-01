@@ -2,6 +2,7 @@ import React from 'react'
 import Modal from 'react-modal'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
+import Auth from '../modules/Auth'
 import { reduxForm, Field, SubmissionError, formValueSelector, change } from 'redux-form'
 
 import { addCard } from '../actions'
@@ -87,17 +88,26 @@ class CardForm extends React.Component {
 
   render () {
     const { handleClose, open, handleSubmit, projects, users, error } = this.props
+
     const projectList = projects.map((item, index) => {
       return {
         id: item.id,
         name: item.name
       }
     })
+
     const userList = users.map((item, index) => {
       return {
         id: item.id,
         name: item.profile.name + ' - ' + item.email
       }
+    })
+
+    // Add logged user to allow create his own card
+    const loggedUser = Auth.getUser()
+    userList.push({
+      id: loggedUser.id,
+      name: loggedUser.profile.name + ' - ' + loggedUser.email
     })
 
     return (
@@ -117,7 +127,7 @@ class CardForm extends React.Component {
             </header>
             <main className='mdl-layout__content'>
               <div className='page-content'>
-                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
+                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' />{error}</div>)}
                 <Field name='pid' label='Project Name' component={Select} items={projectList} />
                 <Field name='uid' label='User' component={Select} items={userList} />
               </div>
