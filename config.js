@@ -46,6 +46,10 @@ const config = {
     apiKey: 'c131f7446208bc5bc5a01d6375b5b76d-us16',
     mailingListId: '858c427a82'
   },
+  mailgun: {
+    apiKey: 'key-1b7814c2dcd4f31c4c5302368bde1a67',
+    domain: 'mg.sotec.io'
+  },
   smtp: {
     host: 'smtp.zoho.eu',
     port: 465,
