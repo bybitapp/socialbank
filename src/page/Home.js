@@ -48,21 +48,21 @@ const Description = () => (
       <div className='col-md-4 col-sm-6 bottommargin'>
         <div className='feature-box fbox-right topmargin' data-animate='fadeIn'>
           <div className='fbox-icon'>
-            <a href=''><i className='icon-home' /></a>
+            <i className='icon-home' />
           </div>
           <h3>Controlled</h3>
           <p>Freeze cards and set spending limits. Maintain control of your money.</p>
         </div>
         <div className='feature-box fbox-right topmargin' data-animate='fadeIn' data-delay='200'>
           <div className='fbox-icon'>
-            <a href=''><i className='icon-diamond' /></a>
+            <i className='icon-diamond' />
           </div>
           <h3>Secure</h3>
           <p>Lock card whenever you want, making them useless to buy.</p>
         </div>
         <div className='feature-box fbox-right topmargin' data-animate='fadeIn' data-delay='400'>
           <div className='fbox-icon'>
-            <a href=''><i className='icon-credit-cards' /></a>
+            <i className='icon-credit-cards' />
           </div>
           <h3>Cards Management</h3>
           <p>Easily keep track of multiple cards.</p>
@@ -74,21 +74,21 @@ const Description = () => (
       <div className='col-md-4 col-sm-6 bottommargin'>
         <div className='feature-box topmargin' data-animate='fadeIn'>
           <div className='fbox-icon'>
-            <a href=''><i className='icon-wallet' /></a>
+            <i className='icon-wallet' />
           </div>
           <h3>Private</h3>
           <p>Share charity spending only. Keep sensitive information safe and private.</p>
         </div>
         <div className='feature-box topmargin' data-animate='fadeIn' data-delay='200'>
           <div className='fbox-icon'>
-            <a href=''><i className='icon-lock' /></a>
+            <i className='icon-lock' />
           </div>
           <h3>Disposable</h3>
           <p>Delete unneeded cards anytime and forget about unused subscriptions.</p>
         </div>
         <div className='feature-box topmargin' data-animate='fadeIn' data-delay='400'>
           <div className='fbox-icon'>
-            <a href=''><i className='icon-download2' /></a>
+            <i className='icon-download2' />
           </div>
           <h3>Easy reporting</h3>
           <p>Download your transaction history to easily track your spending.</p>
@@ -158,7 +158,7 @@ const HowStart = () => (
       <div className='col_one_fourth nobottommargin'>
         <div className='feature-box fbox-center fbox-light fbox-effect nobottomborder'>
           <div className='fbox-icon'>
-            <a href=''><i className='i-alt noborder icon-wallet' /></a>
+            <i className='i-alt noborder icon-wallet' />
           </div>
           <h3>Create an account<span className='subtitle'>Create an account and set up your organisation</span></h3>
         </div>
@@ -166,7 +166,7 @@ const HowStart = () => (
       <div className='col_one_fourth nobottommargin'>
         <div className='feature-box fbox-center fbox-light fbox-effect nobottomborder'>
           <div className='fbox-icon'>
-            <a href=''><i className='i-alt noborder icon-money' /></a>
+            <i className='i-alt noborder icon-money' />
           </div>
           <h3>Add money to projects<span className='subtitle'>Transfer money from your bank account to your projects</span></h3>
         </div>
@@ -174,7 +174,7 @@ const HowStart = () => (
       <div className='col_one_fourth nobottommargin'>
         <div className='feature-box fbox-center fbox-light fbox-effect nobottomborder'>
           <div className='fbox-icon'>
-            <a href=''><i className='i-alt noborder icon-user' /></a>
+            <i className='i-alt noborder icon-user' />
           </div>
           <h3>Distribute cards<span className='subtitle'>Transfer money to people involved in your projects</span></h3>
         </div>
@@ -182,7 +182,7 @@ const HowStart = () => (
       <div className='col_one_fourth nobottommargin col_last'>
         <div className='feature-box fbox-center fbox-light fbox-effect nobottomborder'>
           <div className='fbox-icon'>
-            <a href=''><i className='i-alt noborder icon-shop' /></a>
+            <i className='i-alt noborder icon-shop' />
           </div>
           <h3>Start spending<span className='subtitle'>Use your SoTec card to pay anyone, anywhere (even contactless!)</span></h3>
         </div>
