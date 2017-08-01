@@ -56,12 +56,12 @@ const loaderStyle = {widht: '28px', height: '28px'}
 const FormatCardNnumber = ({cardNumber}) => {
   const cardNumberArray = cardNumber.match(/.{1,4}/g)
   return (
-    <p>
+    <div>
       {Object.keys(cardNumberArray).map((key, index) => {
         const num = cardNumberArray[key]
         return (<span key={key} className={'num-' + key}>{num}</span>)
       })}
-    </p>
+    </div>
   )
 }
 
@@ -77,46 +77,55 @@ const DebitCard = ({cardDetail}) => {
       <div className='card'>
         <div className='front'>
           <div className='top'>
-            <div className='chip' />
-            <div className='cardType'>
-              <i style={{fontSize: '26px'}} className={`pf ${cardBrandClass[cardDetail.cardBrand]}`} />
+            <div className='title'>
+              <span className='type'>Visa Virtual Account</span>
+              <span className='desc'>Internet and Telephone use only</span>
             </div>
+            <div className='logo'>sotec</div>
           </div>
-          <div className='middle' style={{padding: '40px 0 30px'}}>
+          <div className='middle'>
             <div className='cd-number'>
               <FormatCardNnumber cardNumber={cardDetail.cardNumber} />
             </div>
           </div>
           <div className='bottom'>
-            <div className='cardholder'>
-              <p className='label'>Cardholder</p>
-              <p className='holder'>{ cardDetail.cardName }</p>
-            </div>
             <div className='expires'>
-              <div style={{float: 'left', marginRight: '10px'}}>
-                <p className='label'>Created At</p>
-                <p><span>{ cardDetail.startDate }</span></p>
+              <div className='data'>
+                <span className='text'>VALID FROM:</span>
+                <span className='value'>{ cardDetail.startDate }</span>
               </div>
-              <div style={{float: 'left'}}>
-                <p className='label'>Good Thru</p>
-                <p><span>{ cardDetail.endDate }</span></p>
+              <div className='data'>
+                <span className='text'>EXPIRES END</span>
+                <span className='value'>{ cardDetail.endDate }</span>
               </div>
+              <div className='ixaris'>
+                { cardDetail.cardName }
+              </div>
+            </div>
+            <div className='cardtype'>
+              <div className='logo'><i className={`pf ${cardBrandClass[cardDetail.cardBrand]}`} /></div>
+              <div className='type'>Business</div>
             </div>
           </div>
         </div>
       </div>
+
       <div className='card'>
         <div className='back'>
           <div className='top'>
-            <div className='magstripe' />
+            <div className='magstripe'>Internet and Telephone use only</div>
           </div>
           <div className='middle'>
-            <p className='label'>CCV</p>
-            <div className='cvc'>
-              <p style={{fontSize: '18px'}}>{ cardDetail.cvv }</p>
+            <div className='cvc'>CCV2: { cardDetail.cvv }</div>
+          </div>
+          <div className='bottom'>
+            <div className='issue'>
+              This card is issued by IDT Financial Services Limited (IDTFS) pursuant to a license from Visa Europe and remains the property of IDT Financial Services Ltd.
+            </div>
+            <div className='type'>
+              Business
             </div>
           </div>
-          <div className='bottom' />
         </div>
       </div>
     </div>

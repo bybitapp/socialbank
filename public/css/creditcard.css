@@ -11,10 +11,13 @@
   color: white;
   transform-style: preserve-3d;
   transition: 0.5s ease-in-out;
-  width: 350px;
-  height: 230px;
+  width: 330px;
+  height: 210px;
   z-index: 2;
+  white-space: normal;
+  line-height: normal;
 }
+
 @media(max-width: 500px) {
   .card {
     width: 300px;
@@ -22,12 +25,17 @@
   }
 }
 
+.card .front {
+  z-index: 5;
+  transform: rotateY(0deg);
+}
+
 .card .front,
 .card .back {
-  width: 350px;
-  height: 230px;
-  background: linear-gradient(-45deg, #4FB0C6, #3e79be);
-  padding: 20px;
+  width: 330px;
+  height: 210px;
+  background: linear-gradient(-45deg, #466382, #202d4a);
+  padding: 10px;
   position: absolute;
   top: 0;
   left: 0;
@@ -53,11 +61,9 @@
   height: 230px;
   transition: 0.5s ease-in-out;
   z-index: -1;
-  opacity: 0.15;
-  background-image: url("../images/credit_card/card_bg_logo.png");
+  opacity: 0.05;
+  background-image: url("../images/credit_card/virtual_card_bg.png");
   background-repeat: no-repeat;
-  background-size: 85%;
-  background-position: 110px 17px;
 }
 @media(max-width: 500px) {
   .card .front:after,
@@ -66,75 +72,38 @@
     height: 187.5px;
   }
 }
-.card .front {
-  z-index: 5;
-  transform: rotateY(0deg);
-}
-.card .back {
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.card .back .label {
-  padding: 0;
-  font-size: 12.5px;
-  font-weight: bold;
-  color: rgba(233, 245, 248, 0.85);
-  margin-right: 5px;
-}
-.card .back .top {
-  padding-top: 40px;
-  transition: 0.5s ease-in-out;
-}
-@media (max-width: 500px) {
-  .card .back .top {
-    padding-top: 15px;
-  }
-}
-.card .back .top .magstripe {
-  width: 100%;
-  height: 50px;
-  background: #333;
-}
-.card .back .middle {
-  margin-top: -40px;
-  padding: 0 20px;
-  text-align: right;
-}
-.card .back .middle .cvc {
-  width: 100%;
-  height: 40px;
-  background: white;
-  color: black;
-  line-height: 40px;
-  padding: 0 10px;
-  border-radius: 10px;
-}
+
 .card .front {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.card .front .middle .cd-number p {
+.card .front .middle {
+  padding: 40px 0 0 20px;
+}
+.card .front .middle .cd-number div {
   margin-bottom: 0;
 }
-.card .front .middle .cd-number p span {
-  margin-right: 20px;
-  font-size: 25px;
-  @media(max-width: 500px);
-  font-size: 20px;
+.card .front .middle .cd-number div span {
+  margin-right: 10px;
+  font-size: 19px;
 }
 .card .front .bottom {
   display: flex;
   justify-content: space-between;
 }
-.card .front .bottom .cardholder .label,
-.card .front .bottom .expires .label {
-  padding: 0;
-  font-size: 12.5px;
-  font-weight: bold;
+.card .front .bottom .expires .text {
+  padding: 7px 0;
+  font-size: 8px;
+  width: 40px;
+  float: left;
   color: rgba(233, 245, 248, 0.85);
+}
+.card .front .bottom .expires .value {
+  float: left;
+  padding: 0;
+  margin: 7px 2px;
+  font-size: 16px;
 }
 .card .front .top {
   display: flex;
@@ -151,37 +120,108 @@
     height: 35px;
   }
 }
-.card .front .top .chip {
-  width: 70px;
+
+.card .front .top .title {
+  width: 190px;
   height: 50px;
-  background: linear-gradient(-45deg, #e1e7ed, #9baec8);
   position: relative;
-  border-radius: 5px;
-  transition: 0.5s ease-in-out;
 }
-@media(max-width: 500px) {
-  .card .front .top .chip {
-    width: 50px;
-    height: 35px;
-  }
-}
-.card .front .top .chip:after {
-  content: "";
+
+.card .front .top .title .type {
+  font-weight: bold;
+  font-size: 16px;
   display: block;
-  width: 50px;
-  height: 30px;
-  transition: 0.5s ease-in-out;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border: 2px solid #5a79a3;
-  opacity: 0.35;
-  border-radius: 5px;
 }
-@media(max-width: 500px) {
-  .card .front .top .chip:after {
-    width: 35px;
-    height: 20px;
+
+.card .front .top .title .desc {
+  padding-top: 5px;
+  font-size: 10px;
+  display: block;
+}
+
+.card .front .top .logo {
+  font-weight: bold;
+  font-size: 30px;
+  position: relative;
+  top: -5px;
+}
+
+.card .front .bottom .expires .data {
+  float: left;
+  margin-right: 10px;
+}
+
+.card .front .bottom .expires .ixaris {
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.card .front .bottom .cardtype .logo {
+  font-size: 35px;
+  margin: 0;
+  padding: 0;
+}
+
+.card .front .bottom .cardtype .type {
+  text-align: right;
+  font-size: 9px;
+  top: -5px;
+  position: relative;
+}
+
+/** card back **/
+.card .back {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card .back .text {
+  padding: 0;
+  font-size: 12.5px;
+  font-weight: bold;
+  color: rgba(233, 245, 248, 0.85);
+  margin-right: 5px;
+}
+.card .back .top {
+  padding-top: 30px;
+  transition: 0.5s ease-in-out;
+}
+@media (max-width: 500px) {
+  .card .back .top {
+    padding-top: 15px;
   }
+}
+.card .back .top .magstripe {
+  width: 100%;
+  height: 50px;
+  background: #333;
+  font-size: 10px;
+  padding: 5px 20px;
+}
+.card .back .middle {
+  padding: 0 20px;
+  text-align: right;
+}
+.card .back .middle .cvc {
+  width: 100%;
+  line-height: 40px;
+  padding: 0 50px;
+  font-size: 16px;
+}
+.card .back .bottom {
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+}
+.card .back .bottom .issue {
+  font-size: 8px;
+  width: 250px;
+  margin: 0 20px
+}
+
+.card .back .bottom .type {
+  font-size: 10px;
+  width: 50px;
+  margin: 0 20px
 }
