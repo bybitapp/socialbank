@@ -24,6 +24,18 @@ const validate = values => {
   }
   if (!values.password) {
     errors.password = 'Required'
+  } else {
+    if (values.password.length < 8) {
+      errors.password = 'Too small password! Use at least 8 characters.'
+    } else if (values.password.length > 30) {
+      errors.password = 'Too long password! 30 characters are enough.'
+    } else if (values.password.search(/[A-Z]/) < 0) {
+      errors.password = 'Use at least one capital letter for your security.'
+    } else if (values.password.search(/[0-9]/) < 0) {
+      errors.password = 'Use at least one digit for your security.'
+    } else if (values.password.search(/[!@#$&*]/) < 0) {
+      errors.password = 'Use at least one special character (!@#$&*) for your security.'
+    }
   }
   if (!values.accepted) {
     errors.accepted = 'Required'

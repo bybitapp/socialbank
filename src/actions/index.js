@@ -184,7 +184,8 @@ export const registerAccount = (account, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // return dispatch({ type: types.REGISTER_ACCOUNT_FAILURE, account })
-      cb('Your account can not be created, please contact with us!')
+      const errMsg = ex.response.data.message ? ex.response.data.message : 'Your account can not be created, please contact with us!'
+      cb(errMsg)
     }
   })
 }
@@ -211,7 +212,8 @@ export const updatePassword = (data, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // return dispatch({ type: types.UPDATE_ACCOUNT_FAILURE, account })
-      cb('Your password can not be updated, please contact with us!')
+      const errMsg = ex.response.data.message ? ex.response.data.message : 'Your password can not be updated, please contact with us!'
+      cb(errMsg)
     }
   })
 }
