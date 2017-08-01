@@ -13,7 +13,6 @@ import CardBlockForm from '../../components/CardBlockForm'
 import CardUnblockForm from '../../components/CardUnblockForm'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
-import Auth from '../../modules/Auth'
 import MenuSideBar from '../../components/MenuSideBar'
 
 function mapStateToProps (state) {
