@@ -1,6 +1,7 @@
 import React from 'react'
 import { compose } from 'recompose'
 import { reduxForm, Field, SubmissionError } from 'redux-form'
+import {toastr} from 'react-redux-toastr'
 
 import { EMAIL } from '../constants/Validation'
 import { subscribeNewsletter } from '../actions'
@@ -23,6 +24,7 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(subscribeNewsletter(values, (_error) => {
           if (!_error) {
+            toastr.success('Thank you for subscribing.')
             dispatch(ownProps.reset('newsletterSubscribeForm'))
             resolve()
           } else {
