@@ -4,15 +4,8 @@ import { compose } from 'recompose'
 import { reduxForm, Field, SubmissionError } from 'redux-form'
 
 import { addProject } from '../actions'
-import Select from '../components/Select'
 import TextField from './TextField'
 import Input from './Input'
-
-const projectAccess = [
-  {name: 'public', id: 'public'},
-  {name: 'donors', id: 'donors'},
-  {name: 'private', id: 'private'}
-]
 
 const customStyles = {
   content: {top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', padding: '5px', transform: 'translate(-50%, -50%)'},
@@ -88,7 +81,6 @@ class ProjectForm extends React.Component {
                 {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                 <Field name='pid' type='hidden' component='input' />
                 <Field name='name' label='Project Name' component={Input} />
-                <Field name='access' label='Project Access' component={Select} items={projectAccess} />
                 <Field name='description' label='Description' component={TextField} />
               </div>
             </main>
