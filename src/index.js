@@ -52,7 +52,7 @@ const App = () => (
           <Route path='/public/o/:id' component={Public} />
           <Route path='/login' component={Login} />
           <Route path='/logout' component={Logout} />
-          <Route path='/register' component={Register} />
+          <Route path='/demo' component={Register} />
           <Route path='/forgot' component={Forgot} />
           <Route path='/reset/:token' component={Reset} />
           <Route path='/contact' component={Contact} />
