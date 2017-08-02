@@ -94,7 +94,7 @@ const Form = ({handleSubmit}) => {
   return (
     <form className='nobottommargin' onSubmit={handleSubmit}>
       <Field name='name' label='Name:' component={Input} />
-      <Field name='email' label='Email:' component={Input} />
+      <Field name='email' label='Work Email:' component={Input} />
       <Field name='phone' label='Phone number:' component={Input} />
       <Field name='role' label='Role' component={Select} items={roleList} />
       <Field name='password' label='Password:' component={Input} type='password' />

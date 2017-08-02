@@ -2,7 +2,7 @@ import React from 'react'
 import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, change } from 'redux-form'
-import { getOrganizationCards, getProjects, getUsers, getCardDetail } from '../../actions'
+import { getOrganizationCards, getProjects, getUsers, getCardDetail, getOrganization } from '../../actions'
 import { toastr } from 'react-redux-toastr'
 import { CARD_STATUS } from '../../constants/Option'
 import Auth from '../../modules/Auth'
@@ -16,11 +16,12 @@ import Footer from '../../components/Footer'
 import MenuSideBar from '../../components/MenuSideBar'
 
 function mapStateToProps (state) {
-  const { cards, projects, users, modal } = state
+  const { cards, projects, users, organizations, modal } = state
   return {
     cards,
     projects,
     users,
+    organizations,
     modal
   }
 }
@@ -229,6 +230,7 @@ class Cards extends React.Component {
 
   componentDidMount () {
     const { dispatch } = this.props
+    dispatch(getOrganization())
     dispatch(getProjects())
     dispatch(getUsers())
     dispatch(getOrganizationCards())
@@ -306,18 +308,18 @@ class Cards extends React.Component {
     const stylePadding = {padding: '15px'}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
-    const { cards, projects, users, modal, setModal } = this.props
+    const { cards, projects, users, organizations, modal, setModal } = this.props
 
     let actions = [
-      {icon: 'attach_money', onclick: this.onTransfer, access: 'OWNER,ADMIN'},
-      {icon: 'lock', onclick: this.onBlock, show: (item) => item.status === 'active', access: 'OWNER,ADMIN,USER'},
-      {icon: 'lock_open', onclick: this.onUnblock, show: (item) => item.status === 'inactive', access: 'OWNER,ADMIN,USER'},
-      {icon: 'delete', onclick: this.onDestroy, access: 'OWNER,ADMIN'},
+      {icon: 'attach_money', onclick: this.onTransfer, access: 'owner,admin'},
+      {icon: 'lock', onclick: this.onBlock, show: (item) => item.status === 'active', access: 'owner,admin,user'},
+      {icon: 'lock_open', onclick: this.onUnblock, show: (item) => item.status === 'inactive', access: 'owner,admin,user'},
+      {icon: 'delete', onclick: this.onDestroy, access: 'owner,admin'},
       {
         icon: 'credit_card',
         onclick: this.onSelectDetail,
         show: (item) => item.userId === Auth.getUser().id,
-        access: 'OWNER,ADMIN,USER'
+        access: 'owner,admin,user'
       }
     ]
     actions = actions.filter((i) => i.access.indexOf(Auth.getUser().access) !== -1)
@@ -339,16 +341,21 @@ class Cards extends React.Component {
                 </div>
                 <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
                   <div style={stylePadding}>
-                    <div className='mdl-grid'>
-                      <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
-                        <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
-                          onClick={() => setModal('cardModal')}>
-                            Add Card
-                        </button>
+                    { organizations && organizations.isValid
+                      ? (<div>
+                        <div className='mdl-grid'>
+                          <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
+                            <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
+                              onClick={() => setModal('cardModal')}>
+                                Add Card
+                            </button>
+                          </div>
+                        </div>
+                        <CardTable cards={cards} styleTable={styleTable} actions={actions} projects={projects} users={users} cardDetail={this.state.cardDetail} />
                       </div>
-                    </div>
-                    <CardTable cards={cards} styleTable={styleTable} actions={actions}
-                      projects={projects} users={users} cardDetail={this.state.cardDetail} />
+                      )
+                      : <p>Your organization is in the verification process. Please contact with the administration to get more information about progress.</p>
+                    }
                   </div>
                 </div>
               </div>
