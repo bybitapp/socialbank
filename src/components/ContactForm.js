@@ -48,7 +48,6 @@ class ContactForm extends React.Component {
     return (
       <div className='postcontent nobottommargin'>
         {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
-        <h3>Send us an Email</h3>
         <div id='contact-form-result' data-notify-type='success' data-notify-msg='<i className=icon-ok-sign></i> Message Sent Successfully!' />
         <form className='nobottommargin' onSubmit={handleSubmit}>
           <div className='form-process' />

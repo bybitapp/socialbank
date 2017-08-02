@@ -10,20 +10,7 @@ import Select from '../components/Select'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { registerAccount } from '../actions'
-
-const roleList = [
-  {id: 'none', name: '--'},
-  {id: 'ceo', name: 'CEO'},
-  {id: 'partner', name: 'Founder/Partner'},
-  {id: 'finance', name: 'Finance'},
-  {id: 'operations', name: 'Operations'},
-  {id: 'tech', name: 'Engineering'},
-  {id: 'product', name: 'Product'},
-  {id: 'marketing', name: 'Marketing'},
-  {id: 'sales', name: 'Sales'},
-  {id: 'customer', name: 'Customer Success'},
-  {id: 'design', name: 'Design'}
-]
+import { USER_ROLES } from '../constants/Option'
 
 const checkboxLabel = {
   link: '/terms',
@@ -96,7 +83,7 @@ const Form = ({handleSubmit}) => {
       <Field name='name' label='Name:' component={Input} />
       <Field name='email' label='Work Email:' component={Input} />
       <Field name='phone' label='Phone number:' component={Input} />
-      <Field name='role' label='Role' component={Select} items={roleList} />
+      <Field name='role' label='Role' component={Select} items={USER_ROLES} />
       <Field name='password' label='Password:' component={Input} type='password' />
       <Field name='accepted' label={checkboxLabel} component={Checkbox} />
       <br />
@@ -110,7 +97,7 @@ const Form = ({handleSubmit}) => {
 class Register extends React.Component {
   componentDidUpdate (prevProps) {
     const { dispatch } = this.props
-    dispatch(change('register', 'role', roleList[0].id))
+    dispatch(change('register', 'role', USER_ROLES[0].id))
   }
 
   render () {
