@@ -1,5 +1,5 @@
 import React from 'react'
-import Modal from 'react-modal'
+import ResponsiveModal from './ResponsiveModal'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import Auth from '../modules/Auth'
@@ -9,21 +9,6 @@ import { addCard } from '../actions'
 import Select from './Select'
 
 const selector = formValueSelector('cardForm')
-
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    padding: '5px',
-    transform: 'translate(-50%, -50%)'
-  },
-  overlay: {
-    zIndex: 4
-  }
-}
 
 const validate = values => {
   const errors = {}
@@ -111,10 +96,9 @@ class CardForm extends React.Component {
     })
 
     return (
-      <Modal
+      <ResponsiveModal
         isOpen={open}
         onRequestClose={handleClose}
-        style={customStyles}
         contentLabel='Card Form'
       >
         <form onSubmit={handleSubmit}>
@@ -142,7 +126,7 @@ class CardForm extends React.Component {
             </footer>
           </div>
         </form>
-      </Modal>
+      </ResponsiveModal>
     )
   }
 }
