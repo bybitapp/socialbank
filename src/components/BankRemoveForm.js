@@ -1,14 +1,9 @@
 import React from 'react'
-import Modal from 'react-modal'
+import Modal from './ResponsiveModal'
 import { compose } from 'recompose'
 import { reduxForm, Field, SubmissionError } from 'redux-form'
 
 import { removeBankAccount } from '../actions'
-
-const customStyles = {
-  content: {top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', padding: '5px', transform: 'translate(-50%, -50%)'},
-  overlay: {zIndex: 4}
-}
 
 const enhance = compose(
   reduxForm({
@@ -43,7 +38,6 @@ class BankRemoveForm extends React.Component {
       <Modal
         isOpen={open}
         onRequestClose={handleClose}
-        style={customStyles}
         contentLabel='Remove Bank'
       >
         <form onSubmit={handleSubmit}>
