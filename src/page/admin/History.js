@@ -2,7 +2,7 @@ import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, Field, formValueSelector } from 'redux-form'
-import { getHistory, getProjectsWithHistory } from '../../actions'
+import { getHistory, getProjectsWithHistory, getOrganization } from '../../actions'
 import { dateFormat } from '../../util/date'
 import { isEmpty } from 'ramda'
 import Header from '../../components/Header'
@@ -13,12 +13,13 @@ import Select from '../../components/Select'
 const selector = formValueSelector('history')
 
 function mapStateToProps (state) {
-  const { projects, history } = state
+  const { projects, history, organizations } = state
   let selectedProject = selector(state, 'project')
   return {
     projects,
     history,
-    selectedProject
+    selectedProject,
+    organizations
   }
 }
 
@@ -64,6 +65,7 @@ const HistoryTable = ({transactions = [], styleTable}) => (
 class History extends React.Component {
   componentDidMount () {
     const { dispatch } = this.props
+    dispatch(getOrganization())
     dispatch(getProjectsWithHistory())
   }
 
@@ -79,7 +81,7 @@ class History extends React.Component {
     const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0}
     const stylePadding = {padding: '15px'}
 
-    const { history, projects } = this.props
+    const { history, projects, organizations } = this.props
 
     const projectList = projects.map((item, index) => {
       return {
@@ -100,19 +102,24 @@ class History extends React.Component {
                 </div>
                 <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
                   <div style={stylePadding}>
-                    { isEmpty(projects)
-                      ? <p className='sb-no-project'>No available projects</p>
-                      : (
-                        <div>
-                          <div className='mdl-grid'>
-                            <div className='mdl-cell mdl-cell--9-col'>
-                              <Field name='project' label='Project Name' component={Select} items={projectList} />
+                    { organizations && organizations.isValid
+                      ? (<div>
+                        { isEmpty(projects)
+                          ? <p className='sb-no-project'>No available projects</p>
+                          : (
+                            <div>
+                              <div className='mdl-grid'>
+                                <div className='mdl-cell mdl-cell--9-col'>
+                                  <Field name='project' label='Project Name' component={Select} items={projectList} />
+                                </div>
+                                <div className='mdl-cell mdl-cell--3-col' />
+                              </div>
+                              <HistoryTable transactions={history} styleTable={styleTable} />
                             </div>
-                            <div className='mdl-cell mdl-cell--3-col' />
-                          </div>
-                          <HistoryTable transactions={history} styleTable={styleTable} />
-                        </div>
-                      )
+                          )
+                        }
+                      </div>)
+                      : <p>Your organization is in the verification process. Please contact with the administration to get more information about progress.</p>
                     }
                   </div>
                 </div>

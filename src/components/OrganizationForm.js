@@ -2,7 +2,7 @@ import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, Field, change } from 'redux-form'
-import { addOrganization, getOrganization, leaveOrganization } from '../actions'
+import { addOrganization, getOrganization } from '../actions'
 import { toastr } from 'react-redux-toastr'
 import Input from './Input'
 import Auth from '../modules/Auth'
@@ -48,28 +48,15 @@ const enhance = compose(
     validate,
     onSubmit: (values, dispatch, ownProps) => {
       return new Promise((resolve, reject) => {
-        if (Auth.getUser().access === 'OWNER') {
-          dispatch(addOrganization(values, (_error) => {
-            if (!_error) {
-              toastr.success('Organization Added.' + (values.id) ? 'Updated.' : 'Added.')
-              resolve()
-            } else {
-              toastr.error(_error)
-              reject(_error)
-            }
-          }))
-        } else {
-          dispatch(leaveOrganization((_error) => {
-            if (!_error) {
-              dispatch(ownProps.reset('organizationForm'))
-              toastr.success('Organization Left.')
-              resolve()
-            } else {
-              toastr.error(_error)
-              reject(_error)
-            }
-          }))
-        }
+        dispatch(addOrganization(values, (_error) => {
+          if (!_error) {
+            toastr.success('Organization Added.' + (values.id) ? 'Updated.' : 'Added.')
+            resolve()
+          } else {
+            toastr.error(_error)
+            reject(_error)
+          }
+        }))
       })
     }
   })
@@ -101,15 +88,10 @@ class OrganizationForm extends React.Component {
 
   render () {
     const { handleSubmit, organizations } = this.props
+    const disabled = (Auth.getUser().access !== 'owner')
     let button = 'Add Organization'
-    let disabled = false
-    if (Auth.getUser().access === 'OWNER') {
-      if (organizations && !Array.isArray(organizations)) {
-        button = 'Update Organization'
-      }
-    } else {
-      button = 'Leave Organization'
-      disabled = true
+    if (organizations && !Array.isArray(organizations)) {
+      button = 'Update Organization'
     }
     return (
       <div>
@@ -125,9 +107,14 @@ class OrganizationForm extends React.Component {
             <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet'>
               <Field name='city' label='City' component={Input} disabled={disabled} />
               <Field name='postcode' label='Postcode' component={Input} disabled={disabled} />
-              <div className='sb-details-button'>
-                <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' type='submit'>{button}</button>
-              </div>
+              { disabled
+                ? <div className='sb-details-button' />
+                : (
+                  <div className='sb-details-button'>
+                    <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored' type='submit'>{button}</button>
+                  </div>
+                )
+              }
             </div>
           </div>
         </form>

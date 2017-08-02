@@ -3,13 +3,13 @@ import Auth from '../modules/Auth'
 import { Link } from 'react-router-dom'
 
 const menuItems = [
-  {label: 'Account Details', path: '/me', icon: 'settings', access: 'OWNER,ADMIN,USER'},
-  {label: 'Organization', path: '/organization', icon: 'business', access: 'OWNER,ADMIN,USER'},
-  {label: 'Bank Accounts', path: '/banks', icon: 'account_balance', access: 'OWNER,ADMIN'},
-  {label: 'Projects', path: '/projects', icon: 'favorite', access: 'OWNER,ADMIN'},
-  {label: 'Users', path: '/users', icon: 'face', access: 'OWNER,ADMIN'},
-  {label: 'Virtual Cards', path: '/cards', icon: 'credit_card', access: 'OWNER,ADMIN,USER'},
-  {label: 'Transaction History', path: '/history', icon: 'history', access: 'OWNER,ADMIN,USER'}
+  {label: 'Account Details', path: '/me', icon: 'settings', access: 'owner,admin,user'},
+  {label: 'Organization', path: '/organization', icon: 'business', access: 'owner,admin,user'},
+  {label: 'Bank Accounts', path: '/banks', icon: 'account_balance', access: 'owner,admin'},
+  {label: 'Projects', path: '/projects', icon: 'favorite', access: 'owner,admin'},
+  {label: 'Users', path: '/users', icon: 'face', access: 'owner,admin'},
+  {label: 'Virtual Cards', path: '/cards', icon: 'credit_card', access: 'owner,admin,user'},
+  {label: 'Transaction History', path: '/history', icon: 'history', access: 'owner,admin,user'}
 ]
 
 class MenuSideBar extends React.Component {
