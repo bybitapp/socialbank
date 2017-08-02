@@ -46,7 +46,6 @@
     "open_payments_cloud_application_api": "^0.9.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "paymentfont": "^1.2.5",
     "ramda": "^0.24.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
