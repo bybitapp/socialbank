@@ -8,6 +8,7 @@ import Footer from '../../components/Footer'
 import MenuSideBar from '../../components/MenuSideBar'
 import UserForm from '../../components/UserForm'
 import UserRemoveForm from '../../components/UserRemoveForm'
+import Auth from '../../modules/Auth'
 
 function mapStateToProps (state) {
   const { users } = state
@@ -75,6 +76,8 @@ class Users extends React.Component {
     if (user) {
       dispatch(change('userForm', 'uid', user.id))
       dispatch(change('userForm', 'email', user.email))
+      dispatch(change('userForm', 'name', user.profile.name))
+      dispatch(change('userForm', 'role', user.profile.role))
       dispatch(change('userForm', 'access', user.access))
       setModal('userModal')
     }
@@ -95,7 +98,9 @@ class Users extends React.Component {
     const stylePadding = {padding: '15px'}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
-    const { users, modal, setModal } = this.props
+    const { modal, setModal } = this.props
+    let { users } = this.props
+    users = users.filter(u => u.id !== Auth.getUser().id)
 
     const actions = [
       {icon: 'mode_edit', onclick: this.onEdit},
