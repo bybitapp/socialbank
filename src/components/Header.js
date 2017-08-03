@@ -49,7 +49,7 @@ class Header extends React.Component {
                 <ul style={{ borderRight: 0 }}>
                   <li><Link to={'/contact'}>Contact</Link></li>
                   <li><a href='/login'>Login</a></li>
-                  <li><Link to={'/register'}>Register</Link></li>
+                  <li><Link style={{color: 'red'}} to={'/demo'}>Book a Demo</Link></li>
                 </ul>
               )}
             </nav>

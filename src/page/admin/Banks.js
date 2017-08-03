@@ -7,12 +7,13 @@ import Footer from '../../components/Footer'
 import MenuSideBar from '../../components/MenuSideBar'
 import BankForm from '../../components/BankForm'
 import BankRemoveForm from '../../components/BankRemoveForm'
-import { getBankAccounts } from '../../actions'
+import { getBankAccounts, getOrganization } from '../../actions'
 
 function mapStateToProps (state) {
-  const { banks } = state
+  const { banks, organizations } = state
   return {
-    banks
+    banks,
+    organizations
   }
 }
 
@@ -64,6 +65,7 @@ class Banks extends React.Component {
 
   componentDidMount () {
     const { dispatch } = this.props
+    dispatch(getOrganization())
     dispatch(getBankAccounts())
   }
 
@@ -82,7 +84,7 @@ class Banks extends React.Component {
     const stylePadding = {padding: '15px'}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
 
-    const { banks, setModal, modal } = this.props
+    const { banks, organizations, setModal, modal } = this.props
     const actions = [
       {icon: 'mode_edit', onclick: this.onEdit},
       {icon: 'delete', onclick: this.onRemove}
@@ -102,13 +104,18 @@ class Banks extends React.Component {
                 </div>
                 <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
                   <div style={stylePadding}>
-                    <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
-                      <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
-                        onClick={() => setModal('bankModal')}>
-                          Add Bank
-                      </button>
-                    </div>
-                    <BankTable banks={banks} styleTable={styleTable} actions={actions} />
+                    { organizations && organizations.isValid
+                      ? (<div>
+                        <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
+                          <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
+                            onClick={() => setModal('bankModal')}>
+                              Add Bank
+                          </button>
+                        </div>
+                        <BankTable banks={banks} styleTable={styleTable} actions={actions} />
+                      </div>)
+                      : <p>Your organization is in the verification process. Please contact with the administration to get more information about progress.</p>
+                    }
                   </div>
                 </div>
               </div>

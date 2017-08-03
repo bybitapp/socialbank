@@ -15,7 +15,8 @@
     "test:server": "NODE_PATH=. mocha './{,!(node_modules)/**/}*.test.js'",
     "test": "yarn run test:client && yarn run test:server",
     "eject": "react-scripts eject",
-    "postinstall": "yarn run build"
+    "postinstall": "yarn run build",
+    "lint": "eslint ."
   },
   "proxy": "http://localhost:8088",
   "dependencies": {
@@ -33,6 +34,7 @@
     "express": "^4.15.3",
     "express-route-builder": "https://github.com/pasupulaphani/express-route-builder",
     "express-session": "^1.15.4",
+    "generate-password": "^1.3.0",
     "google-map-react": "^0.24.0",
     "joi": "^10.6.0",
     "lodash": "^4.17.4",
@@ -41,11 +43,10 @@
     "mailgun-js": "^0.12.0",
     "material-design-lite": "^1.3.0",
     "moment": "^2.18.1",
-    "mongoose": "^4.11.4",
+    "mongoose": "^4.11.5",
     "open_payments_cloud_application_api": "^0.9.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "paymentfont": "^1.2.5",
     "ramda": "^0.24.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -56,7 +57,7 @@
     "react-scripts": "^1.0.10",
     "recompose": "^0.24.0",
     "redux": "^3.7.2",
-    "redux-form": "^7.0.2",
+    "redux-form": "^7.0.3",
     "redux-thunk": "^2.2.0",
     "require-directory": "^2.1.1",
     "uuid": "^3.1.0",
@@ -70,7 +71,7 @@
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.1.0",
     "eslint-plugin-standard": "^3.0.1",
-    "mocha": "^3.4.2",
+    "mocha": "^3.5.0",
     "nodemon": "^1.11.0",
     "should": "^11.2.1"
   }
