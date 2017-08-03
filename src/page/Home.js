@@ -28,7 +28,7 @@ const TopView = () => (
             </div>
             <div>
               <Link to={'/demo'} className='button button-desc button-border button-rounded nomargin'>
-                <div>Create your account</div>
+                <div>Find out how</div>
               </Link>
             </div>
           </div>
