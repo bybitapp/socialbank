@@ -8,13 +8,9 @@ import { addUser } from '../actions'
 import Select from '../components/Select'
 import Input from './Input'
 import { EMAIL } from '../constants/Validation'
+import { USER_ROLES, USER_ACCESS } from '../constants/Option'
 
 const selector = formValueSelector('userForm')
-
-const access = [
-  {name: 'user', id: 'USER'},
-  {name: 'admin', id: 'ADMIN'}
-]
 
 const customStyles = {
   content: {top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', padding: '5px', transform: 'translate(-50%, -50%)'},
@@ -27,6 +23,9 @@ const validate = values => {
     errors.email = 'Required'
   } else if (!EMAIL.test(values.email)) {
     errors.email = 'Invalid email address'
+  }
+  if (!values.name) {
+    errors.name = 'Required'
   }
   if (!values.access) {
     errors.access = 'Required'
@@ -76,7 +75,7 @@ class UserForm extends React.Component {
   componentDidUpdate (prevProps) {
     const { isEditMode, dispatch } = this.props
     if (!isEditMode) {
-      dispatch(change('userForm', 'access', access[0].id))
+      dispatch(change('userForm', 'access', USER_ACCESS[0].id))
     }
   }
 
@@ -102,8 +101,10 @@ class UserForm extends React.Component {
               <div className='page-content'>
                 {error && <span className='sb-error'>{error}</span>}
                 <Field name='uid' type='hidden' component='input' />
-                <Field name='email' label='Email' component={Input} disabled={isEditMode} />
-                <Field name='access' label='Access' component={Select} items={access} />
+                <Field name='name' label='Name' component={Input} disabled={isEditMode} />
+                <Field name='email' label='Work Email' component={Input} disabled={isEditMode} />
+                <Field name='role' label='Role' component={Select} items={USER_ROLES} />
+                <Field name='access' label='Access' component={Select} items={USER_ACCESS} />
               </div>
             </main>
             <footer className='sb-footer'>

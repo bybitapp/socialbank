@@ -1,17 +1,28 @@
 import React from 'react'
 import { compose } from 'recompose'
-import { reduxForm, Field, SubmissionError } from 'redux-form'
-import {toastr} from 'react-redux-toastr'
+import { reduxForm, Field, change } from 'redux-form'
+import { toastr } from 'react-redux-toastr'
 
 import {EMAIL} from '../constants/Validation'
 import Checkbox from '../components/Checkbox'
 import Input from '../components/Input'
+import Select from '../components/Select'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { registerAccount } from '../actions'
+import { USER_ROLES } from '../constants/Option'
+
+const checkboxLabel = {
+  link: '/terms',
+  linkText: 'Terms & Conditions',
+  text: 'Accept'
+}
 
 const validate = values => {
   const errors = {}
+  if (!values.name) {
+    errors.name = 'Required'
+  }
   if (!values.email) {
     errors.email = 'Required'
   } else if (!EMAIL.test(values.email)) {
@@ -21,6 +32,9 @@ const validate = values => {
     errors.phone = 'Required'
   } else if (isNaN(Number(values.phone))) {
     errors.phone = 'Must be a number'
+  }
+  if (!values.role) {
+    errors.role = 'Required'
   }
   if (!values.password) {
     errors.password = 'Required'
@@ -51,13 +65,11 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(registerAccount(values, (_error) => {
           if (!_error) {
-            toastr.success('Thank you for registering with us. Please login to proceed')
-            setTimeout(() => {
-              window.location = '/login'
-            }, 3000)
+            dispatch(ownProps.reset('register'))
             resolve()
           } else {
-            reject(new SubmissionError({_error}))
+            toastr.error(_error)
+            reject(_error)
           }
         }))
       })
@@ -65,23 +77,40 @@ const enhance = compose(
   })
 )
 
+const Form = ({handleSubmit}) => {
+  return (
+    <form className='nobottommargin' onSubmit={handleSubmit}>
+      <Field name='name' label='Name:' component={Input} />
+      <Field name='email' label='Work Email:' component={Input} />
+      <Field name='phone' label='Phone number:' component={Input} />
+      <Field name='role' label='Role' component={Select} items={USER_ROLES} />
+      <Field name='password' label='Password:' component={Input} type='password' />
+      <Field name='accepted' label={checkboxLabel} component={Checkbox} />
+      <br />
+      <div className='col_full nobottommargin'>
+        <button className='button button-3d button-black nomargin' type='submit'>Book Now</button>
+      </div>
+    </form>
+  )
+}
+
 class Register extends React.Component {
+  componentDidUpdate (prevProps) {
+    const { dispatch } = this.props
+    dispatch(change('register', 'role', USER_ROLES[0].id))
+  }
+
   render () {
-    const { handleSubmit, error } = this.props
-    const checkboxLabel = {
-      link: '/terms',
-      linkText: 'Terms & Conditions',
-      text: 'Accept'
-    }
+    const { handleSubmit, submitSucceeded } = this.props
     return (
       <div id='wrapper' className='clearfix'>
         <Header />
         <section id='page-title'>
           <div className='container clearfix'>
-            <h1>Register</h1>
+            <h1>Book a Demo</h1>
             <ol className='breadcrumb'>
               <li><a href='/'>Home</a></li>
-              <li className='active'>Register</li>
+              <li className='active'>Book a Demo</li>
             </ol>
           </div>
         </section>
@@ -89,19 +118,12 @@ class Register extends React.Component {
           <div className='content-wrap'>
             <div className='container clearfix'>
               <div className='accordion accordion-lg divcenter nobottommargin clearfix' style={{ maxWidth: '550px' }}>
-                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
-                <div className='acctitle'><i className='acc-closed icon-user4' /><i className='acc-open icon-ok-sign' />New Signup? Register for an Account</div>
+                <div className='acctitle'><i className='acc-closed icon-user4' /><i className='acc-open icon-ok-sign' />Schedule a free demo</div>
                 <div className='acc_content clearfix'>
-                  <form className='nobottommargin' onSubmit={handleSubmit}>
-                    <Field name='email' label='Email:' component={Input} />
-                    <Field name='phone' label='Phone number:' component={Input} />
-                    <Field name='password' label='Password:' component={Input} type='password' />
-                    <Field name='accepted' label={checkboxLabel} component={Checkbox} />
-                    <br />
-                    <div className='col_full nobottommargin'>
-                      <button className='button button-3d button-black nomargin' type='submit'>Register Now</button>
-                    </div>
-                  </form>
+                  { submitSucceeded
+                    ? <p>Thank you for booking a demo. We will contact you as soon as possible.</p>
+                    : <Form handleSubmit={handleSubmit} />
+                  }
                 </div>
               </div>
             </div>

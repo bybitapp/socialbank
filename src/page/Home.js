@@ -27,7 +27,7 @@ const TopView = () => (
               <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'>Revolutionize the way your <strong style={{ color: '#00D0A7' }}>charity</strong> manages its expenses.</h1>
             </div>
             <div>
-              <Link to={'/register'} className='button button-desc button-border button-rounded nomargin'>
+              <Link to={'/demo'} className='button button-desc button-border button-rounded nomargin'>
                 <div>Create your account</div>
               </Link>
             </div>
@@ -211,7 +211,7 @@ class Home extends React.Component {
                     <h2>Real-time spending overview</h2>
                     <span>Monitor your charity’s spending in real-time and sync it to your accounting system.</span>
                   </div>
-                  <Link to={'/register'} className='button button-border button-rounded button-large button-dark noleftmargin'>Start Demo</Link>
+                  <Link to={'/demo'} className='button button-border button-rounded button-large button-dark noleftmargin'>Start Demo</Link>
                 </div>
               </div>
             </div>
@@ -226,7 +226,7 @@ class Home extends React.Component {
                   <span>Now that you’ve read all the boring bits, let’s get started</span>
                 </div>
                 <div className='center'>
-                  <Link to={'/register'} data-animate='tada' className='button button-3d button-teal button-xlarge nobottommargin' style={{ backgroundColor: '#EB534D' }}><i className='icon-star3' />Get Started</Link>
+                  <Link to={'/demo'} data-animate='tada' className='button button-3d button-teal button-xlarge nobottommargin' style={{ backgroundColor: '#EB534D' }}><i className='icon-star3' />Get Started</Link>
                 </div>
               </div>
             </div>
