@@ -48,7 +48,7 @@ const BankItem = ({bank, actions}) => (
   </tr>)
 
 const BankTable = ({banks = [], styleTable, actions}) => (
-  <table className='mdl-data-table mdl-data-table--selectable' style={styleTable}>
+  <table className='responsive-table' style={styleTable}>
     <thead>
       <tr>
         <th>{bankLabel.owner}</th>
