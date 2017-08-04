@@ -30,6 +30,18 @@ class Footer extends React.Component {
             </div>
           </div>
         </div>
+        <div id='disclaimer' className='container clearfix'>
+          <br />
+          Ixaris Systems Ltd is authorised and regulated by the Financial Conduct Authority under the Payment Service Regulations 2009 for the provision of payment services. Registration number 540990. Registered address 10 Midford Place, London, W1T 5AE, United Kingdom.
+          <br />
+          <br />
+          Ixaris Visa cards are issued by IDT Financial Services Ltd., pursuant to a licence from Visa Europe.
+          <br />
+          <br />
+          Ixaris Mastercard cards are issued by IDT Financial Services Ltd., pursuant to licence by Mastercard International. Mastercard is a registered trademark of Mastercard International.
+          <br />
+          <br />
+        </div>
       </footer>
     )
   }
