@@ -21,6 +21,15 @@ const enhance = compose(
   connect(mapStateToProps),
   withState('modal', 'setModal')
 )
+
+const bankLabel = {
+  owner: 'Owner',
+  bankName: 'Bank Name',
+  ibanCode: 'Iban Code',
+  swiftCode: 'Swift Code',
+  actions: 'Actions'
+}
+
 const ActionButton = (pid, action) => (
   <a key={action.icon} className='mdl-list__item-primary-content' onClick={(event) => action.onclick(pid, event)}>
     <i className='material-icons mdl-list__item-avatar sb-icon-list_item'>{action.icon}</i>
@@ -29,11 +38,11 @@ const ActionButton = (pid, action) => (
 
 const BankItem = ({bank, actions}) => (
   <tr>
-    <td className='mdl-data-table__cell--non-numeric'>{ bank.owner }</td>
-    <td>{ bank.bankName }</td>
-    <td>{ bank.ibanCode }</td>
-    <td>{ bank.swiftCode }</td>
-    <td className='sb-menu-table'>
+    <td data-label={bankLabel.owner}>{ bank.owner }</td>
+    <td data-label={bankLabel.bankName}>{ bank.bankName }</td>
+    <td data-label={bankLabel.ibanCode}>{ bank.ibanCode }</td>
+    <td data-label={bankLabel.swiftCode}>{ bank.swiftCode }</td>
+    <td data-label={bankLabel.actions} className='sb-menu-table'>
       { actions.map((action) => ActionButton(bank.id, action)) }
     </td>
   </tr>)
@@ -42,11 +51,11 @@ const BankTable = ({banks = [], styleTable, actions}) => (
   <table className='mdl-data-table mdl-data-table--selectable' style={styleTable}>
     <thead>
       <tr>
-        <th className='mdl-data-table__cell--non-numeric'>Owner</th>
-        <th>Bank Name</th>
-        <th>Iban Code</th>
-        <th>Swift Code</th>
-        <th>Actions</th>
+        <th>{bankLabel.owner}</th>
+        <th>{bankLabel.bankName}</th>
+        <th>{bankLabel.ibanCode}</th>
+        <th>{bankLabel.swiftCode}</th>
+        <th>{bankLabel.actions}</th>
       </tr>
     </thead>
     <tbody>
