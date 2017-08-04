@@ -85,7 +85,7 @@ const ActionButton = (cid, action) => (
 
 const DebitCard = ({cardDetail}) => {
   return (
-    <div>
+    <div style={{display: 'inline-table'}}>
       <div className='card'>
         <div className='front'>
           <div className='top'>
@@ -158,7 +158,7 @@ const PreLoader = () => {
 const CardDetail = ({cardDetail}) => {
   return (
     <tr>
-      <td colSpan='8'>
+      <td colSpan='8' className='sb-card-detail'>
         { cardDetail.cardName
           ? <DebitCard cardDetail={cardDetail} />
           : <PreLoader />
@@ -316,10 +316,9 @@ class Cards extends React.Component {
   }
 
   render () {
-    const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
-    const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0, overflow: 'auto'}
-    const stylePadding = {padding: '15px'}
+    const styleTable = {padding: '16px', margin: '5px', borderLeft: 0, borderRight: 0}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
+    const stylePadding = {padding: '15px'}
 
     const { cards, projects, users, organizations, modal, setModal } = this.props
 
@@ -349,10 +348,10 @@ class Cards extends React.Component {
           <main className='mdl-layout__content' style={{ width: '100%' }}>
             <div className='page-content'>
               <div className='mdl-grid'>
-                <div className='mdl-cell mdl-cell--3-col'>
+                <div className='mdl-cell mdl-cell--3-col mdl-cell--4-col-phone sb-menu-side-bar'>
                   <MenuSideBar />
                 </div>
-                <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
+                <div className='mdl-cell mdl-cell--9-col'>
                   <div style={stylePadding}>
                     { organizations && organizations.isValid
                       ? (<div>
