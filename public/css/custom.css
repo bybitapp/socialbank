@@ -118,6 +118,11 @@
     color: #24AEF2 !important;
 }
 
+.sb-menu-side-bar {
+  margin-right: 8px;
+  border-right: 1px solid rgba(0,0,0,.12);
+}
+
 @media (max-width: 900px) {
   .android-modal {
     position: absolute;
@@ -134,5 +139,10 @@
   .sb-modal-form .page-content {
       padding: 16px;
       min-width: 200px;
+  }
+
+  .sb-menu-side-bar {
+    margin: 5px;
+    border-right: 0px;
   }
 }

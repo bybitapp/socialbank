@@ -7,7 +7,6 @@
 }
 .responsive-table thead {
   display: none;
-  background: #fafafa;
 }
 @media screen and (min-width: 600px) {
   .responsive-table thead {
@@ -27,9 +26,6 @@
     display: table-row;
     border-bottom-width: 1px;
     margin-bottom: 0;
-  }
-  .responsive-table tr:nth-child(even) {
-    background: #fafafa;
   }
 }
 .responsive-table th,
@@ -67,5 +63,11 @@
   .responsive-table td:before {
     content: "";
     display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .responsive-table td.sb-card-detail {
+    padding: 0px;
   }
 }
