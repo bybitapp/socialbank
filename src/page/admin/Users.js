@@ -101,10 +101,9 @@ class Users extends React.Component {
   }
 
   render () {
-    const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
-    const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0}
-    const stylePadding = {padding: '15px'}
+    const styleTable = {padding: '16px', margin: '5px', borderLeft: 0, borderRight: 0}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
+    const stylePadding = {padding: '15px'}
 
     const { modal, setModal } = this.props
     let { users } = this.props
@@ -124,10 +123,10 @@ class Users extends React.Component {
           <main className='mdl-layout__content' style={{ width: '100%' }}>
             <div className='page-content'>
               <div className='mdl-grid'>
-                <div className='mdl-cell mdl-cell--3-col'>
+                <div className='mdl-cell mdl-cell--3-col mdl-cell--4-col-phone sb-menu-side-bar'>
                   <MenuSideBar />
                 </div>
-                <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
+                <div className='mdl-cell mdl-cell--9-col'>
                   <div style={stylePadding}>
                     <div className='mdl-grid'>
                       <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
