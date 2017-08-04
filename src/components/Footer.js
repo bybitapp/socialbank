@@ -14,11 +14,11 @@ class Footer extends React.Component {
             </div>
             <div className='col_half col_last tright'>
               <div className='fright clearfix'>
-                <a href='https://www.facebook.com/SoTecUK' className='social-icon si-small si-borderless si-facebook'>
+                <a href='https://www.facebook.com/SoTecUK' target='_blank' className='social-icon si-small si-borderless si-facebook'>
                   <i className='icon-facebook' />
                   <i className='icon-facebook' />
                 </a>
-                <a href='https://twitter.com/SoTec_UK' className='social-icon si-small si-borderless si-twitter'>
+                <a href='https://twitter.com/SoTec_UK' target='_blank' className='social-icon si-small si-borderless si-twitter'>
                   <i className='icon-twitter' />
                   <i className='icon-twitter' />
                 </a>
