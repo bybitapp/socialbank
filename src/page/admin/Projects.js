@@ -24,6 +24,13 @@ const enhance = compose(
   withState('modal', 'setModal')
 )
 
+const projectLabel = {
+  name: 'Name',
+  createDate: 'Date Create',
+  balance: 'Balance',
+  actions: 'Actions'
+}
+
 const ActionButton = (pid, action) => (
   <a key={action.icon} className='mdl-list__item-primary-content' onClick={(event) => action.onclick(pid, event)}>
     <i className='material-icons mdl-list__item-avatar sb-icon-list_item'>{action.icon}</i>
@@ -32,22 +39,22 @@ const ActionButton = (pid, action) => (
 
 const ProjectItem = ({project, actions}) => (
   <tr>
-    <td className='mdl-data-table__cell--non-numeric'>{ project.name }</td>
-    <td>{ dateFormat(project.created) }</td>
-    <td>{ (project.balances) ? project.balances.actual : 0 }</td>
-    <td className='sb-menu-table'>
+    <td data-label={projectLabel.name}>{ project.name }</td>
+    <td data-label={projectLabel.createDate}>{ dateFormat(project.created) }</td>
+    <td data-label={projectLabel.balance}>{ (project.balances) ? project.balances.actual : 0 }</td>
+    <td data-label={projectLabel.actions} className='sb-menu-table'>
       { actions.map((action) => ActionButton(project.id, action)) }
     </td>
   </tr>)
 
 const ProjectTable = ({projects = [], styleTable, actions}) => (
-  <table className='mdl-data-table mdl-data-table--selectable' style={styleTable}>
+  <table className='responsive-table' style={styleTable}>
     <thead>
       <tr>
-        <th className='mdl-data-table__cell--non-numeric'>Name</th>
-        <th>Date Created</th>
-        <th>Balance</th>
-        <th>Actions</th>
+        <th>{projectLabel.name}</th>
+        <th>{projectLabel.createDate}</th>
+        <th>{projectLabel.balance}</th>
+        <th>{projectLabel.actions}</th>
       </tr>
     </thead>
     <tbody>

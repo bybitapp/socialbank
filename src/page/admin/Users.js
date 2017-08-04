@@ -22,6 +22,14 @@ const enhance = compose(
   withState('modal', 'setModal')
 )
 
+const userLabel = {
+  name: 'Name',
+  email: 'Email',
+  phone: 'Phone',
+  access: 'Access',
+  actions: 'Actions'
+}
+
 const ActionButton = (pid, action) => (
   <a key={action.icon} className='mdl-list__item-primary-content' onClick={(event) => action.onclick(pid, event)}>
     <i className='material-icons mdl-list__item-avatar sb-icon-list_item'>{action.icon}</i>
@@ -30,24 +38,24 @@ const ActionButton = (pid, action) => (
 
 const UserItem = ({user, actions}) => (
   <tr>
-    <td className='mdl-data-table__cell--non-numeric'>{ user.profile.name }</td>
-    <td>{ user.email }</td>
-    <td>{ user.phone }</td>
-    <td>{ user.access }</td>
-    <td className='sb-menu-table'>
+    <td data-label={userLabel.name}>{ user.profile.name }</td>
+    <td data-label={userLabel.email}>{ user.email }</td>
+    <td data-label={userLabel.phone}>{ user.phone }</td>
+    <td data-label={userLabel.access}>{ user.access }</td>
+    <td data-label={userLabel.actions} className='sb-menu-table'>
       { actions.map((action) => ActionButton(user.id, action)) }
     </td>
   </tr>)
 
 const UserTable = ({users = [], styleTable, actions}) => (
-  <table className='mdl-data-table mdl-data-table--selectable' style={styleTable}>
+  <table className='responsive-table' style={styleTable}>
     <thead>
       <tr>
-        <th className='mdl-data-table__cell--non-numeric'>Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Access</th>
-        <th>Actions</th>
+        <th>{userLabel.name}</th>
+        <th>{userLabel.email}</th>
+        <th>{userLabel.phone}</th>
+        <th>{userLabel.access}</th>
+        <th>{userLabel.actions}</th>
       </tr>
     </thead>
     <tbody>
