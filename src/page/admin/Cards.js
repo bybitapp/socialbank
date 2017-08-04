@@ -51,6 +51,17 @@ const cardBrandClass = {
   'VERVE': 'pf-credit-card'
 }
 
+const cardLabel = {
+  projectName: 'Project',
+  userName: 'Name',
+  userEmail: 'Email',
+  cardNumber: 'Card Number',
+  endDate: 'End',
+  cardStatus: 'Status',
+  balance: 'Balance',
+  actions: 'Actions'
+}
+
 const preloaderStyle = {margin: 'auto', textAlign: 'center', display: 'block'}
 const loaderStyle = {widht: '28px', height: '28px'}
 
@@ -74,7 +85,7 @@ const ActionButton = (cid, action) => (
 
 const DebitCard = ({cardDetail}) => {
   return (
-    <div>
+    <div style={{display: 'inline-table'}}>
       <div className='card'>
         <div className='front'>
           <div className='top'>
@@ -147,7 +158,7 @@ const PreLoader = () => {
 const CardDetail = ({cardDetail}) => {
   return (
     <tr>
-      <td colSpan='8'>
+      <td colSpan='8' className='sb-card-detail'>
         { cardDetail.cardName
           ? <DebitCard cardDetail={cardDetail} />
           : <PreLoader />
@@ -167,14 +178,14 @@ const CardItem = ({card, actions, projects = [], users = []}) => {
   const userEmail = (user && user.email) || 'unknown'
   return (
     <tr>
-      <td className='mdl-data-table__cell--non-numeric'>{ projectName }</td>
-      <td>{ userName }</td>
-      <td>{ userEmail }</td>
-      <td>{ card.cardNumber }</td>
-      <td>{ card.endDate }</td>
-      <td>{ cardStatusName }</td>
-      <td>{ card.balances.actual }</td>
-      <td className='sb-menu-table'>
+      <td data-label={cardLabel.projectName}>{ projectName }</td>
+      <td data-label={cardLabel.userName}>{ userName }</td>
+      <td data-label={cardLabel.userEmail}>{ userEmail }</td>
+      <td data-label={cardLabel.cardNumber}>{ card.cardNumber }</td>
+      <td data-label={cardLabel.endDate}>{ card.endDate }</td>
+      <td data-label={cardLabel.cardStatus}>{ cardStatusName }</td>
+      <td data-label={cardLabel.balance}>{ card.balances.actual }</td>
+      <td data-label={cardLabel.actions} className='sb-menu-table'>
         { actions.map((action) => {
           if (!action.hasOwnProperty('show') || action.show(card)) {
             return ActionButton(card.id, action)
@@ -187,34 +198,36 @@ const CardItem = ({card, actions, projects = [], users = []}) => {
   )
 }
 
-const CardTable = ({cards = [], projects = [], users = [], cardDetail, styleTable, actions}) => (
-  <table className='mdl-data-table mdl-data-table--selectable' style={styleTable}>
-    <thead>
-      <tr>
-        <th className='mdl-data-table__cell--non-numeric'>Project</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Card Number</th>
-        <th>End</th>
-        <th>Status</th>
-        <th>Balance</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      { Object.keys(cards).map((key, index) => {
-        const c = cards[key]
-        if (cardDetail && cardDetail.id === c.id) {
-          return ([
-            <CardItem key={key} card={c} actions={actions} projects={projects} users={users} />,
-            <CardDetail cardDetail={cardDetail} />
-          ])
-        } else {
-          return (<CardItem key={key} card={c} actions={actions} projects={projects} users={users} />)
-        }
-      })}
-    </tbody>
-  </table>)
+const CardTable = ({cards = [], projects = [], users = [], cardDetail, styleTable, actions}) => {
+  return (
+    <table className='responsive-table' style={styleTable}>
+      <thead>
+        <tr>
+          <th>{cardLabel.projectName}</th>
+          <th>{cardLabel.userName}</th>
+          <th>{cardLabel.userEmail}</th>
+          <th>{cardLabel.cardNumber}</th>
+          <th>{cardLabel.endDate}</th>
+          <th>{cardLabel.cardStatus}</th>
+          <th>{cardLabel.balance}</th>
+          <th>{cardLabel.actions}</th>
+        </tr>
+      </thead>
+      <tbody>
+        { Object.keys(cards).map((key, index) => {
+          const c = cards[key]
+          if (cardDetail && cardDetail.id === c.id) {
+            return ([
+              <CardItem key={key} card={c} actions={actions} projects={projects} users={users} />,
+              <CardDetail cardDetail={cardDetail} />
+            ])
+          } else {
+            return (<CardItem key={key} card={c} actions={actions} projects={projects} users={users} />)
+          }
+        })}
+      </tbody>
+    </table>)
+}
 
 class Cards extends React.Component {
   constructor (props) {
@@ -303,10 +316,9 @@ class Cards extends React.Component {
   }
 
   render () {
-    const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
-    const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0, overflow: 'auto'}
-    const stylePadding = {padding: '15px'}
+    const styleTable = {padding: '16px', margin: '5px', borderLeft: 0, borderRight: 0}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
+    const stylePadding = {padding: '15px'}
 
     const { cards, projects, users, organizations, modal, setModal } = this.props
 
@@ -336,10 +348,10 @@ class Cards extends React.Component {
           <main className='mdl-layout__content' style={{ width: '100%' }}>
             <div className='page-content'>
               <div className='mdl-grid'>
-                <div className='mdl-cell mdl-cell--3-col'>
+                <div className='mdl-cell mdl-cell--3-col mdl-cell--4-col-phone sb-menu-side-bar'>
                   <MenuSideBar />
                 </div>
-                <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
+                <div className='mdl-cell mdl-cell--9-col'>
                   <div style={stylePadding}>
                     { organizations && organizations.isValid
                       ? (<div>

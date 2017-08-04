@@ -30,28 +30,38 @@ const enhance = compose(
   })
 )
 
+const historyLabel = {
+  date: 'Date',
+  type: 'Type',
+  name: 'Name',
+  currency: 'Currency',
+  amount: 'Amount',
+  status: 'Status',
+  transaction: 'Transaction'
+}
+
 const HistoryItem = ({transaction}) => (
   <tr>
-    <td className='mdl-data-table__cell--non-numeric'>{ dateFormat(transaction.datetime) }</td>
-    <td>{ transaction.type }</td>
-    <td>{ transaction.name }</td>
-    <td>{ transaction.currency }</td>
-    <td>{ transaction.amount }</td>
-    <td>{ transaction.status }</td>
-    <td>{ transaction.transaction }</td>
+    <td data-label={historyLabel.date}>{ dateFormat(transaction.datetime) }</td>
+    <td data-label={historyLabel.type}>{ transaction.type }</td>
+    <td data-label={historyLabel.name}>{ transaction.name }</td>
+    <td data-label={historyLabel.currency}>{ transaction.currency }</td>
+    <td data-label={historyLabel.amount}>{ transaction.amount }</td>
+    <td data-label={historyLabel.status}>{ transaction.status }</td>
+    <td data-label={historyLabel.transaction}>{ transaction.transaction }</td>
   </tr>)
 
 const HistoryTable = ({transactions = [], styleTable}) => (
-  <table className='mdl-data-table mdl-data-table--selectable' style={styleTable}>
+  <table className='responsive-table' style={styleTable}>
     <thead>
       <tr>
-        <th className='mdl-data-table__cell--non-numeric'>Date</th>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Currency</th>
-        <th>Amount</th>
-        <th>Status</th>
-        <th>Transaction</th>
+        <th>{historyLabel.date}</th>
+        <th>{historyLabel.type}</th>
+        <th>{historyLabel.name}</th>
+        <th>{historyLabel.currency}</th>
+        <th>{historyLabel.amount}</th>
+        <th>{historyLabel.status}</th>
+        <th>{historyLabel.transaction}</th>
       </tr>
     </thead>
     <tbody>
@@ -77,8 +87,7 @@ class History extends React.Component {
   }
 
   render () {
-    const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
-    const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0}
+    const styleTable = {padding: '16px', margin: '5px', borderLeft: 0, borderRight: 0}
     const stylePadding = {padding: '15px'}
 
     const { history, projects, organizations } = this.props
@@ -97,10 +106,10 @@ class History extends React.Component {
           <main className='mdl-layout__content' style={{ width: '100%' }}>
             <div className='page-content'>
               <div className='mdl-grid'>
-                <div className='mdl-cell mdl-cell--3-col'>
+                <div className='mdl-cell mdl-cell--3-col mdl-cell--4-col-phone sb-menu-side-bar'>
                   <MenuSideBar />
                 </div>
-                <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
+                <div className='mdl-cell mdl-cell--9-col'>
                   <div style={stylePadding}>
                     { organizations && organizations.isValid
                       ? (<div>

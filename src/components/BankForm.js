@@ -1,7 +1,7 @@
 import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
-import Modal from 'react-modal'
+import Modal from './ResponsiveModal'
 import { reduxForm, Field, change, SubmissionError } from 'redux-form'
 import { toastr } from 'react-redux-toastr'
 
@@ -58,21 +58,6 @@ const enhance = compose(
   })
 )
 
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    padding: '5px',
-    transform: 'translate(-50%, -50%)'
-  },
-  overlay: {
-    zIndex: 4
-  }
-}
-
 const updateData = (bank, dispatch) => {
   if (bank) {
     dispatch(change('bankForm', 'owner', bank.owner))
@@ -109,8 +94,9 @@ class BankForm extends React.Component {
       <Modal
         isOpen={open}
         onRequestClose={handleClose}
-        style={customStyles}
         contentLabel='Bank Form'
+        className='sb-modal android-modal'
+        overlayClassName='sb-modal-overlay'
       >
         <form onSubmit={handleSubmit}>
           <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header sb-modal-form'>
