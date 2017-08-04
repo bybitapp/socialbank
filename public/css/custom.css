@@ -30,6 +30,32 @@
 }
 
 /* MODAL FORMS */
+.sb-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  padding: 5px;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgb(204, 204, 204);
+  background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+  overflow: auto;
+  border-radius: 4px;
+  outline: medium none;
+}
+
+.sb-modal-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(255, 255, 255, 0.75);
+  z-index: 4;
+}
+
 .sb-modal-form .sb-footer {
     padding: 16px 0 16px 16px;
 }
@@ -90,4 +116,33 @@
 
 .color {
     color: #24AEF2 !important;
+}
+
+.sb-menu-side-bar {
+  margin-right: 8px;
+  border-right: 1px solid rgba(0,0,0,.12);
+}
+
+@media (max-width: 900px) {
+  .android-modal {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: auto;
+    background-color: white;
+    margin: 0px;
+    padding: 5px;
+    transform: initial;
+  }
+
+  .sb-modal-form .page-content {
+      padding: 16px;
+      min-width: 200px;
+  }
+
+  .sb-menu-side-bar {
+    margin: 5px;
+    border-right: 0px;
+  }
 }

@@ -24,6 +24,13 @@ const enhance = compose(
   withState('modal', 'setModal')
 )
 
+const projectLabel = {
+  name: 'Name',
+  createDate: 'Date Create',
+  balance: 'Balance',
+  actions: 'Actions'
+}
+
 const ActionButton = (pid, action) => (
   <a key={action.icon} className='mdl-list__item-primary-content' onClick={(event) => action.onclick(pid, event)}>
     <i className='material-icons mdl-list__item-avatar sb-icon-list_item'>{action.icon}</i>
@@ -32,22 +39,22 @@ const ActionButton = (pid, action) => (
 
 const ProjectItem = ({project, actions}) => (
   <tr>
-    <td className='mdl-data-table__cell--non-numeric'>{ project.name }</td>
-    <td>{ dateFormat(project.created) }</td>
-    <td>{ (project.balances) ? project.balances.actual : 0 }</td>
-    <td className='sb-menu-table'>
+    <td data-label={projectLabel.name}>{ project.name }</td>
+    <td data-label={projectLabel.createDate}>{ dateFormat(project.created) }</td>
+    <td data-label={projectLabel.balance}>{ (project.balances) ? project.balances.actual : 0 }</td>
+    <td data-label={projectLabel.actions} className='sb-menu-table'>
       { actions.map((action) => ActionButton(project.id, action)) }
     </td>
   </tr>)
 
 const ProjectTable = ({projects = [], styleTable, actions}) => (
-  <table className='mdl-data-table mdl-data-table--selectable' style={styleTable}>
+  <table className='responsive-table' style={styleTable}>
     <thead>
       <tr>
-        <th className='mdl-data-table__cell--non-numeric'>Name</th>
-        <th>Date Created</th>
-        <th>Balance</th>
-        <th>Actions</th>
+        <th>{projectLabel.name}</th>
+        <th>{projectLabel.createDate}</th>
+        <th>{projectLabel.balance}</th>
+        <th>{projectLabel.actions}</th>
       </tr>
     </thead>
     <tbody>
@@ -102,10 +109,9 @@ class Projects extends React.Component {
   }
 
   render () {
-    const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
-    const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0}
-    const stylePadding = {padding: '15px'}
+    const styleTable = {padding: '16px', margin: '5px', borderLeft: 0, borderRight: 0}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
+    const stylePadding = {padding: '15px'}
 
     const { projects, modal, setModal, account } = this.props
 
@@ -125,10 +131,10 @@ class Projects extends React.Component {
           <main className='mdl-layout__content' style={{ width: '100%' }}>
             <div className='page-content'>
               <div className='mdl-grid'>
-                <div className='mdl-cell mdl-cell--3-col'>
+                <div className='mdl-cell mdl-cell--3-col mdl-cell--4-col-phone sb-menu-side-bar'>
                   <MenuSideBar />
                 </div>
-                <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
+                <div className='mdl-cell mdl-cell--9-col'>
                   <div style={stylePadding}>
                     <div className='mdl-grid'>
                       <div className='mdl-cell mdl-cell--12-col' style={styleButton}>

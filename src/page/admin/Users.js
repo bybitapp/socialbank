@@ -22,6 +22,14 @@ const enhance = compose(
   withState('modal', 'setModal')
 )
 
+const userLabel = {
+  name: 'Name',
+  email: 'Email',
+  phone: 'Phone',
+  access: 'Access',
+  actions: 'Actions'
+}
+
 const ActionButton = (pid, action) => (
   <a key={action.icon} className='mdl-list__item-primary-content' onClick={(event) => action.onclick(pid, event)}>
     <i className='material-icons mdl-list__item-avatar sb-icon-list_item'>{action.icon}</i>
@@ -30,24 +38,24 @@ const ActionButton = (pid, action) => (
 
 const UserItem = ({user, actions}) => (
   <tr>
-    <td className='mdl-data-table__cell--non-numeric'>{ user.profile.name }</td>
-    <td>{ user.email }</td>
-    <td>{ user.phone }</td>
-    <td>{ user.access }</td>
-    <td className='sb-menu-table'>
+    <td data-label={userLabel.name}>{ user.profile.name }</td>
+    <td data-label={userLabel.email}>{ user.email }</td>
+    <td data-label={userLabel.phone}>{ user.phone }</td>
+    <td data-label={userLabel.access}>{ user.access }</td>
+    <td data-label={userLabel.actions} className='sb-menu-table'>
       { actions.map((action) => ActionButton(user.id, action)) }
     </td>
   </tr>)
 
 const UserTable = ({users = [], styleTable, actions}) => (
-  <table className='mdl-data-table mdl-data-table--selectable' style={styleTable}>
+  <table className='responsive-table' style={styleTable}>
     <thead>
       <tr>
-        <th className='mdl-data-table__cell--non-numeric'>Name</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Access</th>
-        <th>Actions</th>
+        <th>{userLabel.name}</th>
+        <th>{userLabel.email}</th>
+        <th>{userLabel.phone}</th>
+        <th>{userLabel.access}</th>
+        <th>{userLabel.actions}</th>
       </tr>
     </thead>
     <tbody>
@@ -93,10 +101,9 @@ class Users extends React.Component {
   }
 
   render () {
-    const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
-    const styleTable = {width: '98%', padding: '16px', borderLeft: 0, margin: '0 0 0 16px', borderRight: 0}
-    const stylePadding = {padding: '15px'}
+    const styleTable = {padding: '16px', margin: '5px', borderLeft: 0, borderRight: 0}
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
+    const stylePadding = {padding: '15px'}
 
     const { modal, setModal } = this.props
     let { users } = this.props
@@ -116,10 +123,10 @@ class Users extends React.Component {
           <main className='mdl-layout__content' style={{ width: '100%' }}>
             <div className='page-content'>
               <div className='mdl-grid'>
-                <div className='mdl-cell mdl-cell--3-col'>
+                <div className='mdl-cell mdl-cell--3-col mdl-cell--4-col-phone sb-menu-side-bar'>
                   <MenuSideBar />
                 </div>
-                <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
+                <div className='mdl-cell mdl-cell--9-col'>
                   <div style={stylePadding}>
                     <div className='mdl-grid'>
                       <div className='mdl-cell mdl-cell--12-col' style={styleButton}>

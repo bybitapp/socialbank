@@ -1,5 +1,5 @@
 import React from 'react'
-import Modal from 'react-modal'
+import Modal from './ResponsiveModal'
 import { compose } from 'recompose'
 import { reduxForm, Field, SubmissionError } from 'redux-form'
 import { updateCardStatus } from '../actions'
