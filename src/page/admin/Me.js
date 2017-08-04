@@ -8,7 +8,6 @@ import GeneralData from '../../components/GeneralData'
 
 class Me extends React.Component {
   render () {
-    const styleBorderLeft = {borderLeft: '1px solid rgba(0,0,0,.12)'}
     const stylePadding = {padding: '15px'}
 
     return (
@@ -18,10 +17,10 @@ class Me extends React.Component {
           <main className='mdl-layout__content' style={{ width: '100%' }}>
             <div className='page-content'>
               <div className='mdl-grid'>
-                <div className='mdl-cell mdl-cell--3-col'>
+                <div className='mdl-cell mdl-cell--3-col mdl-cell--4-col-phone sb-menu-side-bar'>
                   <MenuSideBar />
                 </div>
-                <div className='mdl-cell mdl-cell--9-col' style={styleBorderLeft}>
+                <div className='mdl-cell mdl-cell--9-col'>
                   <div style={stylePadding}>
                     <GeneralData />
                     <UpdatePassword />
