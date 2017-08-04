@@ -2,11 +2,12 @@ import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, Field, change } from 'redux-form'
-import { addOrganization, getOrganization } from '../actions'
 import { toastr } from 'react-redux-toastr'
+
+import { addOrganization, getOrganization } from '../actions'
+import { POSTCODE } from '../constants/Validation'
 import Input from './Input'
 import Auth from '../modules/Auth'
-import { POSTCODE } from '../constants/Validation'
 
 const validate = values => {
   const errors = {}
