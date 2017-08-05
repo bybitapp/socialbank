@@ -22,6 +22,7 @@ import Forgot from './page/Forgot'
 import Reset from './page/Reset'
 import Public from './page/Public'
 import NotFound from './page/NotFound'
+import Complaints from './page/Complaints'
 
 // admin
 import Me from './page/admin/Me'
@@ -58,6 +59,7 @@ const App = () => (
           <Route path='/contact' component={Contact} />
           <Route path='/terms' component={Terms} />
           <Route path='/privacy' component={Privacy} />
+          <Route path='/complaints' component={Complaints} />
           <Route path='/help' component={Help} />
           <Route path='/' exact component={Home} />
           <Route path='*' component={NotFound} />

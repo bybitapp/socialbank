@@ -1027,14 +1027,14 @@ body.top-search-open .dark #header-wrap:not(.not-dark) #top-search a,
 
 .dark #copyrights {
 	background-color: rgba(0,0,0,0.2);
-	color: rgba(255,255,255,0.25);
+	color: rgba(255,255,255,0.45);
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
 }
 
 .dark #copyrights i.footer-icon { color: rgba(255,255,255,0.3); }
 
 .dark .copyright-links a {
-	color: rgba(255,255,255,0.25);
+	color: rgba(255,255,255,0.45);
 	border-bottom-color: rgba(255,255,255,0.25);
 }
 
@@ -1720,4 +1720,3 @@ body #side-panel.dark #side-panel-trigger-close a {
 	.dark .pricing-box.pricing-extended .pricing-action-area { border-top-color: rgba(255,255,255,0.15); }
 
 }
-
