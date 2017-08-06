@@ -224,7 +224,7 @@ class Home extends React.Component {
             <div id='section-buy' className='section page-section footer-stick'>
               <div className='container clearfix'>
                 <div className='heading-block title-center nobottomborder'>
-                  <h2>Enough? Start Building!</h2>
+                  <h2>Stay on top of your company&#39;s spending</h2>
                   <span>Now that you’ve read all the boring bits, let’s get started</span>
                 </div>
                 <div className='center'>
