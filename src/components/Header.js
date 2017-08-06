@@ -47,8 +47,13 @@ class Header extends React.Component {
                 </ul>
               ) : (
                 <ul style={{ borderRight: 0 }}>
-                  <li><Link to={'/contact'}>Contact</Link></li>
                   <li><a href='/login'>Login</a></li>
+                  <li className='sub-menu'><a href='/' className='sf-with-ul'><div>Help</div></a>
+                    <ul style={{display: 'none'}}>
+                      <li><a href='/contact'><div><i className='icon-envelope-alt' />Contact</div></a></li>
+                      <li><a href='/faq'><div><i className='icon-question' />FAQ</div></a></li>
+                    </ul>
+                  </li>
                   <li><Link style={{color: 'red'}} to={'/demo'}>Book a Demo</Link></li>
                 </ul>
               )}
