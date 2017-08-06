@@ -147,7 +147,7 @@ class Terms extends React.Component {
 
               <p style={{marginLeft: '36pt'}}><span><span style={styleText}>6.1</span> <span style={styleText}>You must ensure that You have sufficient Available Funds on Your Cards to pay for each purchase, payment or cash withdrawal.</span></span></p>
 
-              <p style={{marginLeft: '36pt'}}><span><span style={styleText}>6.2</span> <span style={styleText}>The Cards are not linked to a bank deposit account and are not chequeguarantee cards, charge cards or credit cards, nor may they be used as evidence of identity.</span></span></p>
+              <p style={{marginLeft: '36pt'}}><span><span style={styleText}>6.2</span> <span style={styleText}>The Cards are not linked to a bank deposit account and are not cheque guarantee cards, charge cards or credit cards, nor may they be used as evidence of identity.</span></span></p>
 
               <p style={{marginLeft: '36pt'}}><span><span style={styleText}>6.3</span> <span style={styleText}>The Cards may not be used for any illegal purposes.</span></span></p>
 
