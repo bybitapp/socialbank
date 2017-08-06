@@ -14,7 +14,7 @@ import Home from './page/Home'
 import Terms from './page/Terms'
 import Privacy from './page/Privacy'
 import Contact from './page/Contact'
-import Help from './page/Help'
+import Faq from './page/Faq'
 import Login from './page/Login'
 import Logout from './page/Logout'
 import Register from './page/Register'
@@ -60,7 +60,7 @@ const App = () => (
           <Route path='/terms' component={Terms} />
           <Route path='/privacy' component={Privacy} />
           <Route path='/complaints' component={Complaints} />
-          <Route path='/help' component={Help} />
+          <Route path='/faq' component={Faq} />
           <Route path='/' exact component={Home} />
           <Route path='*' component={NotFound} />
         </Switch>
