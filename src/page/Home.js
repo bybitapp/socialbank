@@ -100,7 +100,7 @@ const Description = () => (
 
 const Explainer = () => (
   <div className='row clearfix common-height'>
-    <div className='col-md-6 center col-padding hidden-sm hidden-xs' style={{ background: 'url("images/explainer.jpg") center center no-repeat', backgroundSize: 'cover' }}>
+    <div className='col-md-6 center col-padding hidden-sm hidden-xs' style={{ background: 'url("images/homepage/explainer.jpg") center center no-repeat', backgroundSize: 'cover' }}>
       <div>&nbsp;</div>
     </div>
     <div className='col-md-6 center col-padding' style={{ backgroundColor: '#F5F5F5' }}>
@@ -111,8 +111,8 @@ const Explainer = () => (
         </div>
         <div className='center bottommargin'>
           <a href='https://www.youtube.com/watch?v=kX2PiKgkr-Y' data-lightbox='iframe' style={{ position: 'relative' }}>
-            <img src='images/new/video.jpg' alt='Video' />
-            <span className='i-overlay nobg'><img src='images/new/video-play.png' alt='Play' /></span>
+            <img src='images/homepage/video-background.png' alt='Video' />
+            <span className='i-overlay nobg'><img src='images/homepage/video-play.png' alt='Play' /></span>
           </a>
         </div>
         <p className='lead nobottommargin'>Transform your donations into philanthropy by seeing their impact.</p>
@@ -122,7 +122,7 @@ const Explainer = () => (
 )
 
 const WhatSays = () => (
-  <div className='section parallax dark notopmargin nobottommargin' style={{ backgroundImage: 'url("images/new/home-testi-bg.jpg")', padding: '100px 0' }} data-stellar-background-ratio='0.4'>
+  <div className='section parallax dark notopmargin nobottommargin' style={{ backgroundImage: 'url("images/homepage/real-time-bg.jpg")', padding: '100px 0' }} data-stellar-background-ratio='0.4'>
     <div className='heading-block center'>
       <h3>What others say about sotec</h3>
     </div>
@@ -204,14 +204,16 @@ class Home extends React.Component {
             <WhatSays />
 
             <div className='section notopmargin nobottommargin' style={{paddingBottom: '150px'}}>
-              <div className='hidden-sm hidden-xs' style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'transparent url("images/new/ipad-section.png") bottom right no-repeat' }} />
               <div className='container clearfix' style={{ zIndex: 1 }}>
-                <div className='col-md-6 nobottommargin'>
+                <div className='col-md-8 nobottommargin'>
                   <div className='heading-block topmargin-sm'>
                     <h2>Real-time spending overview</h2>
                     <span>Monitor your charity’s spending in real-time and sync it to your accounting system.</span>
                   </div>
                   <Link to={'/demo'} className='button button-border button-rounded button-large button-dark noleftmargin'>Start Demo</Link>
+                </div>
+                <div className='col-md-4 hidden-sm topmargin-lg bottommargin center'>
+                  <img src='images/homepage/acc-overview.png' height='300px' alt='account spends' />
                 </div>
               </div>
             </div>
