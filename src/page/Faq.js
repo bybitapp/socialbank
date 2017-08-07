@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 class Faq extends React.Component {
   render () {
     return (
-      <div className='mdl-layout mdl-js-layout mdl-layout--fixed-header'>
+      <div id='wrapper' className='clearfix'>
         <Header />
         <section id='page-title'>
           <div className='container clearfix'>
