@@ -100,10 +100,7 @@ const Description = () => (
 
 const Explainer = () => (
   <div className='row clearfix common-height'>
-    <div className='col-md-6 center col-padding hidden-sm hidden-xs' style={{ background: 'url("images/homepage/explainer.jpg") center center no-repeat', backgroundSize: 'cover' }}>
-      <div>&nbsp;</div>
-    </div>
-    <div className='col-md-6 center col-padding' style={{ backgroundColor: '#F5F5F5' }}>
+    <div className='col-md-12 center col-padding' style={{ backgroundColor: '#F5F5F5' }}>
       <div>
         <div className='heading-block nobottomborder'>
           <span className='before-heading color'>Easily Understandable &amp; Customizable.</span>
@@ -111,7 +108,7 @@ const Explainer = () => (
         </div>
         <div className='center bottommargin'>
           <a href='https://www.youtube.com/watch?v=kX2PiKgkr-Y' data-lightbox='iframe' style={{ position: 'relative' }}>
-            <img src='images/homepage/video-background.png' alt='Video' />
+            <img src='images/homepage/video-background.jpg' alt='Video' />
             <span className='i-overlay nobg'><img src='images/homepage/video-play.png' alt='Play' /></span>
           </a>
         </div>
@@ -203,7 +200,7 @@ class Home extends React.Component {
             <Explainer />
             <WhatSays />
 
-            <div className='section notopmargin nobottommargin' style={{paddingBottom: '150px'}}>
+            <div className='section notopmargin nobottommargin' style={{backgroundColor: '#FFFFFF'}}>
               <div className='container clearfix' style={{ zIndex: 1 }}>
                 <div className='col-md-8 nobottommargin'>
                   <div className='heading-block topmargin-sm'>
@@ -212,8 +209,8 @@ class Home extends React.Component {
                   </div>
                   <Link to={'/demo'} className='button button-border button-rounded button-large button-dark noleftmargin'>Start Demo</Link>
                 </div>
-                <div className='col-md-4 hidden-sm topmargin-lg bottommargin center'>
-                  <img src='images/homepage/acc-overview.png' height='300px' alt='account spends' />
+                <div className='col-md-4 hidden-sm topmargin-sm center'>
+                  <img src='images/homepage/acc-overview.png' height='400px' alt='account spends' />
                 </div>
               </div>
             </div>
