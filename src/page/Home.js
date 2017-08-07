@@ -24,7 +24,7 @@ const TopView = () => (
         <div className='vertical-middle no-fade'>
           <div className='col-md-6 fright nobottommargin' data-animate='fadeIn'>
             <div className='emphasis-title'>
-              <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'>Revolutionize the way your <strong style={{ color: '#00D0A7' }}>charity</strong> manages its expenses.</h1>
+              <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'>Revolutionize the way your <strong style={{ color: '#00D0A7' }}>business</strong> manages its expenses.</h1>
             </div>
             <div>
               <Link to={'/demo'} className='button button-desc button-border button-rounded nomargin'>
@@ -43,7 +43,7 @@ const Description = () => (
     <div className='row topmargin-lg bottommargin-sm'>
       <div className='heading-block center'>
         <h2>Why do you need sotec?</h2>
-        <span className='divcenter'>The system is dedicated to helping non-profit and charity organizations build transparency and trust around payments.</span>
+        <span className='divcenter'>The system is dedicated to simplify the entire business expense cycle – with Visa<sup>&#174;</sup> business cards, intuitive admin, and effortless reporting.</span>
       </div>
       <div className='col-md-4 col-sm-6 bottommargin'>
         <div className='feature-box fbox-right topmargin' data-animate='fadeIn'>
@@ -77,7 +77,7 @@ const Description = () => (
             <i className='icon-wallet' />
           </div>
           <h3>Private</h3>
-          <p>Share charity spending only. Keep sensitive information safe and private.</p>
+          <p>Keep sensitive information safe and private.</p>
         </div>
         <div className='feature-box topmargin' data-animate='fadeIn' data-delay='200'>
           <div className='fbox-icon'>
@@ -103,8 +103,8 @@ const Explainer = () => (
     <div className='col-md-12 center col-padding' style={{ backgroundColor: '#F5F5F5' }}>
       <div>
         <div className='heading-block nobottomborder'>
-          <span className='before-heading color'>Easily Understandable &amp; Customizable.</span>
-          <h3>Walkthrough Videos &amp; Demos</h3>
+          <h3>WANT TO KNOW A LITTLE MORE?</h3>
+          <span className='before-heading color'>This 3-minute film provides a clear overview of our system.</span>
         </div>
         <div className='center bottommargin'>
           <a href='https://www.youtube.com/watch?v=kX2PiKgkr-Y' data-lightbox='iframe' style={{ position: 'relative' }}>
@@ -112,7 +112,7 @@ const Explainer = () => (
             <span className='i-overlay nobg'><img src='images/homepage/video-play.png' alt='Play' /></span>
           </a>
         </div>
-        <p className='lead nobottommargin'>Transform your donations into philanthropy by seeing their impact.</p>
+        <p className='lead nobottommargin'>Powering business payment forward.</p>
       </div>
     </div>
   </div>
@@ -148,8 +148,8 @@ const HowStart = () => (
   <div className='section dark notopmargin' style={{ paddingTop: '60px' }}>
     <div className='container clearfix'>
       <div className='heading-block center'>
-        <h2>Getting started with sotec</h2>
-        <span>Learn how to manage your charity’s spending</span>
+        <h2>SoTec Adapts To Any Business</h2>
+        <span>It&#39;s Easy To Sign Up And Takes About 5 Minutes.</span>
       </div>
       <div className='clear bottommargin-sm' />
       <div className='col_one_fourth nobottommargin'>
@@ -205,7 +205,7 @@ class Home extends React.Component {
                 <div className='col-md-8 nobottommargin'>
                   <div className='heading-block topmargin-sm'>
                     <h2>Real-time spending overview</h2>
-                    <span>Monitor your charity’s spending in real-time and sync it to your accounting system.</span>
+                    <span>Discover our intuitive interface, offers real-time tracking and alerts, and allows budgets to be set, limits to be changed, and cards to be turned on or off with one simple click.</span>
                   </div>
                   <Link to={'/demo'} className='button button-border button-rounded button-large button-dark noleftmargin'>Start Demo</Link>
                 </div>
