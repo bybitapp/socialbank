@@ -3,7 +3,7 @@ import Modal from './ResponsiveModal'
 import { compose } from 'recompose'
 import { reduxForm, Field, SubmissionError } from 'redux-form'
 import { removeUser } from '../actions'
-
+import { toastr } from 'react-redux-toastr'
 const customStyles = {
   content: {top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', padding: '5px', transform: 'translate(-50%, -50%)'},
   overlay: {zIndex: 4}
@@ -16,10 +16,12 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(removeUser(values, (_error) => {
           if (!_error) {
+            toastr.success('Success!', 'User has been removed.')
             dispatch(ownProps.reset('userRemoveForm'))
             ownProps.handleClose()
             resolve()
           } else {
+            toastr.error('Aw snap!', _error)
             reject(new SubmissionError({_error}))
           }
         }))
@@ -36,7 +38,7 @@ class userRemoveForm extends React.Component {
   }
 
   render () {
-    const { handleClose, open, handleSubmit, error } = this.props
+    const { handleClose, open, handleSubmit } = this.props
 
     return (
       <Modal
@@ -55,7 +57,6 @@ class userRemoveForm extends React.Component {
             </header>
             <main className='mdl-layout__content'>
               <div className='page-content'>
-                {error && <span className='sb-error'>{error}</span>}
                 <Field name='uid' type='hidden' component='input' />
                 <h5>Do you want to remove selected user from your organization ?</h5>
               </div>

@@ -38,10 +38,11 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(postReset(token, (_error, data) => {
           if (!_error) {
-            toastr.success('Successfully reset password.')
+            toastr.success('Success!', 'Successfully reset password.')
             ownProps.history.push('/login')
             resolve()
           } else {
+            toastr.error('Aw snap!', _error)
             reject(new SubmissionError({_error}))
           }
         }))
@@ -52,7 +53,7 @@ const enhance = compose(
 
 class Login extends React.Component {
   render () {
-    const { handleSubmit, error } = this.props
+    const { handleSubmit } = this.props
     return (
       <div id='wrapper' className='clearfix'>
         <Header />
@@ -69,11 +70,9 @@ class Login extends React.Component {
           <div className='content-wrap'>
             <div className='container clearfix'>
               <div className='accordion accordion-lg divcenter nobottommargin clearfix' style={{ maxWidth: '550px' }}>
-                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                 <div className='acctitle'><i className='acc-closed icon-user4' /><i className='acc-open icon-ok-sign' />Reset password</div>
                 <div className='acc_content clearfix'>
                   <form className='nobottommargin' onSubmit={handleSubmit} >
-                    {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                     <Field name='password' label='Password:' component={Input} type='password' />
                     <div className='col_full nobottommargin'>
                       <button className='button button-3d button-black nomargin' type='submit'>Submit</button>

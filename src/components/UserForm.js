@@ -3,7 +3,7 @@ import Modal from './ResponsiveModal'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, Field, SubmissionError, formValueSelector, change } from 'redux-form'
-
+import { toastr } from 'react-redux-toastr'
 import { addUser } from '../actions'
 import Select from '../components/Select'
 import Input from './Input'
@@ -50,10 +50,12 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(addUser(values, (_error) => {
           if (!_error) {
+            toastr.success('Success!', 'New user has been added.')
             dispatch(ownProps.reset('userForm'))
             ownProps.handleClose()
             resolve()
           } else {
+            toastr.error('Aw snap!', _error)
             reject(new SubmissionError({_error}))
           }
         }))
@@ -80,7 +82,7 @@ class UserForm extends React.Component {
   }
 
   render () {
-    const { handleClose, open, handleSubmit, error, isEditMode } = this.props
+    const { handleClose, open, handleSubmit, isEditMode } = this.props
 
     return (
       <Modal
@@ -99,7 +101,6 @@ class UserForm extends React.Component {
             </header>
             <main className='mdl-layout__content'>
               <div className='page-content'>
-                {error && <span className='sb-error'>{error}</span>}
                 <Field name='uid' type='hidden' component='input' />
                 <Field name='name' label='Name' component={Input} disabled={isEditMode} />
                 <Field name='email' label='Work Email' component={Input} disabled={isEditMode} />

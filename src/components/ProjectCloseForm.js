@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from './ResponsiveModal'
 import { compose } from 'recompose'
 import { reduxForm, Field, SubmissionError } from 'redux-form'
-
+import { toastr } from 'react-redux-toastr'
 import { closeProject } from '../actions'
 
 const customStyles = {
@@ -17,10 +17,12 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(closeProject(values, (_error) => {
           if (!_error) {
+            toastr.success('Success!', 'Your project have been closed.')
             dispatch(ownProps.reset('projectCloseForm'))
             ownProps.handleClose()
             resolve()
           } else {
+            toastr.error('Aw snap!', _error)
             reject(new SubmissionError({_error}))
           }
         }))
@@ -37,7 +39,7 @@ class ProjectCloseForm extends React.Component {
   }
 
   render () {
-    const { handleClose, open, handleSubmit, error } = this.props
+    const { handleClose, open, handleSubmit } = this.props
 
     return (
       <Modal
@@ -56,7 +58,6 @@ class ProjectCloseForm extends React.Component {
             </header>
             <main className='mdl-layout__content'>
               <div className='page-content'>
-                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                 <Field name='pid' type='hidden' component='input' />
                 <h5>Do you want to close selected project ?</h5>
               </div>

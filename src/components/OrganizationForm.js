@@ -51,10 +51,10 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(addOrganization(values, (_error) => {
           if (!_error) {
-            toastr.success('Organization Added.' + (values.id) ? 'Updated.' : 'Added.')
+            toastr.success('Success!', 'Organization Added.' + (values.id) ? 'Updated.' : 'Added.')
             resolve()
           } else {
-            toastr.error(_error)
+            toastr.error('Aw snap!', _error)
             reject(_error)
           }
         }))

@@ -3,6 +3,7 @@ import Modal from './ResponsiveModal'
 import { compose } from 'recompose'
 import { reduxForm, Field, SubmissionError } from 'redux-form'
 import { updateCardStatus } from '../actions'
+import { toastr } from 'react-redux-toastr'
 
 const customStyles = {
   content: {top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', padding: '5px', transform: 'translate(-50%, -50%)'},
@@ -18,10 +19,12 @@ const enhance = compose(
         values.status = 'inactive'
         dispatch(updateCardStatus(values, (_error) => {
           if (!_error) {
+            toastr.success('Success!', 'Card has been blocked.')
             dispatch(ownProps.reset('cardBlockForm'))
             ownProps.handleClose()
             resolve()
           } else {
+            toastr.error('Aw snap!', _error)
             reject(new SubmissionError({_error}))
           }
         }))
@@ -38,7 +41,7 @@ class CardBlockForm extends React.Component {
   }
 
   render () {
-    const { handleClose, open, handleSubmit, error } = this.props
+    const { handleClose, open, handleSubmit } = this.props
 
     return (
       <Modal
@@ -57,7 +60,6 @@ class CardBlockForm extends React.Component {
             </header>
             <main className='mdl-layout__content'>
               <div className='page-content'>
-                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                 <Field name='cid' type='hidden' component='input' />
                 <Field name='status' type='hidden' component='input' value='inactive' readOnly />
                 <h5>Do you want to block selected card ?</h5>
