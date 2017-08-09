@@ -116,7 +116,7 @@ const DebitCard = ({cardDetail}) => {
             </div>
             <div className='cardtype'>
               <div className='logo'><i className={`pf ${cardBrandClass[cardDetail.cardBrand]}`} /></div>
-              <div className='type'>Business</div>
+              <div className='type'>Prepaid</div>
             </div>
           </div>
         </div>
@@ -135,7 +135,7 @@ const DebitCard = ({cardDetail}) => {
               This card is issued by IDT Financial Services Limited (IDTFS) pursuant to a license from Visa Europe and remains the property of IDT Financial Services Ltd.
             </div>
             <div className='type'>
-              Business
+              Prepaid
             </div>
           </div>
         </div>
