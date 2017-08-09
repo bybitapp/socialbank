@@ -34,6 +34,7 @@ const enhance = compose(
             ownProps.history.push('/me')
             resolve()
           } else {
+            toastr.error('Aw snap!', _error)
             reject(new SubmissionError({_error}))
           }
         }))
@@ -44,7 +45,7 @@ const enhance = compose(
 
 class Login extends React.Component {
   render () {
-    const { handleSubmit, error } = this.props
+    const { handleSubmit } = this.props
     return (
       <div id='wrapper' className='clearfix'>
         <Header />
@@ -64,7 +65,6 @@ class Login extends React.Component {
                 <div className='acctitle'><i className='acc-closed icon-user4' /><i className='acc-open icon-ok-sign' />Login to your account</div>
                 <div className='acc_content clearfix'>
                   <form className='nobottommargin' onSubmit={handleSubmit} >
-                    {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                     <Field name='email' label='Email:' component={Input} />
                     <Field name='password' label='Password:' component={Input} type='password' />
                     <div className='col_full nobottommargin'>

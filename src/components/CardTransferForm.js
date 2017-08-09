@@ -4,6 +4,7 @@ import { compose } from 'recompose'
 import { reduxForm, Field, SubmissionError } from 'redux-form'
 import { transferCard } from '../actions'
 import Input from './Input'
+import { toastr } from 'react-redux-toastr'
 
 const customStyles = {
   content: {top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', padding: '5px', transform: 'translate(-50%, -50%)'},
@@ -35,11 +36,12 @@ const enhance = compose(
         }
         dispatch(transferCard(params, (_error) => {
           if (!_error) {
+            toastr.success('Success!', 'Amount transferred to card.')
             dispatch(ownProps.reset('cardTransferForm'))
             ownProps.handleClose()
             resolve()
           } else {
-            console.log(_error)
+            toastr.error('Aw snap!', _error)
             reject(new SubmissionError({_error}))
           }
         }))
@@ -56,7 +58,7 @@ class CardTransferForm extends React.Component {
   }
 
   render () {
-    const { handleClose, open, handleSubmit, error } = this.props
+    const { handleClose, open, handleSubmit } = this.props
 
     return (
       <Modal
@@ -75,7 +77,6 @@ class CardTransferForm extends React.Component {
             </header>
             <main className='mdl-layout__content'>
               <div className='page-content'>
-                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                 <Field name='pid' type='hidden' component='input' />
                 <Field name='cid' type='hidden' component='input' />
                 <h5>Project</h5>

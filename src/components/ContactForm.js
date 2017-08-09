@@ -6,7 +6,7 @@ import Input from '../components/Input'
 import TextField from '../components/TextField'
 import { EMAIL } from '../constants/Validation'
 import { sendMessage } from '../actions'
-
+import { toastr } from 'react-redux-toastr'
 const validate = values => {
   const errors = {}
   if (!values.name) {
@@ -31,9 +31,10 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(sendMessage(values, (_error, data) => {
           if (!_error) {
-            alert(data)
+            toastr.success('Success!', 'Message sent.')
             resolve()
           } else {
+            toastr.error('Aw snap!', _error)
             reject(new SubmissionError({_error}))
           }
         }))
@@ -44,10 +45,9 @@ const enhance = compose(
 
 class ContactForm extends React.Component {
   render () {
-    const { handleSubmit, error } = this.props
+    const { handleSubmit } = this.props
     return (
       <div className='postcontent nobottommargin'>
-        {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
         <div id='contact-form-result' data-notify-type='success' data-notify-msg='<i className=icon-ok-sign></i> Message Sent Successfully!' />
         <form className='nobottommargin' onSubmit={handleSubmit}>
           <div className='form-process' />

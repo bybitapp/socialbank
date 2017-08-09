@@ -1,6 +1,7 @@
 import React from 'react'
 import Modal from './ResponsiveModal'
 import { compose } from 'recompose'
+import { toastr } from 'react-redux-toastr'
 import { reduxForm, Field, SubmissionError } from 'redux-form'
 
 import { removeBankAccount } from '../actions'
@@ -12,10 +13,12 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(removeBankAccount(values, (_error) => {
           if (!_error) {
+            toastr.success('Success!', 'Bank has been removed.')
             dispatch(ownProps.reset('bankRemoveForm'))
             ownProps.handleClose()
             resolve()
           } else {
+            toastr.error('Aw snap!', _error)
             reject(new SubmissionError({_error}))
           }
         }))
@@ -32,7 +35,7 @@ class BankRemoveForm extends React.Component {
   }
 
   render () {
-    const { handleClose, open, handleSubmit, error } = this.props
+    const { handleClose, open, handleSubmit } = this.props
 
     return (
       <Modal
@@ -50,7 +53,6 @@ class BankRemoveForm extends React.Component {
             </header>
             <main className='mdl-layout__content'>
               <div className='page-content'>
-                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                 <Field name='bid' type='hidden' component='input' />
                 <h5>Do you want to remove selected bank ?</h5>
               </div>

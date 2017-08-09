@@ -3,7 +3,7 @@ import Modal from './ResponsiveModal'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 import { reduxForm, Field, SubmissionError, formValueSelector, change } from 'redux-form'
-
+import { toastr } from 'react-redux-toastr'
 import { depositProject, getBankAccounts } from '../actions'
 import Input from './Input'
 import Select from './Select'
@@ -49,10 +49,12 @@ const enhance = compose(
         }
         dispatch(depositProject(params, (_error) => {
           if (!_error) {
+            toastr.success('Success!', 'Deposit succeeded.')
             dispatch(ownProps.reset('projectDepositForm'))
             ownProps.handleClose()
             resolve()
           } else {
+            toastr.error('Aw snap!', _error)
             reject(new SubmissionError({_error}))
           }
         }))
@@ -81,7 +83,7 @@ class ProjectDepositForm extends React.Component {
   }
 
   render () {
-    const { handleClose, open, handleSubmit, error, bankOptions } = this.props
+    const { handleClose, open, handleSubmit, bankOptions } = this.props
     return (
       <Modal
         isOpen={open}
@@ -99,7 +101,6 @@ class ProjectDepositForm extends React.Component {
             </header>
             <main className='mdl-layout__content'>
               <div className='page-content'>
-                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                 <Field name='pid' type='hidden' component='input' />
                 <h5>External account</h5>
                 <Field name='bid' label='Bank' component={Select} items={bankOptions} />

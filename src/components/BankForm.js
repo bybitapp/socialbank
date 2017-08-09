@@ -46,10 +46,11 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(addBankAccount(values, (_error) => {
           if (!_error) {
-            toastr.success('Bank Account Added.')
+            toastr.success('Success!', 'Bank account has been added.')
             ownProps.handleClose()
             resolve()
           } else {
+            toastr.error('Aw snap!', _error)
             reject(new SubmissionError({_error}))
           }
         }))
@@ -85,7 +86,7 @@ class BankForm extends React.Component {
   }
 
   render () {
-    const { open, handleClose, handleSubmit, banks, error } = this.props
+    const { open, handleClose, handleSubmit, banks } = this.props
     const { owner } = banks
     const button = (owner) ? 'Update Bank Account' : 'Add Bank Account'
     // TODO temporary, wee need this feature in OPC
@@ -108,7 +109,6 @@ class BankForm extends React.Component {
             </header>
             <main className='mdl-layout__content'>
               <div className='page-content'>
-                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                 <Field name='owner' label='Account Owner' component={Input} disabled={buttonDisabled} />
                 <Field name='bankName' label='Bank Name' component={Input} disabled={buttonDisabled} />
                 <Field name='ibanCode' label='Iban Code' component={Input} disabled={buttonDisabled} />
