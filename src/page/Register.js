@@ -65,10 +65,11 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(registerAccount(values, (_error) => {
           if (!_error) {
+            toastr.success('Success!', 'Registration succeeded.')
             dispatch(ownProps.reset('register'))
             resolve()
           } else {
-            toastr.error(_error)
+            toastr.error('Aw snap!', _error)
             reject(_error)
           }
         }))

@@ -46,6 +46,7 @@ const enhance = compose(
             toastr.success('Updated!', 'Your account has been updated')
             resolve()
           } else {
+            toastr.error('Aw snap!', _error)
             reject(new SubmissionError({_error}))
           }
         }))

@@ -2,6 +2,7 @@ import React from 'react'
 import Modal from './ResponsiveModal'
 import { compose } from 'recompose'
 import { reduxForm, Field, SubmissionError } from 'redux-form'
+import { toastr } from 'react-redux-toastr'
 
 import { destroyCard } from '../actions'
 
@@ -17,10 +18,12 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(destroyCard(values, (_error) => {
           if (!_error) {
+            toastr.success('Success', 'Card has been destroyed.')
             dispatch(ownProps.reset('cardDestroyForm'))
             ownProps.handleClose()
             resolve()
           } else {
+            toastr.error('Aw snap!', _error)
             reject(new SubmissionError({_error}))
           }
         }))
@@ -37,7 +40,7 @@ class CardDestroyForm extends React.Component {
   }
 
   render () {
-    const { handleClose, open, handleSubmit, error } = this.props
+    const { handleClose, open, handleSubmit } = this.props
 
     return (
       <Modal
@@ -56,7 +59,6 @@ class CardDestroyForm extends React.Component {
             </header>
             <main className='mdl-layout__content'>
               <div className='page-content'>
-                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                 <Field name='cid' type='hidden' component='input' />
                 <h5>Do you want to destroy selected card ?</h5>
               </div>

@@ -2,6 +2,20 @@ import server from '../api/server'
 import Auth from '../modules/Auth'
 import * as types from '../constants/ActionTypes'
 
+function handleError (e, cb, defaultMsg) {
+  const errorMsg = 'Our engineering team has been notified of the problem. Please contact us for any urgent issues.'
+
+  if (e.response.status === 500) {
+    cb(errorMsg)
+  } else if (e.response.data.message) {
+    cb(e.response.data.message)
+  } else if (defaultMsg) {
+    cb(defaultMsg)
+  } else {
+    cb(errorMsg)
+  }
+}
+
 export const addOrganization = (org, cb) => (dispatch, getState) => {
   server.addOrganization(org, (ex, data) => {
     if (!ex) {
@@ -9,9 +23,9 @@ export const addOrganization = (org, cb) => (dispatch, getState) => {
       cb(null, data)
     } else {
       if (org.id) {
-        cb('Update Failed!')
+        handleError(ex, cb, 'Update Failed!')
       } else {
-        cb('Add Failed!')
+        handleError(ex, cb, 'Add Failed!')
       }
     }
   })
@@ -47,7 +61,7 @@ export const addBankAccount = (bank, cb) => (dispatch, getState) => {
       dispatch({type: types.ADD_BANKACCOUNT_SUCCESS, data})
       cb(null, data)
     } else {
-      cb('Add Failed!')
+      handleError(ex, cb, 'Add Failed!')
     }
   })
 }
@@ -74,7 +88,7 @@ export const removeBankAccount = (bid, cb) => (dispatch, getState) => {
       dispatch({type: types.REMOVE_BANKACCOUNT_SUCCESS, data})
       cb(null, data)
     } else {
-      cb('Remove Failed!')
+      handleError(ex, cb, 'Remove Failed!')
     }
   })
 }
@@ -94,7 +108,7 @@ export const addUser = (values, cb) => dispatch => {
         dispatch({type: types.UPDATE_USER, data})
         cb(null, data)
       } else {
-        cb('You cannot update this user to your organization!')
+        handleError(ex, cb, 'You cannot update this user to your organization!')
       }
     })
   } else {
@@ -103,7 +117,7 @@ export const addUser = (values, cb) => dispatch => {
         dispatch({type: types.ADD_USER, data})
         cb(null, data)
       } else {
-        cb('You cannot add this user to your organization!')
+        handleError(ex, cb, 'You cannot add this user to your organization!')
       }
     })
   }
@@ -115,7 +129,7 @@ export const removeUser = (uid, cb) => dispatch => {
       dispatch({type: types.REMOVE_USER, data})
       cb(null, data)
     } else {
-      cb('You cannot remove this user from organization!')
+      handleError(ex, cb, 'You cannot remove this user from organization!')
     }
   })
 }
@@ -168,8 +182,7 @@ export const registerAccount = (account, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // return dispatch({ type: types.REGISTER_ACCOUNT_FAILURE, account })
-      const errMsg = ex.response.data.message ? ex.response.data.message : 'Your account can not be created, please contact with us!'
-      cb(errMsg)
+      handleError(ex, cb, 'Your account can not be created, please contact with us!')
     }
   })
 }
@@ -183,7 +196,7 @@ export const updateAccount = (account, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // return dispatch({ type: types.UPDATE_ACCOUNT_FAILURE, account })
-      cb('Your account can not be updated, please contact with us!')
+      handleError(ex, cb, 'Your account can not be updated, please contact with us!')
     }
   })
 }
@@ -196,8 +209,7 @@ export const updatePassword = (data, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // return dispatch({ type: types.UPDATE_ACCOUNT_FAILURE, account })
-      const errMsg = ex.response.data.message ? ex.response.data.message : 'Your password can not be updated, please contact with us!'
-      cb(errMsg)
+      handleError(ex, cb, 'Your password can not be updated, please contact with us!')
     }
   })
 }
@@ -210,7 +222,7 @@ export const postForgot = (data, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // return dispatch({ type: types.UPDATE_ACCOUNT_FAILURE, account })
-      cb('')
+      handleError(ex, cb, '')
     }
   })
 }
@@ -223,7 +235,7 @@ export const postReset = (token, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // return dispatch({ type: types.UPDATE_ACCOUNT_FAILURE, account })
-      cb('')
+      handleError(ex, cb, '')
     }
   })
 }
@@ -237,7 +249,7 @@ export const login = (account, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // return dispatch({ type: types.LOGIN_FAILURE, account })
-      cb('Login Failed!')
+      handleError(ex, cb, 'Login Failed!')
     }
   })
 }
@@ -257,14 +269,14 @@ export const addProject = (project, cb) => (dispatch, getState) => {
         dispatch({type: types.UPDATE_PROJECT_SUCCESS, data})
         cb(null, data)
       } else {
-        cb('Update Failed!')
+        handleError(ex, cb, 'Update Failed!')
       }
     } else {
       if (!ex) {
         dispatch({type: types.ADD_PROJECT_SUCCESS, data})
         cb(null, data)
       } else {
-        cb('Add Failed!')
+        handleError(ex, cb, 'Add Failed!')
       }
     }
   })
@@ -278,7 +290,7 @@ export const closeProject = (project, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
-      cb('Close Failed!')
+      handleError(ex, cb, 'Close Failed!')
     }
   })
 }
@@ -291,7 +303,7 @@ export const depositProject = (project, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
-      cb('Deposit Failed!')
+      handleError(ex, cb, 'Deposit Failed!')
     }
   })
 }
@@ -303,16 +315,14 @@ export const addCard = (card, cb) => (dispatch, getState) => {
         dispatch({type: types.UPDATE_CARD_SUCCESS, data})
         cb(null, data)
       } else {
-        const errMsg = ex.response.data.message ? ex.response.data.message : 'Update Failed!'
-        cb(errMsg)
+        handleError(ex, cb, 'Update Failed!')
       }
     } else {
       if (!ex) {
         dispatch({type: types.ADD_CARD_SUCCESS, data})
         cb(null, data)
       } else {
-        const errMsg = ex.response.data.message ? ex.response.data.message : 'Add Failed!'
-        cb(errMsg)
+        handleError(ex, cb, 'Add Failed!')
       }
     }
   })
@@ -326,8 +336,7 @@ export const transferCard = (project, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // dispatch({ type: types.ADD_PROJECT_FAILURE, projects })
-      const errMsg = ex.response.data.message ? ex.response.data.message : 'Transfer Failed!'
-      cb(errMsg)
+      handleError(ex, cb, 'Transfer Failed!')
     }
   })
 }
@@ -338,7 +347,7 @@ export const destroyCard = (card, cb) => (dispatch, getState) => {
       dispatch({type: types.DESTROY_CARD_SUCCESS, data: data})
       cb(null, data)
     } else {
-      cb('Destroy Failed!')
+      handleError(ex, cb, 'Destroy Failed!')
     }
   })
 }
@@ -349,7 +358,7 @@ export const updateCardStatus = (card, cb) => (dispatch, getState) => {
       dispatch({type: types.UPDATE_CARD_STATUS_SUCCESS, data: data})
       cb(null, data)
     } else {
-      cb('Update Card Status Failed!')
+      handleError(ex, cb, 'Update Card Status Failed!')
     }
   })
 }
@@ -360,8 +369,7 @@ export const getCardDetail = (cid, cb) => (dispatch, getState) => {
       dispatch({type: types.RECEIVE_CARD_DETAIL, data: data})
       cb(null, data)
     } else {
-      const errMsg = ex.response.data.message ? ex.response.data.message : 'Retrieve Card Detail Failed!'
-      cb(errMsg)
+      handleError(ex, cb, 'Retrieve Card Detail Failed!')
     }
   })
 }
@@ -378,7 +386,7 @@ export const sendMessage = (contact, cb) => (dispatch, getState) => {
     } else {
       // Replace the line above with line below to rollback on failure:
       // dispatch({ type: types.SEND_MESSAGE_FAILURE, projects })
-      cb('Send Message Failed!')
+      handleError(ex, cb, 'Send Message Failed!')
     }
   })
 }
@@ -389,8 +397,7 @@ export const subscribeNewsletter = (data, cb) => (dispatch, getState) => {
       // dispatch({type: types.SUBSCRIBE_SUCCESS, data: data})
       cb(null, data)
     } else {
-      const errMsg = ex.response.data.message ? ex.response.data.message : 'Failed to subscribe!'
-      cb(errMsg)
+      handleError(ex, cb, 'Failed to subscribe!')
     }
   })
 }

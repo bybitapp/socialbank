@@ -71,7 +71,7 @@ const App = () => (
         timeOut={2500}
         newestOnTop={false}
         preventDuplicates
-        position='top-left'
+        position='bottom-right'
         transitionIn='fadeIn'
         transitionOut='fadeOut' />
     </div>

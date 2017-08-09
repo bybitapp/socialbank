@@ -44,6 +44,7 @@ const enhance = compose(
             dispatch(ownProps.reset('updatePassword'))
             resolve()
           } else {
+            toastr.error('Aw snap!', _error)
             reject(new SubmissionError({_error}))
           }
         }))
@@ -54,11 +55,10 @@ const enhance = compose(
 
 class UpdatePassword extends React.Component {
   render () {
-    const { handleSubmit, error } = this.props
+    const { handleSubmit } = this.props
     return (
       <div>
         <h5>Password Change</h5>
-        {error && <span className='sb-error'>{error}</span>}
         <form onSubmit={handleSubmit}>
           <div className='mdl-grid'>
             <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet'>

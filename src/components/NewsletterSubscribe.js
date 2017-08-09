@@ -24,10 +24,11 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(subscribeNewsletter(values, (_error) => {
           if (!_error) {
-            toastr.success('Thank you for subscribing.')
+            toastr.success('Success!', 'Thank you for subscribing.')
             dispatch(ownProps.reset('newsletterSubscribeForm'))
             resolve()
           } else {
+            toastr.error('Aw snap!', _error)
             reject(new SubmissionError({_error}))
           }
         }))
@@ -38,12 +39,11 @@ const enhance = compose(
 
 class NewsletterSubscribe extends React.Component {
   render () {
-    const { handleSubmit, error } = this.props
+    const { handleSubmit } = this.props
 
     return (
       <div className='container clearfix'>
         <div className='heading-block center'>
-          {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
           <h3>Subscribe for more <span>Updates</span>.</h3>
         </div>
         <div id='widget-subscribe-form2-result' data-notify-type='success' data-notify-msg='' />
