@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from './ResponsiveModal'
 import { compose } from 'recompose'
 import { reduxForm, Field, SubmissionError } from 'redux-form'
-
+import { toastr } from 'react-redux-toastr'
 import { addProject } from '../actions'
 import TextField from './TextField'
 import Input from './Input'
@@ -33,10 +33,12 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(addProject(values, (_error) => {
           if (!_error) {
+            toastr.success('Success!', 'Project has been created.')
             dispatch(ownProps.reset('projectForm'))
             ownProps.handleClose()
             resolve()
           } else {
+            toastr.error('Aw snap!', _error)
             reject(new SubmissionError({_error}))
           }
         }))
@@ -59,7 +61,7 @@ class ProjectForm extends React.Component {
   }
 
   render () {
-    const { handleClose, open, handleSubmit, error } = this.props
+    const { handleClose, open, handleSubmit } = this.props
 
     return (
       <Modal
@@ -78,7 +80,6 @@ class ProjectForm extends React.Component {
             </header>
             <main className='mdl-layout__content'>
               <div className='page-content'>
-                {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                 <Field name='pid' type='hidden' component='input' />
                 <Field name='name' label='Project Name' component={Input} />
                 <Field name='description' label='Description' component={TextField} />
