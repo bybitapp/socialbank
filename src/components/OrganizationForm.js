@@ -95,10 +95,11 @@ class OrganizationForm extends React.Component {
 
   render () {
     const { handleSubmit, userOrganization } = this.props
-    const disabled = (Auth.getUser().access !== 'owner')
+    let disabled = (Auth.getUser().access !== 'owner')
     let button = 'Add Organization'
     if (userOrganization) {
       button = 'Update Organization'
+      disabled = userOrganization.isValid || disabled
     }
     return (
       <div>
