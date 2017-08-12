@@ -4,7 +4,7 @@ import { projects } from './projects'
 import { account } from './account'
 import { cards } from './cards'
 import { organizations } from './organizations'
-import { userOrganization } from './userOrganization'
+import { userOrg } from './userOrg'
 import { banks } from './banks'
 import { users } from './users'
 import { history } from './history'
@@ -15,7 +15,7 @@ export default combineReducers({
   account,
   cards,
   organizations,
-  userOrganization,
+  userOrg,
   history,
   banks,
   form,

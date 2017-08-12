@@ -13,13 +13,13 @@ import Select from '../../components/Select'
 const selector = formValueSelector('history')
 
 function mapStateToProps (state) {
-  const { projects, history, organizations } = state
+  const { projects, history, userOrg } = state
   let selectedProject = selector(state, 'project')
   return {
     projects,
     history,
     selectedProject,
-    organizations
+    userOrg
   }
 }
 
@@ -89,16 +89,13 @@ class History extends React.Component {
   render () {
     const styleTable = {padding: '16px', margin: '5px', borderLeft: 0, borderRight: 0}
     const stylePadding = {padding: '15px'}
-
-    const { history, projects, organizations } = this.props
-
+    const { history, projects, userOrg } = this.props
     const projectList = projects.map((item, index) => {
       return {
         id: item.id,
         name: item.name
       }
     })
-
     return (
       <div id='wrapper' className='clearfix'>
         <Header />
@@ -111,7 +108,7 @@ class History extends React.Component {
                 </div>
                 <div className='mdl-cell mdl-cell--9-col'>
                   <div style={stylePadding}>
-                    { organizations && organizations.isValid
+                    { userOrg && userOrg.isValid
                       ? (<div>
                         { isEmpty(projects)
                           ? <p className='sb-no-project'>No available projects</p>
