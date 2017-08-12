@@ -36,9 +36,9 @@ const validate = values => {
 }
 
 function mapStateToProps (state) {
-  const { userOrganization } = state
+  const { userOrg } = state
   return {
-    userOrganization
+    userOrg
   }
 }
 
@@ -78,28 +78,28 @@ const updateData = (organization, dispatch) => {
 
 class OrganizationForm extends React.Component {
   componentDidMount () {
-    const { userOrganization, dispatch } = this.props
-    if (!userOrganization) {
+    const { userOrg, dispatch } = this.props
+    if (!userOrg) {
       dispatch(getOrganization())
     } else {
-      updateData(userOrganization, dispatch)
+      updateData(userOrg, dispatch)
     }
   }
 
   componentDidUpdate (prevProps) {
-    const { userOrganization, dispatch } = this.props
-    if (userOrganization !== prevProps.userOrganization) {
-      updateData(userOrganization, dispatch)
+    const { userOrg, dispatch } = this.props
+    if (userOrg !== prevProps.userOrg) {
+      updateData(userOrg, dispatch)
     }
   }
 
   render () {
-    const { handleSubmit, userOrganization } = this.props
+    const { handleSubmit, userOrg } = this.props
     let disabled = (Auth.getUser().access !== 'owner')
     let button = 'Add Organization'
-    if (userOrganization) {
+    if (userOrg) {
       button = 'Update Organization'
-      disabled = userOrganization.isValid || disabled
+      disabled = userOrg.isValid || disabled
     }
     return (
       <div>
