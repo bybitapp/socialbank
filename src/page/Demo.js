@@ -4,19 +4,12 @@ import { reduxForm, Field, change } from 'redux-form'
 import { toastr } from 'react-redux-toastr'
 
 import {EMAIL} from '../constants/Validation'
-import Checkbox from '../components/Checkbox'
 import Input from '../components/Input'
 import Select from '../components/Select'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { registerAccount } from '../actions'
-import { USER_ROLES } from '../constants/Option'
-
-const checkboxLabel = {
-  link: '/terms',
-  linkText: 'Terms & Conditions',
-  text: 'Accept'
-}
+import { USER_ROLES, COMPANY_SIZE } from '../constants/Option'
 
 const validate = values => {
   const errors = {}
@@ -36,20 +29,8 @@ const validate = values => {
   if (!values.role) {
     errors.role = 'Required'
   }
-  if (!values.password) {
-    errors.password = 'Required'
-  } else {
-    if (values.password.length < 8) {
-      errors.password = 'Too small password! Use at least 8 characters.'
-    } else if (values.password.length > 30) {
-      errors.password = 'Too long password! 30 characters are enough.'
-    } else if (values.password.search(/[A-Z]/) < 0) {
-      errors.password = 'Use at least one capital letter for your security.'
-    } else if (values.password.search(/[0-9]/) < 0) {
-      errors.password = 'Use at least one digit for your security.'
-    } else if (values.password.search(/[!@#$&*]/) < 0) {
-      errors.password = 'Use at least one special character (!@#$&*) for your security.'
-    }
+  if (!values.employees) {
+    errors.employees = 'Required'
   }
   if (!values.accepted) {
     errors.accepted = 'Required'
@@ -65,7 +46,7 @@ const enhance = compose(
       return new Promise((resolve, reject) => {
         dispatch(registerAccount(values, (_error) => {
           if (!_error) {
-            toastr.success('Success!', 'Registration succeeded.')
+            toastr.success('Success!', ' succeeded.')
             dispatch(ownProps.reset('register'))
             resolve()
           } else {
@@ -80,18 +61,26 @@ const enhance = compose(
 
 const Form = ({handleSubmit}) => {
   return (
-    <form className='nobottommargin' onSubmit={handleSubmit}>
-      <Field name='name' label='Name:' component={Input} />
-      <Field name='email' label='Work Email:' component={Input} />
-      <Field name='phone' label='Phone number:' component={Input} />
-      <Field name='role' label='Role' component={Select} items={USER_ROLES} />
-      <Field name='password' label='Password:' component={Input} type='password' />
-      <Field name='accepted' label={checkboxLabel} component={Checkbox} />
-      <br />
-      <div className='col_full nobottommargin'>
-        <button className='button button-3d button-black nomargin' type='submit'>Book Now</button>
-      </div>
-    </form>
+    <div className='row'>
+      <form className='nobottommargin' onSubmit={handleSubmit}>
+
+        <div className='col-md-6 bottommargin-sm'>
+          <Field name='name' label='Name:' component={Input} />
+          <Field name='phone' label='Your Phone Number:' component={Input} />
+          <Field name='employees' label='Company Size' component={Select} items={COMPANY_SIZE} />
+        </div>
+
+        <div className='col-md-6 bottommargin-sm'>
+          <Field name='email' label='Your Work Email:' component={Input} />
+          <Field name='role' label='Your Role' component={Select} items={USER_ROLES} />
+        </div>
+
+        <div className='col_full nobottommargin'>
+          <button className='button button-3d button-black nomargin btn-block' type='submit'>Book Now</button>
+        </div>
+      </form>
+    </div>
+
   )
 }
 
@@ -99,6 +88,7 @@ class Register extends React.Component {
   componentDidUpdate (prevProps) {
     const { dispatch } = this.props
     dispatch(change('register', 'role', USER_ROLES[0].id))
+    dispatch(change('employees', 'role', COMPANY_SIZE[0].id))
   }
 
   render () {

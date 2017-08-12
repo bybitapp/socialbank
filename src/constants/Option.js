@@ -17,6 +17,17 @@ export const USER_ROLES = [
   {id: 'design', name: 'Design'}
 ]
 
+export const COMPANY_SIZE = [
+  {id: '1', name: '--'},
+  {id: '2', name: 'Self-employed'},
+  {id: '3', name: '2-4 employees'},
+  {id: '4', name: '5-9 employees'},
+  {id: '5', name: '10-49 employees'},
+  {id: '6', name: '50-99 employees'},
+  {id: '7', name: '100-999 employees'},
+  {id: '8', name: '1000+ employees'}
+]
+
 export const USER_ACCESS = [
   {name: 'user', id: 'user'},
   {name: 'admin', id: 'admin'}
