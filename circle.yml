@@ -1,6 +1,6 @@
 machine:
   node:
-    version: 8.1.4
+    version: 8.3.0
   environment:
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
     MONGODB_URI: "mongodb://localhost:27017/socialbank-ci"
