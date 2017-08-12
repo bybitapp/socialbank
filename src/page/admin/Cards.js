@@ -16,12 +16,12 @@ import Footer from '../../components/Footer'
 import MenuSideBar from '../../components/MenuSideBar'
 
 function mapStateToProps (state) {
-  const { cards, projects, users, organizations, modal } = state
+  const { cards, projects, users, userOrganization, modal } = state
   return {
     cards,
     projects,
     users,
-    organizations,
+    userOrganization,
     modal
   }
 }
@@ -320,7 +320,7 @@ class Cards extends React.Component {
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
     const stylePadding = {padding: '15px'}
 
-    const { cards, projects, users, organizations, modal, setModal } = this.props
+    const { cards, projects, users, userOrganization, modal, setModal } = this.props
 
     let actions = [
       {icon: 'attach_money', onclick: this.onTransfer, access: 'owner,admin'},
@@ -353,7 +353,7 @@ class Cards extends React.Component {
                 </div>
                 <div className='mdl-cell mdl-cell--9-col'>
                   <div style={stylePadding}>
-                    { organizations && organizations.isValid
+                    { userOrganization && userOrganization.isValid
                       ? (<div>
                         <div className='mdl-grid'>
                           <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
