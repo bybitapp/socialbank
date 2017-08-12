@@ -4,6 +4,8 @@ import { reduxForm, Field, SubmissionError } from 'redux-form'
 import {toastr} from 'react-redux-toastr'
 
 import {EMAIL} from '../constants/Validation'
+import {CAPTCHA_SITE_KEY} from '../constants/Keys'
+import Captcha from '../components/Captcha'
 import Input from '../components/Input'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -27,6 +29,9 @@ const enhance = compose(
     form: 'forgotPassword',
     validate,
     onSubmit: (values, dispatch, ownProps) => {
+      if (!values.captcha) {
+        throw new SubmissionError({ _error: 'Captcha is required.' })
+      }
       return new Promise((resolve, reject) => {
         dispatch(postForgot(values, (_error, data) => {
           if (!_error) {
@@ -65,8 +70,8 @@ class Login extends React.Component {
                 <div className='acctitle'><i className='acc-closed icon-user4' /><i className='acc-open icon-ok-sign' />Reset password</div>
                 <div className='acc_content clearfix'>
                   <form className='nobottommargin' onSubmit={handleSubmit} >
-                    {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                     <Field name='email' label='Email:' component={Input} />
+                    <Field name='captcha' component={Captcha} sitekey={CAPTCHA_SITE_KEY} />
                     <div className='col_full nobottommargin'>
                       <button className='button button-3d button-black nomargin' type='submit'>Password reset</button>
                       <a href='/login' className='fright'>Cancel</a>
