@@ -114,11 +114,13 @@ class Banks extends React.Component {
                   <div style={stylePadding}>
                     { userOrganization && userOrganization.isValid
                       ? (<div>
-                        <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
-                          <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
-                            onClick={() => setModal('bankModal')}>
-                              Add Bank
-                          </button>
+                        <div className='mdl-grid'>
+                          <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
+                            <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
+                              onClick={() => setModal('bankModal')}>
+                                Add Bank
+                            </button>
+                          </div>
                         </div>
                         <BankTable banks={banks} styleTable={styleTable} actions={actions} />
                       </div>)
