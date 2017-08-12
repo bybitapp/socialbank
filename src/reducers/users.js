@@ -10,6 +10,7 @@ export const users = (state = [], action) => {
       return state.map(item => {
         if (item.id === action.data.id) {
           item.access = action.data.access
+          item.profile = action.data.profile
         }
         return item
       })

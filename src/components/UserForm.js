@@ -2,7 +2,7 @@ import React from 'react'
 import Modal from './ResponsiveModal'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
-import { reduxForm, Field, SubmissionError, formValueSelector, change } from 'redux-form'
+import { reduxForm, Field, SubmissionError, formValueSelector } from 'redux-form'
 import { toastr } from 'react-redux-toastr'
 import { addUser } from '../actions'
 import Select from '../components/Select'
@@ -26,6 +26,9 @@ const validate = values => {
   }
   if (!values.name) {
     errors.name = 'Required'
+  }
+  if (!values.role) {
+    errors.role = 'Required'
   }
   if (!values.access) {
     errors.access = 'Required'
@@ -75,10 +78,6 @@ class UserForm extends React.Component {
   }
 
   componentDidUpdate (prevProps) {
-    const { isEditMode, dispatch } = this.props
-    if (!isEditMode) {
-      dispatch(change('userForm', 'access', USER_ACCESS[0].id))
-    }
   }
 
   render () {

@@ -9,6 +9,7 @@ import MenuSideBar from '../../components/MenuSideBar'
 import UserForm from '../../components/UserForm'
 import UserRemoveForm from '../../components/UserRemoveForm'
 import Auth from '../../modules/Auth'
+import { USER_ROLES, USER_ACCESS } from '../../constants/Option'
 
 function mapStateToProps (state) {
   const { users } = state
@@ -24,10 +25,16 @@ const enhance = compose(
 
 const userLabel = {
   name: 'Name',
+  role: 'Role',
   email: 'Email',
   phone: 'Phone',
   access: 'Access',
   actions: 'Actions'
+}
+
+const roleName = (id) => {
+  const role = USER_ROLES.find((r) => r.id === id)
+  return (role) ? role.name : '-'
 }
 
 const ActionButton = (pid, action) => (
@@ -39,6 +46,7 @@ const ActionButton = (pid, action) => (
 const UserItem = ({user, actions}) => (
   <tr>
     <td data-label={userLabel.name}>{ user.profile.name }</td>
+    <td data-label={userLabel.role}>{ roleName(user.profile.role) }</td>
     <td data-label={userLabel.email}>{ user.email }</td>
     <td data-label={userLabel.phone}>{ user.phone }</td>
     <td data-label={userLabel.access}>{ user.access }</td>
@@ -52,6 +60,7 @@ const UserTable = ({users = [], styleTable, actions}) => (
     <thead>
       <tr>
         <th>{userLabel.name}</th>
+        <th>{userLabel.role}</th>
         <th>{userLabel.email}</th>
         <th>{userLabel.phone}</th>
         <th>{userLabel.access}</th>
@@ -76,6 +85,13 @@ class Users extends React.Component {
   componentDidMount () {
     const { dispatch } = this.props
     dispatch(getUsers())
+  }
+
+  onAdd () {
+    const { setModal, dispatch } = this.props
+    dispatch(change('userForm', 'access', USER_ACCESS[0].id))
+    dispatch(change('userForm', 'role', USER_ROLES[0].id))
+    setModal('userModal')
   }
 
   onEdit (uid, event) {
@@ -131,7 +147,7 @@ class Users extends React.Component {
                     <div className='mdl-grid'>
                       <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
                         <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
-                          onClick={() => setModal('userModal')}>
+                          onClick={() => this.onAdd()}>
                             Add User
                         </button>
                       </div>
