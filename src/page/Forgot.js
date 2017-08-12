@@ -65,7 +65,6 @@ class Login extends React.Component {
                 <div className='acctitle'><i className='acc-closed icon-user4' /><i className='acc-open icon-ok-sign' />Reset password</div>
                 <div className='acc_content clearfix'>
                   <form className='nobottommargin' onSubmit={handleSubmit} >
-                    {error && (<div className='alert alert-danger'><i className='icon-remove-sign' /><strong>Oh snap!</strong> {error}</div>)}
                     <Field name='email' label='Email:' component={Input} />
                     <div className='col_full nobottommargin'>
                       <button className='button button-3d button-black nomargin' type='submit'>Password reset</button>
