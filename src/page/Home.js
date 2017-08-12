@@ -24,7 +24,7 @@ const TopView = () => (
         <div className='vertical-middle no-fade'>
           <div className='col-md-6 fright nobottommargin' data-animate='fadeIn'>
             <div className='emphasis-title'>
-              <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'>Revolutionize the way your <strong style={{ color: '#00D0A7' }}>business</strong> manages its money.</h1>
+              <h1 data-style-lg='font-size: 52px;' data-style-md='font-size: 44px;'>Payment card solution to manage your <strong style={{ color: '#00D0A7' }}>business</strong> money.</h1>
             </div>
             <div>
               <Link to={'/demo'} className='button button-desc button-border button-rounded nomargin'>
