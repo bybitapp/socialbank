@@ -50,6 +50,10 @@ const config = {
   mailgun: {
     apiKey: 'key-1b7814c2dcd4f31c4c5302368bde1a67',
     domain: 'mg.sotec.io'
+  },
+  captcha: {
+    secretKey: process.env.CAPTCHA_SECRET_KEY || '6LezpywUAAAAAEGVwkC67SQHmlGCOydrecHod7uk',
+    enabled: truthy(process.env.CAPTCHA_ENABLED, true)
   }
 }
 
