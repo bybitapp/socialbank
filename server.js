@@ -24,7 +24,7 @@ process.on('unhandledRejection', error => {
 server.enable('trust proxy')
 
 server.use(middleware.ensureHttps())
-server.use(bodyParser.json())
+server.use(bodyParser.json({limit: '512kb'}))
 server.use(cors())
 server.use(express.static('./build'))
 server.use(session({
