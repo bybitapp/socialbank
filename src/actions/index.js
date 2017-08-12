@@ -32,9 +32,9 @@ export const addOrganization = (org, cb) => (dispatch, getState) => {
 }
 
 export const getOrganizations = () => dispatch => {
-  server.getOrganizations((ex, organizations) => {
+  server.getOrganizations((ex, data) => {
     if (!ex) {
-      dispatch({type: types.RECEIVE_ORGANIZATIONS, organizations})
+      dispatch({type: types.RECEIVE_ORGANIZATIONS, data})
     }
   })
 }
