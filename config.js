@@ -52,7 +52,7 @@ const config = {
     domain: 'mg.sotec.io'
   },
   captcha: {
-    secretKey: process.env.CAPTCHA_SECRET_KEY,
+    secretKey: process.env.CAPTCHA_SECRET_KEY || '6LezpywUAAAAAEGVwkC67SQHmlGCOydrecHod7uk',
     enabled: truthy(process.env.CAPTCHA_ENABLED, true)
   }
 }
