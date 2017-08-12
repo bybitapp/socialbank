@@ -10,10 +10,10 @@ import BankRemoveForm from '../../components/BankRemoveForm'
 import { getBankAccounts, getOrganization } from '../../actions'
 
 function mapStateToProps (state) {
-  const { banks, organizations } = state
+  const { banks, userOrganization } = state
   return {
     banks,
-    organizations
+    userOrganization
   }
 }
 
@@ -92,7 +92,7 @@ class Banks extends React.Component {
     const styleButton = {textAlign: 'right', paddingTop: '10px'}
     const stylePadding = {padding: '15px'}
 
-    const { banks, organizations, setModal, modal } = this.props
+    const { banks, userOrganization, setModal, modal } = this.props
     const actions = [
       {icon: 'mode_edit', onclick: this.onEdit},
       {icon: 'delete', onclick: this.onRemove}
@@ -112,7 +112,7 @@ class Banks extends React.Component {
                 </div>
                 <div className='mdl-cell mdl-cell--9-col'>
                   <div style={stylePadding}>
-                    { organizations && organizations.isValid
+                    { userOrganization && userOrganization.isValid
                       ? (<div>
                         <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
                           <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
