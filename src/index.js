@@ -6,6 +6,7 @@ import { createStore, applyMiddleware } from 'redux'
 import { compose } from 'recompose'
 import thunk from 'redux-thunk'
 import ReduxToastr from 'react-redux-toastr'
+import ErrorLogger from './components/ErrorLogger'
 
 import reducer from './reducers'
 
@@ -74,6 +75,7 @@ const App = () => (
         position='bottom-right'
         transitionIn='fadeIn'
         transitionOut='fadeOut' />
+      <ErrorLogger />
     </div>
   </Provider>
 )
