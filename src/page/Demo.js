@@ -8,7 +8,7 @@ import Input from '../components/Input'
 import Select from '../components/Select'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { registerAccount } from '../actions'
+import { demoAccount } from '../actions'
 import { USER_ROLES, COMPANY_SIZE } from '../constants/Option'
 
 const validate = values => {
@@ -44,7 +44,7 @@ const enhance = compose(
     validate,
     onSubmit: (values, dispatch, ownProps) => {
       return new Promise((resolve, reject) => {
-        dispatch(registerAccount(values, (_error) => {
+        dispatch(demoAccount(values, (_error) => {
           if (!_error) {
             toastr.success('Success!', ' succeeded.')
             dispatch(ownProps.reset('register'))
@@ -85,10 +85,13 @@ const Form = ({handleSubmit}) => {
 }
 
 class Register extends React.Component {
-  componentDidUpdate (prevProps) {
+  componentDidMount (prevProps) {
     const { dispatch } = this.props
     dispatch(change('register', 'role', USER_ROLES[0].id))
     dispatch(change('employees', 'role', COMPANY_SIZE[0].id))
+  }
+
+  componentDidUpdate (prevProps) {
   }
 
   render () {
