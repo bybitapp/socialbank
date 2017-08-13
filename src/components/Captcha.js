@@ -1,5 +1,3 @@
-/* global grecaptcha */
-
 import React from 'react'
 
 class Captcha extends React.Component {
@@ -10,8 +8,8 @@ class Captcha extends React.Component {
   componentDidMount () {
     const { input: { onChange }, sitekey } = this.props
 
-    if (grecaptcha) {
-      grecaptcha.render(this.container, {
+    if (window.grecaptcha) {
+      window.grecaptcha.render(this.container, {
         sitekey,
         callback: onChange
       })
