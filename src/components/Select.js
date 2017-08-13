@@ -12,7 +12,7 @@ class Select extends React.Component {
     return (
       <div className={className}>
         <label htmlFor={name}>{label}</label>
-        <select {...input} className='sm-form-control'>
+        <select {...input} className='form-control'>
           {items.map(this.renderSelectOptions)}
         </select>
       </div>

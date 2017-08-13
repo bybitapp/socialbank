@@ -174,15 +174,15 @@ export const getHistory = (projId) => dispatch => {
   })
 }
 
-export const registerAccount = (account, cb) => (dispatch, getState) => {
-  return server.registerAccount(account, (ex, data) => {
+export const demoAccount = (account, cb) => (dispatch, getState) => {
+  return server.demoAccount(account, (ex, data) => {
     if (!ex) {
-      dispatch({type: types.REGISTER_ACCOUNT_SUCCESS, data})
+      dispatch({type: types.DEMO_ACCOUNT_SUCCESS, data})
       cb(null, data)
     } else {
       // Replace the line above with line below to rollback on failure:
       // return dispatch({ type: types.REGISTER_ACCOUNT_FAILURE, account })
-      handleError(ex, cb, 'Your account can not be created, please contact with us!')
+      handleError(ex, cb, 'Your demo account can not be created, please contact with us!')
     }
   })
 }

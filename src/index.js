@@ -19,7 +19,7 @@ import Faq from './page/Faq'
 import Pricing from './page/Pricing'
 import Login from './page/Login'
 import Logout from './page/Logout'
-import Register from './page/Register'
+import Demo from './page/Demo'
 import Forgot from './page/Forgot'
 import Reset from './page/Reset'
 import Public from './page/Public'
@@ -55,7 +55,7 @@ const App = () => (
           <Route path='/public/o/:id' component={Public} />
           <Route path='/login' component={Login} />
           <Route path='/logout' component={Logout} />
-          <Route path='/demo' component={Register} />
+          <Route path='/demo' component={Demo} />
           <Route path='/forgot' component={Forgot} />
           <Route path='/reset/:token' component={Reset} />
           <Route path='/contact' component={Contact} />

@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 export default {
-  registerAccount: (values, cb) => {
-    axios.post('/api/accounts/register', values)
+  demoAccount: (values, cb) => {
+    axios.post('/api/accounts/demo', values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
