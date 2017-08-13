@@ -2,7 +2,7 @@ import React from 'react'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
 
-import NewsletterSubscribe from '../components/NewsletterSubscribe'
+// import NewsletterSubscribe from '../components/NewsletterSubscribe'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 // import CookieBanner from '../components/CookieBanner'
@@ -207,18 +207,44 @@ class Home extends React.Component {
                     <h2>Real-time spending overview</h2>
                     <span>Discover our intuitive interface, offers real-time tracking and alerts, and allows budgets to be set, limits to be changed, and cards to be turned on or off with one simple click.</span>
                   </div>
-                  <Link to={'/demo'} className='button button-border button-rounded button-large button-dark noleftmargin'>Start Demo</Link>
                 </div>
                 <div className='col-md-4 hidden-sm topmargin-sm center'>
-                  <img src='images/homepage/acc-overview.png' height='400px' alt='account spends' />
+                  <img src='images/homepage/real-time.png' alt='account spends' />
+                </div>
+              </div>
+            </div>
+
+            <div className='section notopmargin nobottommargin'>
+              <div className='container clearfix' style={{ zIndex: 1 }}>
+                <div className='col-md-4 hidden-sm topmargin-sm center'>
+                  <img src='images/homepage/cards.png' alt='account spends' />
+                </div>
+                <div className='col-md-8 nobottommargin'>
+                  <div className='heading-block topmargin-sm'>
+                    <h2>Payment cards for employees</h2>
+                    <span>Issue virtual cards without needing to collect personal information just in few clicks. Spending on cards may be restricted using: time, budget or business activities.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className='section notopmargin nobottommargin' style={{backgroundColor: '#FFFFFF'}}>
+              <div className='container clearfix' style={{ zIndex: 1 }}>
+                <div className='col-md-8 nobottommargin'>
+                  <div className='heading-block topmargin-sm'>
+                    <h2>Automated expense reports</h2>
+                    <span>Take your control of business expenses. Share virtual cards that organize expenses and automate report process by adding image of receipt in real time.</span>
+                  </div>
+                </div>
+                <div className='col-md-4 hidden-sm topmargin-sm center'>
+                  <img src='images/homepage/reports.png' alt='account spends' />
                 </div>
               </div>
             </div>
 
             <HowStart />
-            <NewsletterSubscribe />
 
-            <div id='section-buy' className='section page-section footer-stick'>
+            <div id='section-buy' className='section page-section footer-stick' style={{backgroundColor: '#FFFFFF'}}>
               <div className='container clearfix'>
                 <div className='heading-block title-center nobottomborder'>
                   <h2>Stay on top of your company&#39;s spending</h2>
