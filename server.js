@@ -21,6 +21,8 @@ process.on('unhandledRejection', error => {
   console.log('unhandledRejection', error)
 })
 
+server.disable('etag')
+server.disable('x-powered-by')
 server.enable('trust proxy')
 
 server.use(middleware.ensureHttps())
