@@ -122,7 +122,7 @@ class Register extends React.Component {
                 <div className='acctitle'><i className='acc-closed icon-user4' /><i className='acc-open icon-ok-sign' />Schedule a free demo</div>
                 <div className='acc_content clearfix'>
                   { submitSucceeded
-                    ? <p>Thank you for booking a demo. We will contact you as soon as possible.</p>
+                    ? <h2>Thank you for booking a demo. We will contact you as soon as possible.</h2>
                     : <Form handleSubmit={handleSubmit} />
                   }
                 </div>
