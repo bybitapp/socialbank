@@ -2,7 +2,6 @@ import React from 'react'
 import { compose } from 'recompose'
 import { reduxForm, Field, SubmissionError } from 'redux-form'
 import {toastr} from 'react-redux-toastr'
-
 import {EMAIL} from '../constants/Validation'
 import {CAPTCHA_SITE_KEY} from '../constants/Keys'
 import Captcha from '../components/Captcha'
@@ -29,9 +28,10 @@ const enhance = compose(
     form: 'forgotPassword',
     validate,
     onSubmit: (values, dispatch, ownProps) => {
-      if (!values.captcha) {
-        throw new SubmissionError({ _error: 'Captcha is required.' })
-      }
+      // todo: if capcha is not shown on UI then req fails. so temp no err thrown
+      // if (!values.captcha) {
+      //   throw new SubmissionError({ _error: 'Captcha is required.' })
+      // }
       return new Promise((resolve, reject) => {
         dispatch(postForgot(values, (_error, data) => {
           if (!_error) {
