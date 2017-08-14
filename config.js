@@ -15,9 +15,12 @@ const config = {
   ensureHttps: truthy(process.env.ENSURE_HTTPS, false),
   mongoUrl: process.env.MONGODB_URI || process.env.MONGOLAB_URI || 'mongodb://localhost:27017/sotec-dev',
   session: {
+    name: 'SBSID',
     secret: process.env.SESSION_SECRET || 'eda4b6e5027ab1c709d2153b6c8ef347',
     cookie: {
-      secure: truthy(process.env.COOKIE_SECURE, false)
+      secure: truthy(process.env.COOKIE_SECURE, false),
+      domain: process.env.COOKIE_DOMAIN || 'localhost',
+      maxAge: 1000 * 60 * 60 * 24 // 1 days
     }
   },
   opc: {
