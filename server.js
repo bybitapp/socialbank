@@ -8,6 +8,8 @@ const passport = require('passport')
 const path = require('path')
 const cors = require('cors')
 const lusca = require('lusca')
+const timeout = require('connect-timeout')
+const compression = require('compression')
 
 const middleware = require('lib/middleware')
 const router = require('lib/router')
@@ -55,6 +57,10 @@ server.use(lusca({
   xssProtection: true,
   nosniff: true
 }))
+server.use(middleware.noCache())
+server.use(compression())
+server.use(timeout('15m'))
+server.use(haltOnTimedout)
 
 server.use('/api/accounts', router(require('lib/routes/api/accounts')))
 server.use('/api/banks', router(require('lib/routes/api/banks')))
@@ -75,6 +81,10 @@ server.get('*', (req, res, next) => {
 })
 
 server.use(middleware.errorDispatcher())
+
+function haltOnTimedout (req, res, next) {
+  if (!req.timedout) next()
+}
 
 server.listen(config.app.port, (err) => {
   if (err) throw err
