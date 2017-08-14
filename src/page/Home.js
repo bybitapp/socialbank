@@ -188,6 +188,38 @@ const HowStart = () => (
   </div>
 )
 
+const FeatureBoxLeft = ({title, desc, icon}) => (
+  <div className='section notopmargin nobottommargin' style={{backgroundColor: '#FFFFFF'}}>
+    <div className='container clearfix' style={{ zIndex: 1 }}>
+      <div className='col-md-8 nobottommargin'>
+        <div className='heading-block topmargin-sm'>
+          <h2>{title}</h2>
+          <span>{desc}</span>
+        </div>
+      </div>
+      <div className='col-md-4 hidden-sm topmargin-sm center'>
+        <img src={icon} alt='account spends' />
+      </div>
+    </div>
+  </div>
+)
+
+const FeatureBoxRight = ({title, desc, icon}) => (
+  <div className='section notopmargin nobottommargin'>
+    <div className='container clearfix' style={{ zIndex: 1 }}>
+      <div className='col-md-4 hidden-sm topmargin-sm center'>
+        <img src={icon} alt='account spends' />
+      </div>
+      <div className='col-md-8 nobottommargin'>
+        <div className='heading-block topmargin-sm'>
+          <h2>{title}</h2>
+          <span>{desc}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+)
+
 class Home extends React.Component {
   render () {
     return (
@@ -195,56 +227,29 @@ class Home extends React.Component {
         <Header />
         <TopView />
         <section id='content'>
-          <div className='content-wrap'>
+          <div className='content-wrap' style={{backgroundColor: '#F9F9F9'}}>
             <Description />
-            <Explainer />
+
+            <FeatureBoxLeft
+              title='Real-time spending overview'
+              desc='Discover our intuitive interface, offers real-time tracking and alerts, and allows budgets to be set, limits to be changed, and cards to be turned on or off with one simple click.'
+              icon='images/homepage/real-time.png' />
+
+            <FeatureBoxRight
+              title='Payment cards for employees'
+              desc='Issue virtual cards without needing to collect personal information just in few clicks. Spending on cards may be restricted using: time, budget or business activities.'
+              icon='images/homepage/cards.png' />
+
+            <FeatureBoxLeft
+              title='Automated expense reports'
+              desc='Take your control of business expenses. Share virtual cards that organize expenses and automate report process by adding image of receipt in real time.'
+              icon='images/homepage/reports.png' />
+
             <WhatSays />
-
-            <div className='section notopmargin nobottommargin' style={{backgroundColor: '#FFFFFF'}}>
-              <div className='container clearfix' style={{ zIndex: 1 }}>
-                <div className='col-md-8 nobottommargin'>
-                  <div className='heading-block topmargin-sm'>
-                    <h2>Real-time spending overview</h2>
-                    <span>Discover our intuitive interface, offers real-time tracking and alerts, and allows budgets to be set, limits to be changed, and cards to be turned on or off with one simple click.</span>
-                  </div>
-                </div>
-                <div className='col-md-4 hidden-sm topmargin-sm center'>
-                  <img src='images/homepage/real-time.png' alt='account spends' />
-                </div>
-              </div>
-            </div>
-
-            <div className='section notopmargin nobottommargin'>
-              <div className='container clearfix' style={{ zIndex: 1 }}>
-                <div className='col-md-4 hidden-sm topmargin-sm center'>
-                  <img src='images/homepage/cards.png' alt='account spends' />
-                </div>
-                <div className='col-md-8 nobottommargin'>
-                  <div className='heading-block topmargin-sm'>
-                    <h2>Payment cards for employees</h2>
-                    <span>Issue virtual cards without needing to collect personal information just in few clicks. Spending on cards may be restricted using: time, budget or business activities.</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className='section notopmargin nobottommargin' style={{backgroundColor: '#FFFFFF'}}>
-              <div className='container clearfix' style={{ zIndex: 1 }}>
-                <div className='col-md-8 nobottommargin'>
-                  <div className='heading-block topmargin-sm'>
-                    <h2>Automated expense reports</h2>
-                    <span>Take your control of business expenses. Share virtual cards that organize expenses and automate report process by adding image of receipt in real time.</span>
-                  </div>
-                </div>
-                <div className='col-md-4 hidden-sm topmargin-sm center'>
-                  <img src='images/homepage/reports.png' alt='account spends' />
-                </div>
-              </div>
-            </div>
-
+            <Explainer />
             <HowStart />
 
-            <div id='section-buy' className='section page-section footer-stick' style={{backgroundColor: '#FFFFFF'}}>
+            <div id='section-buy' className='section page-section footer-stick'>
               <div className='container clearfix'>
                 <div className='heading-block title-center nobottomborder'>
                   <h2>Stay on top of your company&#39;s spending</h2>
