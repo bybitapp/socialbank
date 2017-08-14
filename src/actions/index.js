@@ -227,8 +227,8 @@ export const postForgot = (data, cb) => (dispatch, getState) => {
   })
 }
 
-export const postReset = (token, cb) => (dispatch, getState) => {
-  return server.postReset(token, (ex, data) => {
+export const postReset = (token, values, cb) => (dispatch, getState) => {
+  return server.postReset(token, values, (ex, data) => {
     if (!ex) {
       dispatch({type: types.RESET_PASSWORD_SUCCESS, data})
       cb(null, data)
