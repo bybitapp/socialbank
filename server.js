@@ -21,6 +21,8 @@ process.on('unhandledRejection', error => {
   console.log('unhandledRejection', error)
 })
 
+server.disable('etag')
+server.disable('x-powered-by')
 server.enable('trust proxy')
 
 server.use(middleware.ensureHttps())
@@ -29,12 +31,15 @@ server.use(bodyParser.json({limit: '512kb'}))
 server.use(cors())
 server.use(express.static('./build'))
 server.use(session({
+  name: config.session.name,
   resave: true,
   saveUninitialized: true,
   secret: config.session.secret,
   cookie: {
-    httpOnly: true,
-    secure: config.session.cookie.secure
+    secure: config.session.cookie.secure,
+    maxAge: config.session.cookie.maxAge,
+    domain: config.session.cookie.domain,
+    httpOnly: true
   },
   store: new MongoStore({
     url: config.mongoUrl,
