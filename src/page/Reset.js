@@ -36,7 +36,7 @@ const enhance = compose(
       const token = ownProps.match.params.token
 
       return new Promise((resolve, reject) => {
-        dispatch(postReset(token, (_error, data) => {
+        dispatch(postReset(token, values, (_error, data) => {
           if (!_error) {
             toastr.success('Success!', 'Successfully reset password.')
             ownProps.history.push('/login')
