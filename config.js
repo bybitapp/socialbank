@@ -20,7 +20,7 @@ const config = {
     cookie: {
       secure: truthy(process.env.COOKIE_SECURE, false),
       domain: process.env.COOKIE_DOMAIN || 'localhost',
-      maxAge: 1000 * 60 * 60 * 24 // 1 days
+      maxAge: 1000 * 60 * 60 * 3 // 3 hours
     }
   },
   opc: {
