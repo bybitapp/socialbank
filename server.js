@@ -8,6 +8,7 @@ const passport = require('passport')
 const path = require('path')
 const cors = require('cors')
 const lusca = require('lusca')
+const compression = require('compression')
 
 const middleware = require('lib/middleware')
 const router = require('lib/router')
@@ -55,6 +56,8 @@ server.use(lusca({
   xssProtection: true,
   nosniff: true
 }))
+server.use(middleware.noCache())
+server.use(compression())
 
 server.use('/api/accounts', router(require('lib/routes/api/accounts')))
 server.use('/api/banks', router(require('lib/routes/api/banks')))
