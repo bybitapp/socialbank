@@ -21,8 +21,8 @@ export default {
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
-  postReset: (token, cb) => {
-    axios.post(`/api/accounts/resetPassword/${token}`)
+  postReset: (token, values, cb) => {
+    axios.post(`/api/accounts/resetPassword/${token}`, values)
       .then((res) => cb(null, res.data))
       .catch((e) => cb(e))
   },
