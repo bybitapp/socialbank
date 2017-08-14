@@ -3,8 +3,6 @@ import { compose } from 'recompose'
 import { reduxForm, Field, SubmissionError } from 'redux-form'
 import {toastr} from 'react-redux-toastr'
 import {EMAIL} from '../constants/Validation'
-import {CAPTCHA_SITE_KEY} from '../constants/Keys'
-import Captcha from '../components/Captcha'
 import Input from '../components/Input'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -71,7 +69,6 @@ class Login extends React.Component {
                 <div className='acc_content clearfix'>
                   <form className='nobottommargin' onSubmit={handleSubmit} >
                     <Field name='email' label='Email:' component={Input} />
-                    <Field name='captcha' component={Captcha} sitekey={CAPTCHA_SITE_KEY} />
                     <div className='col_full nobottommargin'>
                       <button className='button button-3d button-black nomargin' type='submit'>Password reset</button>
                       <a href='/login' className='fright'>Cancel</a>
