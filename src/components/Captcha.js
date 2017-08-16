@@ -31,6 +31,16 @@ export default class Captcha extends React.Component {
     return <div ref={div => (this.container = div)} />
   }
 
+  componentDidUpdate () {
+    if (this.state.ready && !this.container.hasChildNodes()) {
+      const { input: { onChange }, sitekey } = this.props
+      window.grecaptcha.render(this.container, {
+        sitekey,
+        callback: onChange
+      })
+    }
+  }
+
   componentDidMount () {
     const { input: { onChange }, sitekey } = this.props
 
