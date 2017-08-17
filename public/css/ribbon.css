@@ -1,0 +1,25 @@
+
+.ribbon {
+  -webkit-transform: rotate(-45deg);
+     -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+       -o-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+    border: 30px solid transparent;
+    border-bottom: 30px solid #24AEF2;
+    position: absolute;
+    top: -30px;
+    left: -40px;
+    padding: 0 10px;
+    width: 120px;
+    color: white;
+    font-family: Raleway;
+    font-size: 17px;
+    size: 11px;
+    z-index: 999;
+}
+.ribbon .text {
+    position: absolute;
+    top: 5px;
+    left: -5px;
+}​
