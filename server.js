@@ -27,10 +27,11 @@ server.disable('x-powered-by')
 server.enable('trust proxy')
 
 server.use(middleware.ensureHttps())
+server.use(middleware.noCache())
 server.use(bodyParser.urlencoded({ extended: true }))
 server.use(bodyParser.json({limit: '512kb'}))
+server.use(compression())
 server.use(cors())
-server.use(express.static('./build'))
 server.use(session({
   name: config.session.name,
   resave: true,
@@ -56,8 +57,8 @@ server.use(lusca({
   xssProtection: true,
   nosniff: true
 }))
-server.use(middleware.noCache())
-server.use(compression())
+
+server.use(express.static('./build'))
 
 server.use('/api/accounts', router(require('lib/routes/api/accounts')))
 server.use('/api/banks', router(require('lib/routes/api/banks')))
