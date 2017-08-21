@@ -5182,9 +5182,9 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
-open_payments_cloud_application_api@^0.9.1:
-  version "0.9.1"
-  resolved "https://registry.yarnpkg.com/open_payments_cloud_application_api/-/open_payments_cloud_application_api-0.9.1.tgz#767ca26062dd918cfb6130c4859365aa01268810"
+open_payments_cloud_application_api@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/open_payments_cloud_application_api/-/open_payments_cloud_application_api-1.0.1.tgz#7b48dedecaa24d6bae0be6f0f7aafcf711545e22"
   dependencies:
     superagent "1.7.1"
 
@@ -6216,7 +6216,7 @@ readable-stream@1.1.x:
     isarray "0.0.1"
     string_decoder "~0.10.x"
 
-readable-stream@2, readable-stream@2.2.7, readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.5, readable-stream@^2.0.6, readable-stream@^2.1.4, readable-stream@^2.2.2:
+readable-stream@2, readable-stream@2.2.7, readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.0.5, readable-stream@^2.0.6, readable-stream@^2.2.2, readable-stream@^2.2.6:
   version "2.2.7"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.2.7.tgz#07057acbe2467b22042d36f98c5ad507054e95b1"
   dependencies:
@@ -6228,7 +6228,7 @@ readable-stream@2, readable-stream@2.2.7, readable-stream@^2.0.1, readable-strea
     string_decoder "~1.0.0"
     util-deprecate "~1.0.1"
 
-readable-stream@^2.0.0, readable-stream@^2.2.6, readable-stream@^2.2.9:
+readable-stream@^2.0.0, readable-stream@^2.1.4, readable-stream@^2.2.9:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.3.tgz#368f2512d79f9d46fdfc71349ae7878bbc1eb95c"
   dependencies:
