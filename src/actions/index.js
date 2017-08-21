@@ -375,7 +375,7 @@ export const getCardDetail = (cid, cb) => (dispatch, getState) => {
 }
 
 export const selectCurrentProject = id => dispatch => {
-  dispatch({type: types.SELECT_CURRENT_PROJECT, id})
+  dispatch({type: types.SELECT_CURRENT_PROJECT_SUCCESS, id})
 }
 
 export const sendMessage = (contact, cb) => (dispatch, getState) => {
