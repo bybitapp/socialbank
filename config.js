@@ -32,7 +32,8 @@ const config = {
     ownerId: '98520951317331968',
     currency: 'GBP',
     country: 'GB',
-    issueProvider: 'idt',
+    issuingProvider: 'idt',
+    processingProvider: 'gps',
     profile: {
       corporateIdentity: '98520784525459456',
       managedCard: '98520775159840768',
