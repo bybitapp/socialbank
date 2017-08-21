@@ -6011,6 +6011,12 @@ react-modal@^2.2.4:
     prop-types "^15.5.10"
     react-dom-factories "^1.0.0"
 
+react-redux-loading-bar@^2.9.2:
+  version "2.9.2"
+  resolved "https://registry.yarnpkg.com/react-redux-loading-bar/-/react-redux-loading-bar-2.9.2.tgz#f0e604ee35af5ecb25addb10bf24ca3d478c95a8"
+  dependencies:
+    prop-types "^15.5.6"
+
 react-redux-toastr@7.1.5:
   version "7.1.5"
   resolved "https://registry.yarnpkg.com/react-redux-toastr/-/react-redux-toastr-7.1.5.tgz#6c776c0208c11feb809f3c9d9b6c8e4d19837c8d"

@@ -9,6 +9,7 @@ import { banks } from './banks'
 import { users } from './users'
 import { history } from './history'
 import { reducer as toastr } from 'react-redux-toastr'
+import { loadingBarReducer as loadingBar } from 'react-redux-loading-bar'
 
 export default combineReducers({
   projects,
@@ -20,5 +21,6 @@ export default combineReducers({
   banks,
   form,
   users,
-  toastr
+  toastr,
+  loadingBar
 })

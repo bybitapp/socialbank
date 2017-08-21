@@ -3,6 +3,7 @@ import { compose, withState } from 'recompose'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import MDLite from 'material-design-lite'
+import LoadingBar from 'react-redux-loading-bar'
 
 import Auth from '../modules/Auth'
 
@@ -33,6 +34,7 @@ class Header extends React.Component {
       <header id='header' className='full-header'>
         <div id='header-wrap'>
           <div className='container clearfix' style={{ padding: 0 }}>
+            <LoadingBar />
             <div id='primary-menu-trigger'><i className='icon-reorder' /></div>
             <div id='logo' style={{ borderRight: 0 }}>
               <a href='/' className='standard-logo' data-dark-logo='/images/logo-dark.png'><img src='/images/logo.png' alt='sotec logo' /></a>
