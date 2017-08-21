@@ -1,11 +1,11 @@
 import {
-  RECEIVE_CARDS, ADD_CARD_SUCCESS, UPDATE_CARD_SUCCESS, DESTROY_CARD_SUCCESS,
-  TRANSFER_CARD_SUCCESS, UPDATE_CARD_STATUS_SUCCESS, RECEIVE_CARD_DETAIL
+  RECEIVE_CARDS_SUCCESS, ADD_CARD_SUCCESS, UPDATE_CARD_SUCCESS, DESTROY_CARD_SUCCESS,
+  TRANSFER_CARD_SUCCESS, UPDATE_CARD_STATUS_SUCCESS, RECEIVE_CARD_DETAIL_SUCCESS
 } from '../constants/ActionTypes'
 
 export const cards = (state = [], action) => {
   switch (action.type) {
-    case RECEIVE_CARDS:
+    case RECEIVE_CARDS_SUCCESS:
       return (action.data) ? action.data : state
     case ADD_CARD_SUCCESS:
       return state.concat(action.data)
@@ -37,7 +37,7 @@ export const cards = (state = [], action) => {
         }
         return item
       })
-    case RECEIVE_CARD_DETAIL:
+    case RECEIVE_CARD_DETAIL_SUCCESS:
       // Do not store card detail data
       return state
     default:
