@@ -24,23 +24,23 @@ const config = {
     }
   },
   opc: {
-    urlApi: 'https://app-gateway.openpayments.cloud/api',
-    programmeKey: '98246298932019200|98250555867660288',
-    programmeId: '98250555867660288',
+    urlApi: 'https://app-gateway.stg.openpayments.cloud/api',
+    programmeKey: '98505513021865984|98520768000622592',
+    programmeId: '98520768000622592',
     username: 'sotec',
     password: '8Lx3WSn^',
-    ownerId: '98254531595468800',
+    ownerId: '98520951317331968',
     currency: 'GBP',
     country: 'GB',
-    issueProvider: 'Card Issuing Provider',
+    issueProvider: 'idt',
     profile: {
-      corporateIdentity: '98250602558455808',
-      managedCard: '98250598277840896',
-      managedAccount: '98250559850283008',
-      externalAccount: '98250601775235072',
-      withdraw: '98250600938602496',
-      deposit: '98250600097579008',
-      transfer: '98250557307617280'
+      corporateIdentity: '98520784525459456',
+      managedCard: '98520775159840768',
+      managedAccount: '98520777109274624',
+      externalAccount: '98520779001757696',
+      withdraw: '98520782683176960',
+      deposit: '98520778166566912',
+      transfer: '98520768619937792'
     }
   },
   google: {
