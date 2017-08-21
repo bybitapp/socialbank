@@ -7,6 +7,7 @@ import { compose } from 'recompose'
 import thunk from 'redux-thunk'
 import ReduxToastr from 'react-redux-toastr'
 import ErrorLogger from './components/ErrorLogger'
+import { loadingBarMiddleware } from 'react-redux-loading-bar'
 
 import reducer from './reducers'
 
@@ -36,8 +37,9 @@ import Banks from './page/admin/Banks'
 import Users from './page/admin/Users'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
 const store = createStore(reducer, composeEnhancers(
-  applyMiddleware(thunk)
+  applyMiddleware(thunk, loadingBarMiddleware({promiseTypeSuffixes: ['REQUEST', 'SUCCESS', 'FAILURE']}))
 ))
 
 const App = () => (
