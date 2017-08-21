@@ -1,5 +1,5 @@
 import {
-  RECEIVE_PROJECTS_SUCCESS, ADD_PROJECT_SUCCESS, SELECT_CURRENT_PROJECT,
+  RECEIVE_PROJECTS_SUCCESS, ADD_PROJECT_SUCCESS, SELECT_CURRENT_PROJECT_SUCCESS,
   CLOSE_PROJECT_SUCCESS, UPDATE_PROJECT_SUCCESS, DEPOSIT_PROJECT_SUCCESS,
   LOGOUT_SUCCESS
 } from '../constants/ActionTypes'
@@ -30,7 +30,7 @@ export const projects = (state = [], action) => {
         }
         return item
       })
-    case SELECT_CURRENT_PROJECT:
+    case SELECT_CURRENT_PROJECT_SUCCESS:
       return state.map((project) => {
         if (project.id === action.id) {
           project['selected'] = true
