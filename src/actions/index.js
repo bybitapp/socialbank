@@ -19,7 +19,7 @@ function handleError (e, cb, defaultMsg) {
 export const addOrganization = (org, cb) => (dispatch, getState) => {
   server.addOrganization(org, (ex, data) => {
     if (!ex) {
-      dispatch({type: types.RECEIVE_ORGANIZATION, data})
+      dispatch({type: types.RECEIVE_ORGANIZATION_SUCCESS, data})
       cb(null, data)
     } else {
       if (org.id) {
@@ -34,7 +34,7 @@ export const addOrganization = (org, cb) => (dispatch, getState) => {
 export const getOrganizations = () => dispatch => {
   server.getOrganizations((ex, data) => {
     if (!ex) {
-      dispatch({type: types.RECEIVE_ORGANIZATIONS, data})
+      dispatch({type: types.RECEIVE_ORGANIZATIONS_SUCCESS, data})
     }
   })
 }
@@ -42,7 +42,7 @@ export const getOrganizations = () => dispatch => {
 export const getOrganization = () => dispatch => {
   server.getOrganization((ex, data) => {
     if (!ex) {
-      dispatch({type: types.RECEIVE_ORGANIZATION, data})
+      dispatch({type: types.RECEIVE_ORGANIZATION_SUCCESS, data})
     }
   })
 }
@@ -50,7 +50,7 @@ export const getOrganization = () => dispatch => {
 export const getOrganizationById = (oid) => dispatch => {
   server.getOrganizationById(oid, (ex, data) => {
     if (!ex) {
-      dispatch({type: types.RECEIVE_ORGANIZATION, data})
+      dispatch({type: types.RECEIVE_ORGANIZATION_SUCCESS, data})
     }
   })
 }
@@ -69,7 +69,7 @@ export const addBankAccount = (bank, cb) => (dispatch, getState) => {
 export const getBankAccount = () => dispatch => {
   server.getBankAccount((ex, data) => {
     if (!ex) {
-      dispatch({type: types.RECEIVE_BANKACCOUNT, data})
+      dispatch({type: types.RECEIVE_BANKACCOUNT_SUCCESS, data})
     }
   })
 }
@@ -77,7 +77,7 @@ export const getBankAccount = () => dispatch => {
 export const getBankAccounts = () => dispatch => {
   server.getBankAccounts((ex, data) => {
     if (!ex) {
-      dispatch({type: types.RECEIVE_BANKACCOUNTS, data})
+      dispatch({type: types.RECEIVE_BANKACCOUNTS_SUCCESS, data})
     }
   })
 }
@@ -96,7 +96,7 @@ export const removeBankAccount = (bid, cb) => (dispatch, getState) => {
 export const getUsers = () => dispatch => {
   server.getUsers((ex, data) => {
     if (!ex) {
-      dispatch({type: types.RECEIVE_USERS, data})
+      dispatch({type: types.RECEIVE_USERS_SUCCESS, data})
     }
   })
 }
@@ -105,7 +105,7 @@ export const addUser = (values, cb) => dispatch => {
   if (values.uid) {
     server.addUser(values, (ex, data) => {
       if (!ex) {
-        dispatch({type: types.UPDATE_USER, data})
+        dispatch({type: types.UPDATE_USER_SUCCESS, data})
         cb(null, data)
       } else {
         handleError(ex, cb, 'You cannot update this user to your organization!')
@@ -114,7 +114,7 @@ export const addUser = (values, cb) => dispatch => {
   } else {
     server.addUser(values, (ex, data) => {
       if (!ex) {
-        dispatch({type: types.ADD_USER, data})
+        dispatch({type: types.ADD_USER_SUCCESS, data})
         cb(null, data)
       } else {
         handleError(ex, cb, 'You cannot add this user to your organization!')
@@ -126,7 +126,7 @@ export const addUser = (values, cb) => dispatch => {
 export const removeUser = (uid, cb) => dispatch => {
   server.removeUser(uid, (ex, data) => {
     if (!ex) {
-      dispatch({type: types.REMOVE_USER, data})
+      dispatch({type: types.REMOVE_USER_SUCCESS, data})
       cb(null, data)
     } else {
       handleError(ex, cb, 'You cannot remove this user from organization!')
@@ -137,7 +137,7 @@ export const removeUser = (uid, cb) => dispatch => {
 export const getProjects = () => dispatch => {
   server.getProjects((ex, data) => {
     if (!ex) {
-      dispatch({type: types.RECEIVE_PROJECTS, data})
+      dispatch({type: types.RECEIVE_PROJECTS_SUCCESS, data})
     }
   })
 }
@@ -145,7 +145,7 @@ export const getProjects = () => dispatch => {
 export const getOrganizationCards = () => dispatch => {
   server.getOrganizationCards((ex, data) => {
     if (!ex) {
-      dispatch({type: types.RECEIVE_CARDS, data})
+      dispatch({type: types.RECEIVE_CARDS_SUCCESS, data})
     }
   })
 }
@@ -153,14 +153,14 @@ export const getOrganizationCards = () => dispatch => {
 export const getProjectsWithHistory = () => dispatch => {
   server.getProjects((ex, data) => {
     if (!ex) {
-      dispatch({type: types.RECEIVE_PROJECTS, data})
+      dispatch({type: types.RECEIVE_PROJECTS_SUCCESS, data})
       if (data.projects && data.projects.length) {
         server.getHistory(data.projects[0].id, (ex, data) => {
-          dispatch({type: types.RECEIVE_HISTORY, data})
+          dispatch({type: types.RECEIVE_HISTORY_SUCCESS, data})
         })
       } else {
         let data = []
-        dispatch({type: types.RECEIVE_HISTORY, data})
+        dispatch({type: types.RECEIVE_HISTORY_SUCCESS, data})
       }
     }
   })
@@ -169,7 +169,7 @@ export const getProjectsWithHistory = () => dispatch => {
 export const getHistory = (projId) => dispatch => {
   server.getHistory(projId, (ex, data) => {
     if (!ex) {
-      dispatch({type: types.RECEIVE_HISTORY, data})
+      dispatch({type: types.RECEIVE_HISTORY_SUCCESS, data})
     }
   })
 }
@@ -366,7 +366,7 @@ export const updateCardStatus = (card, cb) => (dispatch, getState) => {
 export const getCardDetail = (cid, cb) => (dispatch, getState) => {
   server.getCardDetail(cid, (ex, data) => {
     if (!ex) {
-      dispatch({type: types.RECEIVE_CARD_DETAIL, data: data})
+      dispatch({type: types.RECEIVE_CARD_DETAIL_SUCCESS, data: data})
       cb(null, data)
     } else {
       handleError(ex, cb, 'Retrieve Card Detail Failed!')
