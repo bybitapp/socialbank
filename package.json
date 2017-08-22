@@ -38,6 +38,7 @@
     "express-session": "^1.15.5",
     "generate-password": "^1.3.0",
     "google-map-react": "^0.24.0",
+    "got": "^7.1.0",
     "joi": "^10.6.0",
     "lodash": "^4.17.4",
     "lusca": "^1.5.1",
