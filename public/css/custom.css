@@ -146,3 +146,26 @@
     border-right: 0px;
   }
 }
+
+.sb-links {
+  font-size: 14px;
+  letter-spacing: 0.6;
+  line-height: 2.5;
+  font-weight: 400;
+  margin-left: 0px;
+}
+
+.sb-links p {
+  color: #CCC;
+}
+
+.sb-links li {
+  display: block;
+  padding-left: 0px;
+  color: rgba(255,255,255,0.45);
+}
+
+.sb-links li a {
+  text-decoration: none;
+  color: rgba(255,255,255,0.45);
+}
