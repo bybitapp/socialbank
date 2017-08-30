@@ -31,7 +31,7 @@ server.use(middleware.noCache())
 server.use(bodyParser.urlencoded({ extended: true }))
 server.use(bodyParser.json({limit: '512kb'}))
 server.use(compression())
-server.use(cors())
+server.use(cors({origin: config.app.url}))
 server.use(session({
   name: config.session.name,
   resave: true,
