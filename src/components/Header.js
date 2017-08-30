@@ -50,7 +50,7 @@ class Header extends React.Component {
               ) : (
                 <ul style={{ borderRight: 0 }}>
                   <li><a href='/login'>Login</a></li>
-                  <li className='sub-menu'><a href='/' className='sf-with-ul'><div>Help</div></a>
+                  <li className='sub-menu'><a className='sf-with-ul'><div>Help</div></a>
                     <ul style={{display: 'none'}}>
                       <li><a href='/contact'><div><i className='icon-envelope-alt' />Contact</div></a></li>
                       <li><a href='/faq'><div><i className='icon-question' />FAQ</div></a></li>
