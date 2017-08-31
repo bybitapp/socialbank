@@ -1,8 +1,10 @@
 import React from 'react'
 
 const Disclaimer = () => (
-  <div id='disclaimer' style={{ textAlign: 'center', fontSize: '12px', marginBottom: '40px' }}>
-    Ixaris Systems Ltd is authorised and regulated by the Financial Conduct Authority under the Payment Service Regulations 2009 for the provision of payment services. Registration number 540990. Registered address 10 Midford Place, London, W1T 5AE, United Kingdom. Ixaris Visa cards are issued by IDT Financial Services Ltd., pursuant to a licence from Visa Europe. Ixaris Mastercard cards are issued by IDT Financial Services Ltd., pursuant to licence by Mastercard International. Mastercard is a registered trademark of Mastercard International.
+  <div id='disclaimer' style={{ fontSize: '12px', marginBottom: '40px' }}>
+  Ixaris Solutions Ltd is authorised and regulated by the Financial Conduct Authority under the Payment Service Regulations 2009 for the provision of payment services. Registration number 721549. Registered address 10 Midford Place, London, W1T 5AE, United Kingdom.<br />
+  Ixaris Visa cards are issued by IDT Financial Services Ltd., pursuant to a licence from Visa Europe.<br />
+  Ixaris Mastercard cards are issued by IDT Financial Services Ltd., pursuant to licence by Mastercard International. Mastercard is a registered trademark of Mastercard International.
   </div>
 )
 
@@ -89,7 +91,7 @@ class Footer extends React.Component {
             <div className='row topmargin-sm'>
               <Disclaimer />
             </div>
-            <div className='row bottommargin'>
+            <div className='row'>
               <div className='col_half'>
                 <Copyright />
               </div>
