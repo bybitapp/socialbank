@@ -86,7 +86,7 @@ class GeneralInformation extends React.Component {
           {error && <span className='sb-error'>{error}</span>}
           <div className='mdl-grid'>
             <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet'>
-              <Field name='name' label='Name' component={Input} />
+              <Field name='name' label='Name' component={Input} disabled />
               <Field name='email' label='Email' component={Input} disabled />
             </div>
             <div className='mdl-cell mdl-cell--6-col mdl-cell--6-col-tablet'>
