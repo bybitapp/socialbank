@@ -44,9 +44,11 @@ class Complaints extends React.Component {
               <ul style={{marginLeft: '22px'}}>
                 <li style={{listStyleType: 'disc', fontSize: '10pt', backgroundColor: 'transparent', fontWeight: 400, fontVariant: 'normal', textDecoration: 'none', verticalAlign: 'baseline'}}><span style={styleText}>investigate your complaint competently, diligently and impartially;</span></li>
                 <li style={{listStyleType: 'disc', fontSize: '10pt', backgroundColor: 'transparent', fontWeight: 400, fontVariant: 'normal', textDecoration: 'none', verticalAlign: 'baseline'}}><span style={styleText}>assess fairly, consistently and promptly:</span></li>
-                <li style={{listStyleType: 'disc', fontSize: '10pt', backgroundColor: 'transparent', fontWeight: 400, fontVariant: 'normal', textDecoration: 'none', verticalAlign: 'baseline'}}><span style={styleText}>the subject matter of the complaint;</span></li>
-                <li style={{listStyleType: 'disc', fontSize: '10pt', backgroundColor: 'transparent', fontWeight: 400, fontVariant: 'normal', textDecoration: 'none', verticalAlign: 'baseline'}}><span style={styleText}>whether the complaint should be upheld; and</span></li>
-                <li style={{listStyleType: 'disc', fontSize: '10pt', backgroundColor: 'transparent', fontWeight: 400, fontVariant: 'normal', textDecoration: 'none', verticalAlign: 'baseline'}}><span style={styleText}>what remedial action or redress (or both) may be appropriate.</span></li>
+                <ul style={{marginLeft: '22px'}}>
+                  <li style={{listStyleType: 'circle', fontSize: '10pt', backgroundColor: 'transparent', fontWeight: 400, fontVariant: 'normal', textDecoration: 'none', verticalAlign: 'baseline'}}><span style={styleText}>the subject matter of the complaint;</span></li>
+                  <li style={{listStyleType: 'circle', fontSize: '10pt', backgroundColor: 'transparent', fontWeight: 400, fontVariant: 'normal', textDecoration: 'none', verticalAlign: 'baseline'}}><span style={styleText}>whether the complaint should be upheld; and</span></li>
+                  <li style={{listStyleType: 'circle', fontSize: '10pt', backgroundColor: 'transparent', fontWeight: 400, fontVariant: 'normal', textDecoration: 'none', verticalAlign: 'baseline'}}><span style={styleText}>what remedial action or redress (or both) may be appropriate.</span></li>
+                </ul>
               </ul>
               <p><span style={styleText}>We will (taking into account all relevant factors):</span></p>
               <ul style={{marginLeft: '22px'}}>
