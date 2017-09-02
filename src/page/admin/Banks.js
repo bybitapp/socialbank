@@ -94,7 +94,6 @@ class Banks extends React.Component {
 
     const { banks, userOrg, setModal, modal } = this.props
     const actions = [
-      {icon: 'mode_edit', onclick: this.onEdit},
       {icon: 'delete', onclick: this.onRemove}
     ]
 
