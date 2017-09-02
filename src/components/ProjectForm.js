@@ -18,6 +18,8 @@ const validate = values => {
     errors.name = 'Required'
   } else if (values.name.length > 255) {
     errors.name = 'Must be 255 characters or less'
+  } else if (values.name.length < 5) {
+    errors.name = 'Must be 5 characters or more'
   }
   if (!values.description) {
     errors.description = 'Required'
