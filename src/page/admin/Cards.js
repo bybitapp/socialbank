@@ -14,6 +14,7 @@ import CardUnblockForm from '../../components/CardUnblockForm'
 import Header from '../../components/Header'
 import Footer from '../../components/Footer'
 import MenuSideBar from '../../components/MenuSideBar'
+import DebitCard from '../../components/DebitCard'
 
 function mapStateToProps (state) {
   const { cards, projects, users, userOrg, modal } = state
@@ -34,23 +35,6 @@ const enhance = compose(
   })
 )
 
-const cardBrandClass = {
-  'NO_CARD_BRAND': 'pf-credit-card',
-  'AMEX': 'pf-american-express',
-  'CHINAUNIONPAY': 'pf-unionpay',
-  'DINERS': 'pf-diners',
-  'DISCOVER': 'pf-discover',
-  'JCB': 'pf-jcb',
-  'MASTERCARD': 'pf-mastercard-alt',
-  'MAESTRO': 'pf-maestro-alt',
-  'SOLO': 'pf-credit-card',
-  'VISA': 'pf-visa',
-  'VISADEBIT': 'pf-visa-debit',
-  'VISAELECTRON': 'pf-visa-electron',
-  'VISAPURCHASING': 'pf-credit-card',
-  'VERVE': 'pf-credit-card'
-}
-
 const cardLabel = {
   projectName: 'Project',
   userName: 'Name',
@@ -65,84 +49,11 @@ const cardLabel = {
 const preloaderStyle = {margin: 'auto', textAlign: 'center', display: 'block'}
 const loaderStyle = {widht: '28px', height: '28px'}
 
-const FormatCardNnumber = ({cardNumber}) => {
-  const cardNumberArray = cardNumber.match(/.{1,4}/g)
-  return (
-    <div>
-      {Object.keys(cardNumberArray).map((key, index) => {
-        const num = cardNumberArray[key]
-        return (<span key={key} className={'num-' + key}>{num}</span>)
-      })}
-    </div>
-  )
-}
-
 const ActionButton = (cid, action) => (
   <a key={action.icon} className='mdl-list__item-primary-content' onClick={(event) => action.onclick(cid, event)}>
     <i className='material-icons mdl-list__item-avatar sb-icon-list_item'>{action.icon}</i>
   </a>
 )
-
-const DebitCard = ({cardDetail}) => {
-  return (
-    <div style={{display: 'inline-table'}}>
-      <div className='card'>
-        <div className='front'>
-          <div className='top'>
-            <div className='title'>
-              <span className='type'>Visa Virtual Account</span>
-              <span className='desc'>Internet and Telephone use only</span>
-            </div>
-            <div className='logo'>sotec</div>
-          </div>
-          <div className='middle'>
-            <div className='cd-number'>
-              <FormatCardNnumber cardNumber={cardDetail.cardNumber} />
-            </div>
-          </div>
-          <div className='bottom'>
-            <div className='expires'>
-              <div className='data'>
-                <span className='text'>VALID FROM:</span>
-                <span className='value'>{ cardDetail.startDate }</span>
-              </div>
-              <div className='data'>
-                <span className='text'>EXPIRES END</span>
-                <span className='value'>{ cardDetail.endDate }</span>
-              </div>
-              <div className='ixaris'>
-                { cardDetail.cardName }
-              </div>
-            </div>
-            <div className='cardtype'>
-              <div className='logo'><i className={`pf ${cardBrandClass[cardDetail.cardBrand]}`} /></div>
-              <div className='type'>Prepaid</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className='card'>
-        <div className='back'>
-          <div className='top'>
-            <div className='magstripe'>Internet and Telephone use only</div>
-          </div>
-          <div className='middle'>
-            <div className='cvc'>CCV2: { cardDetail.cvv }</div>
-          </div>
-          <div className='bottom'>
-            <div className='issue'>
-              This card is issued by IDT Financial Services Limited (IDTFS) pursuant to a license from Visa Europe and remains the property of IDT Financial Services Ltd.
-            </div>
-            <div className='type'>
-              Prepaid
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 const PreLoader = () => {
   return (
