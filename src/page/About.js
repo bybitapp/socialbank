@@ -22,8 +22,8 @@ class Faq extends React.Component {
             <div className='container clearfix'>
               <div className='col_full'>
                 <div className='heading-block center nobottomborder'>
-                  <h2>Our Vision</h2>
-                  <span>We value Work Ethics &amp; Environment as it helps in creating a Creative Thinktank</span>
+                  <h2 />
+                  <span />
                 </div>
 
                 <div className='container clearfix'>
@@ -43,7 +43,7 @@ class Faq extends React.Component {
                     <div className='heading-block fancy-title nobottomborder title-bottom-border'>
                       <h4>What we <span>Do</span>.</h4>
                     </div>
-                    <p>Our solution provides increased internal transparency through micropayments and automated expense reporting by utilizing virtual and physical prepaid debit cards on top of the award winning, low cost, open payment cloud platform.</p>
+                    <p>We provide increased internal transparency through micropayments and automated expense reporting by utilizing virtual and physical prepaid debit cards on top of the award winning, low cost, open payment cloud platform.</p>
                   </div>
                 </div>
               </div>
