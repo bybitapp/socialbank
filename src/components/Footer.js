@@ -36,7 +36,7 @@ const CompanyLinks = () => (
     <ul className='list-unstyled sb-links'>
       <p>COMPANY</p>
       <li><Link to={'/about'}>About us</Link></li>
-      <li><Link to={'/sotec'}>Blog</Link></li>
+      <li><a href='https://medium.com/sotec'>Blog</a></li>
     </ul>
   </div>
 )
