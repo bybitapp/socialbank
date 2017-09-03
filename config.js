@@ -56,8 +56,15 @@ const config = {
     domain: 'mg.sotec.io'
   },
   captcha: {
-    secretKey: process.env.CAPTCHA_SECRET_KEY || '6LezpywUAAAAAEGVwkC67SQHmlGCOydrecHod7uk',
-    enabled: truthy(process.env.CAPTCHA_ENABLED, true)
+    enabled: truthy(process.env.CAPTCHA_ENABLED, true),
+    secretKey: process.env.CAPTCHA_SECRET_KEY || '6LezpywUAAAAAEGVwkC67SQHmlGCOydrecHod7uk'
+  },
+  errbit: {
+    enabled: truthy(process.env.ERRBIT_ENABLED, false),
+    appId: process.env.ERRBIT_APP_ID || '59ac155e5e0bb3000633549b',
+    key: process.env.ERRBIT_KEY || 'c2564c4258aabf9dd664d9a6b1574849',
+    serviceHost: process.env.ERRBIT_SERVICE_HOST || 'errors-sotec.herokuapp.com',
+    protocol: process.env.ERRBIT_PROTOCOL || 'https'
   }
 }
 

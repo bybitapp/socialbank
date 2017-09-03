@@ -20,7 +20,7 @@ class Privacy extends React.Component {
     return (
       <div id='wrapper' className='clearfix'>
         <Header />
-        <section id='page-title'>
+        <section id='page-title' className='page-title-mini'>
           <div className='container clearfix'>
             <h1>Privacy and Data Protection Policy</h1>
             <ol className='breadcrumb'>
