@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Disclaimer = () => (
   <div id='disclaimer' style={{ fontSize: '12px', marginBottom: '40px' }}>
@@ -24,8 +25,8 @@ const ProductLinks = () => (
   <div>
     <ul className='list-unstyled sb-links'>
       <p>PRODUCT</p>
-      <li><a href='https://www.sotec.io/faq'>FAQ</a></li>
-      <li><a href='https://www.sotec.io/pricing'>Pricing</a></li>
+      <li><Link to={'/faq'}>FAQ</Link></li>
+      <li><Link to={'/pricing'}>Pricing</Link></li>
     </ul>
   </div>
 )
@@ -34,8 +35,8 @@ const CompanyLinks = () => (
   <div>
     <ul className='list-unstyled sb-links'>
       <p>COMPANY</p>
-      <li><a href='https://www.sotec.io/about'>About us</a></li>
-      <li><a href='https://medium.com/sotec'>Blog</a></li>
+      <li><Link to={'/about'}>About us</Link></li>
+      <li><Link to={'/sotec'}>Blog</Link></li>
     </ul>
   </div>
 )
@@ -44,7 +45,7 @@ const ConstactLinks = () => (
   <div>
     <ul className='list-unstyled sb-links'>
       <p>CONTACT</p>
-      <li><a href='https://www.sotec.io/contact'>Contact us</a></li>
+      <li><Link to={'/contact'}>Contact us</Link></li>
       <li><i className='icon-envelope2' /> contact@sotec.io</li>
       <li><i className='icon-headphones' /> +44 7437 893 938</li>
       <li>
