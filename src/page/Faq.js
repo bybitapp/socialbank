@@ -23,358 +23,83 @@ class Faq extends React.Component {
             <div className='container clearfix'>
               <div className='postcontent nobottommargin clearfix'>
                 <ul id='portfolio-filter' className='portfolio-filter clearfix'>
-                  <li className='activeFilter'><a data-filter='all'>All</a></li>
-                  <li className=''><a data-filter='.faq-marketplace'>Marketplace</a></li>
-                  <li className=''><a data-filter='.faq-authors'>Authors</a></li>
-                  <li><a data-filter='.faq-legal'>Legal</a></li>
-                  <li><a data-filter='.faq-itemdiscussion'>Item Discussion</a></li>
-                  <li><a data-filter='.faq-affiliates'>Affiliates</a></li>
-                  <li><a data-filter='.faq-miscellaneous'>Miscellaneous</a></li>
+                  <li className='activeFilter'><a data-filter='.faq-basic'>Basic questions</a></li>
+                  <li className=''><a data-filter='.faq-using-sotec'>How to use SoTec</a></li>
+                  <li className=''><a data-filter='.faq-security'>Security questions</a></li>
                 </ul>
                 <div className='clear' />
                 <div id='faqs' className='faqs'>
-                  <div className='toggle faq faq-marketplace faq-authors'>
-                    <div className='togglet'><i className='toggle-closed icon-question-sign' /><i className='toggle-open icon-question-sign' />How do I become an author?</div>
-                    <div className='togglec' style={{display: 'none'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero
-                      eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
+
+                  <div className='toggle faq faq-basic'>
+                    <div className='togglet'>What is SoTec?</div>
+                    <div className='togglec' style={{display: 'none'}}>SoTec provides payment card solutions to manage and simplify organisation’s funding and expenses. Our solution provides increased internal transparency through micropayments and automated expense reporting by utilizing virtual and physical prepaid debit cards on top of the award winning, low cost, open payment cloud platform.</div>
                   </div>
-                  <div className='toggle faq faq-authors faq-miscellaneous'>
-                    <div className='togglet'><i className='toggle-closed icon-comments-alt' /><i className='toggle-open icon-comments-alt' />Helpful Resources for Authors</div>
-                    <div className='togglec' style={{display: 'none'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero
-                      eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
+
+                  <div className='toggle faq faq-basic'>
+                    <div className='togglet'>Who is the issuer of the SoTec cards?</div>
+                    <div className='togglec' style={{display: 'none'}}>SoTec cards are issued by one of Europe’s largest issuers of Prepaid Visa(s), IDT Financial Services Limited pursuant to a license from Visa International Incorporated. IDT Financial Services Limited is a regulated bank, licensed by the Financial Services Commission, Gibraltar. Registered Office: 57-63 Line Wall Road, Gibraltar. Registered No. 95716.</div>
                   </div>
-                  <div className='toggle faq faq-miscellaneous'>
-                    <div className='togglet'><i className='toggle-closed icon-lock3' /><i className='toggle-open icon-lock3' />How much money can I make?</div>
-                    <div className='togglec' style={{display: 'none'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero
-                      eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
+
+                  <div className='toggle faq faq-basic'>
+                    <div className='togglet'>Is SoTec for us?</div>
+                    <div className='togglec' style={{display: 'none'}}>SoTec was created for dynamic businesses with decentralized spending cultures, including the sharing of credit cards, collections of receipts, expense reports and reimbursements, causing confusion and complexity for everyone in the workplace.</div>
                   </div>
-                  <div className='toggle faq faq-authors faq-legal faq-itemdiscussion'>
-                    <div className='togglet'><i className='toggle-closed icon-download-alt' /><i className='toggle-open icon-download-alt' />Can I offer my items for free on a promotional basis?</div>
-                    <div className='togglec' style={{display: 'none'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero
-                      eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
+
+                  <div className='toggle faq faq-basic'>
+                    <div className='togglet'>Is SoTec a credit card?</div>
+                    <div className='togglec' style={{display: 'none'}}>No, SoTec initially only offers Prepaid Visa cards, where only the money loaded to your account is available to spend.</div>
                   </div>
-                  <div className='toggle faq faq-marketplace faq-authors'>
-                    <div className='togglet'><i className='toggle-closed icon-ok' /><i className='toggle-open icon-ok' />An Introduction to the Marketplaces for Authors</div>
-                    <div className='togglec' style={{display: 'none'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero
-                      eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
+
+                  <div className='toggle faq faq-basic'>
+                    <div className='togglet'>How do SoTec cards work?</div>
+                    <div className='togglec' style={{display: 'none'}}>Prepaid Visa cards are accepted by more than 30 million merchants worldwide. The virtual SoTec cards can be used to make any work related online purchases. Prepaid cards can be used to purchase goods in the same way as a debit or credit card but you can only make transactions when there is money in your account.</div>
                   </div>
-                  <div className='toggle faq faq-affiliates faq-miscellaneous'>
-                    <div className='togglet'><i className='toggle-closed icon-money' /><i className='toggle-open icon-money' />How does the Tuts+ Premium affiliate program work?</div>
-                    <div className='togglec' style={{display: 'none'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero
-                      eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
+
+                  <div className='toggle faq faq-basic'>
+                    <div className='togglet'>Who is behind SoTec?</div>
+                    <div className='togglec' style={{display: 'none'}}>...</div>
                   </div>
-                  <div className='toggle faq faq-legal faq-itemdiscussion'>
-                    <div className='togglet'><i className='toggle-closed icon-picture' /><i className='toggle-open icon-picture' />What Images, Videos, Code or Music Can I Use in my Items?</div>
-                    <div className='togglec' style={{display: 'none'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero
-                      eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
+
+                  <div className='toggle faq faq-using-sotec'>
+                    <div className='togglet'>In which countries is SoTec available?</div>
+                    <div className='togglec' style={{display: 'none'}}>SoTec is initially available to companies in the United Kingdom. More countries will be added in due course so watch this space.</div>
                   </div>
-                  <div className='toggle faq faq-legal faq-authors faq-itemdiscussion'>
-                    <div className='togglet'><i className='toggle-closed icon-file3' /><i className='toggle-open icon-file3' />Can I use trademarked names in my items?</div>
-                    <div className='togglec' style={{display: 'none'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero
-                      eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
+
+                  <div className='toggle faq faq-using-sotec'>
+                    <div className='togglet'>How can our company transfer funds to the SoTec cards?</div>
+                    <div className='togglec' style={{display: 'none'}}>The virtual SoTec cards are Prepaid Visa cards. To use the cards, your company needs to have money in the SoTec account. An easy way of providing funds to SoTec is by use of a bank wire. After a few business days your funds will be received into a ring fenced account (which means that neither we or anyone else can access your money).</div>
                   </div>
-                  <div className='toggle faq faq-affiliates'>
-                    <div className='togglet'><i className='toggle-closed icon-bar-chart' /><i className='toggle-open icon-bar-chart' />Tips for Increasing Your Referral Income</div>
-                    <div className='togglec' style={{display: 'none'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero
-                      eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
+
+                  <div className='toggle faq faq-using-sotec'>
+                    <div className='togglet'>Can SoTec cards be used everywhere?</div>
+                    <div className='togglec' style={{display: 'none'}}>SoTec cards can be used in more than 30 million locations worldwide, online and in stores, making corporate purchasing easy and convenient – just look for the Visa Acceptance Mark.</div>
                   </div>
-                  <div className='toggle faq faq-marketplace faq-itemdiscussion'>
-                    <div className='togglet'><i className='toggle-closed icon-credit' /><i className='toggle-open icon-credit' />How do I pay for items on the Marketplaces?</div>
-                    <div className='togglec' style={{display: 'none'}}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, dolorum, vero ipsum molestiae minima odio quo voluptate illum excepturi quam cum voluptates doloribus quae nisi tempore necessitatibus dolores ducimus enim libero
-                      eaque explicabo suscipit animi at quaerat aliquid ex expedita perspiciatis? Saepe, aperiam, nam unde quas beatae vero vitae nulla.</div>
+
+                  <div className='toggle faq faq-using-sotec'>
+                    <div className='togglet'>Do I still need to do my expense reports when using SoTec?</div>
+                    <div className='togglec' style={{display: 'none'}}>No, the founding idea behind SoTec is to get rid of the expense reports. When using your SoTec card, you will instantly receive notification on your mobile app. SoTec works hard to make the next steps of capturing the receipt and categorizing the expense as smooth and automatic as possible. As a Manager, you can monitor all transactions in real time and even define your own notification settings to alert you when specific purchases are made. All transactions can be directly pushed or exported to most accounting systems.</div>
                   </div>
-                </div>
-              </div>
-              <div className='sidebar nobottommargin col_last clearfix'>
-                <div className='sidebar-widgets-wrap'>
-                  <div className='widget widget_links clearfix'>
-                    <h4>Pages</h4>
-                    <ul>
-                      <li>
-                        <a>
-                          <div>About Us</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>About Us - Layout 2</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>About Me</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Team Members</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Careers</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Side Navigation</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Page Submenu</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Services - Layout 1</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Services - Layout 2</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Services - Layout 3</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>FAQs - Layout 1</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>FAQs - Layout 2</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>FAQs - Layout 3</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>FAQs - Layout 4</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Full Width Page</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Full Width - Wide Page</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Right Sidebar Page</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Left Sidebar Page</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Both Sidebar Page</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Both Right Sidebar Page</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Both Left Sidebar Page</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Maintenance Page</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Blank Page</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Sitemap</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>Login/Register</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>404 - Simple Layout</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>404 - Parallax Image</div>
-                        </a>
-                      </li>
-                      <li>
-                        <a>
-                          <div>404 - HTML5 Video</div>
-                        </a>
-                      </li>
-                    </ul>
+
+                  <div className='toggle faq faq-using-sotec'>
+                    <div className='togglet'>Will SoTec work with our accounting software?</div>
+                    <div className='togglec' style={{display: 'none'}}>Yes, SoTec can be connected to most online accounting systems. We are making direct integrations to the most popular systems and our export functionality works well in many other cases.</div>
                   </div>
-                  <div className='widget clearfix'>
-                    <h4>Recent Posts</h4>
-                    <div id='post-list-footer'>
-                      <div className='spost clearfix'>
-                        <div className='entry-image'>
-                          <a className='nobg'><img src='http://canvashtml-cdn.semicolonweb.com/images/magazine/small/1.jpg' alt='' /></a>
-                        </div>
-                        <div className='entry-c'>
-                          <div className='entry-title'>
-                            <h4><a>Lorem ipsum dolor sit amet, consectetur</a></h4>
-                          </div>
-                          <ul className='entry-meta'>
-                            <li>10th July 2014</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className='spost clearfix'>
-                        <div className='entry-image'>
-                          <a className='nobg'><img src='http://canvashtml-cdn.semicolonweb.com/images/magazine/small/2.jpg' alt='' /></a>
-                        </div>
-                        <div className='entry-c'>
-                          <div className='entry-title'>
-                            <h4><a>Elit Assumenda vel amet dolorum quasi</a></h4>
-                          </div>
-                          <ul className='entry-meta'>
-                            <li>10th July 2014</li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div className='spost clearfix'>
-                        <div className='entry-image'>
-                          <a className='nobg'><img src='http://canvashtml-cdn.semicolonweb.com/images/magazine/small/3.jpg' alt='' /></a>
-                        </div>
-                        <div className='entry-c'>
-                          <div className='entry-title'>
-                            <h4><a>Debitis nihil placeat, illum est nisi</a></h4>
-                          </div>
-                          <ul className='entry-meta'>
-                            <li>10th July 2014</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
+
+                  <div className='toggle faq faq-security'>
+                    <div className='togglet'>Who is holding the money?</div>
+                    <div className='togglec' style={{display: 'none'}}>...</div>
                   </div>
-                  <div className='widget clearfix'>
-                    <h4>Connect with Us</h4>
-                    <a className='social-icon si-colored si-small si-facebook' data-toggle='tooltip' data-placement='top' title='' data-original-title='Facebook'>
-                      <i className='icon-facebook' />
-                      <i className='icon-facebook' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-delicious' data-toggle='tooltip' data-placement='top' title='' data-original-title='Delicious'>
-                      <i className='icon-delicious' />
-                      <i className='icon-delicious' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-android' data-toggle='tooltip' data-placement='top' title='' data-original-title='Android'>
-                      <i className='icon-android' />
-                      <i className='icon-android' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-gplus' data-toggle='tooltip' data-placement='top' title='' data-original-title='Google Plus'>
-                      <i className='icon-gplus' />
-                      <i className='icon-gplus' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-stumbleupon' data-toggle='tooltip' data-placement='top' title='' data-original-title='Stumbleupon'>
-                      <i className='icon-stumbleupon' />
-                      <i className='icon-stumbleupon' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-foursquare' data-toggle='tooltip' data-placement='top' title='' data-original-title='Foursquare'>
-                      <i className='icon-foursquare' />
-                      <i className='icon-foursquare' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-forrst' data-toggle='tooltip' data-placement='top' title='' data-original-title='Forrst'>
-                      <i className='icon-forrst' />
-                      <i className='icon-forrst' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-digg' data-toggle='tooltip' data-placement='top' title='' data-original-title='Digg'>
-                      <i className='icon-digg' />
-                      <i className='icon-digg' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-spotify' data-toggle='tooltip' data-placement='top' title='' data-original-title='Spotify'>
-                      <i className='icon-spotify' />
-                      <i className='icon-spotify' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-reddit' data-toggle='tooltip' data-placement='top' title='' data-original-title='Reddit'>
-                      <i className='icon-reddit' />
-                      <i className='icon-reddit' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-blogger' data-toggle='tooltip' data-placement='top' title='' data-original-title='Blogger'>
-                      <i className='icon-blogger' />
-                      <i className='icon-blogger' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-dribbble' data-toggle='tooltip' data-placement='top' title='' data-original-title='Dribbble'>
-                      <i className='icon-dribbble' />
-                      <i className='icon-dribbble' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-flickr' data-toggle='tooltip' data-placement='top' title='' data-original-title='Flickr'>
-                      <i className='icon-flickr' />
-                      <i className='icon-flickr' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-linkedin' data-toggle='tooltip' data-placement='top' title='' data-original-title='Linked In'>
-                      <i className='icon-linkedin' />
-                      <i className='icon-linkedin' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-rss' data-toggle='tooltip' data-placement='top' title='' data-original-title='RSS'>
-                      <i className='icon-rss' />
-                      <i className='icon-rss' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-skype' data-toggle='tooltip' data-placement='top' title='' data-original-title='Skype'>
-                      <i className='icon-skype' />
-                      <i className='icon-skype' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-twitter' data-toggle='tooltip' data-placement='top' title='' data-original-title='Twitter'>
-                      <i className='icon-twitter' />
-                      <i className='icon-twitter' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-youtube' data-toggle='tooltip' data-placement='top' title='' data-original-title='Youtube'>
-                      <i className='icon-youtube' />
-                      <i className='icon-youtube' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-vimeo' data-toggle='tooltip' data-placement='top' title='' data-original-title='Vimeo'>
-                      <i className='icon-vimeo' />
-                      <i className='icon-vimeo' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-yahoo' data-toggle='tooltip' data-placement='top' title='' data-original-title='Yahoo'>
-                      <i className='icon-yahoo' />
-                      <i className='icon-yahoo' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-github' data-toggle='tooltip' data-placement='top' title='' data-original-title='Github'>
-                      <i className='icon-github-circled' />
-                      <i className='icon-github-circled' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-tumblr' data-toggle='tooltip' data-placement='top' title='' data-original-title='Trumblr'>
-                      <i className='icon-tumblr' />
-                      <i className='icon-tumblr' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-instagram' data-toggle='tooltip' data-placement='top' title='' data-original-title='Instagram'>
-                      <i className='icon-instagram' />
-                      <i className='icon-instagram' />
-                    </a>
-                    <a className='social-icon si-colored si-small si-pinterest' data-toggle='tooltip' data-placement='top' title='' data-original-title='Pinterst'>
-                      <i className='icon-pinterest' />
-                      <i className='icon-pinterest' />
-                    </a>
+
+                  <div className='toggle faq faq-security'>
+                    <div className='togglet'>What is SoTec’s fraud policy?</div>
+                    <div className='togglec' style={{display: 'none'}}>With SoTec, all purchases are tracked in real-time, so if you notice something suspicious, you can block the cards immediately from the SoTec web app. You are also covered by Visa Zero Liability Policy - for more information, visit <a href='https://www.visa.com/chip/personal/security/zero-liability.jsp' target='_blank'>Visa</a>.</div>
                   </div>
+
+                  <div className='toggle faq faq-security'>
+                    <div className='togglet'>How will our data be protected?</div>
+                    <div className='togglec' style={{display: 'none'}}>We take security very seriously. Our cardholder data is protected by bank-level data encryption and is stored in a PCIDSS level-1 compliant data centre in the EEA. All data passed between our servers and third parties is 2048-bit SSL encrypted. Card transactions data is transmitted via VPN-tunnels to a certified PCIDSS level-1 processor.</div>
+                  </div>
+
                 </div>
               </div>
             </div>
