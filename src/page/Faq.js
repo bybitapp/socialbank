@@ -8,7 +8,7 @@ class Faq extends React.Component {
     return (
       <div id='wrapper' className='clearfix'>
         <Header />
-        <section id='page-title'>
+        <section id='page-title' className='page-title-mini'>
           <div className='container clearfix'>
             <h1>FAQS</h1>
             <span>All your Questions answered in one place</span>
