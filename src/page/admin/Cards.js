@@ -215,7 +215,7 @@ class Cards extends React.Component {
               this.setState({ cardDetail: data })
             }
           } else {
-            toastr.error('Aw snap!', _error)
+            toastr.error('An unexpected error. If the error persists please report to contact@sotec.io')
           }
         }))
       }
