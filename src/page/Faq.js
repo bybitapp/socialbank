@@ -8,9 +8,9 @@ class Faq extends React.Component {
     return (
       <div id='wrapper' className='clearfix'>
         <Header />
-        <section id='page-title'>
+        <section id='page-title' className='page-title-mini'>
           <div className='container clearfix'>
-            <h1>FAQS</h1>
+            <h1>FAQs</h1>
             <span>All your Questions answered in one place</span>
             <ol className='breadcrumb'>
               <li><a href='/'>Home</a></li>
@@ -23,9 +23,10 @@ class Faq extends React.Component {
             <div className='container clearfix'>
               <div className='postcontent nobottommargin clearfix'>
                 <ul id='portfolio-filter' className='portfolio-filter clearfix'>
-                  <li className='activeFilter'><a data-filter='.faq-basic'>Basic questions</a></li>
-                  <li className=''><a data-filter='.faq-using-sotec'>How to use SoTec</a></li>
-                  <li className=''><a data-filter='.faq-security'>Security questions</a></li>
+                  <li className=''><a data-filter='*' className='btn'>All</a></li>
+                  <li className=''><a data-filter='.faq-basic' className='btn'>Basic questions</a></li>
+                  <li className=''><a data-filter='.faq-using-sotec' className='btn'>How to use SoTec</a></li>
+                  <li className=''><a data-filter='.faq-security' className='btn'>Security questions</a></li>
                 </ul>
                 <div className='clear' />
                 <div id='faqs' className='faqs'>
@@ -55,11 +56,6 @@ class Faq extends React.Component {
                     <div className='togglec' style={{display: 'none'}}>Prepaid Visa cards are accepted by more than 30 million merchants worldwide. The virtual SoTec cards can be used to make any work related online purchases. Prepaid cards can be used to purchase goods in the same way as a debit or credit card but you can only make transactions when there is money in your account.</div>
                   </div>
 
-                  <div className='toggle faq faq-basic'>
-                    <div className='togglet'>Who is behind SoTec?</div>
-                    <div className='togglec' style={{display: 'none'}}>...</div>
-                  </div>
-
                   <div className='toggle faq faq-using-sotec'>
                     <div className='togglet'>In which countries is SoTec available?</div>
                     <div className='togglec' style={{display: 'none'}}>SoTec is initially available to companies in the United Kingdom. More countries will be added in due course so watch this space.</div>
@@ -77,17 +73,7 @@ class Faq extends React.Component {
 
                   <div className='toggle faq faq-using-sotec'>
                     <div className='togglet'>Do I still need to do my expense reports when using SoTec?</div>
-                    <div className='togglec' style={{display: 'none'}}>No, the founding idea behind SoTec is to get rid of the expense reports. When using your SoTec card, you will instantly receive notification on your mobile app. SoTec works hard to make the next steps of capturing the receipt and categorizing the expense as smooth and automatic as possible. As a Manager, you can monitor all transactions in real time and even define your own notification settings to alert you when specific purchases are made. All transactions can be directly pushed or exported to most accounting systems.</div>
-                  </div>
-
-                  <div className='toggle faq faq-using-sotec'>
-                    <div className='togglet'>Will SoTec work with our accounting software?</div>
-                    <div className='togglec' style={{display: 'none'}}>Yes, SoTec can be connected to most online accounting systems. We are making direct integrations to the most popular systems and our export functionality works well in many other cases.</div>
-                  </div>
-
-                  <div className='toggle faq faq-security'>
-                    <div className='togglet'>Who is holding the money?</div>
-                    <div className='togglec' style={{display: 'none'}}>...</div>
+                    <div className='togglec' style={{display: 'none'}}>No, the founding idea behind SoTec is to get rid of the expense reports. As a Manager, you can monitor all transactions in real time. All transactions can be directly exported to most accounting systems.</div>
                   </div>
 
                   <div className='toggle faq faq-security'>
@@ -97,7 +83,7 @@ class Faq extends React.Component {
 
                   <div className='toggle faq faq-security'>
                     <div className='togglet'>How will our data be protected?</div>
-                    <div className='togglec' style={{display: 'none'}}>We take security very seriously. Our cardholder data is protected by bank-level data encryption and is stored in a PCIDSS level-1 compliant data centre in the EEA. All data passed between our servers and third parties is 2048-bit SSL encrypted. Card transactions data is transmitted via VPN-tunnels to a certified PCIDSS level-1 processor.</div>
+                    <div className='togglec' style={{display: 'none'}}>We take security very seriously. All data passed between our servers and third parties is 2048-bit SSL encrypted.</div>
                   </div>
 
                 </div>

@@ -123,7 +123,7 @@ class Pricing extends React.Component {
     return (
       <div id='wrapper' className='clearfix'>
         <Header />
-        <section id='page-title'>
+        <section id='page-title' className='page-title-mini'>
           <div className='container clearfix'>
             <h1>Start Your 60-Day Free Trial</h1>
             <span>No upfront setup costs, long-term commitments or complicated extra fees.</span>
