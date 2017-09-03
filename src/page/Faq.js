@@ -78,7 +78,7 @@ class Faq extends React.Component {
 
                   <div className='toggle faq faq-security'>
                     <div className='togglet'>What is SoTec’s fraud policy?</div>
-                    <div className='togglec' style={{display: 'none'}}>With SoTec, all purchases are tracked in real-time, so if you notice something suspicious, you can block the cards immediately from the SoTec web app. You are also covered by Visa Zero Liability Policy - for more information, visit <a href='https://www.visa.com/chip/personal/security/zero-liability.jsp' target='_blank'>Visa</a>.</div>
+                    <div className='togglec' style={{display: 'none'}}>With SoTec, all purchases are tracked in real-time, so if you notice something suspicious, you can block the cards immediately from the SoTec web app. You are also covered by Visa Zero Liability Policy - for more information, visit <a href='https://www.visa.com/chip/personal/security/zero-liability.jsp' target='_blank' rel='noopener noreferrer'>Visa</a>.</div>
                   </div>
 
                   <div className='toggle faq faq-security'>
