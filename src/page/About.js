@@ -22,24 +22,18 @@ class Faq extends React.Component {
             <div className='container clearfix'>
               <div className='col_full'>
                 <div className='heading-block center nobottomborder'>
-                  <h2 />
-                  <span />
+                  <h2>Our Vision</h2>
+                  <span>We want business owners to spend more time on growth, products and employees rather than sorting out bills, expenses and unpaid invoices.</span>
                 </div>
 
                 <div className='container clearfix'>
-                  <div className='col_one_third'>
+                  <div className='col_half'>
                     <div className='heading-block fancy-title nobottomborder title-bottom-border'>
                       <h4>Why choose <span>Us</span>.</h4>
                     </div>
                     <p>Businesses have full control over their money but with even greater flexibility with more efficient options for disbursement. As funds are spent through our cards the platform will provide full visibility on expenditures to selected stakeholders.</p>
                   </div>
-                  <div className='col_one_third'>
-                    <div className='heading-block fancy-title nobottomborder title-bottom-border'>
-                      <h4>Our <span>Mission</span>.</h4>
-                    </div>
-                    <p>We want business owners to spend more time on growth, products and employees rather than sorting out bills, expenses and unpaid invoices.</p>
-                  </div>
-                  <div className='col_one_third col_last'>
+                  <div className='col_half col_last'>
                     <div className='heading-block fancy-title nobottomborder title-bottom-border'>
                       <h4>What we <span>Do</span>.</h4>
                     </div>
