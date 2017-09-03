@@ -71,7 +71,7 @@ const WhyVirtualCards = () => (
         <span className='divcenter'>Virtual visa card is a representation of plastic card which allows exactly on these same operations only with the small exception that mobile phone has to be involved in the terminal payment.</span>
       </div>
       <div className='col_one_third'>
-        <div className='feature-box fbox-center fbox-effect nobottomborder' data-animate='fadeIn'>
+        <div className='feature-box fbox-center fbox-effect nobottomborder'>
           <div className='fbox-icon'>
             <i className='icon-home' />
           </div>
@@ -80,7 +80,7 @@ const WhyVirtualCards = () => (
         </div>
       </div>
       <div className='col_one_third'>
-        <div className='feature-box fbox-center fbox-effect nobottomborder' data-animate='fadeIn' data-delay='200'>
+        <div className='feature-box fbox-center fbox-effect nobottomborder'>
           <div className='fbox-icon'>
             <i className='icon-diamond' />
           </div>
@@ -89,7 +89,7 @@ const WhyVirtualCards = () => (
         </div>
       </div>
       <div className='col_one_third col_last'>
-        <div className='feature-box fbox-center fbox-effect nobottomborder' data-animate='fadeIn' data-delay='400'>
+        <div className='feature-box fbox-center fbox-effect nobottomborder'>
           <div className='fbox-icon'>
             <i className='icon-credit-cards' />
           </div>
@@ -99,7 +99,7 @@ const WhyVirtualCards = () => (
       </div>
       <div className='clear' />
       <div className='col_one_third'>
-        <div className='feature-box fbox-center fbox-effect nobottomborder' data-animate='fadeIn'>
+        <div className='feature-box fbox-center fbox-effect nobottomborder'>
           <div className='fbox-icon'>
             <i className='icon-wallet' />
           </div>
@@ -108,7 +108,7 @@ const WhyVirtualCards = () => (
         </div>
       </div>
       <div className='col_one_third'>
-        <div className='feature-box fbox-center fbox-effect nobottomborder' data-animate='fadeIn' data-delay='200'>
+        <div className='feature-box fbox-center fbox-effect nobottomborder'>
           <div className='fbox-icon'>
             <i className='icon-lock' />
           </div>
@@ -117,7 +117,7 @@ const WhyVirtualCards = () => (
         </div>
       </div>
       <div className='col_one_third col_last'>
-        <div className='feature-box fbox-center fbox-effect nobottomborder' data-animate='fadeIn' data-delay='400'>
+        <div className='feature-box fbox-center fbox-effect nobottomborder'>
           <div className='fbox-icon'>
             <i className='icon-download2' />
           </div>
@@ -176,7 +176,7 @@ const WhatOthersSay = () => (
 )
 
 const HowStart = () => (
-  <div className='section dark notopmargin' style={{ paddingTop: '60px' }}>
+  <div className='section dark notopmargin nobottommargin' style={{ paddingTop: '60px' }}>
     <div className='container clearfix'>
       <div className='heading-block center'>
         <h2>SoTec Adapts To Any Business</h2>
@@ -219,25 +219,25 @@ const HowStart = () => (
   </div>
 )
 
-// const MediaAboutUs = () => (
-//   <div className='section' style={{padding: 0, margin: 0, height: '180px'}}>
-//     <div id='oc-clients-full' className='owl-carousel owl-carousel-full image-carousel footer-stick' style={{padding: '30px 0'}}>
-//       <div className='oc-item'><a href='http://logofury.com/'><img src='images/media/1.png' alt='Clients' /></a></div>
-//       <div className='oc-item'><a href='http://logofury.com/'><img src='images/media/1.png' alt='Clients' /></a></div>
-//       <div className='oc-item'><a href='http://logofury.com/'><img src='images/media/1.png' alt='Clients' /></a></div>
-//       <div className='oc-item'><a href='http://logofury.com/'><img src='images/media/1.png' alt='Clients' /></a></div>
-//       <div className='oc-item'><a href='http://logofury.com/'><img src='images/media/1.png' alt='Clients' /></a></div>
-//       <div className='oc-item'><a href='http://logofury.com/'><img src='images/media/1.png' alt='Clients' /></a></div>
-//       <div className='oc-item'><a href='http://logofury.com/'><img src='images/media/1.png' alt='Clients' /></a></div>
-//     </div>
-//   </div>
-// )
+const MediaAboutUs = () => (
+  <div className='section' style={{padding: 0, margin: 0, backgroundColor: '#FFF', display: 'table', width: '-webkit-fill-available'}}>
+    <div id='oc-clients-full' className='owl-carousel owl-carousel-full image-carousel footer-stick' style={{padding: '30px 0'}}>
+      <div className='oc-item'><a href='https://www.ixaris.com/sotec-wins-ixaris-b2b-innovation-challenge/'><img src='images/media/opc.png' alt='Clients' /></a></div>
+      <div className='oc-item'><a href='http://www.fintech.finance/01-news/sotec-wins-ixaris-b2b-innovation-challenge-m2020eu/'><img src='images/media/fintech_finance.png' alt='Clients' /></a></div>
+      <div className='oc-item'><a href='https://worldcore.eu/blog/seweryn-bidolach-ceo-sotec-wed-like-leader-mobile-payments/'><img src='images/media/worldcore.png' alt='Clients' /></a></div>
+    </div>
+  </div>
+)
 
 const WhyDebitCard = () => (
   <div />
 )
 
 const UseCase = () => (
+  <div />
+)
+
+const AccountingIntegration = () => (
   <div />
 )
 
@@ -289,24 +289,10 @@ const BookADemo = () => (
 
 class Home extends React.Component {
   componentDidMount () {
-    // var ocClients = global.$('#oc-clients-full')
-    // console.log(ocClients);
-    // ocClients.owlCarousel({
-    //   rtl: true,
-    //   margin: 30,
-    //   loop: true,
-    //   nav: false,
-    //   autoplay: true,
-    //   dots: false,
-    //   autoplayHoverPause: true,
-    //   responsive: {
-    //     0: { items: 3 },
-    //     600: { items: 4 },
-    //     1000: { items: 5 },
-    //     1200: { items: 6 },
-    //     1400: { items: 7 }
-    //   }
-    // })
+    const { loadMediaBox } = global
+    if (loadMediaBox) {
+      loadMediaBox()
+    }
   }
 
   render () {
@@ -318,11 +304,12 @@ class Home extends React.Component {
           <div className='content-wrap' style={{backgroundColor: '#F9F9F9', padding: 0}}>
             <WhyDoYouNeedApp />
             <HowStart />
-
+            <MediaAboutUs />
             <WhyVirtualCards />
             <WhyDebitCard />
 
             <UseCase />
+            <AccountingIntegration />
             <WhatOthersSay />
             <BookADemo />
           </div>
