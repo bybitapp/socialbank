@@ -34,7 +34,7 @@ const enhance = compose(
             toastr.success('Success!', 'Message sent.')
             resolve()
           } else {
-            toastr.error('Aw snap!', _error)
+            toastr.error('An unexpected error. If the error persists please report to contact@sotec.io')
             reject(new SubmissionError({_error}))
           }
         }))
