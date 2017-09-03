@@ -10,6 +10,7 @@ import MenuSideBar from '../../components/MenuSideBar'
 import ProjectForm from '../../components/ProjectForm'
 import ProjectCloseForm from '../../components/ProjectCloseForm'
 import ProjectDepositForm from '../../components/ProjectDepositForm'
+import PreLoader from '../../components/PreLoader'
 
 function mapStateToProps (state) {
   const { projects, account } = state
@@ -37,13 +38,31 @@ const ActionButton = (pid, action) => (
   </a>
 )
 
+const AddProjectButton = (projects, onClick) => {
+  // TODO display button only when user has not projectForm
+  if (!projects.length) {
+    return (
+      <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
+        onClick={onClick}>
+          Add Project
+      </button>
+    )
+  }
+}
+
 const ProjectItem = ({project, actions}) => (
   <tr>
     <td data-label={projectLabel.name}>{ project.name }</td>
     <td data-label={projectLabel.createDate}>{ dateFormat(project.created) }</td>
     <td data-label={projectLabel.balance}>{ (project.balances) ? project.balances.actual : 0 }</td>
     <td data-label={projectLabel.actions} className='sb-menu-table'>
-      { actions.map((action) => ActionButton(project.id, action)) }
+      { actions.map((action) => {
+        if (!action.hasOwnProperty('show') || action.show(project)) {
+          return ActionButton(project.id, action)
+        } else {
+          return null
+        }
+      })}
     </td>
   </tr>)
 
@@ -71,11 +90,16 @@ class Projects extends React.Component {
     this.onEdit = this.onEdit.bind(this)
     this.onCloseProject = this.onCloseProject.bind(this)
     this.onDeposit = this.onDeposit.bind(this)
+    this.state = {loaded: false}
   }
 
   componentDidMount () {
     const { dispatch } = this.props
-    dispatch(getProjects())
+    dispatch(getProjects(() => {
+      this.setState({
+        loaded: true
+      })
+    }), this)
   }
 
   onEdit (pid, event) {
@@ -114,11 +138,12 @@ class Projects extends React.Component {
     const stylePadding = {padding: '15px'}
 
     const { projects, modal, setModal, account } = this.props
+    const { loaded } = this.state
 
     const actions = [
       {icon: 'attach_money', onclick: this.onDeposit},
-      {icon: 'mode_edit', onclick: this.onEdit},
-      {icon: 'archive', onclick: this.onCloseProject}
+      {icon: 'mode_edit', onclick: this.onEdit, show: (item) => !item.default},
+      {icon: 'archive', onclick: this.onCloseProject, show: (item) => !item.default}
     ]
 
     return (
@@ -135,17 +160,19 @@ class Projects extends React.Component {
                   <MenuSideBar />
                 </div>
                 <div className='mdl-cell mdl-cell--9-col'>
-                  <div style={stylePadding}>
-                    <div className='mdl-grid'>
-                      <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
-                        <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
-                          onClick={() => setModal('projectModal')}>
-                            Add Project
-                        </button>
+                  { (!loaded)
+                    ? <PreLoader />
+                    : (
+                      <div style={stylePadding}>
+                        <div className='mdl-grid'>
+                          <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
+                            {AddProjectButton(projects, () => setModal('projectModal'))}
+                          </div>
+                        </div>
+                        <ProjectTable projects={projects} styleTable={styleTable} actions={actions} />
                       </div>
-                    </div>
-                    <ProjectTable projects={projects} styleTable={styleTable} actions={actions} />
-                  </div>
+                    )
+                  }
                 </div>
               </div>
             </div>
