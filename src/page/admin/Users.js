@@ -10,6 +10,7 @@ import UserForm from '../../components/UserForm'
 import UserRemoveForm from '../../components/UserRemoveForm'
 import Auth from '../../modules/Auth'
 import { USER_ROLES, USER_ACCESS } from '../../constants/Option'
+import PreLoader from '../../components/PreLoader'
 
 function mapStateToProps (state) {
   const { users } = state
@@ -80,11 +81,16 @@ class Users extends React.Component {
     super(props)
     this.onEdit = this.onEdit.bind(this)
     this.onRemove = this.onRemove.bind(this)
+    this.state = {loaded: false}
   }
 
   componentDidMount () {
     const { dispatch } = this.props
-    dispatch(getUsers())
+    dispatch(getUsers(() => {
+      this.setState({
+        loaded: true
+      })
+    }), this)
   }
 
   onAdd () {
@@ -122,6 +128,7 @@ class Users extends React.Component {
     const stylePadding = {padding: '15px'}
 
     const { modal, setModal } = this.props
+    const { loaded } = this.state
     let { users } = this.props
     users = users.filter(u => u.id !== Auth.getUser().id)
 
@@ -143,17 +150,22 @@ class Users extends React.Component {
                   <MenuSideBar />
                 </div>
                 <div className='mdl-cell mdl-cell--9-col'>
-                  <div style={stylePadding}>
-                    <div className='mdl-grid'>
-                      <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
-                        <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
-                          onClick={() => this.onAdd()}>
-                            Add User
-                        </button>
+                  { (!loaded)
+                    ? <PreLoader />
+                    : (
+                      <div style={stylePadding}>
+                        <div className='mdl-grid'>
+                          <div className='mdl-cell mdl-cell--12-col' style={styleButton}>
+                            <button className='mdl-button mdl-js-button mdl-button--raised mdl-button--colored'
+                              onClick={() => this.onAdd()}>
+                                Add User
+                            </button>
+                          </div>
+                        </div>
+                        <UserTable users={users} styleTable={styleTable} actions={actions} />
                       </div>
-                    </div>
-                    <UserTable users={users} styleTable={styleTable} actions={actions} />
-                  </div>
+                    )
+                  }
                 </div>
               </div>
             </div>

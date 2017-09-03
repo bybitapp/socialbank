@@ -114,11 +114,12 @@ export const removeBankAccount = (bid, cb) => (dispatch, getState) => {
   })
 }
 
-export const getUsers = () => dispatch => {
+export const getUsers = (cb = () => {}) => dispatch => {
   dispatch({type: types.RECEIVE_USERS_REQUEST})
   server.getUsers((ex, data) => {
     if (!ex) {
       dispatch({type: types.RECEIVE_USERS_SUCCESS, data})
+      cb()
     } else {
       dispatch({type: types.RECEIVE_USERS_FAILURE})
     }
@@ -164,11 +165,12 @@ export const removeUser = (uid, cb) => dispatch => {
   })
 }
 
-export const getProjects = () => dispatch => {
+export const getProjects = (cb = () => {}) => dispatch => {
   dispatch({type: types.RECEIVE_PROJECTS_REQUEST})
   server.getProjects((ex, data) => {
     if (!ex) {
       dispatch({type: types.RECEIVE_PROJECTS_SUCCESS, data})
+      cb()
     } else {
       dispatch({type: types.RECEIVE_PROJECTS_FAILURE})
     }
