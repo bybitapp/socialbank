@@ -2,7 +2,6 @@ import React from 'react'
 import ResponsiveModal from './ResponsiveModal'
 import { compose } from 'recompose'
 import { connect } from 'react-redux'
-import Auth from '../modules/Auth'
 import { reduxForm, Field, SubmissionError, formValueSelector, change } from 'redux-form'
 import { toastr } from 'react-redux-toastr'
 import { addCard } from '../actions'
@@ -88,13 +87,6 @@ class CardForm extends React.Component {
         id: item.id,
         name: item.profile.name + ' - ' + item.email
       }
-    })
-
-    // Add logged user to allow create his own card
-    const loggedUser = Auth.getUser()
-    userList.push({
-      id: loggedUser.id,
-      name: loggedUser.profile.name + ' - ' + loggedUser.email
     })
 
     return (
