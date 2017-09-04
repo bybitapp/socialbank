@@ -3,27 +3,33 @@ import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
-const FaqItem = ({question, answer}) => {
-  let showAnswer = false
-
-  const toggleAnswer = () => {
-    console.log(showAnswer)
-    showAnswer = !showAnswer
+class FaqItem extends React.Component {
+  constructor () {
+    super()
+    this.state = {
+      showAnswer: false
+    }
+    this.toggleAnswer = this.toggleAnswer.bind(this)
   }
 
-  toggleAnswer.bind(this)
+  toggleAnswer () {
+    this.setState({
+      showAnswer: !this.state.showAnswer
+    })
+  }
 
-  console.log('FaqItem')
-  console.log(showAnswer)
+  render () {
+    const { showAnswer } = this.state
+    const { question, answer } = this.props
 
-  return (<div className='toggle faq'>
-    <div className='togglet' onClick={toggleAnswer}>{question}</div>
-    <div style={{display: this.showAnswer ? 'block' : 'none'}}>{answer}</div>
-  </div>)
+    return (<div className='toggle faq'>
+      <div className='togglet' onClick={this.toggleAnswer}>{question}</div>
+      <div className='togglec' style={{display: showAnswer ? 'block' : 'none'}}>{answer}</div>
+    </div>)
+  }
 }
 
 const BasicFaq = ({question, answer, filterValue}) => {
-  console.log(filterValue)
   if (filterValue === '*' || filterValue === 'faq-basic') {
     return <FaqItem question={question} answer={answer} />
   }
