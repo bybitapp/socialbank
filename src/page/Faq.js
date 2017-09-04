@@ -22,15 +22,13 @@ class Faq extends React.Component {
           <div className='content-wrap'>
             <div className='container clearfix'>
               <div className='postcontent nobottommargin clearfix'>
-                <ul id='portfolio-filter' className='portfolio-filter clearfix'>
-                  <li className=''><a data-filter='*' className='btn'>All</a></li>
-                  <li className=''><a data-filter='.faq-basic' className='btn'>Basic questions</a></li>
-                  <li className=''><a data-filter='.faq-using-sotec' className='btn'>How to use SoTec</a></li>
-                  <li className=''><a data-filter='.faq-security' className='btn'>Security questions</a></li>
-                </ul>
-                <div className='clear' />
-                <div id='faqs' className='faqs'>
 
+                <div className='clear' />
+
+                <div>
+                  <h3>Basic questions</h3>
+                </div>
+                <div className='faqs'>
                   <div className='toggle faq faq-basic'>
                     <div className='togglet'>What is SoTec?</div>
                     <div className='togglec' style={{display: 'none'}}>SoTec provides payment card solutions to manage and simplify organisation’s funding and expenses. Our solution provides increased internal transparency through micropayments and automated expense reporting by utilizing virtual and physical prepaid debit cards on top of the award winning, low cost, open payment cloud platform.</div>
@@ -55,7 +53,12 @@ class Faq extends React.Component {
                     <div className='togglet'>How do SoTec cards work?</div>
                     <div className='togglec' style={{display: 'none'}}>Prepaid Visa cards are accepted by more than 30 million merchants worldwide. The virtual SoTec cards can be used to make any work related online purchases. Prepaid cards can be used to purchase goods in the same way as a debit or credit card but you can only make transactions when there is money in your account.</div>
                   </div>
+                </div>
 
+                <div className='topmargin'>
+                  <h3>How to use SoTec</h3>
+                </div>
+                <div className='faqs'>
                   <div className='toggle faq faq-using-sotec'>
                     <div className='togglet'>In which countries is SoTec available?</div>
                     <div className='togglec' style={{display: 'none'}}>SoTec is initially available to companies in the United Kingdom. More countries will be added in due course so watch this space.</div>
@@ -75,7 +78,12 @@ class Faq extends React.Component {
                     <div className='togglet'>Do I still need to do my expense reports when using SoTec?</div>
                     <div className='togglec' style={{display: 'none'}}>No, the founding idea behind SoTec is to get rid of the expense reports. As a Manager, you can monitor all transactions in real time. All transactions can be directly exported to most accounting systems.</div>
                   </div>
+                </div>
 
+                <div className='topmargin'>
+                  <h3>Security questions</h3>
+                </div>
+                <div className='faqs'>
                   <div className='toggle faq faq-security'>
                     <div className='togglet'>What is SoTec’s fraud policy?</div>
                     <div className='togglec' style={{display: 'none'}}>With SoTec, all purchases are tracked in real-time, so if you notice something suspicious, you can block the cards immediately from the SoTec web app. You are also covered by Visa Zero Liability Policy - for more information, visit <a href='https://www.visa.com/chip/personal/security/zero-liability.jsp' target='_blank' rel='noopener noreferrer'>Visa</a>.</div>
@@ -85,7 +93,6 @@ class Faq extends React.Component {
                     <div className='togglet'>How will our data be protected?</div>
                     <div className='togglec' style={{display: 'none'}}>We take security very seriously. All data passed between our servers and third parties is 2048-bit SSL encrypted.</div>
                   </div>
-
                 </div>
               </div>
             </div>
