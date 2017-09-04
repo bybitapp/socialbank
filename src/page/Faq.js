@@ -88,6 +88,7 @@ class Faq extends React.Component {
                   <li className=''><a onClick={() => this.onFilter('faq-security')} className='btn'>Security questions</a></li>
                 </ul>
                 <div className='clear' />
+
                 <div id='faqs' className='faqs'>
 
                   <BasicFaq
