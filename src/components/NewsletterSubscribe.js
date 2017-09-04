@@ -28,7 +28,7 @@ const enhance = compose(
             dispatch(ownProps.reset('newsletterSubscribeForm'))
             resolve()
           } else {
-            toastr.error('An unexpected error. If the error persists please report to contact@sotec.io')
+            toastr.error('Unable to process your request', _error)
             reject(new SubmissionError({_error}))
           }
         }))
