@@ -56,7 +56,7 @@ class Faq extends React.Component {
                       <div className='team-content'>
                         <p>
                           With over 12 years experience in small and big IT projects as a software developer and agile delivery manager.
-                          I believe in creating social impact through commercial projects.
+                          Believes in creating social impact through commercial projects.
                           Privately passionate about kitesurfing and snowboarding.
                         </p>
                       </div>
@@ -81,7 +81,7 @@ class Faq extends React.Component {
                       <div className='team-content'>
                         <p>
                           Entrepreneur in the tech space with a background in Fintech, software engineering and, blockchain.
-                          I build technology startups, not only from a tech perspective but from a broader business perspective.
+                          Built technology startups, not only from a tech perspective but from a broader business perspective.
                           Successfully grew and sold 2 businesses. Paid advisor of multiple well-funded startups in Europe.
                         </p>
                       </div>
@@ -104,7 +104,10 @@ class Faq extends React.Component {
                     <div className='team-desc'>
                       <div className='team-title'><h4>Yugo Sakamoto</h4><span>Software Developer</span></div>
                       <div className='team-content'>
-                        <p>Developing software for over 7 years and a technology lover. I have a great desire to deliver solutions which promote social impact through transparency and effectiveness.</p>
+                        <p>
+                          With over 7 years of developing experience. Technology lover.
+                          He has a deep-seeded desire to deliver solutions which promote social impact through transparency and effectiveness.
+                        </p>
                       </div>
                       <a href='https://www.linkedin.com/in/yugo-sakamoto-8639ba22/' className='social-icon si-rounded si-small si-light si-linkedin'>
                         <i className='icon-linkedin' />
@@ -126,9 +129,10 @@ class Faq extends React.Component {
                       <div className='team-title'><h4>Dawid Kowalczyk</h4><span>Senior User Experience Designer</span></div>
                       <div className='team-content'>
                         <p>
-                          For 4 years UX designer who is interested in managing the creative process.
+                          Experienced UX designer who is interested in managing the creative process.
                           He works with startups from the exploratory stage through prototypes to implementation and communication strategies.
-                          In his work he uses visual thinking tools, creative techniques and psychological knowledge.</p>
+                          In his work he uses visual thinking tools, creative techniques and psychological knowledge.
+                        </p>
                       </div>
                       <a href='https://www.linkedin.com/in/kowalczykdawid/' className='social-icon si-rounded si-small si-light si-linkedin'>
                         <i className='icon-linkedin' />
