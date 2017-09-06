@@ -10,6 +10,7 @@ import ErrorLogger from './components/ErrorLogger'
 import { loadingBarMiddleware } from 'react-redux-loading-bar'
 
 import reducer from './reducers'
+import ScrollToTop from './components/ScrollToTop'
 
 // pages
 import Home from './page/Home'
@@ -47,30 +48,32 @@ const App = () => (
   <Provider store={store}>
     <div>
       <Router>
-        <Switch>
-          <Route path='/me' component={Me} />
-          <Route path='/history' component={History} />
-          <Route path='/projects' component={Projects} />
-          <Route path='/cards' component={Cards} />
-          <Route path='/organization' component={Organization} />
-          <Route path='/banks' component={Banks} />
-          <Route path='/users' component={Users} />
-          <Route path='/public/o/:id' component={Public} />
-          <Route path='/login' component={Login} />
-          <Route path='/logout' component={Logout} />
-          <Route path='/demo' component={Demo} />
-          <Route path='/forgot' component={Forgot} />
-          <Route path='/reset/:token' component={Reset} />
-          <Route path='/contact' component={Contact} />
-          <Route path='/terms' component={Terms} />
-          <Route path='/privacy' component={Privacy} />
-          <Route path='/complaints' component={Complaints} />
-          <Route path='/faq' component={Faq} />
-          <Route path='/pricing' component={Pricing} />
-          <Route path='/about' component={About} />
-          <Route path='/' exact component={Home} />
-          <Route path='*' component={NotFound} />
-        </Switch>
+        <ScrollToTop>
+          <Switch>
+            <Route path='/me' component={Me} />
+            <Route path='/history' component={History} />
+            <Route path='/projects' component={Projects} />
+            <Route path='/cards' component={Cards} />
+            <Route path='/organization' component={Organization} />
+            <Route path='/banks' component={Banks} />
+            <Route path='/users' component={Users} />
+            <Route path='/public/o/:id' component={Public} />
+            <Route path='/login' component={Login} />
+            <Route path='/logout' component={Logout} />
+            <Route path='/demo' component={Demo} />
+            <Route path='/forgot' component={Forgot} />
+            <Route path='/reset/:token' component={Reset} />
+            <Route path='/contact' component={Contact} />
+            <Route path='/terms' component={Terms} />
+            <Route path='/privacy' component={Privacy} />
+            <Route path='/complaints' component={Complaints} />
+            <Route path='/faq' component={Faq} />
+            <Route path='/pricing' component={Pricing} />
+            <Route path='/about' component={About} />
+            <Route path='/' exact component={Home} />
+            <Route path='*' component={NotFound} />
+          </Switch>
+        </ScrollToTop>
       </Router>
       <ReduxToastr
         timeOut={2500}
