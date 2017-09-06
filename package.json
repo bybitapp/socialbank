@@ -6,7 +6,8 @@
   "license": "UNLICENSED",
   "homepage": "http://sotec.io",
   "engines": {
-    "node": ">=8.3.0"
+    "node": ">=8.3.0",
+    "yarn": "0.24.5"
   },
   "scripts": {
     "dev": "concurrently 'PORT=8088 NODE_PATH=. nodemon --watch lib --watch server.js ./server.js' 'react-scripts start'",
