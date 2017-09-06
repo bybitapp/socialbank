@@ -88,6 +88,27 @@ class Faq extends React.Component {
                     </div>
                   </div>
                 </div>
+                <div className='col-md-6 bottommargin'>
+                  <div className='team team-list clearfix'>
+                    <div className='team-image'>
+                      <img src='/images/team/yugo.jpg' alt='Yugo Sakamoto' />
+                    </div>
+                    <div className='team-desc'>
+                      <div className='team-title'><h4>Yugo Sakamoto</h4><span>Software Developer</span></div>
+                      <div className='team-content'>
+                        <p>Developing software for over 7 years and a technology lover. I have a great desire to deliver solutions which promote social impact through transparency and effectiveness.</p>
+                      </div>
+                      <a href='https://www.linkedin.com/in/yugo-sakamoto-8639ba22/' className='social-icon si-rounded si-small si-light si-linkedin'>
+                        <i className='icon-linkedin' />
+                        <i className='icon-linkedin' />
+                      </a>
+                      <a href='https://twitter.com/ymoto' className='social-icon si-rounded si-small si-light si-twitter'>
+                        <i className='icon-twitter' />
+                        <i className='icon-twitter' />
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
