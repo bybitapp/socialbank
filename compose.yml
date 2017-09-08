@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+    volumes:
+      - .:/socialbank
+    ports:
+      - '8000:8000'
+    command: npm start
