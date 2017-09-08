@@ -3,26 +3,62 @@ jobs:
   build:
     working_directory: ~/socialbank
     docker:
-      - image: circleci/node:8.4.0
-      - image: mongo:3.4
+      - image: docker:latest
     steps:
       - checkout
+
+      - setup_remote_docker
+
       - run:
           name: Install dependencies
-          command: yarn install --ignore-optional --pure-lockfile
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - node_modules
-      - run:
-          name: Test
-          command: npm test
-      - deploy:
-          name: Push application Docker image
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              login="$(aws ecr get-login)"
-              ${login}
-              docker tag app "${ECR_ENDPOINT}/app:${CIRCLE_SHA1}"
-              docker push "${ECR_ENDPOINT}/app:${CIRCLE_SHA1}"
-            fi
+            apk add --no-cache \
+              py-pip=9.0.0-r1
+            pip install \
+              docker-compose==1.12.0
+
+      - restore_cache:
+          keys:
+            - v1-{{ .Branch }}
+          paths:
+            - /caches/socialbank.tar
+
+      - run:
+          name: Load Docker image layer cache
+          command: |
+            set +o pipefail
+            docker load -i /caches/socialbank.tar | true
+
+      - run:
+          name: Build application Docker image
+          command: |
+            docker build --cache-from=socialbank -t socialbank .
+
+      - run:
+          name: Save Docker image layer cache
+          command: |
+            mkdir -p /caches
+            docker save -o /caches/socialbank.tar socialbank
+
+      - save_cache:
+          key: v1-{{ .Branch }}-{{ epoch }}
+          paths:
+            - /caches/socialbank.tar
+
+      - run:
+          name: Run tests
+          command: |
+            docker-compose -f ./docker-compose.test.yml up
+
+      - run:
+          name: Log in to Docker
+          command: docker login -u $DOCKER_USERNAME -p $DOCKER_PASS
+
+      - deploy:
+          name: Publish to Docker hub
+          command: |
+            TAG=release-$CIRCLE_TAG
+            docker images -q phanisotec/socialbank:latest > ./.imageid
+            docker tag $(cat ./.imageid) phanisotec/socialbank:latest-release
+            docker tag $(cat ./.imageid) phanisotec/socialbank:release-$CIRCLE_TAG
+            docker push phanisotec/socialbank:$TAG
