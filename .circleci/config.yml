@@ -32,11 +32,3 @@ workflows:
       - test:
           requires:
             - build
-          filters:
-            branches:
-              only: master
-  deployment:
-    staging:
-      branch: master
-      heroku:
-        appname: socialbank-stage
