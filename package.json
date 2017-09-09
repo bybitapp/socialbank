@@ -10,7 +10,7 @@
     "yarn": "0.24.5"
   },
   "scripts": {
-    "dev": "concurrently 'PORT=8088 NODE_PATH=. nodemon --watch lib --watch server.js ./server.js' 'react-scripts start'",
+    "dev": "concurrently 'PORT=8088 NODE_PATH=. nodemon --watch lib --watch server.js ./server.js' 'uglifyjs ./public/js/jquery.js ./public/js/functions.js ./public/js/plugins.js ./public/js/custom.js ./public/js/getmdl/material.min.js -o ./public/static.js' 'react-scripts start'",
     "start": "NODE_PATH=. node server.js",
     "build": "react-scripts build",
     "test:client": "NODE_PATH=. react-scripts test --env=jsdom",
@@ -66,6 +66,7 @@
     "redux-form": "^7.0.4",
     "redux-thunk": "^2.2.0",
     "require-directory": "^2.1.1",
+    "uglify-js": "^3.0.28",
     "uuid": "^3.1.0",
     "winston": "^2.3.1"
   },
