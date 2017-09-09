@@ -1,9 +1,17 @@
 import React from 'react'
+import {get} from 'lodash'
 
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 
 class Faq extends React.Component {
+  componentDidMount () {
+    const toggles = get(window, 'SEMICOLON.widget.toggles')
+    if (toggles) {
+      toggles()
+    }
+  }
+
   render () {
     return (
       <div id='wrapper' className='clearfix'>
