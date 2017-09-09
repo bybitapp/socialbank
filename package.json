@@ -10,7 +10,9 @@
     "yarn": "0.24.5"
   },
   "scripts": {
-    "dev": "concurrently 'PORT=8088 NODE_PATH=. nodemon --watch lib --watch server.js ./server.js' 'react-scripts start'",
+    "server": "PORT=8088 NODE_PATH=. nodemon --watch lib --watch server.js ./server.js",
+    "client": "react-scripts start",
+    "dev": "concurrently 'npm run server' 'npm run client'",
     "start": "NODE_PATH=. node server.js",
     "build": "react-scripts build",
     "test:client": "NODE_PATH=. react-scripts test --env=jsdom",
