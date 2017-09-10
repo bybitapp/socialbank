@@ -14,7 +14,8 @@
     "client": "react-scripts start",
     "dev": "concurrently 'npm run server' 'npm run client'",
     "start": "NODE_PATH=. node server.js",
-    "build": "react-scripts build",
+    "build-js": "uglifyjs ./public/js/jquery.js ./public/js/functions.js ./public/js/plugins.js ./public/js/custom.js ./public/js/getmdl/material.min.js -c -m -o ./public/dist/static.min.js",
+    "build": "npm run build-js && react-scripts build",
     "test:client": "NODE_PATH=. react-scripts test --env=jsdom",
     "test:server": "NODE_PATH=. mocha './{,!(node_modules)/**/}*.test.js'",
     "test": "yarn run test:client && yarn run test:server",
@@ -68,6 +69,7 @@
     "redux-form": "^7.0.4",
     "redux-thunk": "^2.2.0",
     "require-directory": "^2.1.1",
+    "uglify-js": "^3.0.28",
     "uuid": "^3.1.0",
     "winston": "^2.3.1"
   },
