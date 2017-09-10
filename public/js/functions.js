@@ -126,7 +126,7 @@ loadUI = function() {
 
 
 
-  var SEMICOLON = SEMICOLON || {};
+  window.SEMICOLON = window.SEMICOLON || {};
 
   (function($) {
 

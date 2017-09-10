@@ -130,7 +130,15 @@ class Users extends React.Component {
     const { modal, setModal } = this.props
     const { loaded } = this.state
     let { users } = this.props
-    users = users.filter(u => u.id !== Auth.getUser().id)
+
+    users = users.filter(u => {
+      const {access, id} = Auth.getUser()
+      if (access === 'admin') {
+        return u.id !== id && u.access !== 'owner'
+      } else {
+        return u.id !== id
+      }
+    })
 
     const actions = [
       {icon: 'mode_edit', onclick: this.onEdit},

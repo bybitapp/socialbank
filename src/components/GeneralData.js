@@ -46,7 +46,7 @@ const enhance = compose(
             toastr.success('Updated!', 'Your account has been updated')
             resolve()
           } else {
-            toastr.error('An unexpected error. If the error persists please report to contact@sotec.io')
+            toastr.error('Unable to process your request', _error)
             reject(new SubmissionError({_error}))
           }
         }))
