@@ -114,6 +114,11 @@
     background-color: #24AEF2;
 }
 
+.feature-box.fbox-plain .fbox-icon i,
+.feature-box.fbox-plain .fbox-icon img {
+    color: #24AEF2;
+}
+
 .color {
     color: #24AEF2 !important;
 }

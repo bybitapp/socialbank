@@ -221,16 +221,78 @@ const HowStart = () => (
 
 const MediaAboutUs = () => (
   <div className='section' style={{padding: 0, margin: 0, backgroundColor: '#FFF', display: 'table', width: '-webkit-fill-available'}}>
-    <div id='oc-clients-full' className='owl-carousel owl-carousel-full image-carousel footer-stick' style={{padding: '30px 0'}}>
-      <div className='oc-item'><a href='https://www.ixaris.com/sotec-wins-ixaris-b2b-innovation-challenge/'><img src='images/media/opc.png' alt='Clients' /></a></div>
-      <div className='oc-item'><a href='http://www.fintech.finance/01-news/sotec-wins-ixaris-b2b-innovation-challenge-m2020eu/'><img src='images/media/fintech_finance.png' alt='Clients' /></a></div>
-      <div className='oc-item'><a href='https://worldcore.eu/blog/seweryn-bidolach-ceo-sotec-wed-like-leader-mobile-payments/'><img src='images/media/worldcore.png' alt='Clients' /></a></div>
+    <div className='text-center'>
+      <a href='https://www.ixaris.com/sotec-wins-ixaris-b2b-innovation-challenge/'><img src='images/media/opc.png' alt='Clients' style={{maxWidth: '250px'}} /></a>
+      <a href='http://www.fintech.finance/01-news/sotec-wins-ixaris-b2b-innovation-challenge-m2020eu/'><img src='images/media/fintech_finance.png' alt='Clients' style={{maxWidth: '250px'}} /></a>
+      <a href='https://worldcore.eu/blog/seweryn-bidolach-ceo-sotec-wed-like-leader-mobile-payments/'><img src='images/media/worldcore.png' alt='Clients' style={{maxWidth: '250px'}} /></a>
     </div>
   </div>
 )
 
 const WhyDebitCard = () => (
-  <div />
+  <div className='container clearfix'>
+    <div className='row topmargin-sm bottommargin-sm'>
+      <div className='heading-block center'>
+        <h2>Advantages of Sotec Cards over a Regular Business Credit Card</h2>
+        <span className='divcenter'>Nearly 1 in 5 small businesses have been defrauded by an employee at some point during their trading history, causing signifincant loss and in some cases have destroyed a business.</span>
+      </div>
+      <div className='col_one_third'>
+        <div className='feature-box fbox-plain'>
+          <div className='fbox-icon'>
+            <i className='i-alt noborder icon-graph' />
+          </div>
+          <h3>No Interest Rate</h3>
+          <p>Despite its inherent benefits, a corporate credit card typically comes with a higher rate of interest as compared to a fixed line of credit or a bank loan.</p>
+        </div>
+      </div>
+      <div className='col_one_third'>
+        <div className='feature-box fbox-plain'>
+          <div className='fbox-icon'>
+            <i className='i-alt noborder icon-fire' />
+          </div>
+          <h3>No Personal Legal Liability</h3>
+          <p>The biggest downside of managing your finances with a business credit card is the personal legal liability it carries.</p>
+        </div>
+      </div>
+      <div className='col_one_third col_last'>
+        <div className='feature-box fbox-plain'>
+          <div className='fbox-icon'>
+            <i className='i-alt noborder icon-eye-open' />
+          </div>
+          <h3>No Security Pitfalls</h3>
+          <p>A business credit card is prone to many potentially fraudulent behaviours and other security issues.</p>
+        </div>
+      </div>
+      <div className='clear' />
+      <div className='col_one_third'>
+        <div className='feature-box fbox-plain'>
+          <div className='fbox-icon'>
+            <i className='i-alt noborder icon-umbrella' />
+          </div>
+          <h3>Risk-free</h3>
+          <p>While a regular business credit card is prone to fraud, Sotec prepaid card is prepaid and allows business owners to monitor activities in real-time and set a limit to employees’ spending. </p>
+        </div>
+      </div>
+      <div className='col_one_third'>
+        <div className='feature-box fbox-plain'>
+          <div className='fbox-icon'>
+            <i className='i-alt noborder icon-magic' />
+          </div>
+          <h3>Easy access</h3>
+          <p>Most business owners can’t qualify for a corporate credit card, but any business owner can apply for a Sotec Card by simply providing basic business information and be approved instantly.</p>
+        </div>
+      </div>
+      <div className='col_one_third col_last'>
+        <div className='feature-box fbox-plain'>
+          <div className='fbox-icon'>
+            <i className='i-alt noborder icon-money' />
+          </div>
+          <h3>Costs Much Less</h3>
+          <p>Sotec offers plan, based upon your usage. It carries no fees on transactions and there are no interest charges because it is prepaid.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 )
 
 const UseCase = () => (
@@ -238,7 +300,21 @@ const UseCase = () => (
 )
 
 const AccountingIntegration = () => (
-  <div />
+  <div className='section notopmargin nobottommargin' style={{backgroundColor: '#FFFFFF'}}>
+    <div className='container clearfix'>
+      <div className='row topmargin-sm bottommargin-sm'>
+        <div className='heading-block center'>
+          <h2>Easily import transactions into any bookkeeping software</h2>
+        </div>
+      </div>
+      <div className='text-center'>
+        <img src='images/integration/xero.png' className='rounded' alt='Clients' style={{maxWidth: '250px'}} />
+        <img src='images/integration/freeagent.png' className='rounded' alt='Clients' style={{maxWidth: '250px'}} />
+        <img src='images/integration/sage_one.png' className='rounded' alt='Clients' style={{maxWidth: '250px'}} />
+        <img src='images/integration/quickbooks.png' className='rounded' alt='Clients' style={{maxWidth: '250px'}} />
+      </div>
+    </div>
+  </div>
 )
 
 const FeatureBoxLeft = ({title, desc, icon}) => (
@@ -274,7 +350,7 @@ const FeatureBoxRight = ({title, desc, icon}) => (
 )
 
 const BookADemo = () => (
-  <div id='section-buy' className='section page-section' style={{backgroundColor: '#FFFFFF', margin: 0}}>
+  <div id='section-buy' className='section page-section' style={{margin: 0}}>
     <div className='container clearfix'>
       <div className='heading-block title-center nobottomborder'>
         <h2>Stay on top of your company&#39;s spending</h2>
@@ -288,13 +364,6 @@ const BookADemo = () => (
 )
 
 class Home extends React.Component {
-  componentDidMount () {
-    const { loadMediaBox } = global
-    if (loadMediaBox) {
-      loadMediaBox()
-    }
-  }
-
   render () {
     return (
       <div id='wrapper' className='clearfix'>
@@ -306,11 +375,10 @@ class Home extends React.Component {
             <HowStart />
             <MediaAboutUs />
             <WhyVirtualCards />
-            <WhyDebitCard />
-
             <UseCase />
-            <AccountingIntegration />
             <WhatOthersSay />
+            <WhyDebitCard />
+            <AccountingIntegration />
             <BookADemo />
           </div>
         </section>
