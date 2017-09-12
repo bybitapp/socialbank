@@ -1,6 +1,19 @@
 version: '3'
+
 services:
+  mongo:
+    image: 'mongo:3.4.1'
+    ports:
+      - '27017:27017'
+    volumes:
+      - 'mongo:/data/db'
   web:
+    tty: true
+    stdin_open: true
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/sotec-dev
+    depends_on:
+      - 'mongo'
     build:
       context: .
     volumes:
@@ -8,3 +21,6 @@ services:
     ports:
       - '8000:8000'
     command: npm start
+
+volumes:
+  mongo:
