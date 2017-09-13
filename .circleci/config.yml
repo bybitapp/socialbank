@@ -48,7 +48,7 @@ jobs:
       - run:
           name: Run tests
           command: |
-            docker-compose -f ./compose.test.yml up
+            docker-compose -f ./compose.test.yml run sut
 
       - run:
           name: Log in to Docker
