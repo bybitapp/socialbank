@@ -6,8 +6,7 @@
   "license": "UNLICENSED",
   "homepage": "http://sotec.io",
   "engines": {
-    "node": "8.5.0",
-    "yarn": "1.0.1"
+    "node": "8.5.0"
   },
   "scripts": {
     "server": "PORT=8088 NODE_PATH=. nodemon --watch lib --watch server.js ./server.js",
@@ -18,9 +17,9 @@
     "build": "npm run build-js && react-scripts build",
     "test:client": "NODE_PATH=. react-scripts test --env=jsdom",
     "test:server": "NODE_PATH=. mocha './{,!(node_modules)/**/}*.test.js'",
-    "test": "yarn run test:client && yarn run test:server",
+    "test": "npm run test:client && npm run test:server",
     "eject": "react-scripts eject",
-    "postinstall": "yarn run build",
+    "postinstall": "npm run build",
     "lint": "eslint ./lib ./src"
   },
   "proxy": "http://localhost:8088",

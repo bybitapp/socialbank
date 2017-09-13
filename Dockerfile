@@ -4,7 +4,7 @@ ENV PORT 8000
 
 ADD . .
 
-RUN yarn install --pure-lockfile --ignore-optional
+RUN npm install
 
 EXPOSE "${PORT}"
 
