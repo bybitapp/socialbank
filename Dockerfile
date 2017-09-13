@@ -6,7 +6,7 @@ RUN apk add --no-cache \
   git
 
 ADD . .
-RUN yarn install --pure-lockfile --ignore-optional
+RUN yarn install --pure-lockfile
 
 EXPOSE "${PORT}"
 CMD ["npm", "start"]
