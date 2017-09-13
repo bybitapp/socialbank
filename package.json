@@ -18,7 +18,7 @@
     "build": "npm run build-js && npm run build-css && react-scripts build",
     "test:client": "NODE_PATH=. react-scripts test --env=jsdom",
     "test:server": "NODE_PATH=. mocha './{,!(node_modules)/**/}*.test.js'",
-    "test": "yarn run test:client && yarn run test:server",
+    "test": "yarn run test:server",
     "eject": "react-scripts eject",
     "postinstall": "yarn run build",
     "lint": "eslint ./lib ./src"
