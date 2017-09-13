@@ -11,6 +11,7 @@ import UserRemoveForm from '../../components/UserRemoveForm'
 import Auth from '../../modules/Auth'
 import { USER_ROLES, USER_ACCESS } from '../../constants/Option'
 import PreLoader from '../../components/PreLoader'
+import { makeCancelable } from '../../util/makeCancelable'
 
 function mapStateToProps (state) {
   const { users } = state
@@ -86,11 +87,26 @@ class Users extends React.Component {
 
   componentDidMount () {
     const { dispatch } = this.props
-    dispatch(getUsers(() => {
-      this.setState({
-        loaded: true
+
+    // Make cancelable to avoid setState on unmounted component
+    this.fetchUsers = makeCancelable(new Promise((resolve, reject) => {
+      dispatch(getUsers(() => {
+        resolve()
+      }), this)
+    }))
+
+    this.fetchUsers.promise
+      .then(() => {
+        this.setState({
+          loaded: true
+        })
       })
-    }), this)
+  }
+
+  componentWillUnmount () {
+    if (this.fetchUsers) {
+      this.fetchUsers.cancel()
+    }
   }
 
   onAdd () {
