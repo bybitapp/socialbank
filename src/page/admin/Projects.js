@@ -11,6 +11,7 @@ import ProjectForm from '../../components/ProjectForm'
 import ProjectCloseForm from '../../components/ProjectCloseForm'
 import ProjectDepositForm from '../../components/ProjectDepositForm'
 import PreLoader from '../../components/PreLoader'
+import { makeCancelable } from '../../util/makeCancelable'
 
 function mapStateToProps (state) {
   const { projects, account } = state
@@ -95,11 +96,26 @@ class Projects extends React.Component {
 
   componentDidMount () {
     const { dispatch } = this.props
-    dispatch(getProjects(() => {
-      this.setState({
-        loaded: true
+    
+    // Make cancelable to avoid setState on unmounted component
+    this.fetchProjects = makeCancelable(new Promise((resolve, reject) => {
+      dispatch(getProjects(() => {
+        resolve()
+      }), this)
+    }))
+
+    this.fetchProjects.promise
+      .then(() => {
+        this.setState({
+          loaded: true
+        })
       })
-    }), this)
+  }
+
+  componentWillUnmount () {
+    if (this.fetchProjects) {
+      this.fetchProjects.cancel()
+    }
   }
 
   onEdit (pid, event) {
