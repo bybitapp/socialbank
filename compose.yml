@@ -18,7 +18,7 @@ services:
     build:
       context: .
     volumes:
-      - .:/socialbank
+      - .:/opt/socialbank
     ports:
       - '8000:8000'
     command: npm start

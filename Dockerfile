@@ -3,7 +3,9 @@ FROM node:8.5.0-alpine
 ENV PORT    8000
 ENV APP_DIR /opt/socialbank
 
-RUN apk add --no-cache \
+RUN apk --no-cache add \
+  build-base  \
+  python      \
   git
 
 RUN mkdir -p "${APP_DIR}"
