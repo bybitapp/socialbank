@@ -12,6 +12,7 @@ services:
     stdin_open: true
     environment:
       - MONGO_URL=mongodb://mongo:27017/sotec-dev
+      - PORT=8000
     depends_on:
       - 'mongo'
     build:
