@@ -14,7 +14,7 @@
     "dev": "concurrently 'npm run server' 'npm run client'",
     "start": "NODE_PATH=. node server.js",
     "build-js": "uglifyjs ./public/js/jquery.js ./public/js/functions.js ./public/js/plugins.js ./public/js/custom.js ./public/js/getmdl/material.min.js -c -m -o ./public/dist/static.min.js",
-    "build-css": "./node_modules/.bin/cleancssi -o ./public/dist/static.min.css ./public/css/fonts/googleapis/font.css  ./public/css/fonts/googleapis/icon.css ./public/css/getmdl/material.teal-indigo.min.css ./public/css/bootstrap.css  ./public/css/style.css ./public/css/dark.css ./public/css/font-icons.css ./public/css/magnific-popup.css ./public/css/responsive.css ./public/css/custom.css ./public/css/creditcard.css ./public/css/paymentfont.min.css ./public/css/table.css ./public/css/react-redux-toastr.min.css",
+    "build-css": "cleancss -o ./public/dist/static.min.css ./public/css/fonts/googleapis/font.css  ./public/css/fonts/googleapis/icon.css ./public/css/getmdl/material.teal-indigo.min.css ./public/css/bootstrap.css  ./public/css/style.css ./public/css/dark.css ./public/css/font-icons.css ./public/css/magnific-popup.css ./public/css/responsive.css ./public/css/custom.css ./public/css/creditcard.css ./public/css/paymentfont.min.css ./public/css/table.css ./public/css/react-redux-toastr.min.css",
     "build": "npm run build-js && npm run build-css && react-scripts build",
     "test:client": "NODE_PATH=. react-scripts test --env=jsdom",
     "test:server": "NODE_PATH=. mocha './{,!(node_modules)/**/}*.test.js'",
