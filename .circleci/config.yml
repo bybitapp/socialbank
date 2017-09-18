@@ -60,6 +60,6 @@ jobs:
             TAG=release-$CIRCLE_TAG
             docker images -q phanisotec/socialbank:latest > ./.imageid
             docker tag $(cat ./.imageid) phanisotec/socialbank:latest-release
-            docker tag $(cat ./.imageid) phanisotec/socialbank:release-$CIRCLE_TAG
+            docker tag $(cat ./.imageid) phanisotec/socialbank:$TAG
             docker push vendigo/finland-client:latest-release
-            docker push vendigo/finland-client:release-$CIRCLE_TAG
+            docker push vendigo/finland-client:$TAG
