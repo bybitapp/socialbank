@@ -21,7 +21,7 @@ services:
       - .:/opt/socialbank
     ports:
       - '8000:8000'
-    command: npm start
+    command: /bin/sh -c "yarn install --pure-lockfile && npm start"
 
 volumes:
   mongo:
