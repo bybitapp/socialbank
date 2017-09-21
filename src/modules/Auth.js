@@ -5,7 +5,10 @@ class Auth {
    * @param {string} token
    */
   static authenticateUser (user) {
-    localStorage.setItem('user', JSON.stringify(user))
+    localStorage.setItem('auth', JSON.stringify({
+      user: user,
+      expiryTime: Date.now() + (1000 * 60 * 15) // 15 min
+    }))
   }
 
   /**
@@ -14,7 +17,8 @@ class Auth {
    * @returns {boolean}
    */
   static isUserAuthenticated () {
-    return localStorage.getItem('user') !== null
+    const auth = JSON.parse(localStorage.getItem('auth'))
+    return auth !== null && Date.now() < auth.expiryTime
   }
 
   /**
@@ -22,7 +26,7 @@ class Auth {
    *
    */
   static deauthenticateUser () {
-    localStorage.removeItem('user')
+    localStorage.removeItem('auth')
   }
 
   /**
@@ -32,8 +36,8 @@ class Auth {
    */
 
   static getUser () {
-    const user = localStorage.getItem('user')
-    return JSON.parse(user)
+    const auth = JSON.parse(localStorage.getItem('auth'))
+    return auth.user
   }
 
   /**
@@ -43,14 +47,13 @@ class Auth {
    */
 
   static updateUser (updatedUser) {
-    const sessionUser = localStorage.getItem('user')
+    const auth = JSON.parse(localStorage.getItem('auth'))
 
-    var user = JSON.parse(sessionUser)
+    var user = auth.user
     if (user) {
       user = Object.assign({}, user, updatedUser)
     }
-
-    localStorage.setItem('user', JSON.stringify(user))
+    this.authenticateUser(user)
   }
 }
 
