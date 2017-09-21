@@ -42,7 +42,8 @@ const config = {
       withdraw: '98520782683176960',
       deposit: '98520778166566912',
       transfer: '98520768619937792'
-    }
+    },
+    disabled: false
   },
   google: {
     mapKey: 'AIzaSyCkwfHICB6QowBNjiGBZc12MH2HbdZnHbM'
