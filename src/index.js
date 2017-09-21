@@ -8,6 +8,7 @@ import thunk from 'redux-thunk'
 import ReduxToastr from 'react-redux-toastr'
 import ErrorLogger from './components/ErrorLogger'
 import { loadingBarMiddleware } from 'react-redux-loading-bar'
+import AdminRoute from './components/AdminRoute'
 
 import reducer from './reducers'
 import ScrollToTop from './components/ScrollToTop'
@@ -50,13 +51,15 @@ const App = () => (
       <Router>
         <ScrollToTop>
           <Switch>
-            <Route path='/me' component={Me} />
-            <Route path='/history' component={History} />
-            <Route path='/projects' component={Projects} />
-            <Route path='/cards' component={Cards} />
-            <Route path='/organization' component={Organization} />
-            <Route path='/banks' component={Banks} />
-            <Route path='/users' component={Users} />
+            { /* Admin pages */ }
+            <AdminRoute path='/me' component={Me} />
+            <AdminRoute path='/history' component={History} />
+            <AdminRoute path='/projects' component={Projects} />
+            <AdminRoute path='/cards' component={Cards} />
+            <AdminRoute path='/organization' component={Organization} />
+            <AdminRoute path='/banks' component={Banks} />
+            <AdminRoute path='/users' component={Users} />
+            { /* Public pages */ }
             <Route path='/public/o/:id' component={Public} />
             <Route path='/login' component={Login} />
             <Route path='/logout' component={Logout} />
