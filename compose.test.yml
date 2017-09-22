@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  sut:
+    build: .
+    links:
+      - mongo
+    working_dir: /opt/socialbank
+    command: /bin/sh -c "yarn install --pure-lockfile && npm test"
+
+  mongo:
+    image: 'mongo:3.4.1'
+    ports:
+      - '27017:27017'
+    volumes:
+      - 'mongo:/data/db'
+
+volumes:
+  mongo:
