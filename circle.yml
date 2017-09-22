@@ -1,0 +1,26 @@
+machine:
+  node:
+    version: 8.5.0
+  environment:
+    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+    MONGODB_URI: "mongodb://localhost:27017/socialbank-ci"
+    NODE_PATH: .
+    CI: true
+
+dependencies:
+  override:
+    - yarn
+  cache_directories:
+    - ~/.cache/yarn
+  override:
+    - yarn install --ignore-optional --pure-lockfile
+
+test:
+  override:
+    - yarn test
+
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: socialbank-stage
