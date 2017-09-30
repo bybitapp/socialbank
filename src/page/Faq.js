@@ -105,7 +105,7 @@ class Faq extends React.Component {
                     </div>
                     <FaqItem
                       question='What is Sotec’s fraud policy?'
-                      answer='With Sotec, all purchases are tracked in real-time, so if you notice something suspicious, you can block the cards immediately from the Sotec web app. You are also covered by Visa Zero Liability Policy - for more information, visit <a href="https://www.visa.com/chip/personal/security/zero-liability.jsp" target="_blank" rel="noopener noreferrer">Visa</a>.' />
+                      answer='With Sotec, all purchases are tracked in real-time, so if you notice something suspicious, you can block the cards immediately from the Sotec web app. You are also covered by Visa Zero Liability Policy - for more information, visit https://www.visa.com/chip/personal/security/zero-liability.jsp' />
 
                     <FaqItem
                       question='How will our data be protected?'
