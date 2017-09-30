@@ -162,7 +162,7 @@ const WhatOthersSay = () => (
               <a href='https://www.ixaris.com/sotec-wins-ixaris-b2b-innovation-challenge/' target='_blank' rel='noopener noreferrer'><img src='images/logos/ixaris.png' alt='Customer Testimonails' /></a>
             </div>
             <div className='testi-content'>
-              <p style={{ fontSize: '24px' }}>Love the idea behind SoTec and ready to roll up sleeves to get this little beauty to market Team @SoTec_UK Wins OPCLive!</p>
+              <p style={{ fontSize: '24px' }}>Love the idea behind Sotec and ready to roll up sleeves to get this little beauty to market Team @Sotec_UK Wins OPCLive!</p>
               <div className='testi-meta'>
                 Alex Mifsud
                 <span>CEO of Ixaris</span>
@@ -179,7 +179,7 @@ const HowStart = () => (
   <div className='section dark notopmargin nobottommargin' style={{ paddingTop: '60px' }}>
     <div className='container clearfix'>
       <div className='heading-block center'>
-        <h2>SoTec Adapts To Any Business</h2>
+        <h2>Sotec Adapts To Any Business</h2>
         <span>It&#39;s Easy To Sign Up And Takes About 5 Minutes.</span>
       </div>
       <div className='clear bottommargin-sm' />
@@ -212,7 +212,7 @@ const HowStart = () => (
           <div className='fbox-icon'>
             <i className='i-alt noborder icon-shop' />
           </div>
-          <h3>Start spending<span className='subtitle'>Use your SoTec card to pay anyone, anywhere (even contactless!)</span></h3>
+          <h3>Start spending<span className='subtitle'>Use your Sotec card to pay anyone, anywhere (even contactless!)</span></h3>
         </div>
       </div>
     </div>

@@ -33,7 +33,7 @@ class Privacy extends React.Component {
           <div className='content-wrap'>
             <div className='container clearfix'>
               <p style={styleText}>1. General</p>
-              <p style={styleText}>1.1 SoTec (“we” or “us”) take the privacy of your information very seriously. Our privacy and data protection policy (“Privacy Policy”) is designed to tell you about our practices regarding the collection,
+              <p style={styleText}>1.1 Sotec (“we” or “us”) take the privacy of your information very seriously. Our privacy and data protection policy (“Privacy Policy”) is designed to tell you about our practices regarding the collection,
                   use and disclosure of information that you may provide to us.
               </p>
               <p style={styleText}>1.2 By using any services we offer, you are consenting to the collection, use, and disclosure of that information about you in accordance with, and are agreeing to be bound by, this Privacy Policy.</p>

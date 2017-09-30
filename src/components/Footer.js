@@ -11,7 +11,7 @@ const Disclaimer = () => (
 
 const Copyright = () => (
   <div>
-    Copyrights &copy; 2017 All Rights Reserved by SoTec.<br />
+    Copyrights &copy; 2017 All Rights Reserved by Sotec.<br />
   </div>
 )
 
@@ -50,11 +50,11 @@ const ConstactLinks = () => (
       <li><i className='icon-headphones' /> +44 7437 893 938</li>
       <li>
         <div className='clearfix'>
-          <a href='https://www.facebook.com/SoTecUK' target='_blank' rel='noopener noreferrer' className='social-icon si-small si-borderless si-facebook'>
+          <a href='https://www.facebook.com/Sotecgroup' target='_blank' rel='noopener noreferrer' className='social-icon si-small si-borderless si-facebook'>
             <i className='icon-facebook' />
             <i className='icon-facebook' />
           </a>
-          <a href='https://twitter.com/SoTec_UK' target='_blank' rel='noopener noreferrer' className='social-icon si-small si-borderless si-twitter'>
+          <a href='https://twitter.com/Sotecgroup' target='_blank' rel='noopener noreferrer' className='social-icon si-small si-borderless si-twitter'>
             <i className='icon-twitter' />
             <i className='icon-twitter' />
           </a>
