@@ -13,7 +13,7 @@ export default class NotFound extends Component {
           </h1>
         </p>
         <p>
-          <h2><a href='http://sotec.io'>Go to <u>SoTec.io</u></a></h2>
+          <h2><a href='http://sotec.io'>Go to <u>Sotec.io</u></a></h2>
         </p>
       </div>
     )

@@ -9,7 +9,7 @@ const config = {
   },
   support: {
     email: 'contact@sotec.io',
-    name: 'SoTec Team'
+    name: 'Sotec Team'
   },
   returnStackTrace: truthy(process.env.RETURN_STACK_TRACE, false),
   ensureHttps: truthy(process.env.ENSURE_HTTPS, false),

@@ -1,6 +1,6 @@
 [![CircleCI](https://circleci.com/gh/sotecio/socialbank.svg?style=svg&circle-token=d1c3483a5035420a95bcf103fd40d19a53df7a78)](https://circleci.com/gh/sotecio/socialbank)
 
-# SoTec
+# Sotec
 
 This application allows creating bank account by one click. Each account can be shared with donors to build transparency and accountability. 
 

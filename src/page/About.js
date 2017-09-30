@@ -10,7 +10,7 @@ class Faq extends React.Component {
         <Header />
         <section id='page-title' className='page-title-mini'>
           <div className='container clearfix'>
-            <h1>About SoTec</h1>
+            <h1>About Sotec</h1>
             <ol className='breadcrumb'>
               <li><a href='/'>Home</a></li>
               <li className='active'>About</li>
@@ -42,7 +42,7 @@ class Faq extends React.Component {
                 </div>
               </div>
               <div className='heading-block center'>
-                <h2>SoTec Thinktank</h2>
+                <h2>Sotec Thinktank</h2>
                 <span>Our Team Members who have contributed immensely to our Growth</span>
               </div>
               <div className='row clearfix'>

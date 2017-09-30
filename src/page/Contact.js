@@ -26,11 +26,11 @@ class Contact extends React.Component {
                 <abbr title='Phone Number'><strong>Phone:</strong></abbr> +44 7437 893 938<br />
                 <abbr title='Email Address'><strong>Email:</strong></abbr> contact@sotec.io
                 <div className='widget noborder notoppadding'>
-                  <a href='https://www.facebook.com/SoTecUK' target='_blank' rel='noopener noreferrer' className='social-icon si-small si-dark si-facebook'>
+                  <a href='https://www.facebook.com/Sotecgroup' target='_blank' rel='noopener noreferrer' className='social-icon si-small si-dark si-facebook'>
                     <i className='icon-facebook' />
                     <i className='icon-facebook' />
                   </a>
-                  <a href='https://twitter.com/SoTec_UK' target='_blank' rel='noopener noreferrer' className='social-icon si-small si-dark si-twitter'>
+                  <a href='https://twitter.com/Sotecgroup' target='_blank' rel='noopener noreferrer' className='social-icon si-small si-dark si-twitter'>
                     <i className='icon-twitter' />
                     <i className='icon-twitter' />
                   </a>
