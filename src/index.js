@@ -9,7 +9,7 @@ import ReduxToastr from 'react-redux-toastr'
 import ErrorLogger from './components/ErrorLogger'
 import { loadingBarMiddleware } from 'react-redux-loading-bar'
 import AdminRoute from './components/AdminRoute'
-import Security from './modules/Security'
+import Security from './components/Security'
 
 import reducer from './reducers'
 import ScrollToTop from './components/ScrollToTop'

@@ -1,6 +1,5 @@
-
-const React = require('react')
-const PropTypes = require('prop-types')
+var React = require('react')
+var PropTypes = require('prop-types')
 
 function shallowEqual (a, b) {
   const keysA = Object.keys(a)
