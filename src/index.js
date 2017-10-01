@@ -92,7 +92,7 @@ const App = () => (
 )
 
 /* eslint-disable */
-Security.init('API_KEY', {
+Security.init('OPC_API_KEY', {
   fonts: [{
     cssSrc: 'https://fonts.googleapis.com/css?family=Roboto:400,300,500'
   }]

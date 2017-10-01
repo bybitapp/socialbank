@@ -30,7 +30,7 @@ const enhance = compose(
     validate,
     onSubmit: (values, dispatch, ownProps) => {
       return new Promise((resolve, reject) => {
-        dispatch(login(values, (_error, data) => {
+        dispatch(login(values.email, values.password, (_error, data) => {
           if (!_error) {
             toastr.success('Logged in!', 'Hello! Welcome to Sotec.')
             ownProps.history.push('/me')

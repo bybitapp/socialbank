@@ -1,14 +1,28 @@
+import Security from './Security'
+
+const TOKEN_KEY = 'TOKEN_KEY'
+
 class Auth {
+  static init () {
+    var token = localStorage.getItem(TOKEN_KEY)
+    if (token) {
+      Security.associate(localStorage.getItem(TOKEN_KEY))
+    }
+  }
+
   /**
    * Authenticate a user. Save a token string in Local Storage
    *
    * @param {string} token
    */
-  static authenticateUser (user) {
-    localStorage.setItem('auth', JSON.stringify({
-      user: user,
-      expiryTime: Date.now() + (1000 * 60 * 15) // 15 min
-    }))
+  static authenticateUser (token) {
+    Security.associate(token, () => {
+      localStorage.setItem(TOKEN_KEY, token)
+      // localStorage.setItem('auth', JSON.stringify({
+      //   user: user,
+      //   expiryTime: Date.now() + (1000 * 60 * 15) // 15 min
+      // }))
+    })
   }
 
   /**
@@ -26,7 +40,10 @@ class Auth {
    *
    */
   static deauthenticateUser () {
-    localStorage.removeItem('auth')
+    Security.associate(null, () => {
+      localStorage.removeItem(TOKEN_KEY)
+      // localStorage.removeItem('auth')
+    })
   }
 
   /**
