@@ -69,9 +69,9 @@ class Login extends React.Component {
       console.log('_login')
 
       /* eslint-disable */
-      console.log('GLOBAL.host: ' + _GLOBAL.host)
-      console.log('_GLOBAL.programmeCode: ' + _GLOBAL.programmeCode)
-      axios.post(_GLOBAL.host + '/' + _GLOBAL.programmeCode + '/sessions', loginRequest)
+      console.log('window.API_HOST: ' + window.API_HOST)
+      console.log('window.API_KEY: ' + window.API_KEY)
+      axios.post(window.API_HOST + '/' + window.API_KEY + '/sessions', loginRequest)
         .then((res) => {
           console.log('call Security.associate')
           Security.associate(res.token, () => {
