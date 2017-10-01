@@ -8,6 +8,7 @@ import Input from '../components/Input'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { login } from '../actions'
+import Security from '../modules/Security'
 
 const validate = values => {
   const errors = {}
@@ -44,6 +45,13 @@ const enhance = compose(
 )
 
 class Login extends React.Component {
+  checkKeyPressed (e) {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      this._login(e)
+    }
+  }
+
   render () {
     const { handleSubmit } = this.props
     return (
@@ -72,6 +80,27 @@ class Login extends React.Component {
                       <a href='/forgot' className='fright'>Forgot Password?</a>
                     </div>
                   </form>
+
+                  <Security.Form ref={this._setForm}>
+                    <span className='faux-input'>
+                      <span className='password-icon' />
+                      <Security.Input className='sign-in-password' name='password' path='LoginParams.password' placeholder='Password' onKeyUp={this.checkKeyPressed}
+                        baseStyle={{
+                          color: '#54575b',
+                          fontSize: '13px',
+                          fontSmoothing: 'antialiased',
+                          fontFamily: 'Roboto, sans-serif',
+                          fontWeight: '400',
+                          margin: '0',
+                          padding: '10px',
+                          textIndent: '40px',
+                          '::placeholder': {
+                            color: '#bbc0c8',
+                            fontWeight: '200'
+                          }
+                        }} />
+                    </span>
+                  </Security.Form>
                 </div>
               </div>
             </div>

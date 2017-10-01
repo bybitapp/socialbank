@@ -9,6 +9,7 @@ import ReduxToastr from 'react-redux-toastr'
 import ErrorLogger from './components/ErrorLogger'
 import { loadingBarMiddleware } from 'react-redux-loading-bar'
 import AdminRoute from './components/AdminRoute'
+import Security from './modules/Security'
 
 import reducer from './reducers'
 import ScrollToTop from './components/ScrollToTop'
@@ -89,6 +90,14 @@ const App = () => (
     </div>
   </Provider>
 )
+
+/* eslint-disable */
+Security.init(API_KEY, {
+  fonts: [{
+    cssSrc: 'https://fonts.googleapis.com/css?family=Roboto:400,300,500'
+  }]
+})
+/* eslint-enable */
 
 ReactDOM.render(
   <App />,

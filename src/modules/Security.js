@@ -1,7 +1,6 @@
 
 const React = require('react')
-
-const NOOP = () => {}
+const PropTypes = require('prop-types')
 
 function shallowEqual (a, b) {
   const keysA = Object.keys(a)
@@ -20,7 +19,7 @@ function associate (token, resolve, reject) {
 
 class Form extends React.Component {
     static childContextTypes = {
-      form: React.PropTypes.object
+      form: PropTypes.object
     }
 
     constructor () {
@@ -93,19 +92,13 @@ function extractInputOptions (props) {
 
 class Input extends React.Component {
     static propTypes = {
-      name: React.PropTypes.string,
-      path: React.PropTypes.string,
-      options: React.PropTypes.object,
-      className: React.PropTypes.string,
-      onChange: React.PropTypes.func,
-      onSubmit: React.PropTypes.func,
-      onBlur: React.PropTypes.func,
-      onFocus: React.PropTypes.func,
-      onReady: React.PropTypes.func,
-      baseStyle: React.PropTypes.object,
-      emptyStyle: React.PropTypes.object,
-      validStyle: React.PropTypes.object,
-      invalidStyle: React.PropTypes.object
+      name: PropTypes.string,
+      path: PropTypes.string,
+      className: PropTypes.string,
+      onChange: PropTypes.func,
+      onBlur: PropTypes.func,
+      onFocus: PropTypes.func,
+      onReady: PropTypes.func
     };
 
     static defaultProps = {
@@ -113,7 +106,7 @@ class Input extends React.Component {
     };
 
     static contextTypes = {
-      form: React.PropTypes.object.isRequired
+      form: PropTypes.object.isRequired
     };
 
     constructor (props, context) {
@@ -187,12 +180,10 @@ function extractSpanOptions (props) {
 
 class Span extends React.Component {
     static propTypes = {
-      path: React.PropTypes.string,
-      token: React.PropTypes.string,
-      options: React.PropTypes.object,
-      className: React.PropTypes.string,
-      onReady: React.PropTypes.func,
-      baseStyle: React.PropTypes.object
+      path: PropTypes.string,
+      token: PropTypes.string,
+      className: PropTypes.string,
+      onReady: PropTypes.func
     };
 
     static defaultProps = {
