@@ -1,2 +1,2 @@
 // TODO: Temporary file. Figure out secure way to send OPC programmekey to client...
-var API_KEY = '98505513021865984|98520768000622592'
+const API_KEY = '98520748460867584'
