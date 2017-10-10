@@ -62,10 +62,6 @@ class Faq extends React.Component {
                       answer='Sotec provides payment card solutions to manage and simplify organisation’s funding and expenses. Our solution provides increased internal transparency through micropayments and automated expense reporting by utilizing virtual and physical prepaid debit cards on top of the award winning, low cost, open payment cloud platform.' />
 
                     <FaqItem
-                      question='Who is the issuer of the Sotec cards?'
-                      answer='Sotec cards are issued by one of Europe’s largest issuers of Prepaid Visa(s), IDT Financial Services Limited pursuant to a license from Visa International Incorporated. IDT Financial Services Limited is a regulated bank, licensed by the Financial Services Commission, Gibraltar. Registered Office: 57-63 Line Wall Road, Gibraltar. Registered No. 95716.' />
-
-                    <FaqItem
                       question='Is Sotec for us?'
                       answer='Sotec was created for dynamic businesses with decentralized spending cultures, including the sharing of credit cards, collections of receipts, expense reports and reimbursements, causing confusion and complexity for everyone in the workplace.' />
 
