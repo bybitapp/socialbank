@@ -78,9 +78,6 @@ export default ({cardDetail}) => (
           <div className='cvc'>CCV2: { cardDetail.cvv }</div>
         </div>
         <div className='bottom'>
-          <div className='issue'>
-            This card is issued by IDT Financial Services Limited (IDTFS) pursuant to a license from Visa Europe and remains the property of IDT Financial Services Ltd.
-          </div>
           <div className='type'>
             Prepaid
           </div>

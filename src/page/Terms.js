@@ -33,8 +33,6 @@ class Terms extends React.Component {
         <section id='content'>
           <div className='content-wrap'>
             <div className='container clearfix'>
-              <p style={{textAlign: 'center'}}><span><strong><span style={styleText}>IDT FINANCIAL SERVICES LIMITED</span></strong></span></p>
-
               <p style={{textAlign: 'center'}}><span><strong><span style={styleText}>TERMS AND CONDITIONS</span></strong></span></p>
 
               <p style={{textAlign: 'center'}}><span><strong><span style={styleText}>Ixaris Solutions Payment Partner</span></strong></span></p>
@@ -73,8 +71,6 @@ class Terms extends React.Component {
 
               <p><span><strong><span style={styleText}>“Technology Agreement” means Your and/or Your Organisation’s agreement with Ixaris Systems Limited relating to the technical functionality and operation of the Cards.</span></strong></span></p>
 
-              <p><span><strong><span style={styleText}>“We”, “Us” or “Our” means IDT Financial Services Limited and/or Ixaris Systems Limited acting on its behalf in its capacity as programme manager in respect of the Prepaid Card Program</span></strong></span></p>
-
               <p><span><strong><span style={styleText}>"You" or “Your” means the authorised user of the Prepaid Card and any additional, secondary or companion Prepaid Cardholders, except in the introduction to these Terms and Conditions, in which You means the authorised user of the Prepaid Card, the authorised user’s Organisation or both, as the context requires.</span></strong></span></p>
 
               <p><span><strong><span style={styleText}>“Virtual Card”, when used with reference to a Prepaid Card means the following information; PAN, CV2 code, Expiry Date.</span></strong></span></p>
@@ -86,8 +82,6 @@ class Terms extends React.Component {
               </ol>
 
               <p style={{padding: '0pt 0pt 0pt 36pt'}}><span><span style={styleText}>1.1</span> <span style={styleText}>This Agreement sets out the general Terms and Conditions that apply to Your Prepaid Visa or MasterCard Cards. These Terms and Conditions must be read in conjunction with Your Technology Agreement. Together, these documents form an Agreement between You and Us governing the possession and use of the Cards. By using the Cards You agree to the Terms and Conditions in the Agreement. If there is a conflict between the Terms and Condition and the Technology Agreement, the relevant term or condition in the Technology Agreement will apply. Copies of this Agreement can be found on the Website or by contacting Our Customer Services team in accordance with Condition 15.</span></span></p>
-
-              <p style={{padding: '0pt 0pt 0pt 36pt'}}><span><span style={styleText}>1.2</span> <span style={styleText}>Cards are issued by IDT Financial Services Limited pursuant to licenses from Visa Europe Limited and MasterCard International Incorporated. IDT Financial Services Limited is regulated and authorised by the Financial Services Commission, Gibraltar. Registered Office: 57-63 Line Wall Road, Gibraltar. Registered No. 95716.</span></span></p>
 
               <p style={{padding: '0pt 0pt 0pt 36pt'}}><span><span style={styleText}>1.3</span> <span style={styleText}>The production of the Cards and the technology systems required to operate the Cards are provided by Ixaris Systems Limited (registered in England with registered number 04072405).</span></span></p>
 
@@ -286,10 +280,6 @@ class Terms extends React.Component {
 
               <p style={{padding: '0pt 0pt 0pt 36pt'}}><span><span style={styleText}>15.3</span> <span style={styleText}>If You are not satisfied with any element of the service You receive, any complaints should be made to Our customer services team using the contact details in clause 15.1 above. Calls may be monitored or recorded for training purposes</span></span></p>
 
-              <p style={{padding: '0pt 0pt 0pt 36pt'}}><span><span style={styleText}>15.4</span> <span style={styleText}>We do everything We can to make sure You receive the best possible service. However, if You are not happy with how Your complaint has been managed by our customer care team and You wish to escalate Your complaint, You should contact the card issuer, IDT Financial Services Limited, PO Box 1374, 1 Montarik Building, 3 Bedlam Court, Gibraltar, email address: complaints@idtfinance.com, web www.idtfinance.com in the first instance for further assistance.</span></span></p>
-
-              <p style={{marginLeft: '36pt'}}><span><span style={styleText}>15.5</span> <span style={styleText}>If, IDT Financial Services Limited is unable to resolve Your complaint and You remain unhappy, You may contact the Gibraltar Financial Services Commission, PO Box 940, Suite 3, Ground Floor, Atlantic Suites, Europort Avenue, Gibraltar, e-mail psdcomplaints@fsc.gi, web www.fsc.gi.</span></span></p>
-
               <ol start={16}>
                 <li><span><strong><span style={styleText}>LIMITATION OF LIABILITY</span></strong></span></li>
               </ol>
@@ -318,15 +308,11 @@ class Terms extends React.Component {
 
               <p style={{padding: '0pt 0pt 0pt 36pt'}}><span><span style={styleText}>16.5 </span> <span style={styleText}>If You have used a Card or allowed a Card to be used fraudulently, in a manner that does not comply with these Terms and Conditions, for illegal purposes, or if You have allowed a Card or details to be compromised due to negligence You will be held responsible for the use and misuse of the Card. We will take all reasonable and necessary steps to recover any loss from You, and there shall be no maximum limit to Your liability except where relevant laws or regulations impose such a limit. This means You should take care of Your Card and details and act responsibly, or You will be held liable.</span></span></p>
 
-              <p style={{padding: '0pt 0pt 0pt 36pt'}}><span><span style={styleText}>16.6</span> <span style={styleText}>The Gibraltar Deposit Guarantee Scheme does not apply to Your Cards. This means that in the unlikely event that IDT Financial Services Limited became insolvent, Your Cards may become unusable and any funds associated with Your Cards may be lost. By using Your Cards and by entering into this Agreement You are indicating that You understand and accept these risks.</span></span></p>
-
               <p style={{padding: '0pt 0pt 0pt 36pt'}}><span><span style={styleText}>16.7</span> <span style={styleText}>As a responsible e-money issuer We take the security of Your money very seriously. Your funds are held in a secure client account, specifically for the purpose of redeeming transactions made via Your Cards. In the unlikely event of any insolvency, funds that have reached Our account will be protected against claims by creditors. We will be happy to talk through any questions or concerns You might have. Please contact Our Customer Services team for further information.</span></span></p>
 
               <ol start={17}>
                 <li><span><strong><span style={styleText}>YOUR PERSONAL INFORMATION</span></strong></span></li>
               </ol>
-
-              <p style={{padding: '0pt 0pt 0pt 36pt'}}><span><span style={styleText}>17.1</span> <span style={styleText}>We collect certain information about the purchaser and the users of the Cards in order to operate the Card programme. Ixaris Systems Limited and IDT Financial Services Limited are Data Controllers of such personal data, and will manage and protect Your personal data in accordance with the Data Protection Act 1998 (UK) and Data Protection Act 2004 (Gibraltar) respectively.</span></span></p>
 
               <p style={{padding: '0pt 0pt 0pt 36pt'}}><span><span style={styleText}>17.2</span> <span style={styleText}>We may transfer Your data outside the EU to our commercial partners where necessary to provide Our services to You, such as customer service, account administration, financial reconciliation, or where the transfer is necessary as a result of Your request, such as the processing of any international transaction. When We transfer data outside the EU, We will take steps to ensure that Your data is afforded substantially similar protection as data processed within the EU. Please be aware that not all countries have laws to protect data in a manner equivalent to that of the EU. Your use of Our products and services will indicate to Us that You agree to the transfer of Your data outside the EU. You have the right to object to the processing of Your data and to its transfer outside the EU on compelling legitimate grounds.</span></span></p>
 
