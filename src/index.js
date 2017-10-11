@@ -38,6 +38,7 @@ import Cards from './page/admin/Cards'
 import Organization from './page/admin/Organization'
 import Banks from './page/admin/Banks'
 import Users from './page/admin/Users'
+import Dashboard from './page/admin/Dashboard'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
@@ -59,6 +60,7 @@ const App = () => (
             <AdminRoute path='/organization' component={Organization} />
             <AdminRoute path='/banks' component={Banks} />
             <AdminRoute path='/users' component={Users} />
+            <AdminRoute path='/dashboard' component={Dashboard} />
             { /* Public pages */ }
             <Route path='/public/o/:id' component={Public} />
             <Route path='/login' component={Login} />

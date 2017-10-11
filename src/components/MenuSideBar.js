@@ -9,7 +9,8 @@ const menuItems = [
   {label: 'Projects', path: '/projects', icon: 'favorite', access: 'owner,admin'},
   {label: 'Users', path: '/users', icon: 'face', access: 'owner,admin'},
   {label: 'Virtual Cards', path: '/cards', icon: 'credit_card', access: 'owner,admin,user'},
-  {label: 'Transaction History', path: '/history', icon: 'history', access: 'owner,admin,user'}
+  {label: 'Transaction History', path: '/history', icon: 'history', access: 'owner,admin,user'},
+  {label: 'Dashboard', path: '/dashboard', icon: 'dashboard', access: 'owner,admin,user'}
 ]
 
 class MenuSideBar extends React.Component {

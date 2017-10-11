@@ -27,6 +27,7 @@
   "dependencies": {
     "@google/maps": "^0.4.3",
     "airbrake": "^2.1.0",
+    "antd": "^2.13.3",
     "axios": "^0.16.2",
     "bcrypt": "^1.0.3",
     "bluebird": "^3.5.0",
@@ -57,7 +58,9 @@
     "ramda": "^0.24.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-google-charts": "^1.5.4-alpha.1",
     "react-modal": "^2.3.2",
+    "react-placeholder": "^1.0.5",
     "react-redux": "^5.0.6",
     "react-redux-loading-bar": "^2.9.2",
     "react-redux-toastr": "7.1.5",
