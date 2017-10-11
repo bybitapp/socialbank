@@ -1,0 +1,104 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: none;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    font-size: 14px;
+    line-height: 1.2em;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+.secure-element > * {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.secure-element__element, .secure-element__fake {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    display: block;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-size: 1em;
+    line-height: 1.2em;
+}
+
+.secure-element__fake {
+    z-index: 0;
+    bottom: 0;
+}
+
+.secure-element__element.invalid {
+    color: #eb1c26;
+}
+
+.is-autofilled .secure-element__element {
+    color: #000;
+}
+
+/**
+ * The following styles include void animations so that we can use animationstart to
+ * detect when autofill has happened in Chrome/Safari.
+ */
+input.secure-element__element {
+    -webkit-animation: 1ms void-animation-out;
+}
+
+input.secure-element__element:-webkit-autofill {
+    /* Indefinitely delay native autofill background-color from coming in. */
+    transition: background-color 100000000s;
+    -webkit-animation: 1ms void-animation-in;
+}
+
+/* Safari does not trigger animationstart with an empty keyframes block. */
+@-webkit-keyframes void-animation-in {
+    0% {
+        opacity: 1
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes void-animation-out {
+    0% {
+        opacity: 1
+    }
+    100% {
+        opacity: 1
+    }
+}
+
+.secure-element__label {
+    position: relative;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.secure-element__label::after {
+    height: 0;
+    visibility: hidden;
+    content: attr(data-max);
+}

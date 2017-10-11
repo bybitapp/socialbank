@@ -8,6 +8,8 @@ import Input from '../components/Input'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { login } from '../actions'
+import Security from '../components/Security'
+import axios from 'axios'
 
 const validate = values => {
   const errors = {}
@@ -28,7 +30,7 @@ const enhance = compose(
     validate,
     onSubmit: (values, dispatch, ownProps) => {
       return new Promise((resolve, reject) => {
-        dispatch(login(values, (_error, data) => {
+        dispatch(login(values.email, values.password, (_error, data) => {
           if (!_error) {
             toastr.success('Logged in!', 'Hello! Welcome to Sotec.')
             ownProps.history.push('/me')
@@ -44,6 +46,50 @@ const enhance = compose(
 )
 
 class Login extends React.Component {
+  constructor () {
+    super()
+    this._setForm = this._setForm.bind(this)
+    this._login = this._login.bind(this)
+    this._checkKeyPressed = this._checkKeyPressed.bind(this)
+  }
+
+  _setForm (form) {
+    this._form = form
+  }
+
+  _login (e) {
+    e && e.preventDefault()
+
+    this._form.tokenize(tokens => {
+      var loginRequest = {
+        'userId': 'test.user',
+        'password': 'Password123'
+      }
+
+      console.log('_login')
+
+      /* eslint-disable */
+      console.log('window.API_HOST: ' + window.API_HOST)
+      console.log('window.API_KEY: ' + window.API_KEY)
+      axios.post(window.API_HOST + '/' + window.API_KEY + '/sessions', loginRequest)
+        .then((res) => {
+          console.log('call Security.associate')
+          Security.associate(res.token, () => {
+            console.log('set token')
+            localStorage.setItem('TOKEN_KEY', res.token)
+        })
+      })
+      /* eslint-enable */
+    })
+  }
+
+  _checkKeyPressed (e) {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      this._login(e)
+    }
+  }
+
   render () {
     const { handleSubmit } = this.props
     return (
@@ -66,9 +112,29 @@ class Login extends React.Component {
                 <div className='acc_content clearfix'>
                   <form className='nobottommargin' onSubmit={handleSubmit} >
                     <Field name='email' label='Email:' component={Input} />
+                    <Security.Form ref={this._setForm}>
+                      <span className='faux-input'>
+                        <span className='password-icon' />
+                        <Security.Input className='sign-in-password' name='password' path='LoginParams.password' placeholder='Password' onKeyUp={this._checkKeyPressed}
+                          baseStyle={{
+                            color: '#54575b',
+                            fontSize: '13px',
+                            fontSmoothing: 'antialiased',
+                            fontFamily: 'Roboto, sans-serif',
+                            fontWeight: '400',
+                            margin: '0',
+                            padding: '10px',
+                            textIndent: '40px',
+                            '::placeholder': {
+                              color: '#bbc0c8',
+                              fontWeight: '200'
+                            }
+                          }} />
+                      </span>
+                    </Security.Form>
                     <Field name='password' label='Password:' component={Input} type='password' />
                     <div className='col_full nobottommargin'>
-                      <button className='button button-3d button-black nomargin' type='submit'>Login</button>
+                      <button className='button button-3d button-black nomargin' onClick={this._login} >Login</button>
                       <a href='/forgot' className='fright'>Forgot Password?</a>
                     </div>
                   </form>

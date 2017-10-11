@@ -1,4 +1,5 @@
 import server from '../api/server'
+import ixaris from '../api/ixaris'
 import Auth from '../modules/Auth'
 import * as types from '../constants/ActionTypes'
 
@@ -289,9 +290,9 @@ export const postReset = (token, values, cb) => (dispatch, getState) => {
   })
 }
 
-export const login = (account, cb) => (dispatch, getState) => {
+export const login = (userId, password, cb) => (dispatch, getState) => {
   dispatch({type: types.LOGIN_REQUEST})
-  return server.login(account, (ex, data) => {
+  return ixaris.login({userId, password}, (ex, data) => {
     if (!ex) {
       Auth.authenticateUser(data)
       dispatch({type: types.LOGIN_SUCCESS, data})
@@ -305,7 +306,7 @@ export const login = (account, cb) => (dispatch, getState) => {
 
 export const logout = (cb) => (dispatch, getState) => {
   dispatch({type: types.LOGOUT_REQUEST})
-  return server.logout((ex, data) => {
+  return ixaris.logout((ex, data) => {
     Auth.deauthenticateUser()
     dispatch({type: types.LOGOUT_SUCCESS})
     cb()
